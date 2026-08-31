@@ -19,6 +19,10 @@ import {
   UsersRound,
   LibraryBig,
   Award,
+  GraduationCap,
+  FileCheck2,
+  ListChecks,
+  UserRound,
 } from "lucide-react";
 
 import Header from "../components/Header";
@@ -53,48 +57,42 @@ const reviewBenefits = [
     description:
       "Help uphold the highest standards of research and publication.",
     icon: ShieldCheck,
-    color: "#559D42",
-    bg: "#EDF8E9",
+    color: "#4D913D",
   },
   {
     title: "Global Impact",
     description:
       "Contribute to research that drives innovation and solves real-world challenges.",
     icon: Globe2,
-    color: "#3B72C5",
-    bg: "#EDF4FC",
+    color: "#423494",
   },
   {
     title: "Professional Growth",
     description:
       "Enhance your academic profile and stay at the forefront of your field.",
     icon: Network,
-    color: "#7150A8",
-    bg: "#F2EEFA",
+    color: "#183A83",
   },
   {
     title: "Recognition",
     description:
       "Receive acknowledgment for your valuable contributions.",
     icon: BadgeCheck,
-    color: "#4A9B5F",
-    bg: "#EDF8F0",
+    color: "#4E913D",
   },
   {
     title: "Flexible & Fair",
     description:
       "Manage reviews at your convenience with transparent timelines.",
-    icon: Scale,
-    color: "#7650A7",
-    bg: "#F4EFFA",
+    icon: GraduationCap,
+    color: "#503092",
   },
   {
     title: "Ethical & Confidential",
     description:
       "We ensure a secure, ethical, and respectful review process.",
     icon: LockKeyhole,
-    color: "#3A68B0",
-    bg: "#EDF3FC",
+    color: "#263C86",
   },
 ];
 
@@ -106,15 +104,15 @@ const processSteps = [
     description:
       "You will receive an invitation via email to review a manuscript.",
     icon: Mail,
-    color: "#467E35",
+    color: "#3F7F32",
   },
   {
     number: "2",
     title: "Acceptance",
     description:
-      "Accept or decline based on your availability and expertise.",
-    icon: CircleCheckBig,
-    color: "#6847A0",
+      "Accept the invitation and confirm your availability.",
+    icon: FileCheck2,
+    color: "#59328F",
   },
   {
     number: "3",
@@ -122,15 +120,15 @@ const processSteps = [
     description:
       "Evaluate the manuscript and provide constructive feedback.",
     icon: FileSearch,
-    color: "#315FA9",
+    color: "#124A93",
   },
   {
     number: "4",
     title: "Recommendation",
     description:
-      "Submit your recommendation: accept, minor revision, major revision, or reject.",
-    icon: ClipboardCheck,
-    color: "#478A3A",
+      "Submit your recommendation (accept, minor revision, major revision, or reject).",
+    icon: ListChecks,
+    color: "#3F7F32",
   },
   {
     number: "5",
@@ -138,15 +136,15 @@ const processSteps = [
     description:
       "Submit your review through our secure online system.",
     icon: Send,
-    color: "#6946A3",
+    color: "#59328F",
   },
   {
     number: "6",
     title: "Acknowledgment",
     description:
-      "Receive acknowledgment and access your reviewer record.",
-    icon: BadgeCheck,
-    color: "#255CA8",
+      "Receive acknowledgment and access your review record.",
+    icon: CircleCheckBig,
+    color: "#15529B",
   },
 ];
 
@@ -209,23 +207,25 @@ const testimonials = [
       "Reviewing for Global Reviews Press has been a rewarding experience. The platform is professional, transparent, and truly values reviewers.",
     author: "Prof. Michael Anderson",
     university: "University of Toronto, Canada",
-    initials: "MA",
+    flag: "🇨🇦",
   },
   {
     quote:
       "The review process is well-structured and the editorial team is very supportive. I appreciate the recognition for reviewers' contributions.",
     author: "Dr. Priya Sharma",
     university: "Indian Institute of Science, India",
-    initials: "PS",
+    flag: "🇮🇳",
   },
   {
     quote:
       "A great platform to contribute to impactful research while staying updated with the latest advancements in my field.",
     author: "Prof. Li Wei",
     university: "Tsinghua University, China",
-    initials: "LW",
+    flag: "🇨🇳",
   },
 ];
+
+
 
 
 export default function Reviewer() {
@@ -670,921 +670,1826 @@ export default function Reviewer() {
 </section>
 
 
-        {/* =========================================================
-            WHY REVIEW WITH US
-        ========================================================== */}
-        <section className="bg-white py-[26px] sm:py-[32px]">
-          <div
+    {/* =========================================================
+    WHY REVIEW WITH US
+========================================================== */}
+<section
+  className="
+    border-y
+    border-[#eef1f4]
+    bg-white
+    py-[26px]
+
+    sm:py-[30px]
+    lg:py-[31px]
+  "
+>
+  <div
+    className="
+      mx-auto
+      w-[min(1120px,calc(100%-32px))]
+
+      sm:w-[min(1120px,calc(100%-48px))]
+    "
+  >
+    {/* =====================================================
+        SECTION HEADING
+    ====================================================== */}
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 12,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.4,
+      }}
+      transition={{
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="text-center"
+    >
+      <h2
+        className="
+          font-['Inter',sans-serif]
+          text-[20px]
+          font-[600]
+          leading-none
+          tracking-[0.01em]
+          text-[#172F69]
+
+          sm:text-[20px]
+          lg:text-[21px]
+        "
+      >
+        WHY REVIEW WITH US?
+      </h2>
+
+      {/* small green underline like reference */}
+      <motion.span
+        initial={{ width: 0 }}
+        whileInView={{ width: 38 }}
+        viewport={{ once: true }}
+        transition={{
+          duration: 0.55,
+          delay: 0.18,
+        }}
+        className="
+          mx-auto
+          mt-[10px]
+          block
+          h-[2px]
+          rounded-full
+          bg-[#4C8A42]
+        "
+      />
+    </motion.div>
+
+    {/* =====================================================
+        BENEFITS GRID
+    ====================================================== */}
+    <div
+      className="
+        mt-[34px]
+        grid
+        grid-cols-2
+        gap-x-0
+        gap-y-[30px]
+
+        sm:grid-cols-3
+
+        lg:grid-cols-6
+        lg:gap-y-0
+      "
+    >
+      {reviewBenefits.map((benefit, index) => {
+        const Icon = benefit.icon;
+
+        return (
+          <motion.div
+            key={benefit.title}
+            initial={{
+              opacity: 0,
+              y: 18,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.25,
+            }}
+            transition={{
+              duration: 0.45,
+              delay: index * 0.055,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            whileHover={{
+              y: -5,
+            }}
             className="
-              mx-auto
-              w-[min(1120px,calc(100%-32px))]
-              sm:w-[min(1120px,calc(100%-48px))]
-            "
-          >
-            <motion.h2
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="
-                text-center
-                font-['Inter',sans-serif]
-                text-[13px]
-                font-[800]
-                text-[#173768]
-
-                sm:text-[15px]
-              "
-            >
-              WHY REVIEW WITH US?
-            </motion.h2>
-
-            <div
-              className="
-                mt-[22px]
-                grid
-                grid-cols-2
-                gap-x-2
-                gap-y-7
-
-                sm:grid-cols-3
-
-                lg:grid-cols-6
-                lg:gap-0
-              "
-            >
-              {reviewBenefits.map((benefit, index) => {
-                const Icon = benefit.icon;
-
-                return (
-                  <motion.div
-                    key={benefit.title}
-                    initial={{
-                      opacity: 0,
-                      y: 14,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.42,
-                      delay: index * 0.05,
-                    }}
-                    whileHover={{
-                      y: -5,
-                    }}
-                    className="
-                      group
-                      relative
-                      flex
-                      flex-col
-                      items-center
-                      px-[12px]
-                      text-center
-
-                      lg:min-h-[125px]
-
-                      lg:[&:not(:last-child)]:border-r
-                      lg:[&:not(:last-child)]:border-[#e5ebf0]
-                    "
-                  >
-                    <motion.div
-                      whileHover={{
-                        scale: 1.08,
-                        rotate: 3,
-                      }}
-                      className="
-                        flex
-                        h-[39px]
-                        w-[39px]
-                        items-center
-                        justify-center
-                        rounded-full
-                      "
-                      style={{
-                        color: benefit.color,
-                        backgroundColor: benefit.bg,
-                      }}
-                    >
-                      <Icon
-                        size={23}
-                        strokeWidth={1.45}
-                      />
-                    </motion.div>
-
-                    <h3
-                      className="
-                        mt-[9px]
-                        text-[8px]
-                        font-[750]
-                        text-[#213b5c]
-
-                        sm:text-[8.5px]
-                      "
-                    >
-                      {benefit.title}
-                    </h3>
-
-                    <p
-                      className="
-                        mt-[5px]
-                        max-w-[125px]
-                        text-[6px]
-                        font-[450]
-                        leading-[1.55]
-                        text-[#68768a]
-
-                        sm:text-[6.5px]
-                      "
-                    >
-                      {benefit.description}
-                    </p>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-
-        {/* =========================================================
-            OUR REVIEW PROCESS
-        ========================================================== */}
-        <section className="bg-[#fbfcfd] py-[26px] sm:py-[31px]">
-          <div
-            className="
-              mx-auto
-              w-[min(1120px,calc(100%-32px))]
-              sm:w-[min(1120px,calc(100%-48px))]
-            "
-          >
-            <motion.h2
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="
-                text-center
-                text-[13px]
-                font-[800]
-                text-[#173768]
-
-                sm:text-[15px]
-              "
-            >
-              OUR REVIEW PROCESS
-            </motion.h2>
-
-            <div
-              className="
-                relative
-                mt-[22px]
-                grid
-                grid-cols-2
-                gap-x-5
-                gap-y-8
-
-                sm:grid-cols-3
-
-                lg:grid-cols-6
-                lg:gap-x-[10px]
-              "
-            >
-              {/* Desktop connecting line */}
-              <div
-                className="
-                  pointer-events-none
-                  absolute
-                  left-[8%]
-                  right-[8%]
-                  top-[21px]
-                  hidden
-                  h-px
-                  bg-[#d7e0e8]
-
-                  lg:block
-                "
-              />
-
-              {processSteps.map((step, index) => {
-                const Icon = step.icon;
-
-                return (
-                  <motion.div
-                    key={step.number}
-                    initial={{
-                      opacity: 0,
-                      y: 15,
-                    }}
-                    whileInView={{
-                      opacity: 1,
-                      y: 0,
-                    }}
-                    viewport={{ once: true }}
-                    transition={{
-                      duration: 0.4,
-                      delay: index * 0.06,
-                    }}
-                    whileHover={{
-                      y: -4,
-                    }}
-                    className="
-                      relative
-                      z-10
-                      flex
-                      flex-col
-                      items-center
-                      text-center
-                    "
-                  >
-                    <motion.div
-                      whileHover={{
-                        scale: 1.08,
-                      }}
-                      className="
-                        flex
-                        h-[43px]
-                        w-[43px]
-                        items-center
-                        justify-center
-                        rounded-full
-                        border-[3px]
-                        border-white
-                        text-white
-                        shadow-[0_2px_8px_rgba(25,49,77,0.12)]
-                      "
-                      style={{
-                        backgroundColor: step.color,
-                      }}
-                    >
-                      <Icon
-                        size={18}
-                        strokeWidth={1.6}
-                      />
-                    </motion.div>
-
-                    <p
-                      className="
-                        mt-[8px]
-                        text-[7px]
-                        font-[700]
-                        text-[#253f61]
-                      "
-                    >
-                      {step.number}. {step.title}
-                    </p>
-
-                    <p
-                      className="
-                        mt-[5px]
-                        max-w-[130px]
-                        text-[5.8px]
-                        font-[450]
-                        leading-[1.5]
-                        text-[#798598]
-                      "
-                    >
-                      {step.description}
-                    </p>
-                  </motion.div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-
-        {/* =========================================================
-            BENEFITS OF REVIEWING
-        ========================================================== */}
-        <section className="bg-white py-[27px] sm:py-[32px]">
-          <div
-            className="
-              mx-auto
-              w-[min(1120px,calc(100%-32px))]
-              sm:w-[min(1120px,calc(100%-48px))]
-            "
-          >
-            <motion.h2
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="
-                text-center
-                text-[13px]
-                font-[800]
-                text-[#173768]
-
-                sm:text-[15px]
-              "
-            >
-              BENEFITS OF REVIEWING
-            </motion.h2>
-
-            <div
-              className="
-                mt-[18px]
-                grid
-                grid-cols-1
-                gap-[10px]
-
-                min-[420px]:grid-cols-2
-
-                md:grid-cols-3
-
-                lg:grid-cols-4
-              "
-            >
-              {reviewerBenefitCards.map((card, index) => (
-                <motion.article
-                  key={card.title}
-                  initial={{
-                    opacity: 0,
-                    y: 18,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{
-                    once: true,
-                    amount: 0.15,
-                  }}
-                  transition={{
-                    duration: 0.42,
-                    delay: index * 0.04,
-                  }}
-                  whileHover={{
-                    y: -5,
-                  }}
-                  className="
-                    group
-                    overflow-hidden
-                    rounded-[6px]
-                    border
-                    border-[#e3e9ef]
-                    bg-white
-                    shadow-[0_3px_12px_rgba(15,42,75,0.04)]
-                  "
-                >
-                  <div className="h-[100px] overflow-hidden sm:h-[112px]">
-                    <img
-                      src={card.image}
-                      alt={card.title}
-                      className="
-                        h-full
-                        w-full
-                        object-cover
-                        transition-transform
-                        duration-700
-                        group-hover:scale-110
-                      "
-                    />
-                  </div>
-
-                  <div className="px-[13px] pb-[13px] pt-[11px]">
-                    <h3
-                      className="
-                        text-[8.5px]
-                        font-[750]
-                        text-[#1d3e66]
-
-                        sm:text-[9px]
-                      "
-                    >
-                      {card.title}
-                    </h3>
-
-                    <p
-                      className="
-                        mt-[5px]
-                        text-[6px]
-                        font-[450]
-                        leading-[1.55]
-                        text-[#6e7b8d]
-
-                        sm:text-[6.5px]
-                      "
-                    >
-                      {card.description}
-                    </p>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-
-        {/* =========================================================
-            REVIEWER GUIDELINES + CODE OF CONDUCT
-        ========================================================== */}
-        <section className="bg-[#fbfcfd] py-[24px] sm:py-[30px]">
-          <div
-            className="
-              mx-auto
-              grid
-              w-[min(1120px,calc(100%-32px))]
-              grid-cols-1
-              gap-[12px]
-
-              sm:w-[min(1120px,calc(100%-48px))]
-
-              md:grid-cols-2
-            "
-          >
-            {/* Guidelines */}
-            <motion.article
-              initial={{ opacity: 0, x: -18 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -4 }}
-              className="
-                flex
-                flex-col
-                items-start
-                gap-4
-                rounded-[7px]
-                border
-                border-[#e7ebef]
-                bg-white
-                p-[17px]
-                shadow-[0_4px_14px_rgba(14,45,75,0.035)]
-
-                min-[430px]:flex-row
-              "
-            >
-              <div
-                className="
-                  flex
-                  h-[48px]
-                  w-[48px]
-                  shrink-0
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-[#447D36]
-                  text-white
-                "
-              >
-                <BookOpen
-                  size={25}
-                  strokeWidth={1.5}
-                />
-              </div>
-
-              <div className="flex-1">
-                <h3
-                  className="
-                    text-[9px]
-                    font-[800]
-                    text-[#4A7E36]
-
-                    sm:text-[10px]
-                  "
-                >
-                  REVIEWER GUIDELINES
-                </h3>
-
-                <p
-                  className="
-                    mt-[5px]
-                    max-w-[390px]
-                    text-[6.5px]
-                    leading-[1.6]
-                    text-[#667487]
-                  "
-                >
-                  Find detailed guidelines on how to conduct a thorough, fair,
-                  and constructive peer review.
-                </p>
-
-                <motion.div
-                  whileHover={{ x: 2 }}
-                  className="mt-[11px]"
-                >
-                  <Link
-                    to="/reviewer"
-                    className="
-                      group
-                      inline-flex
-                      h-[28px]
-                      items-center
-                      gap-[7px]
-                      rounded-[3px]
-                      border
-                      border-[#58944A]
-                      px-[10px]
-                      text-[6.5px]
-                      font-[700]
-                      text-[#497D3B]
-                      transition-colors
-                      hover:bg-[#497D3B]
-                      hover:text-white
-                    "
-                  >
-                    View Guidelines
-
-                    <ArrowRight
-                      size={9}
-                      className="
-                        transition-transform
-                        group-hover:translate-x-1
-                      "
-                    />
-                  </Link>
-                </motion.div>
-              </div>
-            </motion.article>
-
-            {/* Conduct */}
-            <motion.article
-              initial={{ opacity: 0, x: 18 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ y: -4 }}
-              className="
-                flex
-                flex-col
-                items-start
-                gap-4
-                rounded-[7px]
-                border
-                border-[#e7ebef]
-                bg-white
-                p-[17px]
-                shadow-[0_4px_14px_rgba(14,45,75,0.035)]
-
-                min-[430px]:flex-row
-              "
-            >
-              <div
-                className="
-                  flex
-                  h-[48px]
-                  w-[48px]
-                  shrink-0
-                  items-center
-                  justify-center
-                  rounded-full
-                  bg-[#7044A3]
-                  text-white
-                "
-              >
-                <Scale
-                  size={25}
-                  strokeWidth={1.5}
-                />
-              </div>
-
-              <div className="flex-1">
-                <h3
-                  className="
-                    text-[9px]
-                    font-[800]
-                    text-[#6C429C]
-
-                    sm:text-[10px]
-                  "
-                >
-                  CODE OF CONDUCT
-                </h3>
-
-                <p
-                  className="
-                    mt-[5px]
-                    max-w-[390px]
-                    text-[6.5px]
-                    leading-[1.6]
-                    text-[#667487]
-                  "
-                >
-                  We are committed to maintaining the highest ethical
-                  standards in peer review.
-                </p>
-
-                <motion.div
-                  whileHover={{ x: 2 }}
-                  className="mt-[11px]"
-                >
-                  <Link
-                    to="/reviewer"
-                    className="
-                      group
-                      inline-flex
-                      h-[28px]
-                      items-center
-                      gap-[7px]
-                      rounded-[3px]
-                      border
-                      border-[#744AA2]
-                      px-[10px]
-                      text-[6.5px]
-                      font-[700]
-                      text-[#684197]
-                      transition-colors
-                      hover:bg-[#684197]
-                      hover:text-white
-                    "
-                  >
-                    Read Our Policies
-
-                    <ArrowRight
-                      size={9}
-                      className="
-                        transition-transform
-                        group-hover:translate-x-1
-                      "
-                    />
-                  </Link>
-                </motion.div>
-              </div>
-            </motion.article>
-          </div>
-        </section>
-
-
-        {/* =========================================================
-            OUR TOP REVIEWERS
-        ========================================================== */}
-        <section className="bg-white py-[25px] sm:py-[30px]">
-          <div
-            className="
-              mx-auto
-              w-[min(1120px,calc(100%-32px))]
-              sm:w-[min(1120px,calc(100%-48px))]
-            "
-          >
-            <motion.h2
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="
-                text-center
-                text-[13px]
-                font-[800]
-                text-[#173768]
-
-                sm:text-[15px]
-              "
-            >
-              OUR TOP REVIEWERS
-            </motion.h2>
-
-            <div
-              className="
-                mt-[18px]
-                grid
-                grid-cols-1
-                gap-[10px]
-
-                md:grid-cols-3
-              "
-            >
-              {testimonials.map((testimonial, index) => (
-                <motion.article
-                  key={testimonial.author}
-                  initial={{
-                    opacity: 0,
-                    y: 18,
-                  }}
-                  whileInView={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.4,
-                    delay: index * 0.08,
-                  }}
-                  whileHover={{
-                    y: -4,
-                  }}
-                  className="
-                    relative
-                    rounded-[6px]
-                    border
-                    border-[#e5ebef]
-                    bg-white
-                    p-[13px]
-                    shadow-[0_3px_12px_rgba(16,44,75,0.035)]
-                  "
-                >
-                  <Quote
-                    size={18}
-                    fill="#53934A"
-                    strokeWidth={0}
-                    className="
-                      absolute
-                      left-[12px]
-                      top-[11px]
-                      text-[#53934A]
-                    "
-                  />
-
-                  <p
-                    className="
-                      min-h-[55px]
-                      pl-[24px]
-                      text-[6.3px]
-                      font-[500]
-                      italic
-                      leading-[1.6]
-                      text-[#485c73]
-                    "
-                  >
-                    “{testimonial.quote}”
-                  </p>
-
-                  <div
-                    className="
-                      mt-[10px]
-                      flex
-                      items-center
-                      gap-[8px]
-                      border-t
-                      border-[#edf1f4]
-                      pt-[10px]
-                    "
-                  >
-                    <div
-                      className="
-                        flex
-                        h-[31px]
-                        w-[31px]
-                        shrink-0
-                        items-center
-                        justify-center
-                        rounded-full
-                        bg-[#e9eef5]
-                        text-[7px]
-                        font-[800]
-                        text-[#2D527D]
-                      "
-                    >
-                      {testimonial.initials}
-                    </div>
-
-                    <div>
-                      <p
-                        className="
-                          text-[6.8px]
-                          font-[750]
-                          text-[#253f61]
-                        "
-                      >
-                        {testimonial.author}
-                      </p>
-
-                      <p
-                        className="
-                          mt-[2px]
-                          text-[5.5px]
-                          text-[#7b8797]
-                        "
-                      >
-                        {testimonial.university}
-                      </p>
-                    </div>
-                  </div>
-                </motion.article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-
-        {/* =========================================================
-            CTA SECTION
-        ========================================================== */}
-        <section
-          className="
-            relative
-            isolate
-            overflow-hidden
-            bg-[#06264a]
-            bg-cover
-            bg-center
-            bg-no-repeat
-            text-white
-          "
-          style={{
-            backgroundImage: `url(${bgcta})`,
-          }}
-        >
-          <div
-            className="
-              absolute
-              inset-0
-              -z-10
-              bg-[#062448]/20
-            "
-          />
-
-          <div
-            className="
-              mx-auto
+              group
+              relative
               flex
-              min-h-[115px]
-              w-[min(1120px,calc(100%-32px))]
+              min-h-[145px]
               flex-col
-              items-start
-              justify-center
-              gap-[17px]
-              py-[20px]
+              items-center
+              justify-start
+              px-[14px]
+              text-center
 
-              sm:w-[min(1120px,calc(100%-48px))]
+              sm:min-h-[150px]
 
-              md:flex-row
-              md:items-center
-              md:justify-between
-              md:gap-7
+              lg:min-h-[135px]
+              lg:px-[16px]
+
+              lg:[&:not(:last-child)]:border-r
+              lg:[&:not(:last-child)]:border-[#E1E6EB]
             "
           >
+            {/* =================================================
+                ICON
+            ================================================== */}
             <motion.div
-              initial={{
-                opacity: 0,
-                x: -18,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{ once: true }}
-            >
-              <h2
-                className="
-                  text-[13px]
-                  font-[700]
-                  leading-[1.4]
-                  text-white
-
-                  sm:text-[14px]
-                "
-              >
-                Join our global network of experts
-                <br className="hidden sm:block" />
-                and make a difference in research.
-              </h2>
-            </motion.div>
-
-            <motion.div
-              initial={{
-                opacity: 0,
-                x: 18,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{ once: true }}
               whileHover={{
-                y: -3,
+                scale: 1.1,
+                rotate: index % 2 === 0 ? -3 : 3,
               }}
-              whileTap={{
-                scale: 0.97,
+              transition={{
+                duration: 0.25,
               }}
-              className="max-[360px]:w-full"
+              className="
+                flex
+                h-[43px]
+                items-center
+                justify-center
+
+                sm:h-[45px]
+                lg:h-[43px]
+              "
             >
-              <Link
-                to="/contact"
+              <Icon
+                size={38}
+                strokeWidth={1.55}
+                style={{
+                  color: benefit.color,
+                }}
                 className="
-                  group
-                  inline-flex
-                  h-[36px]
-                  min-w-[142px]
-                  items-center
-                  justify-center
-                  gap-[10px]
-                  rounded-[4px]
-                  bg-[#4E8D35]
-                  px-[15px]
-                  text-[7px]
-                  font-[700]
-                  text-white
-                  shadow-[0_4px_10px_rgba(0,0,0,0.12)]
                   transition-all
                   duration-300
-                  hover:bg-[#63A444]
-                  hover:shadow-[0_7px_16px_rgba(0,0,0,0.18)]
 
-                  max-[360px]:w-full
+                  group-hover:drop-shadow-[0_4px_7px_rgba(20,48,87,0.12)]
                 "
-              >
-                Join as Reviewer
+              />
+            </motion.div>
 
-                <ArrowRight
-                  size={12}
+            {/* =================================================
+                TITLE
+            ================================================== */}
+            <h3
+              className="
+                mt-[9px]
+                font-['Inter',sans-serif]
+                text-[13.5px]
+                font-[600]
+                leading-[1.3]
+                text-[#213868]
+
+                sm:text-[13px]
+
+                lg:text-[14px]
+              "
+            >
+              {benefit.title}
+            </h3>
+
+            {/* =================================================
+                DESCRIPTION
+            ================================================== */}
+            <p
+              className="
+                mt-[7px]
+                max-w-[135px]
+                font-['Inter',sans-serif]
+                text-[9.6px]
+                font-[500]
+                leading-[1.65]
+                text-[#31445F]
+
+                sm:max-w-[145px]
+                sm:text-[10px]
+
+                lg:max-w-[145px]
+                lg:text-[10.5px]
+              "
+            >
+              {benefit.description}
+            </p>
+          </motion.div>
+        );
+      })}
+    </div>
+  </div>
+</section>
+
+
+      {/* =========================================================
+    OUR REVIEW PROCESS
+========================================================== */}
+<section
+  className="
+    border-y
+    border-[#edf1f4]
+    bg-white
+    py-[26px]
+
+    sm:py-[30px]
+
+    lg:py-[31px]
+  "
+>
+  <div
+    className="
+      mx-auto
+      w-[min(1120px,calc(100%-32px))]
+
+      sm:w-[min(1120px,calc(100%-48px))]
+    "
+  >
+    {/* =====================================================
+        HEADING
+    ====================================================== */}
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 12,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.4,
+      }}
+      transition={{
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="text-center"
+    >
+      <h2
+        className="
+          font-['Inter',sans-serif]
+          text-[20px]
+          font-[600]
+          leading-none
+          tracking-[0.005em]
+          text-[#172E66]
+
+          sm:text-[20px]
+
+          lg:text-[21px]
+        "
+      >
+        OUR REVIEW PROCESS
+      </h2>
+
+      {/* Green underline */}
+      <motion.span
+        initial={{
+          width: 0,
+        }}
+        whileInView={{
+          width: 38,
+        }}
+        viewport={{
+          once: true,
+        }}
+        transition={{
+          duration: 0.55,
+          delay: 0.15,
+        }}
+        className="
+          mx-auto
+          mt-[9px]
+          block
+          h-[2px]
+          rounded-full
+          bg-[#568D45]
+        "
+      />
+    </motion.div>
+
+    {/* =====================================================
+        PROCESS WRAPPER
+    ====================================================== */}
+    <div
+      className="
+        relative
+        mt-[24px]
+
+        lg:mt-[32px]
+      "
+    >
+      {/* =================================================
+          DESKTOP CONNECTING LINE
+      ================================================== */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          left-[8.4%]
+          right-[8.4%]
+          top-[27px]
+          z-0
+          hidden
+          h-px
+          bg-[#CED7E1]
+
+          lg:block
+        "
+      />
+
+      {/* =================================================
+          DESKTOP ARROWS
+      ================================================== */}
+      <div className="pointer-events-none absolute inset-x-0 top-[20px] z-[1] hidden lg:block">
+        <ArrowRight
+          size={15}
+          strokeWidth={1.25}
+          className="
+            absolute
+            left-[16.1%]
+            top-0
+            text-[#8EA0B3]
+          "
+        />
+
+        <ArrowRight
+          size={15}
+          strokeWidth={1.25}
+          className="
+            absolute
+            left-[32.8%]
+            top-0
+            text-[#8EA0B3]
+          "
+        />
+
+        <ArrowRight
+          size={15}
+          strokeWidth={1.25}
+          className="
+            absolute
+            left-[49.4%]
+            top-0
+            text-[#8EA0B3]
+          "
+        />
+
+        <ArrowRight
+          size={15}
+          strokeWidth={1.25}
+          className="
+            absolute
+            left-[66.1%]
+            top-0
+            text-[#8EA0B3]
+          "
+        />
+
+        <ArrowRight
+          size={15}
+          strokeWidth={1.25}
+          className="
+            absolute
+            left-[82.7%]
+            top-0
+            text-[#8EA0B3]
+          "
+        />
+      </div>
+
+      {/* =================================================
+          PROCESS GRID
+      ================================================== */}
+      <div
+        className="
+          relative
+          z-10
+          grid
+          grid-cols-2
+          gap-x-[12px]
+          gap-y-[31px]
+
+          sm:grid-cols-3
+          sm:gap-x-[18px]
+
+          lg:grid-cols-6
+          lg:gap-x-0
+          lg:gap-y-0
+        "
+      >
+        {processSteps.map((step, index) => {
+          const Icon = step.icon;
+
+          return (
+            <motion.div
+              key={step.number}
+              initial={{
+                opacity: 0,
+                y: 18,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.25,
+              }}
+              transition={{
+                duration: 0.45,
+                delay: index * 0.06,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              whileHover={{
+                y: -5,
+              }}
+              className="
+                group
+                relative
+                flex
+                min-h-[158px]
+                flex-col
+                items-center
+                px-[9px]
+                text-center
+
+                sm:min-h-[160px]
+
+                lg:min-h-[150px]
+                lg:px-[12px]
+              "
+            >
+              {/* =============================================
+                  CIRCLE ICON
+              ============================================== */}
+              <motion.div
+                whileHover={{
+                  scale: 1.08,
+                  rotate:
+                    index % 2 === 0
+                      ? -3
+                      : 3,
+                }}
+                transition={{
+                  duration: 0.25,
+                }}
+                className="
+                  relative
+                  z-10
+                  flex
+                  h-[55px]
+                  w-[55px]
+                  shrink-0
+                  items-center
+                  justify-center
+                  rounded-full
+                  border-[3px]
+                  border-white
+                  text-white
+
+                  shadow-[0_3px_8px_rgba(21,44,76,0.15)]
+
+                  transition-shadow
+                  duration-300
+
+                  group-hover:shadow-[0_7px_16px_rgba(21,44,76,0.22)]
+
+                  lg:h-[56px]
+                  lg:w-[56px]
+                "
+                style={{
+                  backgroundColor: step.color,
+                }}
+              >
+                <Icon
+                  size={25}
+                  strokeWidth={1.45}
                   className="
-                    transition-transform
-                    duration-300
-                    group-hover:translate-x-1
+                    text-white
                   "
                 />
-              </Link>
+              </motion.div>
+
+              {/* =============================================
+                  NUMBER + TITLE
+              ============================================== */}
+              <h3
+                className="
+                  mt-[9px]
+                  font-['Inter',sans-serif]
+                  text-[13px]
+                  font-[600]
+                  leading-[1.25]
+                  text-[#192F64]
+
+                  sm:text-[13.5px]
+
+                  lg:text-[14px]
+                "
+              >
+                {step.number}. {step.title}
+              </h3>
+
+              {/* =============================================
+                  DESCRIPTION
+              ============================================== */}
+              <p
+                className="
+                  mt-[7px]
+                  max-w-[135px]
+                  font-['Inter',sans-serif]
+                  text-[9.5px]
+                  font-[500]
+                  leading-[1.65]
+                  text-[#2D3C57]
+
+                  sm:max-w-[145px]
+                  sm:text-[9.8px]
+
+                  lg:max-w-[160px]
+                  lg:text-[10.5px]
+                "
+              >
+                {step.description}
+              </p>
             </motion.div>
+          );
+        })}
+      </div>
+    </div>
+  </div>
+</section>
+
+
+     {/* =========================================================
+    BENEFITS OF REVIEWING
+========================================================== */}
+<section
+  className="
+    border-y
+    border-[#eef1f4]
+    bg-white
+    py-[25px]
+
+    sm:py-[29px]
+
+    lg:py-[30px]
+  "
+>
+  <div
+    className="
+      mx-auto
+      w-[min(1120px,calc(100%-32px))]
+
+      sm:w-[min(1120px,calc(100%-48px))]
+    "
+  >
+    {/* =====================================================
+        SECTION HEADING
+    ====================================================== */}
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 12,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.4,
+      }}
+      transition={{
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="text-center"
+    >
+      <h2
+        className="
+          font-['Inter',sans-serif]
+          text-[20px]
+          font-[600]
+          leading-none
+          tracking-[0.005em]
+          text-[#172F67]
+
+          sm:text-[20px]
+
+          lg:text-[21px]
+        "
+      >
+        BENEFITS OF REVIEWING
+      </h2>
+
+      {/* green underline exactly like reference */}
+      <motion.span
+        initial={{
+          width: 0,
+        }}
+        whileInView={{
+          width: 34,
+        }}
+        viewport={{
+          once: true,
+        }}
+        transition={{
+          duration: 0.55,
+          delay: 0.15,
+        }}
+        className="
+          mx-auto
+          mt-[8px]
+          block
+          h-[2px]
+          rounded-full
+          bg-[#568D45]
+        "
+      />
+    </motion.div>
+
+    {/* =====================================================
+        BENEFITS CARDS
+    ====================================================== */}
+    <div
+      className="
+        mt-[32px]
+        grid
+        grid-cols-1
+        gap-[10px]
+
+        min-[390px]:grid-cols-2
+
+        md:grid-cols-3
+
+        lg:grid-cols-4
+        lg:gap-[11px]
+      "
+    >
+      {reviewerBenefitCards.map((card, index) => (
+        <motion.article
+          key={card.title}
+          initial={{
+            opacity: 0,
+            y: 18,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.15,
+          }}
+          transition={{
+            duration: 0.45,
+            delay: index * 0.045,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          whileHover={{
+            y: -5,
+          }}
+          className="
+            group
+            relative
+            overflow-hidden
+
+            rounded-[5px]
+
+            border
+            border-[#E2E7EC]
+
+            bg-white
+
+            shadow-[0_3px_10px_rgba(17,44,75,0.035)]
+
+            transition-all
+            duration-300
+
+            hover:border-[#D6E0E8]
+            hover:shadow-[0_9px_22px_rgba(17,44,75,0.10)]
+          "
+        >
+          {/* =================================================
+              IMAGE
+          ================================================== */}
+          <div
+            className="
+              relative
+              aspect-[2.05/1]
+              w-full
+              overflow-hidden
+              bg-[#071E3F]
+
+              sm:aspect-[2.1/1]
+
+              lg:aspect-[2.12/1]
+            "
+          >
+            <img
+              src={card.image}
+              alt={card.title}
+              loading="lazy"
+              className="
+                h-full
+                w-full
+                object-cover
+                object-center
+
+                transition-transform
+                duration-[750ms]
+                ease-out
+
+                group-hover:scale-[1.06]
+              "
+            />
+
+            {/* very small image depth overlay */}
+            <div
+              className="
+                pointer-events-none
+                absolute
+                inset-0
+                bg-gradient-to-t
+                from-[#051D3A]/5
+                to-transparent
+              "
+            />
           </div>
-        </section>
+
+          {/* =================================================
+              CARD CONTENT
+          ================================================== */}
+          <div
+            className="
+              min-h-[74px]
+              px-[12px]
+              pb-[12px]
+              pt-[9px]
+
+              sm:min-h-[78px]
+              sm:px-[13px]
+
+              lg:min-h-[82px]
+              lg:px-[12px]
+              lg:pb-[11px]
+              lg:pt-[9px]
+            "
+          >
+            {/* TITLE */}
+            <h3
+              className="
+                font-['Inter',sans-serif]
+                text-[14.5px]
+                font-[600]
+                leading-[1.25]
+                text-[#192F60]
+
+                transition-colors
+                duration-300
+
+                group-hover:text-[#0F5590]
+
+                sm:text-[14px]
+
+                lg:text-[15px]
+              "
+            >
+              {card.title}
+            </h3>
+
+            {/* DESCRIPTION */}
+            <p
+              className="
+                mt-[5px]
+                max-w-[220px]
+
+                font-['Inter',sans-serif]
+                text-[9.2px]
+                font-[500]
+                leading-[1.55]
+                text-[#31425A]
+
+                sm:text-[9.5px]
+
+                lg:text-[10.5px]
+              "
+            >
+              {card.description}
+            </p>
+          </div>
+
+          {/* subtle hover line */}
+          <span
+            className="
+              absolute
+              bottom-0
+              left-0
+              h-[2px]
+              w-0
+              bg-[#315F94]
+
+              transition-all
+              duration-500
+
+              group-hover:w-full
+            "
+          />
+        </motion.article>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+      {/* =========================================================
+    REVIEWER GUIDELINES + CODE OF CONDUCT
+========================================================== */}
+<section
+  className="
+    border-y
+    border-[#edf1f4]
+    bg-white
+    py-[24px]
+
+    sm:py-[27px]
+
+    lg:py-[30px]
+  "
+>
+  <div
+    className="
+      mx-auto
+      grid
+      w-[min(1120px,calc(100%-32px))]
+      grid-cols-1
+      gap-[12px]
+
+      sm:w-[min(1120px,calc(100%-48px))]
+
+      md:grid-cols-2
+      md:gap-[16px]
+
+      lg:gap-[18px]
+    "
+  >
+    {/* =====================================================
+        REVIEWER GUIDELINES
+    ====================================================== */}
+    <motion.article
+      initial={{
+        opacity: 0,
+        x: -20,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.25,
+      }}
+      transition={{
+        duration: 0.55,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      whileHover={{
+        y: -4,
+      }}
+      className="
+        group
+        relative
+        flex
+        min-h-[145px]
+        flex-col
+        items-start
+        gap-[22px]
+        overflow-hidden
+
+        rounded-[7px]
+
+        border
+        border-[#e3e8ed]
+
+        bg-[#fafbfc]
+
+        px-[18px]
+        py-[17px]
+
+        shadow-[0_3px_12px_rgba(21,51,83,0.035)]
+
+        transition-all
+        duration-300
+
+        hover:border-[#d8e2e8]
+        hover:shadow-[0_9px_22px_rgba(21,51,83,0.08)]
+
+        min-[420px]:flex-row
+        min-[420px]:items-center
+
+        sm:px-[20px]
+
+        lg:min-h-[138px]
+        lg:px-[22px]
+        lg:py-[18px]
+      "
+    >
+      {/* ==================== ICON ==================== */}
+      <motion.div
+        whileHover={{
+          scale: 1.08,
+          rotate: -3,
+        }}
+        transition={{
+          duration: 0.25,
+        }}
+        className="
+          flex
+          h-[54px]
+          w-[54px]
+          shrink-0
+          items-center
+          justify-center
+          rounded-full
+
+          bg-[#447D36]
+          text-white
+
+          shadow-[0_4px_10px_rgba(68,125,54,0.15)]
+
+          sm:h-[59px]
+          sm:w-[59px]
+        "
+      >
+        <BookOpen
+          size={34}
+          strokeWidth={1.45}
+        />
+      </motion.div>
+
+      {/* ==================== CONTENT ==================== */}
+      <div className="min-w-0 flex-1">
+        <h3
+          className="
+            font-['Inter',sans-serif]
+            text-[10px]
+            font-[600]
+            leading-[1.2]
+            tracking-[0.01em]
+            text-[#4A7E36]
+
+            sm:text-[10.5px]
+
+            lg:text-[15px]
+          "
+        >
+          REVIEWER GUIDELINES
+        </h3>
+
+        <p
+          className="
+            mt-[6px]
+            max-w-[390px]
+
+            font-['Inter',sans-serif]
+            text-[10px]
+            font-[500]
+            leading-[1.6]
+            text-[#34465e]
+
+            sm:text-[10.3px]
+
+            lg:text-[10.5px]
+          "
+        >
+          Find detailed guidelines on how to conduct a
+          <br className="hidden lg:block" />
+          thorough, fair, and constructive peer review.
+        </p>
+
+        {/* ==================== BUTTON ==================== */}
+        <motion.div
+          whileHover={{
+            x: 2,
+          }}
+          whileTap={{
+            scale: 0.97,
+          }}
+          className="mt-[11px] w-fit"
+        >
+          <Link
+            to="/reviewer"
+            className="
+              group/button
+              inline-flex
+              h-[30px]
+              items-center
+              justify-center
+              gap-[8px]
+
+              rounded-[4px]
+
+              border
+              border-[#5A9449]
+
+              bg-white
+
+              px-[12px]
+
+              font-['Inter',sans-serif]
+              text-[12px]
+              font-[600]
+              text-[#497D3B]
+
+              shadow-[0_2px_5px_rgba(52,98,42,0.04)]
+
+              transition-all
+              duration-300
+
+              hover:bg-[#497D3B]
+              hover:text-white
+              hover:shadow-[0_5px_12px_rgba(52,98,42,0.15)]
+            "
+          >
+            View Guidelines
+
+            <ArrowRight
+              size={14}
+              strokeWidth={1.8}
+              className="
+                transition-transform
+                duration-300
+                group-hover/button:translate-x-[3px]
+              "
+            />
+          </Link>
+        </motion.div>
+      </div>
+    </motion.article>
+
+
+    {/* =====================================================
+        CODE OF CONDUCT
+    ====================================================== */}
+    <motion.article
+      initial={{
+        opacity: 0,
+        x: 20,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.25,
+      }}
+      transition={{
+        duration: 0.55,
+        delay: 0.08,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      whileHover={{
+        y: -4,
+      }}
+      className="
+        group
+        relative
+        flex
+        min-h-[145px]
+        flex-col
+        items-start
+        gap-[16px]
+        overflow-hidden
+
+        rounded-[7px]
+
+        border
+        border-[#e3e8ed]
+
+        bg-[#fafbfc]
+
+        px-[18px]
+        py-[17px]
+
+        shadow-[0_3px_12px_rgba(21,51,83,0.035)]
+
+        transition-all
+        duration-300
+
+        hover:border-[#ddd8e9]
+        hover:shadow-[0_9px_22px_rgba(21,51,83,0.08)]
+
+        min-[420px]:flex-row
+        min-[420px]:items-center
+
+        sm:px-[20px]
+
+        lg:min-h-[138px]
+        lg:px-[22px]
+        lg:py-[18px]
+      "
+    >
+      {/* ==================== ICON ==================== */}
+      <motion.div
+        whileHover={{
+          scale: 1.08,
+          rotate: 3,
+        }}
+        transition={{
+          duration: 0.25,
+        }}
+        className="
+          flex
+          h-[54px]
+          w-[54px]
+          shrink-0
+          items-center
+          justify-center
+          rounded-full
+
+          bg-[#7044A3]
+          text-white
+
+          shadow-[0_4px_10px_rgba(112,68,163,0.16)]
+
+          sm:h-[59px]
+          sm:w-[59px]
+        "
+      >
+        <Scale
+          size={34}
+          strokeWidth={1.45}
+        />
+      </motion.div>
+
+      {/* ==================== CONTENT ==================== */}
+      <div className="min-w-0 flex-1">
+        <h3
+          className="
+            font-['Inter',sans-serif]
+            text-[14px]
+            font-[600]
+            leading-[1.2]
+            tracking-[0.01em]
+            text-[#6C429C]
+
+            sm:text-[14.5px]
+
+            lg:text-[15px]
+          "
+        >
+          CODE OF CONDUCT
+        </h3>
+
+        <p
+          className="
+            mt-[6px]
+            max-w-[390px]
+
+            font-['Inter',sans-serif]
+            text-[10px]
+            font-[500]
+            leading-[1.6]
+            text-[#34465e]
+
+            sm:text-[10.3px]
+
+            lg:text-[10.5px]
+          "
+        >
+          We are committed to maintaining the highest ethical
+          <br className="hidden lg:block" />
+          standards in peer review.
+        </p>
+
+        {/* ==================== BUTTON ==================== */}
+        <motion.div
+          whileHover={{
+            x: 2,
+          }}
+          whileTap={{
+            scale: 0.97,
+          }}
+          className="mt-[11px] w-fit"
+        >
+          <Link
+            to="/reviewer"
+            className="
+              group/button
+              inline-flex
+              h-[30px]
+              items-center
+              justify-center
+              gap-[8px]
+
+              rounded-[4px]
+
+              border
+              border-[#7953A6]
+
+              bg-white
+
+              px-[12px]
+
+              font-['Inter',sans-serif]
+              text-[12px]
+              font-[600]
+              text-[#684197]
+
+              shadow-[0_2px_5px_rgba(91,58,137,0.04)]
+
+              transition-all
+              duration-300
+
+              hover:bg-[#684197]
+              hover:text-white
+              hover:shadow-[0_5px_12px_rgba(91,58,137,0.15)]
+            "
+          >
+            Read Our Policies
+
+            <ArrowRight
+              size={14}
+              strokeWidth={1.8}
+              className="
+                transition-transform
+                duration-300
+                group-hover/button:translate-x-[3px]
+              "
+            />
+          </Link>
+        </motion.div>
+      </div>
+    </motion.article>
+  </div>
+</section>
+
+
+      {/* =========================================================
+    OUR TOP REVIEWERS
+========================================================== */}
+<section
+  className="
+    border-y
+    border-[#eef1f4]
+    bg-white
+    py-[24px]
+
+    sm:py-[28px]
+
+    lg:py-[30px]
+  "
+>
+  <div
+    className="
+      mx-auto
+      w-[min(1120px,calc(100%-32px))]
+
+      sm:w-[min(1120px,calc(100%-48px))]
+    "
+  >
+    {/* =====================================================
+        SECTION HEADING
+    ====================================================== */}
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 10,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.4,
+      }}
+      transition={{
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="text-center"
+    >
+      <h2
+        className="
+          font-['Inter',sans-serif]
+          text-[20px]
+          font-[600]
+          leading-none
+          tracking-[0.005em]
+          text-[#172F67]
+
+          sm:text-[20px]
+
+          lg:text-[21px]
+        "
+      >
+        OUR TOP REVIEWERS
+      </h2>
+
+      {/* GREEN UNDERLINE */}
+      <motion.span
+        initial={{
+          width: 0,
+        }}
+        whileInView={{
+          width: 34,
+        }}
+        viewport={{
+          once: true,
+        }}
+        transition={{
+          duration: 0.55,
+          delay: 0.15,
+        }}
+        className="
+          mx-auto
+          mt-[8px]
+          block
+          h-[2px]
+          rounded-full
+          bg-[#568D45]
+        "
+      />
+    </motion.div>
+
+    {/* =====================================================
+        REVIEWER CARDS
+    ====================================================== */}
+    <div
+      className="
+        mt-[18px]
+        grid
+        grid-cols-1
+        gap-[11px]
+
+        md:grid-cols-3
+
+        lg:gap-[14px]
+      "
+    >
+      {testimonials.map((testimonial, index) => (
+        <motion.article
+          key={testimonial.author}
+          initial={{
+            opacity: 0,
+            y: 18,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{
+            once: true,
+            amount: 0.15,
+          }}
+          transition={{
+            duration: 0.45,
+            delay: index * 0.07,
+            ease: [0.22, 1, 0.36, 1],
+          }}
+          whileHover={{
+            y: -4,
+          }}
+          className="
+            group
+            relative
+            min-h-[145px]
+            overflow-hidden
+
+            rounded-[6px]
+
+            border
+            border-[#E1E6EB]
+
+            bg-white
+
+            px-[14px]
+            pb-[13px]
+            pt-[13px]
+
+            shadow-[0_3px_10px_rgba(17,44,75,0.035)]
+
+            transition-all
+            duration-300
+
+            hover:border-[#D7E0E7]
+            hover:shadow-[0_9px_22px_rgba(17,44,75,0.09)]
+
+            sm:min-h-[150px]
+
+            lg:min-h-[142px]
+            lg:px-[15px]
+          "
+        >
+          {/* =================================================
+              QUOTE CONTENT
+          ================================================== */}
+          <div
+            className="
+              relative
+              min-h-[70px]
+              pl-[28px]
+            "
+          >
+            {/* LARGE GREEN QUOTE */}
+            <Quote
+              size={20}
+              fill="#4F8E38"
+              strokeWidth={0}
+              className="
+                absolute
+                left-0
+                top-[0px]
+                text-[#4F8E38]
+
+                transition-transform
+                duration-300
+
+                group-hover:scale-110
+              "
+            />
+
+            <p
+              className="
+                font-['Inter',sans-serif]
+                text-[10.5px]
+                font-[500]
+               
+                leading-[1.65]
+                text-[#263953]
+
+                sm:text-[10.8px]
+
+                lg:text-[11.5px]
+              "
+            >
+              “{testimonial.quote}”
+            </p>
+          </div>
+
+          {/* =================================================
+              REVIEWER PROFILE
+          ================================================== */}
+          <div
+            className="
+              mt-[9px]
+              flex
+              items-center
+              gap-[9px]
+            "
+          >
+            {/* =============================================
+                PROFILE ICON
+            ============================================== */}
+            <motion.div
+              whileHover={{
+                scale: 1.08,
+              }}
+              transition={{
+                duration: 0.25,
+              }}
+              className="
+                flex
+                h-[35px]
+                w-[35px]
+                shrink-0
+                items-center
+                justify-center
+
+                rounded-full
+
+                border
+                border-[#D8E0E8]
+
+                bg-[#F1F4F7]
+
+                text-[#244B73]
+
+                shadow-[0_2px_6px_rgba(23,52,81,0.08)]
+
+                sm:h-[37px]
+                sm:w-[37px]
+              "
+            >
+              <UserRound
+                size={21}
+                strokeWidth={1.45}
+              />
+            </motion.div>
+
+            {/* =============================================
+                NAME + UNIVERSITY
+            ============================================== */}
+            <div className="min-w-0 flex-1">
+              <p
+                className="
+                  truncate
+                  font-['Inter',sans-serif]
+                  text-[10.2px]
+                  font-[600]
+                  leading-[1.3]
+                  text-[#243B67]
+
+                  sm:text-[10.5px]
+
+                  lg:text-[11.5px]
+                "
+              >
+                {testimonial.author}
+              </p>
+
+              <p
+                className="
+                  mt-[2px]
+                  truncate
+                  font-['Inter',sans-serif]
+                  text-[9.8px]
+                  font-[500]
+                  leading-[1.35]
+                  text-[#34475F]
+
+                  sm:text-[10px]
+                "
+              >
+                {testimonial.university}
+              </p>
+            </div>
+
+            
+          </div>
+
+       
+        </motion.article>
+      ))}
+    </div>
+  </div>
+</section>
+
+
+      {/* =========================================================
+    REVIEWER CTA SECTION
+========================================================== */}
+<section
+  className="
+    relative
+    isolate
+    w-full
+    overflow-hidden
+    bg-[#05274f]
+    bg-cover
+    bg-no-repeat
+    text-white
+
+    bg-[position:22%_center]
+
+    sm:bg-[position:18%_center]
+
+    md:bg-center
+
+    lg:bg-center
+  "
+  style={{
+    backgroundImage: `url(${bgcta})`,
+  }}
+>
+  {/* =====================================================
+      RESPONSIVE OVERLAY
+  ====================================================== */}
+  <div
+    className="
+      pointer-events-none
+      absolute
+      inset-0
+      -z-10
+
+      bg-[#062650]/15
+
+      max-md:bg-gradient-to-r
+      max-md:from-[#05254d]/45
+      max-md:via-[#05254d]/20
+      max-md:to-[#05254d]/20
+    "
+  />
+
+  {/* =====================================================
+      MAIN CONTAINER
+  ====================================================== */}
+  <div
+    className="
+      mx-auto
+      flex
+      min-h-[150px]
+      w-[min(1120px,calc(100%-32px))]
+      flex-col
+      items-start
+      justify-center
+      gap-[20px]
+      py-[22px]
+
+      sm:min-h-[135px]
+      sm:w-[min(1120px,calc(100%-48px))]
+
+      md:min-h-[90px]
+      md:flex-row
+      md:items-center
+      md:justify-between
+      md:gap-[30px]
+      md:py-[12px]
+
+      lg:min-h-[102px]
+      lg:py-[10px]
+    "
+  >
+    {/* =====================================================
+        EMPTY LEFT SPACE FOR GLOBE
+    ====================================================== */}
+    <div
+      className="
+        hidden
+        shrink-0
+
+        md:block
+        md:w-[225px]
+
+        lg:w-[250px]
+      "
+    />
+
+    {/* =====================================================
+        CENTER TEXT
+    ====================================================== */}
+    <motion.div
+      initial={{
+        opacity: 0,
+        y: 12,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.4,
+      }}
+      transition={{
+        duration: 0.55,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="
+        relative
+        z-10
+        flex-1
+
+        md:max-w-[440px]
+      "
+    >
+      <h2
+        className="
+          font-['Inter',sans-serif]
+          text-[15px]
+          font-[600]
+          leading-[1.45]
+          tracking-[-0.01em]
+          text-white
+
+          min-[390px]:text-[16px]
+
+          sm:text-[17px]
+
+          md:text-[15px]
+
+          lg:text-[16px]
+        "
+      >
+        Join our global network of experts
+        <br className="hidden min-[390px]:block" />
+        and make a difference in research.
+      </h2>
+    </motion.div>
+
+    {/* =====================================================
+        JOIN AS REVIEWER BUTTON
+    ====================================================== */}
+    <motion.div
+      initial={{
+        opacity: 0,
+        x: 20,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.4,
+      }}
+      transition={{
+        duration: 0.55,
+        delay: 0.1,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      whileHover={{
+        y: -3,
+      }}
+      whileTap={{
+        scale: 0.97,
+      }}
+      className="
+        relative
+        z-10
+        shrink-0
+
+        max-[380px]:w-full
+      "
+    >
+      <Link
+        to="/contact"
+        className="
+          group
+          inline-flex
+          h-[42px]
+          min-w-[174px]
+          items-center
+          justify-center
+          gap-[18px]
+
+          rounded-[4px]
+
+          border
+          border-[#4E872F]
+
+          bg-[#4E872F]
+
+          px-[18px]
+
+          font-['Inter',sans-serif]
+          text-[12px]
+          font-[600]
+          text-white
+
+          shadow-[0_4px_12px_rgba(0,0,0,0.12)]
+
+          transition-all
+          duration-300
+
+          hover:border-[#68A33D]
+          hover:bg-[#68A33D]
+          hover:shadow-[0_8px_18px_rgba(0,0,0,0.18)]
+
+          max-[380px]:w-full
+
+          sm:h-[43px]
+          sm:min-w-[180px]
+
+          md:h-[39px]
+          md:min-w-[174px]
+
+          lg:h-[40px]
+          lg:min-w-[180px]
+          lg:text-[12.5px]
+        "
+      >
+        <span className="whitespace-nowrap">
+          Join as a Reviewer
+        </span>
+
+        <ArrowRight
+          size={16}
+          strokeWidth={1.8}
+          className="
+            shrink-0
+            transition-transform
+            duration-300
+            group-hover:translate-x-[5px]
+          "
+        />
+      </Link>
+    </motion.div>
+  </div>
+</section>
 
 
          {/* =========================================================
