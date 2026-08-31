@@ -1,276 +1,564 @@
-import { motion } from 'framer-motion';
-import { ArrowRight, Globe, Shield, Target, Users } from 'lucide-react';
-import Header from '../components/Header';
-import Footer from '../components/Footer';
+import { motion } from "framer-motion";
+import {
+  ArrowRight,
+  BookOpen,
+  Check,
+  CircleDot,
+  Database,
+  FileText,
+  Gem,
+  Globe2,
+  Landmark,
+  LockKeyhole,
+  Network,
+  ShieldCheck,
+  Target,
+  Users,
+} from "lucide-react";
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import aboutBg from "../assets/img/aboutBG.png";
+import whoAreWe from "../assets/img/whoAreWe.png";
+import focus from "../assets/img/focus.png";
+import commitment from "../assets/img/commitment.png";
+import cta from "../assets/img/aboutCta.png";
 
 export default function About() {
   return (
     <>
       <Header />
-      <main>
+
+      <main className="overflow-x-hidden bg-white font-sans text-[#071b3d]">
         {/* ==================== HERO SECTION ==================== */}
-        <section className="bg-gradient-to-r from-blue-900 via-blue-800 to-teal-700 text-white py-20">
-          <div className="container-xl">
+        <section
+          className="relative isolate min-h-[360px] overflow-hidden bg-[#031a3e] bg-cover bg-[68%_center] bg-no-repeat sm:min-h-[380px] lg:min-h-[410px] lg:bg-center"
+          style={{ backgroundImage: `url(${aboutBg})` }}
+        >
+          <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#03152f]/95 via-[#031a3e]/58 to-transparent sm:via-[#031a3e]/28 lg:via-transparent" />
+
+          <div className="mx-auto flex min-h-[360px] w-[min(1120px,calc(100%-32px))] items-center py-12 sm:min-h-[380px] sm:w-[min(1120px,calc(100%-48px))] lg:min-h-[410px]">
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -32 }}
               animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.75, ease: "easeOut" }}
+              className="max-w-[440px] text-white"
             >
-              <h1 className="text-5xl font-bold mb-6">ABOUT US</h1>
-              <div className="w-24 h-1 bg-yellow-400 mb-8"></div>
-              <p className="text-xl leading-relaxed max-w-3xl">
-                Global Reviews Press is an international publishing company committed to advancing knowledge through high-quality, peer-reviewed journals and magazines in <span className="font-semibold">Engineering, Medicine</span> and <span className="text-green-300 font-semibold">Sustainability.</span>
+              <h1 className="text-[34px] font-[600] uppercase leading-none tracking-[-0.02em] sm:text-[36px] lg:text-[38px]">
+                About Us
+              </h1>
+              <div className="mt-6 h-[3px] w-12 rounded-full bg-[#8fc63f]" />
+              <p className="mt-6 text-[14px] font-medium leading-7 text-white/95 sm:text-[16px] w-[380px]">
+                Global Reviews Press is an international publishing company
+                committed to advancing knowledge through high-quality,
+                peer-reviewed journals and magazines in{" "}
+                <span className="font-semibold text-[#24b8eb]">
+                  Engineering
+                </span>
+                , <span className="font-semibold text-[#8fc63f]">Medicine</span>{" "}
+                and{" "}
+                <span className="font-semibold text-[#8fc63f]">
+                  Sustainability
+                </span>
+                .
               </p>
             </motion.div>
           </div>
         </section>
 
         {/* ==================== MISSION, VISION, VALUES ==================== */}
-        <section className="py-20 bg-gray-50">
-          <div className="container-xl">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <motion.div
+        <section className="bg-[#f8fafc] pt-0 pb-5">
+          <div className="mx-auto w-[min(1120px,calc(100%-32px))] sm:w-[min(1120px,calc(100%-48px))]">
+            <div className="grid overflow-hidden rounded-[7px] border border-[#dfe5ed] bg-white shadow-[0_8px_24px_rgba(4,28,61,0.06)] md:grid-cols-3">
+              <motion.article
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="bg-white p-8 rounded-lg border-l-4 border-green-600"
+                viewport={{ once: true, amount: 0.25 }}
+                whileHover={{ y: -5, backgroundColor: "#f8fbff" }}
+                transition={{ duration: 0.4 }}
+                className="flex min-h-[126px] items-start gap-4 border-b border-[#e1e6ed] p-5 md:border-b-0 md:border-r lg:px-7"
               >
-                <h3 className="text-2xl font-bold text-green-600 mb-4 flex items-center space-x-2">
-                  <Target size={28} />
-                  <span>OUR MISSION</span>
-                </h3>
-                <p className="text-gray-700">To publish influential and rigorous reviews that drive innovation, inform policy, and improve lives worldwide.</p>
-              </motion.div>
+                <div className="grid size-[54px] shrink-0 place-items-center rounded-full border border-[#d8e0ea] text-[#103276]">
+                  <Target size={35} strokeWidth={1.7} />
+                </div>
+                <div>
+                  <h2 className="text-[15px] font-[600] uppercase tracking-wide text-[#09235a]">
+                    Our Mission
+                  </h2>
+                  <p className="mt-2 text-[13px] leading-5 text-[#26364c]">
+                    To publish influential research and reviews that drive
+                    innovation, inform policy, and improve lives worldwide.
+                  </p>
+                </div>
+              </motion.article>
 
-              <motion.div
+              <motion.article
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="bg-white p-8 rounded-lg border-l-4 border-blue-600"
+                viewport={{ once: true, amount: 0.25 }}
+                whileHover={{ y: -5, backgroundColor: "#f8fff9" }}
+                transition={{ duration: 0.4, delay: 0.08 }}
+                className="flex min-h-[126px] items-start gap-4 border-b border-[#e1e6ed] p-5 md:border-b-0 md:border-r lg:px-7"
               >
-                <h3 className="text-2xl font-bold text-blue-600 mb-4 flex items-center space-x-2">
-                  <Globe size={28} />
-                  <span>OUR VISION</span>
-                </h3>
-                <p className="text-gray-700">To be a global leader in scholarly publishing, recognized for quality, integrity, and impact.</p>
-              </motion.div>
+                <div className="grid size-[54px] shrink-0 place-items-center rounded-full border border-[#b8dcbf] text-[#35a24a]">
+                  <CircleDot size={35} strokeWidth={1.7} />
+                </div>
+                <div>
+                  <h2 className="text-[15px] font-[600] uppercase tracking-wide text-[#09235a]">
+                    Our Vision
+                  </h2>
+                  <p className="mt-2 text-[13px] leading-5 text-[#26364c]">
+                    To be a global leader in scholarly publishing, recognized
+                    for quality, integrity, and impact.
+                  </p>
+                </div>
+              </motion.article>
 
-              <motion.div
+              <motion.article
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-                className="bg-white p-8 rounded-lg border-l-4 border-purple-600"
+                viewport={{ once: true, amount: 0.25 }}
+                whileHover={{ y: -5, backgroundColor: "#f8fbff" }}
+                transition={{ duration: 0.4, delay: 0.16 }}
+                className="flex min-h-[126px] items-start gap-4 p-5 lg:px-7"
               >
-                <h3 className="text-2xl font-bold text-purple-600 mb-4 flex items-center space-x-2">
-                  <Shield size={28} />
-                  <span>OUR VALUES</span>
-                </h3>
-                <p className="text-gray-700">Integrity, Quality, Innovation, Inclusivity, Sustainability and Global Collaboration.</p>
-              </motion.div>
+                <div className="grid size-[54px] shrink-0 place-items-center rounded-full border border-[#d8e0ea] text-[#103276]">
+                  <Gem size={35} strokeWidth={1.7} />
+                </div>
+                <div>
+                  <h2 className="text-[15px] font-[600] uppercase tracking-wide text-[#09235a]">
+                    Our Values
+                  </h2>
+                  <p className="mt-2 text-[13px] leading-5 text-[#26364c]">
+                    Integrity, Quality, Innovation, Inclusivity, Sustainability
+                    and Global Collaboration.
+                  </p>
+                </div>
+              </motion.article>
             </div>
           </div>
         </section>
 
         {/* ==================== WHO WE ARE ==================== */}
-        <section className="py-20">
-          <div className="container-xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <div className="bg-gradient-to-br from-blue-100 to-teal-100 h-80 rounded-lg flex items-center justify-center text-7xl">
-                  🏢
-                </div>
-              </motion.div>
+        <section className="pt-[0px] pb-8">
+          <div className="mx-auto grid w-[min(1120px,calc(100%-32px))] items-center gap-9 sm:w-[min(1120px,calc(100%-48px))] lg:grid-cols-[0.98fr_1.05fr] lg:gap-11">
+            <motion.div
+              initial={{ opacity: 0, x: -32 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.18 }}
+              transition={{ duration: 0.65 }}
+              className="group overflow-hidden rounded-[7px] shadow-[0_12px_32px_rgba(3,24,55,0.14)]"
+            >
+              <img
+                src={whoAreWe}
+                alt="Global Reviews Press headquarters"
+                className="h-[330px] w-full object-cover transition duration-700 group-hover:scale-[1.035] sm:h-[378px] lg:h-[398px]"
+              />
+            </motion.div>
 
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-4xl font-bold text-[#051830] mb-6">WHO WE ARE</h2>
-                <h3 className="text-3xl font-bold text-gray-800 mb-4 leading-tight">
-                  Advancing Knowledge. Empowering the Future.
-                </h3>
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  Global Reviews Press is an international, independent publisher of peer-reviewed journals and magazines in the fields of Engineering, Medicine and Sustainability. We provide a trusted platform for researchers, professionals and institutions to share groundbreaking discoveries, comprehensive reviews and multidisciplinary insights that shape a better future.
-                </p>
-                
-                <div className="space-y-4">
-                  <div className="flex items-start space-x-4">
-                    <Globe className="text-blue-600 flex-shrink-0 mt-1" size={24} />
-                    <div>
-                      <h4 className="font-semibold text-gray-800">International Presence</h4>
-                      <p className="text-gray-600 text-sm">Connecting researchers and readers in 120+ countries.</p>
-                    </div>
+            <motion.div
+              initial={{ opacity: 0, x: 32 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.18 }}
+              transition={{ duration: 0.65 }}
+            >
+              <p className="text-[13px] pt-2  font-[550] uppercase tracking-[0.04em] text-[#278642]">
+                Who We Are
+              </p>
+              <div className="mt-1 h-[2px] w-10 bg-[#52ac59]" />
+              <h2 className="mt-3 max-w-[510px] text-[26px] font-[600] leading-[1.14] tracking-[-0.02em] text-[#09235a] sm:text-[28]px]">
+                Advancing Knowledge.
+                <br />
+                Empowering the Future.
+              </h2>
+              <p className="mt-4 text-[14px] leading-6 text-[#34435a]">
+                Global Reviews Press is an international, independent publisher
+                of peer-reviewed journals and magazines in the fields of
+                Engineering, Medicine and Sustainability. We provide a trusted
+                platform for researchers, professionals and institutions to
+                share groundbreaking discoveries, comprehensive reviews and
+                multidisciplinary insights that shape a better future.
+              </p>
+
+              <div className="mt-6 grid gap-x-6 gap-y-6 sm:grid-cols-2">
+                <div className="flex gap-3">
+                  <div className="grid size-11 shrink-0 place-items-center rounded-full border border-[#d7e2dc] text-[#239047]">
+                    <Globe2 size={24} strokeWidth={1.7} />
                   </div>
-                  <div className="flex items-start space-x-4">
-                    <Shield className="text-green-600 flex-shrink-0 mt-1" size={24} />
-                    <div>
-                      <h4 className="font-semibold text-gray-800">Quality & Integrity</h4>
-                      <p className="text-gray-600 text-sm">Rigorous peer review and ethical publishing standards.</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start space-x-4">
-                    <Users className="text-purple-600 flex-shrink-0 mt-1" size={24} />
-                    <div>
-                      <h4 className="font-semibold text-gray-800">Multidisciplinary Scope</h4>
-                      <p className="text-gray-600 text-sm">Covering emerging and established fields across critical domains.</p>
-                    </div>
+                  <div>
+                    <h3 className="text-[13px] font-[550] text-[#09235a]">
+                      International Presence
+                    </h3>
+                    <p className="mt-1 text-[11.5px] leading-[1.55] text-[#4a576b]">
+                      Connecting researchers and readers in 120+ countries.
+                    </p>
                   </div>
                 </div>
-              </motion.div>
-            </div>
+                <div className="flex gap-3">
+                  <div className="grid size-11 shrink-0 place-items-center rounded-full border border-[#d7e2dc] text-[#239047]">
+                    <ShieldCheck size={24} strokeWidth={1.7} />
+                  </div>
+                  <div>
+                    <h3 className="text-[13px] font-[550] text-[#09235a]">
+                      Quality &amp; Integrity
+                    </h3>
+                    <p className="mt-1 text-[11.5px] leading-[1.55] text-[#4a576b]">
+                      Rigorous peer review and ethical publishing standards.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <div className="grid size-11 shrink-0 place-items-center rounded-full border border-[#d7e2dc] text-[#239047]">
+                    <LockKeyhole size={23} strokeWidth={1.7} />
+                  </div>
+                  <div>
+                    <h3 className="text-[13px] font-[550] text-[#09235a]">
+                      Open Access Options
+                    </h3>
+                    <p className="mt-1 text-[11.5px] leading-[1.55] text-[#4a576b]">
+                      Wider dissemination and greater visibility for research.
+                    </p>
+                  </div>
+                </div>
+                <div className="flex gap-3">
+                  <div className="grid size-11 shrink-0 place-items-center rounded-full border border-[#d7e2dc] text-[#243c88]">
+                    <Network size={23} strokeWidth={1.7} />
+                  </div>
+                  <div>
+                    <h3 className="text-[13px] font-[550] text-[#09235a]">
+                      Multidisciplinary Scope
+                    </h3>
+                    <p className="mt-1 text-[11.5px] leading-[1.55] text-[#4a576b]">
+                      Covering emerging and established fields across critical
+                      domains.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
           </div>
         </section>
 
-        {/* ==================== STATS SECTION ==================== */}
-        <section className="py-16 bg-blue-50">
-          <div className="container-xl">
-            <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
-              {[
-                { icon: '📚', number: '20+', label: 'Journals & Magazines' },
-                { icon: '📄', number: '15,000+', label: 'Articles Published' },
-                { icon: '👥', number: '5,000+', label: 'Global Authors & Editors' },
-                { icon: '🌐', number: '120+', label: 'Countries Reached' },
-                { icon: '📑', number: '50+', label: 'Indexing & Abstracting DBs' },
-                { icon: '🏛️', number: '100+', label: 'Institutional Partners' },
-              ].map((stat, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: idx * 0.05 }}
-                  className="text-center"
-                >
-                  <div className="text-4xl mb-2">{stat.icon}</div>
-                  <div className="text-3xl font-bold text-[#051830] mb-1">{stat.number}</div>
-                  <p className="text-sm text-gray-700">{stat.label}</p>
-                </motion.div>
-              ))}
-            </div>
+        {/* ==================== STATISTICS ==================== */}
+        <section className="bg-[#052656] py-7 text-white sm:py-8">
+          <div className="mx-auto grid w-[min(1120px,calc(100%-32px))] grid-cols-2 gap-y-8 sm:w-[min(1120px,calc(100%-48px))] md:grid-cols-3 lg:grid-cols-6 lg:gap-y-0">
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="flex items-center justify-center gap-3 px-3 lg:border-r lg:border-white/20"
+            >
+              <BookOpen size={35} strokeWidth={1.5} />
+              <div>
+                <h4 className="font-[550] text-[23px] leading-none text-[#f2ed2f]">
+                  20+
+                </h4>
+                <span className="mt-2 block text-[10.5px] leading-4">
+                  Journals &amp;
+                  <br />
+                  Magazines
+                </span>
+              </div>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="flex items-center justify-center gap-3 px-3 md:border-r md:border-white/20"
+            >
+              <FileText size={35} strokeWidth={1.5} />
+              <div>
+                <h4 className="font-[550] text-[23px] leading-none text-[#f2ed2f]">
+                  15,000+
+                </h4>
+                <span className="mt-2 block text-[10.5px] leading-4">
+                  Articles
+                  <br />
+                  Published
+                </span>
+              </div>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="flex items-center justify-center gap-3 px-3 lg:border-r lg:border-white/20"
+            >
+              <Users size={35} strokeWidth={1.5} />
+              <div>
+                <h4 className="font-[550] text-[23px] leading-none text-[#f2ed2f]">
+                  5,000+
+                </h4>
+                <span className="mt-2 block text-[10.5px] leading-4">
+                  Global Authors
+                  <br />
+                  &amp; Editors
+                </span>
+              </div>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="flex items-center justify-center gap-3 px-3 md:border-r md:border-white/20"
+            >
+              <Globe2 size={35} strokeWidth={1.5} />
+              <div>
+                <h4 className="font-[550] text-[23px] leading-none text-[#f2ed2f]">
+                  120+
+                </h4>
+                <span className="mt-2 block text-[10.5px] leading-4">
+                  Countries
+                  <br />
+                  Reached
+                </span>
+              </div>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="flex items-center justify-center gap-3 px-3 lg:border-r lg:border-white/20"
+            >
+              <Database size={35} strokeWidth={1.5} />
+              <div>
+                <h4 className="font-[550] text-[23px] leading-none text-[#f2ed2f]">
+                  50+
+                </h4>
+                <span className="mt-2 block text-[10.5px] leading-4">
+                  Indexing &amp;
+                  <br />
+                  Abstracting DBs
+                </span>
+              </div>
+            </motion.div>
+            <motion.div
+              whileHover={{ y: -5 }}
+              className="flex items-center justify-center gap-3 px-3"
+            >
+              <Landmark size={35} strokeWidth={1.5} />
+              <div>
+                <h4 className="font-[550] text-[23px] leading-none text-[#f2ed2f]">
+                  100+
+                </h4>
+                <span className="mt-2 block text-[10.5px] leading-4">
+                  Institutional
+                  <br />
+                  Partners
+                </span>
+              </div>
+            </motion.div>
           </div>
         </section>
 
         {/* ==================== OUR FOCUS ==================== */}
-        <section className="py-20">
-          <div className="container-xl">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <h2 className="text-4xl font-bold text-[#051830] mb-8">OUR FOCUS</h2>
-                <h3 className="text-2xl font-bold text-gray-800 mb-6">Research. Reviews. Real Impact.</h3>
-                <p className="text-gray-700 mb-6">
-                  We publish authoritative reviews and original research that accelerate innovation and address real-world challenges. Our commitment to sustainability and ethical research ensures we contribute positively to global progress.
+        <section className="py-5 sm:py-7 lg:py-8">
+          <div className="mx-auto grid w-[min(1120px,calc(100%-32px))] overflow-hidden rounded-[7px] bg-[#f7f8fa] shadow-[0_5px_18px_rgba(4,25,56,0.07)] sm:w-[min(1120px,calc(100%-48px))] lg:grid-cols-[0.82fr_1.18fr]">
+            <motion.div
+              initial={{ opacity: 0, x: -25 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6 }}
+              className="p-7 sm:p-9 lg:p-8"
+            >
+              <p className="text-[12px] font-extrabold uppercase tracking-[0.04em] text-[#278642]">
+                Our Focus
+              </p>
+              <div className="mt-2 h-[2px] w-9 bg-[#52ac59]" />
+              <h2 className="mt-4 text-[27px] font-extrabold leading-tight text-[#09235a] sm:text-[30px]">
+                Research. Reviews. Real Impact.
+              </h2>
+              <p className="mt-4 text-[13px] leading-6 text-[#3f4b5c]">
+                We publish authoritative reviews and original research that
+                accelerate innovation and address real-world challenges.
+              </p>
+              <div className="mt-5 space-y-3 text-[12px] font-medium text-[#28384d]">
+                <p className="flex items-center gap-3">
+                  <span className="grid size-[18px] place-items-center rounded-full border border-[#38a453] text-[#278642]">
+                    <Check size={12} strokeWidth={3} />
+                  </span>
+                  High-quality, peer-reviewed publications
                 </p>
-                <ul className="space-y-3">
-                  {[
-                    'High-quality, peer-reviewed publications',
-                    'Rapid and transparent editorial processes',
-                    'Global reach and visibility',
-                    'Commitment to sustainability and ethical research',
-                  ].map((item, idx) => (
-                    <li key={idx} className="flex items-center space-x-3 text-gray-700">
-                      <span className="w-5 h-5 rounded-full bg-green-500 flex items-center justify-center text-white text-xs font-bold">✓</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-                <button className="mt-8 px-6 py-3 bg-[#051830] text-white font-semibold rounded hover:bg-[#0d47a1] transition-all flex items-center space-x-2">
-                  <span>Explore Our Journals</span>
-                  <ArrowRight size={20} />
-                </button>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                <p className="flex items-center gap-3">
+                  <span className="grid size-[18px] place-items-center rounded-full border border-[#38a453] text-[#278642]">
+                    <Check size={12} strokeWidth={3} />
+                  </span>
+                  Rapid and transparent editorial processes
+                </p>
+                <p className="flex items-center gap-3">
+                  <span className="grid size-[18px] place-items-center rounded-full border border-[#38a453] text-[#278642]">
+                    <Check size={12} strokeWidth={3} />
+                  </span>
+                  Global reach and visibility
+                </p>
+                <p className="flex items-center gap-3">
+                  <span className="grid size-[18px] place-items-center rounded-full border border-[#38a453] text-[#278642]">
+                    <Check size={12} strokeWidth={3} />
+                  </span>
+                  Commitment to sustainability and ethical research
+                </p>
+              </div>
+              <motion.a
+                whileHover={{ x: 3 }}
+                whileTap={{ scale: 0.97 }}
+                href="/journals"
+                className="mt-7 inline-flex items-center gap-4 rounded-[4px] bg-[#062553] px-5 py-3 text-[12px] font-bold text-white shadow-md transition-colors hover:bg-[#0b3b7a]"
               >
-                <div className="bg-gradient-to-br from-orange-100 to-yellow-100 h-96 rounded-lg flex items-center justify-center text-6xl">
-                  📚
-                </div>
-              </motion.div>
-            </div>
+                Explore Our Journals <ArrowRight size={17} />
+              </motion.a>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 25 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6 }}
+              className="group min-h-[300px] overflow-hidden lg:min-h-[390px]"
+            >
+              <img
+                src={focus}
+                alt="Researchers working in a global library"
+                className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.035]"
+              />
+            </motion.div>
           </div>
         </section>
 
         {/* ==================== OUR COMMITMENT ==================== */}
-        <section className="py-20 bg-green-50">
-          <div className="container-xl">
+        <section className="pb-5 sm:pb-7 lg:pb-8">
+          <div className="mx-auto grid w-[min(1120px,calc(100%-32px))] overflow-hidden rounded-[7px] bg-white shadow-[0_5px_18px_rgba(4,25,56,0.07)] sm:w-[min(1120px,calc(100%-48px))] lg:grid-cols-[0.82fr_1.18fr]">
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
+              initial={{ opacity: 0, x: -25 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6 }}
+              className="group min-h-[290px] overflow-hidden lg:min-h-[330px]"
             >
-              <div>
-                <h2 className="text-4xl font-bold text-[#051830] mb-6">OUR COMMITMENT</h2>
-                <h3 className="text-2xl font-bold text-gray-800 mb-6">Sustainable Publishing for a Better World</h3>
-                <p className="text-gray-700 leading-relaxed mb-6">
-                  We are committed to responsible publishing practices that minimize our environmental footprint and support the UN Sustainable Development Goals. Our open access models increase research accessibility and societal impact.
-                </p>
-                <div className="flex flex-wrap gap-4">
-                  <span className="px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-full">Goal 3: Good Health</span>
-                  <span className="px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-full">Goal 9: Innovation</span>
-                  <span className="px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-full">Goal 13: Climate Action</span>
-                  <span className="px-4 py-2 bg-green-600 text-white text-sm font-semibold rounded-full">Goal 17: Partnerships</span>
-                </div>
-              </div>
+              <img
+                src={commitment}
+                alt="Sustainable publishing commitment"
+                className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.035]"
+              />
+            </motion.div>
 
-              <div className="bg-gradient-to-br from-green-100 to-emerald-100 h-80 rounded-lg flex items-center justify-center text-6xl">
-                🌱
+            <motion.div
+              initial={{ opacity: 0, x: 25 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6 }}
+              className="p-7 sm:p-9 lg:p-8"
+            >
+              <p className="text-[12px] font-extrabold uppercase tracking-[0.04em] text-[#278642]">
+                Our Commitment
+              </p>
+              <div className="mt-2 h-[2px] w-9 bg-[#52ac59]" />
+              <h2 className="mt-4 text-[27px] font-extrabold leading-tight text-[#09235a] sm:text-[30px]">
+                Sustainable Publishing for a Better World
+              </h2>
+              <p className="mt-4 text-[13px] leading-6 text-[#3f4b5c]">
+                We are committed to responsible publishing practices that
+                minimize our environmental footprint and support the UN
+                Sustainable Development Goals.
+              </p>
+              <div className="mt-6 grid grid-cols-4 gap-2 sm:grid-cols-7">
+                <div className="grid aspect-square place-items-center rounded-[4px] bg-[#4c9f38] p-1 text-center text-[8px] font-bold leading-tight text-white">
+                  3<br />
+                  GOOD HEALTH
+                </div>
+                <div className="grid aspect-square place-items-center rounded-[4px] bg-[#c5192d] p-1 text-center text-[8px] font-bold leading-tight text-white">
+                  4<br />
+                  QUALITY EDUCATION
+                </div>
+                <div className="grid aspect-square place-items-center rounded-[4px] bg-[#fcc30b] p-1 text-center text-[8px] font-bold leading-tight text-white">
+                  7<br />
+                  CLEAN ENERGY
+                </div>
+                <div className="grid aspect-square place-items-center rounded-[4px] bg-[#fd6925] p-1 text-center text-[8px] font-bold leading-tight text-white">
+                  9<br />
+                  INNOVATION
+                </div>
+                <div className="grid aspect-square place-items-center rounded-[4px] bg-[#fd9d24] p-1 text-center text-[8px] font-bold leading-tight text-white">
+                  11
+                  <br />
+                  SUSTAINABLE CITIES
+                </div>
+                <div className="grid aspect-square place-items-center rounded-[4px] bg-[#3f7e44] p-1 text-center text-[8px] font-bold leading-tight text-white">
+                  13
+                  <br />
+                  CLIMATE ACTION
+                </div>
+                <div className="grid aspect-square place-items-center rounded-[4px] bg-[#19486a] p-1 text-center text-[8px] font-bold leading-tight text-white">
+                  17
+                  <br />
+                  PARTNERSHIPS
+                </div>
               </div>
             </motion.div>
           </div>
         </section>
 
         {/* ==================== CTA SECTION ==================== */}
-        <section className="py-20 bg-gradient-to-r from-blue-900 to-teal-700 text-white">
-          <div className="container-xl text-center">
+        <section
+          className="relative isolate overflow-hidden bg-[#062b60] bg-cover bg-center bg-no-repeat py-8 text-white sm:py-10"
+          style={{ backgroundImage: `url(${cta})` }}
+        >
+          <div className="absolute inset-0 -z-10 bg-[#03275a]/38" />
+          <div className="mx-auto flex w-[min(1120px,calc(100%-32px))] flex-col items-start justify-between gap-6 sm:w-[min(1120px,calc(100%-48px))] md:flex-row md:items-center">
             <motion.h2
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
+              initial={{ opacity: 0, x: -25 }}
+              whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="text-4xl font-bold mb-6"
+              className="max-w-[560px] text-[21px] font-semibold leading-[1.35] sm:text-[24px]"
             >
-              Together, let's advance knowledge and create a positive impact for future generations.
+              Together, let&apos;s advance knowledge and
+              <br className="hidden sm:block" /> create a positive impact for
+              future generations.
             </motion.h2>
-            <motion.button
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
+            <motion.a
+              initial={{ opacity: 0, x: 25 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              whileHover={{
+                scale: 1.03,
+                backgroundColor: "rgba(255,255,255,0.12)",
+              }}
+              whileTap={{ scale: 0.97 }}
               viewport={{ once: true }}
-              className="px-8 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-all flex items-center space-x-2 mx-auto"
+              href="/contact"
+              className="flex min-w-[270px] items-center justify-center gap-6 rounded-[5px] border border-white px-7 py-4 text-[16px] font-semibold"
             >
-              <span>Join Us in Our Mission</span>
-              <ArrowRight size={20} />
-            </motion.button>
+              Join Us in Our Mission <ArrowRight size={20} />
+            </motion.a>
           </div>
         </section>
 
-        {/* ==================== INDEXING ==================== */}
-        <section className="py-16 bg-white">
-          <div className="container-xl">
-            <h3 className="text-center text-2xl font-bold text-[#051830] mb-12">INDEXED IN LEADING DATABASES</h3>
-            <div className="flex flex-wrap justify-center items-center gap-8">
-              <div className="text-2xl font-bold text-orange-500">Scopus</div>
-              <div className="text-lg font-bold text-blue-600">Clarivate</div>
-              <div className="text-xl font-bold">DOAJ</div>
-              <div className="text-lg font-bold text-blue-600">CAS</div>
-              <div className="text-lg font-bold">Dimensions</div>
-              <div className="text-lg font-bold text-red-600">Crossref</div>
-              <div className="text-lg font-bold text-blue-600">Google Scholar</div>
+        {/* ==================== INDEXING SECTION ==================== */}
+        <section className="bg-white py-9 sm:py-11">
+          <div className="mx-auto w-[min(1120px,calc(100%-32px))] text-center sm:w-[min(1120px,calc(100%-48px))]">
+            <h2 className="text-[15px] font-extrabold uppercase tracking-wide text-[#09235a] sm:text-[17px]">
+              Indexed in Leading Databases
+            </h2>
+            <div className="mt-8 flex flex-wrap items-center justify-center gap-x-8 gap-y-6 sm:gap-x-12">
+              <span className="text-[27px] font-medium text-[#f47b20]">
+                Scopus
+              </span>
+              <span className="text-[15px] font-extrabold leading-tight text-[#252525]">
+                Clarivate™
+                <br />
+                Web of Science™
+              </span>
+              <span className="text-[27px] font-bold text-[#242424]">DOAJ</span>
+              <span className="text-[29px] font-extrabold text-[#254fa1]">
+                CAS
+              </span>
+              <span className="text-[21px] font-light text-[#676767]">
+                Dimensions
+              </span>
+              <span className="text-[20px] font-semibold text-[#555]">
+                Crossref
+              </span>
+              <span className="text-[20px] font-semibold">
+                <span className="text-[#4285f4]">G</span>
+                <span className="text-[#ea4335]">o</span>
+                <span className="text-[#fbbc05]">o</span>
+                <span className="text-[#4285f4]">g</span>
+                <span className="text-[#34a853]">l</span>
+                <span className="text-[#ea4335]">e</span>{" "}
+                <span className="text-[#4285f4]">Scholar</span>
+              </span>
             </div>
           </div>
         </section>
       </main>
+
       <Footer />
     </>
   );
