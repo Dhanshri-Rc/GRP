@@ -207,26 +207,25 @@ export default function EditorsInformation() {
       <main className="overflow-x-hidden bg-white pt-[70px] font-sans text-[#071b3d] sm:pt-[75px]">
         {/* ==================== HERO SECTION ==================== */}
         <section
-          className="relative isolate min-h-[390px] overflow-hidden bg-[#031a3e] bg-cover bg-[64%_center] bg-no-repeat sm:min-h-[410px] lg:min-h-[430px] lg:bg-center"
+          className="relative isolate min-h-[360px] overflow-hidden bg-[#031a3e] bg-cover bg-[72%_center] bg-no-repeat sm:min-h-[380px] sm:bg-[68%_center] lg:min-h-[410px] lg:bg-center"
           style={{ backgroundImage: `url(${editorBg})` }}
         >
           <div className="absolute inset-0 -z-10 bg-gradient-to-r from-[#03152f]/94 via-[#031a3e]/58 to-transparent sm:via-[#031a3e]/32 lg:via-transparent" />
 
-          <div className="mx-auto flex min-h-[390px] w-[min(1120px,calc(100%-32px))] items-center py-12 sm:min-h-[410px] sm:w-[min(1120px,calc(100%-48px))] lg:min-h-[430px]">
+          <div className="mx-auto flex min-h-[360px] w-[min(1120px,calc(100%-32px))] items-center py-12 sm:min-h-[380px] sm:w-[min(1120px,calc(100%-48px))] lg:min-h-[410px]">
             <motion.div
               initial={{ opacity: 0, x: -32 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.75, ease: "easeOut" }}
               className="w-full max-w-[465px] text-white"
             >
-              <h1 className="text-[34px] font-semibold leading-[1.08] tracking-[-0.025em] sm:text-[38px] lg:text-[41px]">
+              <h1 className="text-[27px] font-[600] uppercase leading-none tracking-[-0.02em] sm:text-[29px] lg:text-[32px]">
                 Information to Editor
               </h1>
-              <p className="mt-5 text-[18px] font-semibold text-[#8fc63f] sm:text-[20px]">
+              <p className="mt-4 text-[16px] font-semibold text-[#8fc63f] sm:text-[18px]">
                 Partner in Scholarly Excellence
               </p>
-              <div className="mt-5 h-[2px] w-12 bg-[#8fc63f]" />
-              <p className="mt-5 max-w-[445px] text-[14px] font-medium leading-7 text-white/95 sm:text-[15px]">
+              <p className="mt-5 w-full max-w-[440px] text-[14px] font-medium leading-6 text-white/95 sm:text-[15px] sm:leading-7">
                 Editors are at the heart of our mission to deliver high-quality,
                 peer-reviewed publications that advance knowledge and drive
                 global impact.
@@ -236,10 +235,17 @@ export default function EditorsInformation() {
         </section>
 
         {/* ==================== ROLES OF EDITORS ==================== */}
-        <section className="bg-white py-8 sm:py-10">
+        <section className="bg-white py-5 sm:py-5">
           <div className="mx-auto w-[min(1120px,calc(100%-32px))] sm:w-[min(1120px,calc(100%-48px))]">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
-              <h2 className="text-[19px] font-semibold text-[#09235a] sm:text-[21px]">ROLES OF EDITORS</h2>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <h2 className="text-[19px] font-[550] text-[#09235a] sm:text-[21px]">
+                ROLES OF EDITORS
+              </h2>
               <div className="mx-auto mt-2 h-[2px] w-9 bg-[#52ac59]" />
             </motion.div>
 
@@ -256,12 +262,19 @@ export default function EditorsInformation() {
                     whileHover={{ y: -6 }}
                     className="flex min-h-[142px] items-start gap-4 rounded-[7px] border border-[#dce4ec] bg-white p-5 shadow-[0_5px_16px_rgba(4,28,61,0.04)] hover:shadow-[0_12px_28px_rgba(4,28,61,0.12)]"
                   >
-                    <div className="grid size-[48px] shrink-0 place-items-center rounded-full text-white" style={{ backgroundColor: role.bg }}>
+                    <div
+                      className="grid size-[48px] shrink-0 place-items-center rounded-full text-white"
+                      style={{ backgroundColor: role.bg }}
+                    >
                       <Icon size={25} strokeWidth={1.8} />
                     </div>
                     <div>
-                      <h3 className="text-[14px] font-semibold text-[#09235a]">{role.title}</h3>
-                      <p className="mt-2 text-[12px] leading-5 text-[#3f4c60]">{role.description}</p>
+                      <h3 className="text-[14px] font-[550] text-[#09235a]">
+                        {role.title}
+                      </h3>
+                      <p className="mt-2 text-[12.5px] leading-5 text-[#3f4c60]">
+                        {role.description}
+                      </p>
                     </div>
                   </motion.article>
                 );
@@ -273,8 +286,15 @@ export default function EditorsInformation() {
         {/* ==================== BENEFITS ==================== */}
         <section className="bg-white pb-8 sm:pb-10">
           <div className="mx-auto w-[min(1120px,calc(100%-32px))] sm:w-[min(1120px,calc(100%-48px))]">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
-              <h2 className="text-[18px] font-semibold text-[#09235a] sm:text-[21px]">BENEFITS OF JOINING AS EDITOR</h2>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <h2 className="text-[18px] font-[550] text-[#09235a] sm:text-[21px]">
+                BENEFITS OF JOINING AS EDITOR
+              </h2>
               <div className="mx-auto mt-2 h-[2px] w-9 bg-[#52ac59]" />
             </motion.div>
 
@@ -289,10 +309,18 @@ export default function EditorsInformation() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.06 }}
                     whileHover={{ y: -5 }}
-                    className="flex min-h-[118px] flex-col items-center border-[#dde4eb] px-3 text-center lg:border-r lg:last:border-r-0"
+                    className="flex min-h-[118px] flex-col items-center border-[#dde4eb] px-2 text-center lg:border-r lg:last:border-r-0"
                   >
-                    <Icon size={37} strokeWidth={1.65} className={benefit.green ? "text-[#278642]" : "text-[#173f78]"} />
-                    <p className="mt-4 text-[11px] font-medium leading-5 text-[#253a5c]">{benefit.title}</p>
+                    <Icon
+                      size={37}
+                      strokeWidth={1.65}
+                      className={
+                        benefit.green ? "text-[#278642]" : "text-[#173f78]"
+                      }
+                    />
+                    <p className="mt-4 text-[12px] font-medium leading-5 text-[#253a5c]">
+                      {benefit.title}
+                    </p>
                   </motion.div>
                 );
               })}
@@ -303,8 +331,15 @@ export default function EditorsInformation() {
         {/* ==================== RESPONSIBILITIES ==================== */}
         <section className="bg-white pb-9 sm:pb-11">
           <div className="mx-auto w-[min(1120px,calc(100%-32px))] sm:w-[min(1120px,calc(100%-48px))]">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
-              <h2 className="text-[18px] font-semibold text-[#09235a] sm:text-[21px]">RESPONSIBILITIES OF EDITORS</h2>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <h2 className="text-[18px] font-[550] text-[#09235a] sm:text-[21px]">
+                RESPONSIBILITIES OF EDITORS
+              </h2>
               <div className="mx-auto mt-2 h-[2px] w-9 bg-[#52ac59]" />
             </motion.div>
 
@@ -320,11 +355,19 @@ export default function EditorsInformation() {
                   className="group grid min-h-[130px] overflow-hidden rounded-[7px] bg-[#f8f9fb] shadow-[0_4px_14px_rgba(4,28,61,0.04)] min-[460px]:grid-cols-[0.94fr_1fr]"
                 >
                   <div className="h-[175px] overflow-hidden min-[460px]:h-full">
-                    <img src={item.image} alt={item.title} className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.045]" />
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="h-full w-full object-cover transition duration-700 group-hover:scale-[1.045]"
+                    />
                   </div>
                   <div className="flex flex-col justify-center p-5">
-                    <h3 className="text-[15px] font-semibold text-[#09235a]">{item.title}</h3>
-                    <p className="mt-2 text-[12px] leading-5 text-[#3f4c60]">{item.description}</p>
+                    <h3 className="text-[15px] font-[550] text-[#09235a]">
+                      {item.title}
+                    </h3>
+                    <p className="mt-2 text-[13px] leading-5 text-[#3f4c60]">
+                      {item.description}
+                    </p>
                   </div>
                 </motion.article>
               ))}
@@ -335,8 +378,15 @@ export default function EditorsInformation() {
         {/* ==================== JOIN PROCESS ==================== */}
         <section className="bg-white pb-9 sm:pb-11">
           <div className="mx-auto w-[min(1120px,calc(100%-32px))] sm:w-[min(1120px,calc(100%-48px))]">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
-              <h2 className="text-[17px] font-semibold text-[#09235a] sm:text-[21px]">HOW TO JOIN OUR EDITORIAL BOARD</h2>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <h2 className="text-[18px] font-[550] text-[#09235a] sm:text-[21px]">
+                HOW TO JOIN OUR EDITORIAL BOARD
+              </h2>
               <div className="mx-auto mt-2 h-[2px] w-9 bg-[#52ac59]" />
             </motion.div>
 
@@ -354,11 +404,18 @@ export default function EditorsInformation() {
                     whileHover={{ y: -5 }}
                     className="relative z-10 flex flex-col items-center px-3 text-center"
                   >
-                    <div className="grid size-[56px] place-items-center rounded-full border-4 border-white text-white shadow-[0_0_0_1px_#d4dde6]" style={{ backgroundColor: step.bg }}>
+                    <div
+                      className="grid size-[56px] place-items-center rounded-full border-4 border-white text-white shadow-[0_0_0_1px_#d4dde6]"
+                      style={{ backgroundColor: step.bg }}
+                    >
                       <Icon size={25} strokeWidth={1.8} />
                     </div>
-                    <h3 className="mt-4 text-[12px] font-semibold text-[#09235a]">{step.number} {step.title}</h3>
-                    <p className="mt-2 max-w-[175px] text-[11px] leading-[1.55] text-[#47556a]">{step.description}</p>
+                    <h3 className="mt-4 text-[14px] font-[550] text-[#09235a]">
+                      {step.number} {step.title}
+                    </h3>
+                    <p className="mt-2 max-w-[175px] text-[12px] leading-[1.55] text-[#47556a]">
+                      {step.description}
+                    </p>
                   </motion.article>
                 );
               })}
@@ -369,8 +426,15 @@ export default function EditorsInformation() {
         {/* ==================== RESOURCES ==================== */}
         <section className="bg-white pb-10 sm:pb-12">
           <div className="mx-auto w-[min(1120px,calc(100%-32px))] sm:w-[min(1120px,calc(100%-48px))]">
-            <motion.div initial={{ opacity: 0, y: 16 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="text-center">
-              <h2 className="text-[18px] font-semibold text-[#09235a] sm:text-[21px]">RESOURCES FOR EDITORS</h2>
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              className="text-center"
+            >
+              <h2 className="text-[18px] font-[550] text-[#09235a] sm:text-[21px]">
+                RESOURCES FOR EDITORS
+              </h2>
               <div className="mx-auto mt-2 h-[2px] w-9 bg-[#52ac59]" />
             </motion.div>
 
@@ -385,13 +449,20 @@ export default function EditorsInformation() {
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: index * 0.06 }}
                     whileHover={{ y: -6 }}
-                    className="min-h-[155px] rounded-[7px] border border-[#dce4ec] bg-white p-4 shadow-[0_4px_14px_rgba(4,28,61,0.04)] hover:shadow-[0_12px_26px_rgba(4,28,61,0.11)]"
+                    className="min-h-[155px] rounded-[7px] border border-[#dce4ec] bg-white p-3 shadow-[0_4px_14px_rgba(4,28,61,0.04)] hover:shadow-[0_12px_26px_rgba(4,28,61,0.11)]"
                   >
-                    <div className="grid size-[43px] place-items-center rounded-full text-white" style={{ backgroundColor: resource.bg }}>
+                    <div
+                      className="grid size-[43px] place-items-center rounded-full text-white"
+                      style={{ backgroundColor: resource.bg }}
+                    >
                       <Icon size={22} strokeWidth={1.8} />
                     </div>
-                    <h3 className="mt-3 text-[12px] font-semibold text-[#09235a]">{resource.title}</h3>
-                    <p className="mt-2 text-[10.5px] leading-[1.55] text-[#47556a]">{resource.description}</p>
+                    <h3 className="mt-3 text-[13px] font-[550] text-[#09235a]">
+                      {resource.title}
+                    </h3>
+                    <p className="mt-2 text-[11px] leading-[1.55] text-[#47556a]">
+                      {resource.description}
+                    </p>
                   </motion.article>
                 );
               })}
@@ -406,9 +477,18 @@ export default function EditorsInformation() {
         >
           <div className="absolute inset-0 -z-10 bg-[#03275a]/22" />
           <div className="mx-auto flex w-[min(1120px,calc(100%-32px))] flex-col items-start justify-between gap-6 sm:w-[min(1120px,calc(100%-48px))] md:flex-row md:items-center">
-            <motion.div initial={{ opacity: 0, x: -25 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} className="flex items-center gap-4">
-              <Users size={45} strokeWidth={1.7} className="hidden shrink-0 sm:block" />
-              <h2 className="max-w-[590px] text-[19px] font-semibold leading-[1.4] sm:text-[22px]">
+            <motion.div
+              initial={{ opacity: 0, x: -25 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="flex items-center gap-4"
+            >
+              <Users
+                size={38}
+                strokeWidth={1.7}
+                className="hidden shrink-0 sm:block"
+              />
+              <h2 className="max-w-[590px] text-[16px] font-[550] leading-[1.4] sm:text-[18px]">
                 Be a part of our mission to advance knowledge
                 <br className="hidden sm:block" /> and create real-world impact.
               </h2>
@@ -421,7 +501,7 @@ export default function EditorsInformation() {
               whileTap={{ scale: 0.97 }}
               viewport={{ once: true }}
               href="/contact"
-              className="flex w-full items-center justify-center gap-5 rounded-[5px] bg-[#4c9137] px-7 py-3.5 text-[13px] font-semibold text-white shadow-lg min-[430px]:w-auto min-[430px]:min-w-[210px]"
+              className="flex w-full items-center justify-center gap-5 rounded-[5px] bg-[#4c9137] px-4 py-3 text-[12.5px] font-[550] text-white shadow-lg min-[430px]:w-auto min-[430px]:min-w-[210px]"
             >
               Become an Editor <ArrowRight size={18} />
             </motion.a>
