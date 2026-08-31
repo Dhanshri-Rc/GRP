@@ -212,65 +212,7 @@ export default function Header() {
               })}
             </div>
 
-            {/* =================================================
-                SUBMIT MANUSCRIPT
-            ================================================== */}
-            <motion.div
-              whileHover={{
-                y: -2,
-              }}
-              whileTap={{
-                scale: 0.97,
-              }}
-              className="
-                ml-[22px]
-                shrink-0
-              "
-            >
-              <Link
-                to="/submit-manuscript"
-                className={`
-                  group
-                  inline-flex
-                  h-[41px]
-                  items-center
-                  justify-center
-                  whitespace-nowrap
-                  rounded-[5px]
-                  border
-                  px-[18px]
-                  text-[11px]
-                  font-[650]
-                  transition-all
-                  duration-300
-
-                  ${
-                    isHome
-                      ? `
-                        border-white/50
-                        bg-white
-                        text-[#011035]
-                        shadow-[0_5px_16px_rgba(0,0,0,0.16)]
-
-                        hover:border-white
-                        hover:bg-[#eef7ff]
-                      `
-                      : `
-                        border-[#071d3a]
-                        bg-[#071d3a]
-                        text-white
-                        shadow-[0_4px_10px_rgba(7,29,58,0.14)]
-
-                        hover:border-[#154f79]
-                        hover:bg-[#154f79]
-                        hover:shadow-[0_7px_18px_rgba(7,29,58,0.22)]
-                      `
-                  }
-                `}
-              >
-                Submit Manuscript
-              </Link>
-            </motion.div>
+          
           </div>
 
           {/* =================================================
@@ -585,68 +527,7 @@ export default function Header() {
                 })}
               </div>
 
-              {/* =============================================
-                  SUBMIT BUTTON
-              ============================================== */}
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 12,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  duration: 0.3,
-                  delay: 0.28,
-                }}
-                className="
-                  mt-[22px]
-                "
-              >
-                <Link
-                  to="/submit-manuscript"
-                  onClick={() => {
-                    setIsOpen(false);
-                  }}
-                  className={`
-                    flex
-                    h-[44px]
-                    w-full
-                    items-center
-                    justify-center
-                    rounded-[5px]
-                    px-[14px]
-                    text-[11px]
-                    font-[650]
-                    transition-all
-                    duration-300
-
-                    ${
-                      isHome
-                        ? `
-                          border
-                          border-white/50
-                          bg-white
-                          text-[#011035]
-                          shadow-[0_6px_18px_rgba(0,0,0,0.18)]
-
-                          hover:bg-[#edf7ff]
-                        `
-                        : `
-                          bg-[#071d3a]
-                          text-white
-                          shadow-[0_5px_14px_rgba(7,29,58,0.16)]
-
-                          hover:bg-[#154f79]
-                        `
-                    }
-                  `}
-                >
-                  Submit Manuscript
-                </Link>
-              </motion.div>
+             
 
               {/* =============================================
                   SMALL BOTTOM TEXT
