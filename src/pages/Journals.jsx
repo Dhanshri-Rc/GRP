@@ -457,21 +457,7 @@ export default function Journals() {
                   delay: 0.08,
                 }}
                 className="
-                  font-['Inter',sans-serif]
-                  text-[30px]
-                  font-[600]
-                  leading-[1.13]
-                  tracking-[-0.025em]
-                  text-white
-
-                  min-[360px]:text-[31px]
-                  min-[390px]:text-[32px]
-                  min-[430px]:text-[34px]
-
-                  sm:text-[38px]
-                  md:text-[37px]
-                  lg:text-[39px]
-                  xl:text-[42px]
+               text-[34px] font-[600] uppercase leading-none tracking-[-0.02em] sm:text-[36px] lg:text-[38px]
                 "
               >
                 <span className="block">

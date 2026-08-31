@@ -233,229 +233,441 @@ export default function Reviewer() {
     <>
       <Header />
 
-      <main className="overflow-hidden bg-white">
+      <main className="overflow-hidden bg-white pt-[75px]">
 
-        {/* =========================================================
-            HERO SECTION
-        ========================================================== */}
-        <section
-          className="
-            relative
-            isolate
-            min-h-[455px]
-            overflow-hidden
-            bg-[#071426]
-            bg-cover
-            bg-center
-            bg-no-repeat
-            text-white
+      {/* =========================================================
+    REVIEWER HERO SECTION
+========================================================== */}
+<section
+  className="
+    relative
+    isolate
+    w-full
+    overflow-hidden
+    bg-[#04152c]
+    bg-cover
+    bg-no-repeat
+    text-white
 
-            sm:min-h-[470px]
-            lg:min-h-[410px]
-          "
-          style={{
-            backgroundImage: `url(${bgReviewer})`,
+    min-h-[500px]
+    bg-[position:68%_center]
+
+    min-[390px]:min-h-[480px]
+    min-[390px]:bg-[position:70%_center]
+
+    sm:min-h-[455px]
+    sm:bg-[position:68%_center]
+
+    md:min-h-[385px]
+    md:bg-[position:64%_center]
+
+    lg:min-h-[335px]
+    lg:bg-center
+
+    xl:min-h-[335px]
+  "
+  style={{
+    backgroundImage: `url(${bgReviewer})`,
+  }}
+>
+
+ 
+
+  {/* =====================================================
+      MAIN CONTAINER
+  ====================================================== */}
+  <div
+    className="
+      mx-auto
+      flex
+      min-h-[500px]
+      w-[min(1120px,calc(100%-32px))]
+      items-center
+      py-[32px]
+
+      min-[390px]:min-h-[480px]
+
+      sm:min-h-[455px]
+      sm:w-[min(1120px,calc(100%-48px))]
+      sm:py-[38px]
+
+      md:min-h-[385px]
+      md:py-[30px]
+
+      lg:min-h-[410px]
+      lg:py-[14px]
+    "
+  >
+    {/* =====================================================
+        LEFT CONTENT
+    ====================================================== */}
+    <motion.div
+      initial={{
+        opacity: 0,
+        x: -28,
+      }}
+      animate={{
+        opacity: 1,
+        x: 0,
+      }}
+      transition={{
+        duration: 0.72,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="
+        relative
+        z-10
+        w-full
+        max-w-[455px]
+
+        sm:max-w-[470px]
+
+        md:max-w-[430px]
+
+        lg:max-w-[445px]
+      "
+    >
+      {/* ==================== HEADING ==================== */}
+      <motion.h1
+        initial={{
+          opacity: 0,
+          y: 14,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.6,
+          delay: 0.08,
+          ease: "easeOut",
+        }}
+        className="
+        
+          text-[28px]
+          font-[600]
+          leading-[1.12]
+          tracking-[-0.025em]
+          text-white
+
+          min-[390px]:text-[30px]
+
+          sm:text-[32px]
+
+          md:text-[33px]
+
+          lg:text-[33px]
+
+          xl:text-[34px]
+        "
+      >
+        Information for Reviewers
+      </motion.h1>
+
+      {/* ==================== TAGLINE ==================== */}
+      <motion.p
+        initial={{
+          opacity: 0,
+          y: 10,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.55,
+          delay: 0.15,
+        }}
+        className="
+          mt-[10px]
+          font-['Inter',sans-serif]
+          text-[14px]
+          font-[500]
+          leading-[1.35]
+          text-[#B7D329]
+
+          sm:text-[14px]
+
+          lg:text-[15px]
+        "
+      >
+        Your Expertise. Our Impact.
+      </motion.p>
+
+      {/* ==================== DESCRIPTION ==================== */}
+      <motion.p
+        initial={{
+          opacity: 0,
+          y: 10,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.55,
+          delay: 0.22,
+        }}
+        className="
+          mt-[18px]
+          max-w-[410px]
+          font-['Inter',sans-serif]
+          text-[10px]
+          font-[450]
+          leading-[1.8]
+          text-white/90
+
+          sm:text-[10.5px]
+
+          lg:mt-[16px]
+          lg:max-w-[380px]
+          lg:text-[12px]
+        "
+      >
+        At Global Reviews Press, we value the vital role of reviewers
+        in maintaining the quality, integrity, and credibility of scholarly
+        research. Join our global community of experts and contribute
+        to advancing knowledge across diverse disciplines.
+      </motion.p>
+
+      {/* =====================================================
+          STATISTICS
+      ====================================================== */}
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 14,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        transition={{
+          duration: 0.6,
+          delay: 0.3,
+        }}
+        className="
+          mt-[28px]
+          grid
+          max-w-[420px]
+          grid-cols-1
+          gap-[12px]
+
+          min-[370px]:grid-cols-3
+          min-[370px]:gap-[10px]
+
+          sm:gap-[6px]
+
+          lg:mt-[28px]
+          lg:max-w-[410px]
+        "
+      >
+        {/* ==================== EXPERT REVIEWERS ==================== */}
+        <motion.div
+          whileHover={{
+            y: -4,
           }}
+          transition={{
+            duration: 0.25,
+          }}
+          className="
+            group
+            flex
+            items-center
+            gap-[9px]
+          "
         >
-          {/* Readability overlay */}
-          <div
-            className="
-              pointer-events-none
-              absolute
-              inset-0
-              -z-10
-              bg-gradient-to-r
-              from-[#061322]/98
-              via-[#071625]/88
-              via-[48%]
-              to-transparent
-            "
-          />
-
-          <div
-            className="
-              mx-auto
-              flex
-              min-h-[455px]
-              w-[min(1120px,calc(100%-32px))]
-              items-center
-              py-10
-
-              sm:min-h-[470px]
-              sm:w-[min(1120px,calc(100%-48px))]
-
-              lg:min-h-[410px]
-              lg:py-8
-            "
+          <motion.div
+            whileHover={{
+              scale: 1.08,
+              rotate: -3,
+            }}
+            transition={{
+              duration: 0.25,
+            }}
           >
-            <motion.div
-              initial={{ opacity: 0, x: -28 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{
-                duration: 0.72,
-                ease: [0.22, 1, 0.36, 1],
-              }}
+            <UsersRound
+              size={24}
+              strokeWidth={1.45}
               className="
-                relative
-                z-10
-                w-full
-                max-w-[510px]
+                shrink-0
+                text-white/90
 
-                lg:max-w-[485px]
+                lg:h-[26px]
+                lg:w-[26px]
+              "
+            />
+          </motion.div>
+
+          <div>
+            <p
+              className="
+                font-['Inter',sans-serif]
+                text-[13px]
+                font-[700]
+                leading-none
+                text-[#CDD82D]
+
+                lg:text-[14px]
               "
             >
-              <motion.h1
-                initial={{ opacity: 0, y: 12 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.08,
-                }}
-                className="
-                  font-['Inter',sans-serif]
-                  text-[30px]
-                  font-[700]
-                  leading-[1.12]
-                  tracking-[-0.03em]
-                  text-white
+              15,000+
+            </p>
 
-                  sm:text-[35px]
-                  lg:text-[36px]
-                "
-              >
-                Information for Reviewers
-              </motion.h1>
-
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.55,
-                  delay: 0.15,
-                }}
-                className="
-                  mt-[10px]
-                  font-['Inter',sans-serif]
-                  text-[11px]
-                  font-[650]
-                  text-[#E2B448]
-
-                  sm:text-[12px]
-                "
-              >
-                Your Expertise. Our Impact.
-              </motion.p>
-
-              <motion.p
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.55,
-                  delay: 0.22,
-                }}
-                className="
-                  mt-[19px]
-                  max-w-[455px]
-                  font-['Inter',sans-serif]
-                  text-[10px]
-                  font-[450]
-                  leading-[1.75]
-                  text-white/90
-
-                  sm:text-[10.5px]
-                "
-              >
-                At Global Reviews Press, we value the vital role of reviewers
-                in maintaining the quality, integrity, and credibility of
-                scholarly research. Join our global community of experts and
-                contribute to advancing knowledge across diverse disciplines.
-              </motion.p>
-
-              {/* Statistics */}
-              <motion.div
-                initial={{ opacity: 0, y: 14 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{
-                  duration: 0.6,
-                  delay: 0.3,
-                }}
-                className="
-                  mt-[24px]
-                  grid
-                  max-w-[430px]
-                  grid-cols-1
-                  gap-4
-
-                  min-[380px]:grid-cols-3
-                  min-[380px]:gap-3
-                "
-              >
-                <motion.div
-                  whileHover={{ y: -3 }}
-                  className="flex items-center gap-[8px]"
-                >
-                  <UsersRound
-                    size={23}
-                    strokeWidth={1.5}
-                    className="shrink-0 text-[#D5AA4A]"
-                  />
-
-                  <div>
-                    <p className="text-[12px] font-[750] text-[#D5AA4A]">
-                      15,000+
-                    </p>
-
-                    <p className="text-[7px] font-[500] text-white/85">
-                      Expert Reviewers
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ y: -3 }}
-                  className="flex items-center gap-[8px]"
-                >
-                  <Globe2
-                    size={23}
-                    strokeWidth={1.5}
-                    className="shrink-0 text-[#D5AA4A]"
-                  />
-
-                  <div>
-                    <p className="text-[12px] font-[750] text-[#D5AA4A]">
-                      120+
-                    </p>
-
-                    <p className="text-[7px] font-[500] text-white/85">
-                      Countries
-                    </p>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  whileHover={{ y: -3 }}
-                  className="flex items-center gap-[8px]"
-                >
-                  <LibraryBig
-                    size={23}
-                    strokeWidth={1.5}
-                    className="shrink-0 text-[#D5AA4A]"
-                  />
-
-                  <div>
-                    <p className="text-[12px] font-[750] text-[#D5AA4A]">
-                      20+
-                    </p>
-
-                    <p className="text-[7px] font-[500] text-white/85">
-                      Research Disciplines
-                    </p>
-                  </div>
-                </motion.div>
-              </motion.div>
-            </motion.div>
+            <p
+              className="
+                mt-[4px]
+                whitespace-nowrap
+                font-['Inter',sans-serif]
+                text-[10px]
+                font-[500]
+                leading-none
+                text-white/90
+              "
+            >
+              Expert Reviewers
+            </p>
           </div>
-        </section>
+        </motion.div>
+
+        {/* ==================== COUNTRIES ==================== */}
+        <motion.div
+          whileHover={{
+            y: -4,
+          }}
+          transition={{
+            duration: 0.25,
+          }}
+          className="
+            group
+            flex
+            items-center
+            gap-[9px]
+          "
+        >
+          <motion.div
+            whileHover={{
+              scale: 1.08,
+              rotate: 4,
+            }}
+            transition={{
+              duration: 0.25,
+            }}
+          >
+            <Globe2
+              size={24}
+              strokeWidth={1.45}
+              className="
+                shrink-0
+                text-white/90
+
+                lg:h-[26px]
+                lg:w-[26px]
+              "
+            />
+          </motion.div>
+
+          <div>
+            <p
+              className="
+                font-['Inter',sans-serif]
+                text-[13px]
+                font-[700]
+                leading-none
+                text-[#CDD82D]
+
+                lg:text-[14px]
+              "
+            >
+              120+
+            </p>
+
+            <p
+              className="
+                mt-[4px]
+                font-['Inter',sans-serif]
+                text-[10px]
+                font-[500]
+                leading-none
+                text-white/90
+              "
+            >
+              Countries
+            </p>
+          </div>
+        </motion.div>
+
+        {/* ==================== RESEARCH DISCIPLINES ==================== */}
+        <motion.div
+          whileHover={{
+            y: -4,
+          }}
+          transition={{
+            duration: 0.25,
+          }}
+          className="
+            group
+            flex
+            items-center
+            gap-[9px]
+          "
+        >
+          <motion.div
+            whileHover={{
+              scale: 1.08,
+              rotate: -4,
+            }}
+            transition={{
+              duration: 0.25,
+            }}
+          >
+            <Network
+              size={24}
+              strokeWidth={1.45}
+              className="
+                shrink-0
+                text-white/90
+
+                lg:h-[26px]
+                lg:w-[26px]
+              "
+            />
+          </motion.div>
+
+          <div>
+            <p
+              className="
+                font-['Inter',sans-serif]
+                text-[13px]
+                font-[700]
+                leading-none
+                text-[#CDD82D]
+
+                lg:text-[14px]
+              "
+            >
+              20+
+            </p>
+
+            <p
+              className="
+                mt-[4px]
+                whitespace-nowrap
+                font-['Inter',sans-serif]
+                text-[10px]
+                font-[500]
+                leading-none
+                text-white/90
+              "
+            >
+              Research Disciplines
+            </p>
+          </div>
+        </motion.div>
+      </motion.div>
+    </motion.div>
+  </div>
+</section>
 
 
         {/* =========================================================
@@ -1375,164 +1587,402 @@ export default function Reviewer() {
         </section>
 
 
-        {/* =========================================================
-            INDEXING SECTION
-        ========================================================== */}
-        <section
-          className="
-            border-b
-            border-[#edf1f4]
-            bg-white
-            py-[17px]
-
-            sm:py-[21px]
-          "
-        >
-          <div
-            className="
-              mx-auto
-              w-[min(1120px,calc(100%-32px))]
-              sm:w-[min(1120px,calc(100%-48px))]
-            "
-          >
-            <motion.h2
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="
-                text-center
-                text-[7px]
-                font-[800]
-                tracking-[0.02em]
-                text-[#244873]
-
-                sm:text-[8px]
-              "
-            >
-              INDEXED IN LEADING DATABASES
-            </motion.h2>
-
-            <div
-              className="
-                mt-[15px]
-                grid
-                grid-cols-2
-                items-center
-                justify-items-center
-                gap-x-5
-                gap-y-6
-
-                min-[480px]:grid-cols-3
-
-                sm:grid-cols-4
-
-                lg:grid-cols-7
-                lg:gap-y-0
-              "
-            >
-              <motion.img
-                whileHover={{
-                  y: -3,
-                  scale: 1.04,
-                }}
-                src={scopusLogo}
-                alt="Scopus"
-                className="
-                  max-h-[30px]
-                  max-w-[88px]
-                  object-contain
-                "
-              />
-
-              <motion.img
-                whileHover={{
-                  y: -3,
-                  scale: 1.04,
-                }}
-                src={clarivateLogo}
-                alt="Clarivate Web of Science"
-                className="
-                  max-h-[33px]
-                  max-w-[105px]
-                  object-contain
-                "
-              />
-
-              <motion.img
-                whileHover={{
-                  y: -3,
-                  scale: 1.04,
-                }}
-                src={doajLogo}
-                alt="DOAJ"
-                className="
-                  max-h-[31px]
-                  max-w-[102px]
-                  object-contain
-                "
-              />
-
-              <motion.img
-                whileHover={{
-                  y: -3,
-                  scale: 1.04,
-                }}
-                src={casLogo}
-                alt="CAS"
-                className="
-                  max-h-[35px]
-                  max-w-[82px]
-                  object-contain
-                "
-              />
-
-              <motion.img
-                whileHover={{
-                  y: -3,
-                  scale: 1.04,
-                }}
-                src={dimensionsLogo}
-                alt="Dimensions"
-                className="
-                  max-h-[30px]
-                  max-w-[100px]
-                  object-contain
-                "
-              />
-
-              <motion.img
-                whileHover={{
-                  y: -3,
-                  scale: 1.04,
-                }}
-                src={crossrefLogo}
-                alt="Crossref"
-                className="
-                  max-h-[30px]
-                  max-w-[95px]
-                  object-contain
-                "
-              />
-
-              <motion.img
-                whileHover={{
-                  y: -3,
-                  scale: 1.04,
-                }}
-                src={googleScholarLogo}
-                alt="Google Scholar"
-                className="
-                  col-span-2
-                  max-h-[29px]
-                  max-w-[88px]
-                  object-contain
-
-                  min-[480px]:col-span-1
-                "
-              />
-            </div>
-          </div>
-        </section>
+         {/* =========================================================
+         INDEXED IN LEADING DATABASES
+     ========================================================== */}
+     <section className="border-y border-[#eef2f5] bg-white py-[22px] sm:py-[25px] lg:py-[29px]">
+       <div
+         className="
+           mx-auto
+           w-[min(1120px,calc(100%-32px))]
+           sm:w-[min(1120px,calc(100%-48px))]
+         "
+       >
+         {/* ==================== TITLE ==================== */}
+         <motion.h2
+           initial={{
+             opacity: 0,
+             y: 10,
+           }}
+           whileInView={{
+             opacity: 1,
+             y: 0,
+           }}
+           viewport={{
+             once: true,
+             amount: 0.5,
+           }}
+           transition={{
+             duration: 0.45,
+             ease: "easeOut",
+           }}
+           className="
+             text-center
+             font-['Inter',sans-serif]
+             text-[20px]
+             font-[600]
+             leading-none
+             tracking-[0.025em]
+             text-[#173f78]
+       
+             sm:text-[20px]
+             lg:text-[21px]
+           "
+         >
+           INDEXED IN LEADING DATABASES
+         </motion.h2>
+     
+         {/* =====================================================
+             DATABASE LOGOS
+         ====================================================== */}
+         <div
+           className="
+             mt-[32px]
+             grid
+             grid-cols-2
+             items-center
+             justify-items-center
+             gap-x-[18px]
+             gap-y-[25px]
+     
+             min-[480px]:grid-cols-3
+     
+             sm:grid-cols-4
+             sm:gap-x-[22px]
+     
+             lg:grid-cols-7
+             lg:gap-x-[24px]
+             lg:gap-y-0
+           "
+         >
+           {/* ==================== SCOPUS ==================== */}
+           <motion.div
+             initial={{
+               opacity: 0,
+               y: 12,
+             }}
+             whileInView={{
+               opacity: 1,
+               y: 0,
+             }}
+             viewport={{ once: true }}
+             transition={{
+               duration: 0.4,
+               delay: 0.02,
+             }}
+             whileHover={{
+               y: -4,
+               scale: 1.045,
+             }}
+             className="
+               group
+               flex
+               min-h-[42px]
+               w-full
+               items-center
+               justify-center
+             
+             "
+           >
+             <img
+               src={scopusLogo}
+               alt="Scopus"
+               className="
+                 h-auto
+                 w-auto
+                 max-w-[88px]
+                 object-contain
+                 transition-all
+                 duration-300
+     
+                 group-hover:drop-shadow-[0_5px_7px_rgba(15,45,75,0.12)]
+     
+                 lg:max-w-[99px]
+               "
+             />
+           </motion.div>
+     
+           {/* ==================== CLARIVATE ==================== */}
+           <motion.div
+             initial={{
+               opacity: 0,
+               y: 12,
+             }}
+             whileInView={{
+               opacity: 1,
+               y: 0,
+             }}
+             viewport={{ once: true }}
+             transition={{
+               duration: 0.4,
+               delay: 0.07,
+             }}
+             whileHover={{
+               y: -4,
+               scale: 1.045,
+             }}
+             className="
+               group
+               flex
+               min-h-[42px]
+               w-full
+               items-center
+               justify-center
+             "
+           >
+             <img
+               src={clarivateLogo}
+               alt="Clarivate Web of Science"
+               className="
+                 h-auto
+                 w-auto
+                 max-w-[103px]
+                 object-contain
+                 transition-all
+                 duration-300
+     
+                 group-hover:drop-shadow-[0_5px_7px_rgba(15,45,75,0.12)]
+     
+                 lg:max-w-[108px]
+               "
+             />
+           </motion.div>
+     
+           {/* ==================== DOAJ ==================== */}
+           <motion.div
+             initial={{
+               opacity: 0,
+               y: 12,
+             }}
+             whileInView={{
+               opacity: 1,
+               y: 0,
+             }}
+             viewport={{ once: true }}
+             transition={{
+               duration: 0.4,
+               delay: 0.12,
+             }}
+             whileHover={{
+               y: -4,
+               scale: 1.045,
+             }}
+             className="
+               group
+               flex
+               min-h-[42px]
+               w-full
+               items-center
+               justify-center
+             "
+           >
+             <img
+               src={doajLogo}
+               alt="Directory of Open Access Journals"
+               className="
+                 h-auto
+                 w-auto
+                 max-w-[102px]
+                 object-contain
+                 transition-all
+                 duration-300
+     
+                 group-hover:drop-shadow-[0_5px_7px_rgba(15,45,75,0.12)]
+     
+                 lg:max-w-[108px]
+               "
+             />
+           </motion.div>
+     
+           {/* ==================== CAS ==================== */}
+           <motion.div
+             initial={{
+               opacity: 0,
+               y: 12,
+             }}
+             whileInView={{
+               opacity: 1,
+               y: 0,
+             }}
+             viewport={{ once: true }}
+             transition={{
+               duration: 0.4,
+               delay: 0.17,
+             }}
+             whileHover={{
+               y: -4,
+               scale: 1.045,
+             }}
+             className="
+               group
+               flex
+               min-h-[42px]
+               w-full
+               items-center
+               justify-center
+             "
+           >
+             <img
+               src={casLogo}
+               alt="CAS"
+               className="
+                 h-auto
+                 w-auto
+                 max-w-[82px]
+                 object-contain
+                 transition-all
+                 duration-300
+     
+                 group-hover:drop-shadow-[0_5px_7px_rgba(15,45,75,0.12)]
+     
+                 lg:max-w-[87px]
+               "
+             />
+           </motion.div>
+     
+           {/* ==================== DIMENSIONS ==================== */}
+           <motion.div
+             initial={{
+               opacity: 0,
+               y: 12,
+             }}
+             whileInView={{
+               opacity: 1,
+               y: 0,
+             }}
+             viewport={{ once: true }}
+             transition={{
+               duration: 0.4,
+               delay: 0.22,
+             }}
+             whileHover={{
+               y: -4,
+               scale: 1.045,
+             }}
+             className="
+               group
+               flex
+               min-h-[42px]
+               w-full
+               items-center
+               justify-center
+             "
+           >
+             <img
+               src={dimensionsLogo}
+               alt="Dimensions"
+               className="
+                 h-auto
+                 w-auto
+                 max-w-[100px]
+                 object-contain
+                 transition-all
+                 duration-300
+     
+                 group-hover:drop-shadow-[0_5px_7px_rgba(15,45,75,0.12)]
+     
+                 lg:max-w-[126px]
+               "
+             />
+           </motion.div>
+     
+           {/* ==================== CROSSREF ==================== */}
+           <motion.div
+             initial={{
+               opacity: 0,
+               y: 12,
+             }}
+             whileInView={{
+               opacity: 1,
+               y: 0,
+             }}
+             viewport={{ once: true }}
+             transition={{
+               duration: 0.4,
+               delay: 0.27,
+             }}
+             whileHover={{
+               y: -4,
+               scale: 1.045,
+             }}
+             className="
+               group
+               flex
+               min-h-[42px]
+               w-full
+               items-center
+               justify-center
+             "
+           >
+             <img
+               src={crossrefLogo}
+               alt="Crossref"
+               className="
+                 h-auto
+                 w-auto
+                 max-w-[96px]
+                 object-contain
+                 transition-all
+                 duration-300
+     
+                 group-hover:drop-shadow-[0_5px_7px_rgba(15,45,75,0.12)]
+     
+                 lg:max-w-[101px]
+               "
+             />
+           </motion.div>
+     
+           {/* ==================== GOOGLE SCHOLAR ==================== */}
+           <motion.div
+             initial={{
+               opacity: 0,
+               y: 12,
+             }}
+             whileInView={{
+               opacity: 1,
+               y: 0,
+             }}
+             viewport={{ once: true }}
+             transition={{
+               duration: 0.4,
+               delay: 0.32,
+             }}
+             whileHover={{
+               y: -4,
+               scale: 1.045,
+             }}
+             className="
+               group
+               col-span-2
+               flex
+               min-h-[42px]
+               w-full
+               items-center
+               justify-center
+     
+               min-[480px]:col-span-1
+             "
+           >
+             <img
+               src={googleScholarLogo}
+               alt="Google Scholar"
+               className="
+                 h-auto
+                 w-auto
+                 max-w-[88px]
+                 object-contain
+                 transition-all
+                 duration-300
+     
+                 group-hover:drop-shadow-[0_5px_7px_rgba(15,45,75,0.12)]
+     
+                 lg:max-w-[92px]
+               "
+             />
+           </motion.div>
+         </div>
+       </div>
+     </section>
 
       </main>
 

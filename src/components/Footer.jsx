@@ -19,36 +19,36 @@ export default function Footer() {
   const linkClass = `
     block
     w-fit
-    font-['Inter',sans-serif]
-    text-[9px]
+    
+    text-[12px]
     font-[400]
     leading-[1.75]
-    text-white/70
+    text-white/90
     transition-all
     duration-300
     hover:translate-x-[3px]
     hover:text-white
 
-    sm:text-[9.5px]
+    sm:text-[11.5px]
 
-    lg:text-[8.5px]
+    lg:text-[11.5px]
 
-    xl:text-[9px]
+    xl:text-[12px]
   `;
 
   const headingClass = `
     font-['Inter',sans-serif]
-    text-[9px]
+    text-[13px]
     font-[700]
     uppercase
     tracking-[0.02em]
     text-white
 
-    sm:text-[9.5px]
+    sm:text-[12.5px]
 
-    lg:text-[9px]
+    lg:text-[13px]
 
-    xl:text-[9.5px]
+    xl:text-[13.5px]
   `;
 
   const socialClass = `
@@ -185,29 +185,12 @@ export default function Footer() {
               />
             </Link>
 
-            {/* TAGLINE */}
-            <p
-              className="
-                mt-[8px]
-                max-w-[155px]
-                font-['Inter',sans-serif]
-                text-[7px]
-                font-[500]
-                uppercase
-                leading-[1.5]
-                tracking-[0.055em]
-                text-white/50
-
-                sm:text-[7.5px]
-              "
-            >
-              Research. Reviews. Real Impact.
-            </p>
+           
 
             {/* ==================== SOCIAL ICONS ==================== */}
             <div
               className="
-                mt-[15px]
+                mt-[10px]
                 flex
                 items-center
                 gap-[7px]
@@ -667,14 +650,14 @@ export default function Footer() {
                   flex
                   items-start
                   gap-[7px]
-                  text-white/70
+                  text-white/90
                   transition-colors
                   duration-300
                   hover:text-white
                 "
               >
                 <MapPin
-                  size={12}
+                  size={15}
                   strokeWidth={1.8}
                   className="
                     mt-[2px]
@@ -686,23 +669,21 @@ export default function Footer() {
                 <span
                   className="
                     font-['Inter',sans-serif]
-                    text-[8.5px]
+                    text-[10.5px]
                     font-[400]
                     leading-[1.55]
 
-                    sm:text-[9px]
+                    sm:text-[11px]
 
-                    lg:text-[8px]
+                    lg:text-[11px]
 
-                    xl:text-[8.5px]
+                    xl:text-[11.5px]
                   "
                 >
-                  202, Planet Apt.,
+                  202, Planet Apartment
                   <br />
-                  Onkarnagar, Besa Road,
-                  <br />
-                  Near Sahayd Lawn,
-                  <br />
+                  Onkarnagar, 
+                 
                   Nagpur - 440037,
                   <br />
                   Maharashtra, India.
@@ -720,14 +701,14 @@ export default function Footer() {
                   flex
                   items-start
                   gap-[7px]
-                  text-white/70
+                  text-white/90
                   transition-colors
                   duration-300
                   hover:text-white
                 "
               >
                 <Mail
-                  size={12}
+                  size={15}
                   strokeWidth={1.8}
                   className="
                     mt-[1px]
@@ -740,15 +721,15 @@ export default function Footer() {
                   className="
                     break-all
                     font-['Inter',sans-serif]
-                    text-[8.5px]
+                    text-[10.5px]
                     font-[400]
                     leading-[1.5]
 
-                    sm:text-[9px]
+                    sm:text-[11px]
 
-                    lg:text-[8px]
+                    lg:text-[11px]
 
-                    xl:text-[8.5px]
+                    xl:text-[11.5px]
                   "
                 >
                   info@globalreviewspress.com
@@ -766,14 +747,14 @@ export default function Footer() {
                   flex
                   items-center
                   gap-[7px]
-                  text-white/70
+                  text-white/90
                   transition-colors
                   duration-300
                   hover:text-white
                 "
               >
                 <Phone
-                  size={12}
+                  size={15}
                   strokeWidth={1.8}
                   className="
                     shrink-0
@@ -784,14 +765,14 @@ export default function Footer() {
                 <span
                   className="
                     font-['Inter',sans-serif]
-                    text-[8.5px]
+                    text-[10.5px]
                     font-[400]
 
-                    sm:text-[9px]
+                    sm:text-[11px]
 
-                    lg:text-[8px]
+                    lg:text-[11px]
 
-                    xl:text-[8.5px]
+                    xl:text-[11.5px]
                   "
                 >
                   +91 9970294396

@@ -8,7 +8,7 @@ import Logo from "../assets/img/logo.png";
 const navigation = [
   { name: "About Us", href: "/about" },
   { name: "Journals", href: "/journals" },
-  { name: " Reviewers", href: "/reviewer" },
+  { name: "Reviewers", href: "/reviewer" },
   { name: "Editor Information", href: "/editors-information" },
   { name: "Why Publish Us", href: "/why-publish-us" },
   { name: "Contact Us", href: "/contact" },
@@ -16,136 +16,277 @@ const navigation = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
+
   const location = useLocation();
 
+  const isHome = location.pathname === "/";
+
+  /* =====================================================
+      CLOSE MENU ON ROUTE CHANGE
+  ====================================================== */
   useEffect(() => {
     setIsOpen(false);
   }, [location.pathname]);
+
+  /* =====================================================
+      LOCK BODY SCROLL WHEN MOBILE MENU IS OPEN
+  ====================================================== */
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isOpen]);
 
   const isActive = (href) => location.pathname === href;
 
   return (
     <>
-      {/* ==================== HEADER ==================== */}
-      <header className="fixed z-[100] w-full bg-white">
+      {/* =====================================================
+          HEADER
+      ====================================================== */}
+      <header
+        className={`
+          fixed
+          left-0
+          top-0
+          z-[100]
+          w-full
+          transition-colors
+          duration-300
 
-        {/* ==================== DESKTOP / MAIN HEADER ==================== */}
-        <nav className="mx-auto flex h-[80px] w-[min(1180px,calc(100%-32px))] items-center justify-between sm:w-[min(1180px,calc(100%-48px))] lg:h-[75px]">
+          ${
+            isHome
+              ? "bg-[#05264a]"
+              : "bg-white shadow-[0_1px_8px_rgba(4,25,54,0.04)]"
+          }
+        `}
+      >
+        {/* =====================================================
+            MAIN NAVBAR
+        ====================================================== */}
+        <nav
+          className="
+            mx-auto
+            flex
+            h-[80px]
+            w-[min(1180px,calc(100%-32px))]
+            items-center
+            justify-between
 
-          {/* ==================== LOGO ==================== */}
+            sm:w-[min(1180px,calc(100%-48px))]
+
+            lg:h-[75px]
+          "
+        >
+          {/* =================================================
+              LOGO
+          ================================================== */}
           <Link
             to="/"
-            className="group flex shrink-0 items-center"
             aria-label="Global Reviews Press Home"
+            className="
+              group
+              flex
+              shrink-0
+              items-center
+            "
           >
-            <img
+            <motion.img
               src={Logo}
               alt="Global Reviews Press"
-              className="
+              whileHover={{
+                scale: 1.025,
+              }}
+              transition={{
+                duration: 0.25,
+              }}
+              className={`
                 h-auto
-                w-[180px]
+                w-[175px]
                 object-contain
                 transition-all
                 duration-300
-                group-hover:scale-[1.02]
-                sm:w-[205px]
-                lg:w-[220px]
-                xl:w-[235px]
-              "
+
+                sm:w-[195px]
+
+                lg:w-[205px]
+
+                xl:w-[220px]
+
+                ${
+                  isHome
+                    ? "brightness-0 invert"
+                    : ""
+                }
+              `}
             />
           </Link>
 
-          {/* ==================== DESKTOP NAVIGATION ==================== */}
-          <div className="hidden min-w-0 flex-1 items-center justify-end xl:flex">
+          {/* =================================================
+              DESKTOP NAVIGATION
+          ================================================== */}
+          <div
+            className="
+              hidden
+              min-w-0
+              flex-1
+              items-center
+              justify-end
 
-            <div className="flex items-center gap-[28px] 2xl:gap-[29px]">
-              {navigation.map((item) => (
-                <Link
-                  key={item.name}
-                  to={item.href}
-                  className={`
-                    group relative whitespace-nowrap
-                    py-3
-                    text-[13px]
-                    font-bold
-                    tracking-[-0.01em]
-                    transition-colors
-                    duration-300
-                    ${
-                      isActive(item.href)
-                        ? "text-[#0c3158]"
-                        : "text-[#1f324b] hover:text-[#176797]"
-                    }
-                  `}
-                >
-                  {item.name}
+              xl:flex
+            "
+          >
+            <div
+              className="
+                flex
+                items-center
+                gap-[24px]
 
-                  {/* Active / hover underline */}
-                  <span
+                2xl:gap-[28px]
+              "
+            >
+              {navigation.map((item) => {
+                const active = isActive(item.href);
+
+                return (
+                  <Link
+                    key={item.name}
+                    to={item.href}
                     className={`
-                      absolute
-                      bottom-[12px]
-                      left-1/2
-                      h-[2px]
-                      -translate-x-1/2
-                      rounded-full
-                      bg-[#487cd0]
-                      transition-all
+                      group
+                      relative
+                      whitespace-nowrap
+                      py-3
+                      text-[13px]
+                      font-[700]
+                      tracking-[-0.01em]
+                      transition-colors
                       duration-300
+
                       ${
-                        isActive(item.href)
-                          ? "w-full"
-                          : "w-0 group-hover:w-full"
+                        isHome
+                          ? active
+                            ? "text-white"
+                            : "text-white/80 hover:text-white"
+                          : active
+                            ? "text-[#0c3158]"
+                            : "text-[#1f324b] hover:text-[#176797]"
                       }
                     `}
-                  />
-                </Link>
-              ))}
+                  >
+                    {item.name}
+
+                    {/* UNDERLINE */}
+                    <span
+                      className={`
+                        absolute
+                        bottom-[10px]
+                        left-1/2
+                        h-[2px]
+                        -translate-x-1/2
+                        rounded-full
+                        transition-all
+                        duration-300
+
+                        ${
+                          isHome
+                            ? "bg-[#32b3df]"
+                            : "bg-[#487cd0]"
+                        }
+
+                        ${
+                          active
+                            ? "w-full"
+                            : "w-0 group-hover:w-full"
+                        }
+                      `}
+                    />
+                  </Link>
+                );
+              })}
             </div>
 
-            {/* ==================== SUBMIT BUTTON ==================== */}
+            {/* =================================================
+                SUBMIT MANUSCRIPT
+            ================================================== */}
             <motion.div
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              className="ml-[24px] shrink-0"
+              whileHover={{
+                y: -2,
+              }}
+              whileTap={{
+                scale: 0.97,
+              }}
+              className="
+                ml-[22px]
+                shrink-0
+              "
             >
               <Link
                 to="/submit-manuscript"
-                className="
+                className={`
                   group
                   inline-flex
-                  h-[42px]
+                  h-[41px]
                   items-center
                   justify-center
                   whitespace-nowrap
                   rounded-[5px]
                   border
-                  border-[#071d3a]
-                  bg-[#071d3a]
                   px-[18px]
                   text-[11px]
-                  font-semibold
-                  text-white
-                  shadow-[0_4px_10px_rgba(7,29,58,0.14)]
+                  font-[650]
                   transition-all
                   duration-300
-                  hover:border-[#154f79]
-                  hover:bg-[#154f79]
-                  hover:shadow-[0_7px_18px_rgba(7,29,58,0.22)]
-                "
+
+                  ${
+                    isHome
+                      ? `
+                        border-white/50
+                        bg-white
+                        text-[#011035]
+                        shadow-[0_5px_16px_rgba(0,0,0,0.16)]
+
+                        hover:border-white
+                        hover:bg-[#eef7ff]
+                      `
+                      : `
+                        border-[#071d3a]
+                        bg-[#071d3a]
+                        text-white
+                        shadow-[0_4px_10px_rgba(7,29,58,0.14)]
+
+                        hover:border-[#154f79]
+                        hover:bg-[#154f79]
+                        hover:shadow-[0_7px_18px_rgba(7,29,58,0.22)]
+                      `
+                  }
+                `}
               >
                 Submit Manuscript
               </Link>
             </motion.div>
           </div>
 
-          {/* ==================== MOBILE MENU BUTTON ==================== */}
-          <button
+          {/* =================================================
+              MOBILE MENU BUTTON
+          ================================================== */}
+          <motion.button
             type="button"
-            onClick={() => setIsOpen((prev) => !prev)}
-            aria-label="Toggle navigation"
+            aria-label={isOpen ? "Close navigation" : "Open navigation"}
             aria-expanded={isOpen}
-            className="
+            whileTap={{
+              scale: 0.94,
+            }}
+            onClick={() => {
+              setIsOpen((prev) => !prev);
+            }}
+            className={`
               flex
               h-[42px]
               w-[42px]
@@ -154,73 +295,205 @@ export default function Header() {
               justify-center
               rounded-[5px]
               border
-              border-[#dce4ec]
-              text-[#0a294b]
               transition-all
               duration-300
-              hover:border-[#154f79]
-              hover:bg-[#f4f8fb]
+
               xl:hidden
-            "
+
+              ${
+                isHome
+                  ? `
+                    border-white/30
+                    bg-white/5
+                    text-white
+
+                    hover:border-white/60
+                    hover:bg-white/10
+                  `
+                  : `
+                    border-[#dce4ec]
+                    bg-white
+                    text-[#0a294b]
+
+                    hover:border-[#154f79]
+                    hover:bg-[#f4f8fb]
+                  `
+              }
+            `}
           >
-            <AnimatePresence mode="wait" initial={false}>
+            <AnimatePresence
+              mode="wait"
+              initial={false}
+            >
               {isOpen ? (
                 <motion.div
                   key="close"
-                  initial={{ opacity: 0, rotate: -90, scale: 0.8 }}
-                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                  exit={{ opacity: 0, rotate: 90, scale: 0.8 }}
-                  transition={{ duration: 0.2 }}
+                  initial={{
+                    opacity: 0,
+                    rotate: -90,
+                    scale: 0.8,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    rotate: 0,
+                    scale: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    rotate: 90,
+                    scale: 0.8,
+                  }}
+                  transition={{
+                    duration: 0.18,
+                  }}
                 >
-                  <X size={23} strokeWidth={1.8} />
+                  <X
+                    size={23}
+                    strokeWidth={1.8}
+                  />
                 </motion.div>
               ) : (
                 <motion.div
                   key="menu"
-                  initial={{ opacity: 0, rotate: 90, scale: 0.8 }}
-                  animate={{ opacity: 1, rotate: 0, scale: 1 }}
-                  exit={{ opacity: 0, rotate: -90, scale: 0.8 }}
-                  transition={{ duration: 0.2 }}
+                  initial={{
+                    opacity: 0,
+                    rotate: 90,
+                    scale: 0.8,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    rotate: 0,
+                    scale: 1,
+                  }}
+                  exit={{
+                    opacity: 0,
+                    rotate: -90,
+                    scale: 0.8,
+                  }}
+                  transition={{
+                    duration: 0.18,
+                  }}
                 >
-                  <Menu size={24} strokeWidth={1.8} />
+                  <Menu
+                    size={24}
+                    strokeWidth={1.8}
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
-          </button>
+          </motion.button>
         </nav>
+      </header>
 
-        {/* ==================== MOBILE / TABLET NAVIGATION ==================== */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{
-                opacity: 0,
-                height: 0,
-              }}
-              animate={{
-                opacity: 1,
-                height: "auto",
-              }}
-              exit={{
-                opacity: 0,
-                height: 0,
-              }}
-              transition={{
-                duration: 0.3,
-                ease: "easeInOut",
-              }}
-              className="overflow-hidden border-t border-[#e7edf3] bg-white xl:hidden"
+      {/* =====================================================
+          MOBILE BACKDROP
+      ====================================================== */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.button
+            type="button"
+            aria-label="Close navigation overlay"
+            initial={{
+              opacity: 0,
+            }}
+            animate={{
+              opacity: 1,
+            }}
+            exit={{
+              opacity: 0,
+            }}
+            transition={{
+              duration: 0.25,
+            }}
+            onClick={() => {
+              setIsOpen(false);
+            }}
+            className="
+              fixed
+              inset-x-0
+              bottom-0
+              top-[80px]
+              z-[90]
+              bg-black/35
+              backdrop-blur-[1px]
+
+              lg:top-[75px]
+
+              xl:hidden
+            "
+          />
+        )}
+      </AnimatePresence>
+
+      {/* =====================================================
+          MOBILE / TABLET 250PX SIDEBAR
+      ====================================================== */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.aside
+            initial={{
+              opacity: 0,
+              x: 260,
+            }}
+            animate={{
+              opacity: 1,
+              x: 0,
+            }}
+            exit={{
+              opacity: 0,
+              x: 260,
+            }}
+            transition={{
+              duration: 0.32,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className={`
+              fixed
+              bottom-0
+              right-0
+              top-[80px]
+              z-[95]
+              w-[250px]
+              overflow-y-auto
+              shadow-[-12px_0_35px_rgba(1,16,53,0.16)]
+
+              lg:top-[75px]
+
+              xl:hidden
+
+              ${
+                isHome
+                  ? "bg-[#011035]"
+                  : "bg-white"
+              }
+            `}
+          >
+            {/* =================================================
+                MENU CONTENT
+            ================================================== */}
+            <div
+              className="
+                flex
+                min-h-full
+                flex-col
+                px-[15px]
+                pb-[25px]
+                pt-[15px]
+              "
             >
-              <div className="mx-auto w-[min(1180px,calc(100%-32px))] py-4 sm:w-[min(1180px,calc(100%-48px))]">
+              {/* =============================================
+                  NAVIGATION LINKS
+              ============================================== */}
+              <div className="flex flex-col">
+                {navigation.map((item, index) => {
+                  const active = isActive(item.href);
 
-                {/* Navigation Links */}
-                <div className="flex flex-col">
-                  {navigation.map((item, index) => (
+                  return (
                     <motion.div
                       key={item.name}
                       initial={{
                         opacity: 0,
-                        x: -12,
+                        x: 15,
                       }}
                       animate={{
                         opacity: 1,
@@ -228,85 +501,178 @@ export default function Header() {
                       }}
                       transition={{
                         duration: 0.25,
-                        delay: index * 0.035,
+                        delay: 0.04 + index * 0.04,
                       }}
                     >
                       <Link
                         to={item.href}
+                        onClick={() => {
+                          setIsOpen(false);
+                        }}
                         className={`
+                          group
                           relative
                           flex
-                          min-h-[47px]
+                          min-h-[49px]
                           items-center
+                          rounded-[4px]
                           border-b
-                          border-[#edf1f5]
-                          px-2
-                          text-[13px]
-                          font-semibold
+                          px-[12px]
+                          text-[12px]
+                          font-[650]
                           transition-all
                           duration-300
+
                           ${
-                            isActive(item.href)
-                              ? "bg-[#f2f8f6] pl-4 text-[#188752]"
-                              : "text-[#273a51] hover:bg-[#f7fafc] hover:pl-4 hover:text-[#12638e]"
+                            isHome
+                              ? active
+                                ? `
+                                  bg-white/10
+                                  pl-[17px]
+                                  text-white
+                                  border-white/10
+                                `
+                                : `
+                                  border-white/10
+                                  text-white/75
+
+                                  hover:bg-white/7
+                                  hover:pl-[17px]
+                                  hover:text-white
+                                `
+                              : active
+                                ? `
+                                  border-[#e8edf2]
+                                  bg-[#f1f7fb]
+                                  pl-[17px]
+                                  text-[#0b6594]
+                                `
+                                : `
+                                  border-[#edf1f5]
+                                  text-[#273a51]
+
+                                  hover:bg-[#f7fafc]
+                                  hover:pl-[17px]
+                                  hover:text-[#12638e]
+                                `
                           }
                         `}
                       >
-                        {isActive(item.href) && (
-                          <span className="absolute left-0 h-[22px] w-[3px] rounded-r-full bg-[#168a57]" />
+                        {/* ACTIVE LINE */}
+                        {active && (
+                          <motion.span
+                            layoutId="mobile-active-line"
+                            className={`
+                              absolute
+                              left-0
+                              h-[22px]
+                              w-[3px]
+                              rounded-r-full
+
+                              ${
+                                isHome
+                                  ? "bg-[#35b9dc]"
+                                  : "bg-[#168a57]"
+                              }
+                            `}
+                          />
                         )}
 
                         {item.name}
                       </Link>
                     </motion.div>
-                  ))}
-                </div>
-
-                {/* Mobile Submit Button */}
-                <motion.div
-                  initial={{
-                    opacity: 0,
-                    y: 10,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  transition={{
-                    duration: 0.3,
-                    delay: 0.2,
-                  }}
-                  className="pt-5"
-                >
-                  <Link
-                    to="/submit-manuscript"
-                    className="
-                      flex
-                      h-[44px]
-                      w-full
-                      items-center
-                      justify-center
-                      rounded-[5px]
-                      bg-[#071d3a]
-                      px-5
-                      text-[12px]
-                      font-semibold
-                      text-white
-                      shadow-[0_5px_14px_rgba(7,29,58,0.16)]
-                      transition-all
-                      duration-300
-                      hover:bg-[#154f79]
-                      sm:w-fit
-                    "
-                  >
-                    Submit Manuscript
-                  </Link>
-                </motion.div>
+                  );
+                })}
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </header>
+
+              {/* =============================================
+                  SUBMIT BUTTON
+              ============================================== */}
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 12,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.3,
+                  delay: 0.28,
+                }}
+                className="
+                  mt-[22px]
+                "
+              >
+                <Link
+                  to="/submit-manuscript"
+                  onClick={() => {
+                    setIsOpen(false);
+                  }}
+                  className={`
+                    flex
+                    h-[44px]
+                    w-full
+                    items-center
+                    justify-center
+                    rounded-[5px]
+                    px-[14px]
+                    text-[11px]
+                    font-[650]
+                    transition-all
+                    duration-300
+
+                    ${
+                      isHome
+                        ? `
+                          border
+                          border-white/50
+                          bg-white
+                          text-[#011035]
+                          shadow-[0_6px_18px_rgba(0,0,0,0.18)]
+
+                          hover:bg-[#edf7ff]
+                        `
+                        : `
+                          bg-[#071d3a]
+                          text-white
+                          shadow-[0_5px_14px_rgba(7,29,58,0.16)]
+
+                          hover:bg-[#154f79]
+                        `
+                    }
+                  `}
+                >
+                  Submit Manuscript
+                </Link>
+              </motion.div>
+
+              {/* =============================================
+                  SMALL BOTTOM TEXT
+              ============================================== */}
+              <div
+                className={`
+                  mt-auto
+                  pt-[35px]
+                  text-[9px]
+                  leading-[1.6]
+
+                  ${
+                    isHome
+                      ? "text-white/40"
+                      : "text-[#8c9aaa]"
+                  }
+                `}
+              >
+                Global Reviews Press
+                <br />
+                Research. Reviews. Real Impact.
+              </div>
+            </div>
+          </motion.aside>
+        )}
+      </AnimatePresence>
     </>
   );
 }
