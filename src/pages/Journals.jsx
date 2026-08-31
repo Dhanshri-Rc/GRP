@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { Link } from "react-router-dom";
+
 import {
   ArrowRight,
   BookOpen,
@@ -23,9 +25,22 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+/* =========================================================
+   HERO / CTA IMAGES
+========================================================= */
 import bgjournal from "../assets/img/bgjournal.png";
 import bgcta from "../assets/img/jcta.png";
 
+/* =========================================================
+   JOURNAL IMAGES
+========================================================= */
+import j1 from "../assets/img/j1.png";
+import j2 from "../assets/img/j2.png";
+import j3 from "../assets/img/j3.png";
+
+/* =========================================================
+   INDEXING LOGOS
+========================================================= */
 import scopusLogo from "../assets/img/scopus.png";
 import clarivateLogo from "../assets/img/clarivate.png";
 import doajLogo from "../assets/img/doaj.png";
@@ -34,39 +49,293 @@ import dimensionsLogo from "../assets/img/dimensions.png";
 import crossrefLogo from "../assets/img/crossref.png";
 import googleScholarLogo from "../assets/img/google-scholar.png";
 
-// /* Engineering */
-// import eng1 from "../assets/img/journals/eng1.png";
-// import eng2 from "../assets/img/journals/eng2.png";
-// import eng3 from "../assets/img/journals/eng3.png";
-// import eng4 from "../assets/img/journals/eng4.png";
-// import eng5 from "../assets/img/journals/eng5.png";
-// import eng6 from "../assets/img/journals/eng6.png";
+/* =========================================================
+   FILTERS
+========================================================= */
+const filters = [
+  {
+    id: "all",
+    label: "All Journals",
+    icon: BookOpen,
+    iconColor: "",
+    active:
+      "border-[#0A3467] bg-[#0A3467] text-white shadow-[0_3px_8px_rgba(10,52,103,0.12)]",
+  },
+  {
+    id: "engineering",
+    label: "Engineering & Technology",
+    icon: Cpu,
+    iconColor: "text-[#3C82C2]",
+    active: "border-[#8BB6DF] bg-[#EEF6FD] text-[#286DA7]",
+  },
+  {
+    id: "medicine",
+    label: "Medicine & Health Sciences",
+    icon: HeartPulse,
+    iconColor: "text-[#3C94B5]",
+    active: "border-[#8EC6DB] bg-[#EFFAFE] text-[#267E9E]",
+  },
+  {
+    id: "sustainability",
+    label: "Sustainability & Environment",
+    icon: Leaf,
+    iconColor: "text-[#67A74B]",
+    active: "border-[#A7CE98] bg-[#F1FAED] text-[#548E3A]",
+  },
+  {
+    id: "interdisciplinary",
+    label: "Interdisciplinary",
+    icon: Shapes,
+    iconColor: "text-[#746FB0]",
+    active: "border-[#AAA4D2] bg-[#F5F3FD] text-[#615D99]",
+  },
+];
 
-// /* Medicine */
-// import med1 from "../assets/img/journals/med1.png";
-// import med2 from "../assets/img/journals/med2.png";
-// import med3 from "../assets/img/journals/med3.png";
-// import med4 from "../assets/img/journals/med4.png";
-// import med5 from "../assets/img/journals/med5.png";
-// import med6 from "../assets/img/journals/med6.png";
+/* =========================================================
+   ENGINEERING JOURNALS — ONLY 5
+========================================================= */
+const engineeringJournals = [
+  {
+    title: "Artificial Intelligence",
+    reviews: "Reviews",
+    image: j1,
+  },
+  {
+    title: "Robotics & Automation",
+    reviews: "Reviews",
+    image: j2,
+  },
+  {
+    title: "Quantum Computing",
+    reviews: "Reviews",
+    image: j3,
+  },
+  {
+    title: "Edge Intelligence & Computing",
+    reviews: "Reviews",
+    image: j2,
+  },
+  {
+    title: "Digital Twin Technologies",
+    reviews: "Reviews",
+    image: j1,
+  },
+];
 
-// /* Sustainability */
-// import sust1 from "../assets/img/journals/sust1.png";
-// import sust2 from "../assets/img/journals/sust2.png";
-// import sust3 from "../assets/img/journals/sust3.png";
-// import sust4 from "../assets/img/journals/sust4.png";
-// import sust5 from "../assets/img/journals/sust5.png";
-// import sust6 from "../assets/img/journals/sust6.png";
+/* =========================================================
+   MEDICINE JOURNALS — ONLY 5
+========================================================= */
+const medicineJournals = [
+  {
+    title: "AI-Enabled Medical Imaging",
+    reviews: "Reviews",
+    image: j3,
+  },
+  {
+    title: "Digital Biomarkers & Wearables",
+    reviews: "Reviews",
+    image: j2,
+  },
+  {
+    title: "Robotic Surgery",
+    reviews: "Reviews",
+    image: j1,
+  },
+  {
+    title: "Precision Diagnostics & Digital Pathology",
+    reviews: "Reviews",
+    image: j2,
+  },
+  {
+    title: "Neurotechnology",
+    reviews: "Reviews",
+    image: j3,
+  },
+];
 
+/* =========================================================
+   SUSTAINABILITY JOURNALS — ONLY 5
+========================================================= */
+const sustainabilityJournals = [
+  {
+    title: "Sustainability",
+    reviews: "Reviews",
+    image: j2,
+  },
+  {
+    title: "Renewable Energy and Systems",
+    reviews: "Reviews",
+    image: j1,
+  },
+  {
+    title: "Climate & Urban Resilience",
+    reviews: "Reviews",
+    image: j3,
+  },
+  {
+    title: "Biosensors & Environmental Tech",
+    reviews: "Reviews",
+    image: j1,
+  },
+  {
+    title: "Green Materials & Circular Economy",
+    reviews: "Reviews",
+    image: j2,
+  },
+];
+
+/* =========================================================
+   JOURNAL CATEGORIES
+========================================================= */
+const journalCategories = [
+  {
+    id: "engineering",
+    title: "Engineering & Technology",
+    journals: engineeringJournals,
+    overlay:
+      "from-[#001833]/70 via-transparent via-[55%] to-[#00162F]/95",
+    fallback: "bg-[#062651]",
+  },
+  {
+    id: "medicine",
+    title: "Medicine & Health Sciences",
+    journals: medicineJournals,
+    overlay:
+      "from-[#001833]/65 via-transparent via-[55%] to-[#00162F]/95",
+    fallback: "bg-[#062651]",
+  },
+  {
+    id: "sustainability",
+    title: "Sustainability & Environment",
+    journals: sustainabilityJournals,
+    overlay:
+      "from-[#123E29]/56 via-transparent via-[55%] to-[#092C1A]/92",
+    fallback: "bg-[#174A2A]",
+  },
+];
+
+/* =========================================================
+   WHY PUBLISH DATA
+========================================================= */
+const publishBenefits = [
+  {
+    title: "International Visibility",
+    description: "Wide global dissemination and indexing",
+    icon: Globe2,
+    background: "bg-[#26a9cd]",
+  },
+  {
+    title: "Rigorous Peer Review",
+    description: "Ensuring quality, credibility and integrity",
+    icon: BadgeCheck,
+    background: "bg-[#ef705a]",
+  },
+  {
+    title: "Open Access Options",
+    description: "Maximize reach and impact of your research",
+    icon: LockKeyholeOpen,
+    background: "bg-[#6eaa42]",
+  },
+  {
+    title: "Author Friendly",
+    description: "Transparent process and fast communication",
+    icon: UsersRound,
+    background: "bg-[#30a1d5]",
+  },
+  {
+    title: "Ethical Publishing",
+    description: "Upholding the highest ethical standards",
+    icon: Scale,
+    background: "bg-[#e94d58]",
+  },
+];
+
+/* =========================================================
+   AT A GLANCE DATA
+========================================================= */
+const glanceStats = [
+  {
+    value: "20+",
+    label: "Journals & Magazines",
+    icon: LibraryBig,
+    color: "text-[#5575c9]",
+  },
+  {
+    value: "5000+",
+    label: "Global Authors",
+    icon: UsersRound,
+    color: "text-[#6867b5]",
+  },
+  {
+    value: "120+",
+    label: "Countries",
+    icon: Globe2,
+    color: "text-[#6658ad]",
+  },
+  {
+    value: "15,000+",
+    label: "Articles Published",
+    icon: FileText,
+    color: "text-[#6471b8]",
+  },
+  {
+    value: "50+",
+    label: "Indexing Partners",
+    icon: Database,
+    color: "text-[#6374ba]",
+  },
+  {
+    value: "100+",
+    label: "Institutional Collaborations",
+    icon: Building2,
+    color: "text-[#596bab]",
+  },
+];
+
+/* =========================================================
+   SORT FUNCTION
+   IMPORTANT:
+   sortOrder is explicitly passed in.
+   No out-of-scope "sort" variable.
+========================================================= */
+const sortJournals = (items, sortOrder) => {
+  if (sortOrder === "az") {
+    return [...items].sort((a, b) =>
+      a.title.localeCompare(b.title)
+    );
+  }
+
+  if (sortOrder === "za") {
+    return [...items].sort((a, b) =>
+      b.title.localeCompare(a.title)
+    );
+  }
+
+  return items;
+};
+
+/* =========================================================
+   PAGE
+========================================================= */
 export default function Journals() {
   const [activeTab, setActiveTab] = useState("all");
   const [sort, setSort] = useState("default");
+
+  /* =======================================================
+     VISIBLE CATEGORIES
+  ======================================================= */
+  const visibleCategories =
+    activeTab === "all" || activeTab === "interdisciplinary"
+      ? journalCategories
+      : journalCategories.filter(
+          (category) => category.id === activeTab
+        );
 
   return (
     <>
       <Header />
 
-      <main className="overflow-hidden bg-white pt-[75px]">
+      <main className="overflow-hidden bg-white pt-[30px]">
 
         {/* =========================================================
             HERO SECTION
@@ -75,104 +344,246 @@ export default function Journals() {
           className="
             relative
             isolate
+            flex
+            min-h-[520px]
+            w-full
             overflow-hidden
-            bg-[#041d44]
+            bg-[#031a3d]
             bg-cover
-            bg-center
             bg-no-repeat
             text-white
 
-            min-h-[430px]
-            sm:min-h-[445px]
+            bg-[position:67%_center]
+
+            min-[390px]:bg-[position:69%_center]
+
+            sm:min-h-[510px]
+            sm:bg-[position:66%_center]
+
+            md:min-h-[490px]
+            md:bg-[position:62%_center]
+
             lg:min-h-[490px]
+            lg:bg-center
           "
           style={{
             backgroundImage: `url(${bgjournal})`,
           }}
         >
-         
+          {/* Mobile / Tablet Readability Overlay */}
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              -z-10
+
+              bg-gradient-to-r
+              from-[#03183c]/98
+              via-[#03183c]/92
+              via-[58%]
+              to-[#03183c]/15
+
+              sm:via-[54%]
+              sm:to-[#03183c]/10
+
+              md:from-[#03183c]/96
+              md:via-[#03183c]/72
+              md:via-[47%]
+              md:to-transparent
+
+              lg:from-transparent
+              lg:via-transparent
+              lg:to-transparent
+            "
+          />
 
           <div
             className="
               mx-auto
               flex
-              min-h-[430px]
+              min-h-[520px]
               w-[min(1120px,calc(100%-32px))]
               items-center
-              py-12
+              py-[46px]
 
-              sm:min-h-[445px]
+              sm:min-h-[510px]
               sm:w-[min(1120px,calc(100%-48px))]
+              sm:py-[42px]
+
+              md:min-h-[490px]
+              md:py-[35px]
 
               lg:min-h-[490px]
-              lg:py-8
+              lg:py-0
             "
           >
             <motion.div
-              initial={{ opacity: 0, x: -28 }}
-              animate={{ opacity: 1, x: 0 }}
+              initial={{
+                opacity: 0,
+                x: -30,
+              }}
+              animate={{
+                opacity: 1,
+                x: 0,
+              }}
               transition={{
-                duration: 0.7,
+                duration: 0.75,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="relative z-10 max-w-[430px]"
+              className="
+                relative
+                z-10
+                w-full
+                max-w-[390px]
+
+                sm:max-w-[410px]
+                md:max-w-[420px]
+                lg:max-w-[430px]
+              "
             >
-              <h1
+              {/* HERO TITLE */}
+              <motion.h1
+                initial={{
+                  opacity: 0,
+                  y: 18,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.08,
+                }}
                 className="
                   font-['Inter',sans-serif]
-                  text-[38px]
-                  font-[800]
-                  leading-[0.98]
-                  tracking-[-0.035em]
+                  text-[30px]
+                  font-[600]
+                  leading-[1.13]
+                  tracking-[-0.025em]
+                  text-white
 
-                  sm:text-[45px]
-                  lg:text-[47px]
+                  min-[360px]:text-[31px]
+                  min-[390px]:text-[32px]
+                  min-[430px]:text-[34px]
+
+                  sm:text-[38px]
+                  md:text-[37px]
+                  lg:text-[39px]
+                  xl:text-[42px]
                 "
               >
-                JOURNALS
-                <br />
-                & MAGAZINES
-              </h1>
+                <span className="block">
+                  JOURNALS
+                </span>
 
-              <p
+                <span className="block">
+                  & MAGAZINES
+                </span>
+              </motion.h1>
+
+              {/* TAGLINE */}
+              <motion.p
+                initial={{
+                  opacity: 0,
+                  y: 12,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.55,
+                  delay: 0.16,
+                }}
                 className="
-                  mt-4
-                  text-[14px]
-                  font-[700]
-                  text-[#f6b928]
+                  mt-[15px]
+                  font-['Inter',sans-serif]
+                  text-[15px]
+                  font-[600]
+                  leading-[1.35]
+                  text-[#f5b823]
 
-                  sm:text-[15px]
+                  lg:text-[16px]
                 "
               >
                 Curated. Peer Reviewed. Global.
-              </p>
+              </motion.p>
 
-              <p
+              {/* DESCRIPTION */}
+              <motion.p
+                initial={{
+                  opacity: 0,
+                  y: 12,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.55,
+                  delay: 0.22,
+                }}
                 className="
-                  mt-5
-                  max-w-[370px]
-                  text-[11px]
+                  mt-[17px]
+                  max-w-[360px]
+                  font-['Inter',sans-serif]
+                  text-[12px]
                   font-[500]
-                  leading-[1.65]
+                  leading-[1.7]
                   text-white/90
 
-                  sm:text-[11.5px]
+                  sm:text-[12.5px]
+                  lg:text-[13px]
                 "
               >
                 High-quality review journals and magazines spanning
-                Engineering, Medicine and Sustainability published by Global
-                Reviews Press.
-              </p>
+                Engineering, Medicine and Sustainability published by
+                Global Reviews Press.
+              </motion.p>
 
-              <div className="mt-6 flex flex-wrap items-center gap-3">
+              {/* HERO BUTTONS */}
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 14,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.55,
+                  delay: 0.3,
+                }}
+                className="
+                  mt-[24px]
+                  flex
+                  flex-wrap
+                  items-center
+                  gap-[12px]
+
+                  min-[390px]:gap-[14px]
+                "
+              >
                 <motion.button
-                  whileHover={{ y: -3 }}
-                  whileTap={{ scale: 0.97 }}
+                  type="button"
+                  whileHover={{
+                    y: -3,
+                  }}
+                  whileTap={{
+                    scale: 0.97,
+                  }}
                   onClick={() => {
                     setActiveTab("all");
+
                     document
                       .getElementById("journal-content")
-                      ?.scrollIntoView({ behavior: "smooth" });
+                      ?.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start",
+                      });
                   }}
                   className="
                     group
@@ -180,54 +591,83 @@ export default function Journals() {
                     h-[42px]
                     items-center
                     justify-center
-                    gap-2
-                    rounded-[4px]
-                    bg-[#f7b928]
-                    px-5
-                    text-[10px]
-                    font-[700]
+                    gap-[11px]
+                    rounded-[5px]
+                    border
+                    border-[#eab126]
+                    bg-[#f4b928]
+                    px-[18px]
+
+                    font-['Inter',sans-serif]
+                    text-[13px]
+                    font-[600]
                     text-[#08244b]
-                    shadow-[0_5px_14px_rgba(0,0,0,0.14)]
+
+                    shadow-[0_5px_14px_rgba(0,0,0,0.16)]
+
                     transition-all
                     duration-300
-                    hover:bg-[#ffc94c]
+
+                    hover:border-[#ffc94d]
+                    hover:bg-[#ffc94d]
+                    hover:text-white
+                    hover:shadow-[0_8px_20px_rgba(0,0,0,0.2)]
+
+                    max-[350px]:w-full
                   "
                 >
                   Explore All Journals
 
                   <ArrowRight
-                    size={14}
-                    className="transition-transform duration-300 group-hover:translate-x-1"
+                    size={18}
+                    strokeWidth={2}
+                    className="
+                      transition-transform
+                      duration-300
+                      group-hover:translate-x-[4px]
+                    "
                   />
                 </motion.button>
 
-                <motion.a
-                  href="/about"
+                <motion.div
                   whileHover={{ y: -3 }}
                   whileTap={{ scale: 0.97 }}
-                  className="
-                    inline-flex
-                    h-[42px]
-                    items-center
-                    justify-center
-                    rounded-[4px]
-                    border
-                    border-white/80
-                    bg-white/[0.04]
-                    px-5
-                    text-[10px]
-                    font-[600]
-                    text-white
-                    backdrop-blur-[2px]
-                    transition-all
-                    duration-300
-                    hover:bg-white
-                    hover:text-[#08244b]
-                  "
+                  className="max-[350px]:w-full"
                 >
-                  About Our Journals
-                </motion.a>
-              </div>
+                  <Link
+                    to="/about"
+                    className="
+                      inline-flex
+                      h-[42px]
+                      items-center
+                      justify-center
+                      rounded-[5px]
+                      border
+                      border-white/80
+                      bg-[#071939]/35
+                      px-[18px]
+
+                      font-['Inter',sans-serif]
+                      text-[13px]
+                      font-[600]
+                      text-white
+
+                      backdrop-blur-[2px]
+
+                      transition-all
+                      duration-300
+
+                      hover:border-white
+                      hover:bg-white
+                      hover:text-[#08244b]
+
+                      max-[350px]:w-full
+                    "
+                  >
+                    About Our Journals
+                  </Link>
+                </motion.div>
+              </motion.div>
             </motion.div>
           </div>
         </section>
@@ -239,12 +679,12 @@ export default function Journals() {
           id="journal-content"
           className="
             sticky
-            top-[88px]
+            top-[75px]
             z-40
             border-b
-            border-[#e6ecf2]
+            border-[#E5EBF0]
             bg-white/95
-            py-[13px]
+            py-[12px]
             backdrop-blur-md
           "
         >
@@ -254,7 +694,7 @@ export default function Journals() {
               flex
               w-[min(1120px,calc(100%-32px))]
               flex-col
-              gap-3
+              gap-[10px]
 
               sm:w-[min(1120px,calc(100%-48px))]
 
@@ -263,177 +703,132 @@ export default function Journals() {
               lg:justify-between
             "
           >
-            <div className="flex flex-wrap gap-[7px]">
+            {/* FILTER BUTTONS */}
+            <div className="flex flex-wrap items-center gap-[7px]">
+              {filters.map((filter) => {
+                const Icon = filter.icon;
+                const active = activeTab === filter.id;
 
-              {/* All */}
-              <button
-                onClick={() => setActiveTab("all")}
-                className={`
-                  inline-flex
-                  h-[32px]
-                  items-center
-                  gap-[6px]
-                  rounded-[5px]
-                  border
-                  px-[12px]
-                  text-[8.5px]
-                  font-[650]
-                  transition-all
-                  duration-300
-                  ${
-                    activeTab === "all"
-                      ? "border-[#092f65] bg-[#092f65] text-white"
-                      : "border-[#dfe6ee] bg-[#fafbfd] text-[#50617a] hover:border-[#9fb0c2] hover:bg-white"
-                  }
-                `}
-              >
-                <BookOpen size={12} />
-                All Journals
-              </button>
+                return (
+                  <motion.button
+                    key={filter.id}
+                    type="button"
+                    whileHover={{
+                      y: -2,
+                    }}
+                    whileTap={{
+                      scale: 0.97,
+                    }}
+                    onClick={() =>
+                      setActiveTab(filter.id)
+                    }
+                    className={`
+                      inline-flex
+                      h-[31px]
+                      items-center
+                      justify-center
+                      gap-[10px]
+                      whitespace-nowrap
+                      rounded-[5px]
+                      border
+                      px-[11px]
 
-              {/* Engineering */}
-              <button
-                onClick={() => setActiveTab("engineering")}
-                className={`
-                  inline-flex
-                  h-[32px]
-                  items-center
-                  gap-[6px]
-                  rounded-[5px]
-                  border
-                  px-[12px]
-                  text-[8.5px]
-                  font-[650]
-                  transition-all
-                  duration-300
-                  ${
-                    activeTab === "engineering"
-                      ? "border-[#155798] bg-[#eaf3ff] text-[#155798]"
-                      : "border-[#dfe6ee] bg-[#fafbfd] text-[#50617a] hover:border-[#9fb0c2] hover:bg-white"
-                  }
-                `}
-              >
-                <Cpu size={12} className="text-[#357dc4]" />
-                Engineering & Technology
-              </button>
+                      font-['Inter',sans-serif]
+                      text-[12.5px]
+                      font-[600]
 
-              {/* Medicine */}
-              <button
-                onClick={() => setActiveTab("medicine")}
-                className={`
-                  inline-flex
-                  h-[32px]
-                  items-center
-                  gap-[6px]
-                  rounded-[5px]
-                  border
-                  px-[12px]
-                  text-[8.5px]
-                  font-[650]
-                  transition-all
-                  duration-300
-                  ${
-                    activeTab === "medicine"
-                      ? "border-[#2688ac] bg-[#ecfaff] text-[#20799b]"
-                      : "border-[#dfe6ee] bg-[#fafbfd] text-[#50617a] hover:border-[#9fb0c2] hover:bg-white"
-                  }
-                `}
-              >
-                <HeartPulse size={12} className="text-[#3e91bf]" />
-                Medicine & Health Sciences
-              </button>
+                      transition-all
+                      duration-300
 
-              {/* Sustainability */}
-              <button
-                onClick={() => setActiveTab("sustainability")}
-                className={`
-                  inline-flex
-                  h-[32px]
-                  items-center
-                  gap-[6px]
-                  rounded-[5px]
-                  border
-                  px-[12px]
-                  text-[8.5px]
-                  font-[650]
-                  transition-all
-                  duration-300
-                  ${
-                    activeTab === "sustainability"
-                      ? "border-[#559f39] bg-[#f0f9eb] text-[#4d9136]"
-                      : "border-[#dfe6ee] bg-[#fafbfd] text-[#50617a] hover:border-[#9fb0c2] hover:bg-white"
-                  }
-                `}
-              >
-                <Leaf size={12} className="text-[#63a743]" />
-                Sustainability & Environment
-              </button>
+                      ${
+                        active
+                          ? filter.active
+                          : "border-[#E1E7EC] bg-[#FAFBFC] text-[#52637A] hover:border-[#A8B8C8] hover:bg-white hover:text-[#173E6C]"
+                      }
+                    `}
+                  >
+                    <Icon
+                      size={20}
+                      strokeWidth={1.7}
+                      className={
+                        active &&
+                        filter.id === "all"
+                          ? ""
+                          : filter.iconColor
+                      }
+                    />
 
-              {/* Interdisciplinary */}
-              <button
-                onClick={() => setActiveTab("interdisciplinary")}
-                className={`
-                  inline-flex
-                  h-[32px]
-                  items-center
-                  gap-[6px]
-                  rounded-[5px]
-                  border
-                  px-[12px]
-                  text-[8.5px]
-                  font-[650]
-                  transition-all
-                  duration-300
-                  ${
-                    activeTab === "interdisciplinary"
-                      ? "border-[#6d66b0] bg-[#f3f1ff] text-[#6059a0]"
-                      : "border-[#dfe6ee] bg-[#fafbfd] text-[#50617a] hover:border-[#9fb0c2] hover:bg-white"
-                  }
-                `}
-              >
-                <Shapes size={12} className="text-[#6d66b0]" />
-                Interdisciplinary
-              </button>
+                    {filter.label}
+                  </motion.button>
+                );
+              })}
             </div>
 
-            <div className="relative w-fit">
+            {/* SORT SELECT */}
+            <div className="relative w-[100px] shrink-0">
               <select
                 value={sort}
-                onChange={(e) => setSort(e.target.value)}
+                onChange={(e) =>
+                  setSort(e.target.value)
+                }
                 className="
-                  h-[32px]
+                  h-[31px]
+                  w-full
                   appearance-none
                   rounded-[5px]
                   border
-                  border-[#dce5ed]
-                  bg-[#fafbfd]
-                  pb-0
-                  pl-3
-                  pr-8
-                  text-[8.5px]
-                  font-[650]
-                  text-[#465a73]
+                  border-[#DEE5EB]
+                  bg-[#FAFBFC]
+                  pl-[12px]
+                  pr-[28px]
+
+                  font-['Inter',sans-serif]
+                  text-[12.5px]
+                  font-[600]
+                  text-[#496079]
+
                   outline-none
-                  transition-colors
-                  focus:border-[#426d9a]
+
+                  transition-all
+                  duration-300
+
+                  hover:border-[#AABAC8]
+
+                  focus:border-[#48789E]
+                  focus:bg-white
                 "
               >
-                <option value="default">Sort by</option>
-                <option value="az">A–Z</option>
-                <option value="za">Z–A</option>
-                <option value="popular">Most Popular</option>
+                <option value="default">
+                  Sort by
+                </option>
+
+                <option value="az">
+                  A – Z
+                </option>
+
+                <option value="za">
+                  Z – A
+                </option>
               </select>
 
               <ChevronDown
                 size={11}
-                className="pointer-events-none absolute right-[10px] top-1/2 -translate-y-1/2 text-[#63758a]"
+                strokeWidth={1.8}
+                className="
+                  pointer-events-none
+                  absolute
+                  right-[9px]
+                  top-1/2
+                  -translate-y-1/2
+                  text-[#718195]
+                "
               />
             </div>
           </div>
         </section>
 
         {/* =========================================================
-            MAIN CONTENT + SIDEBAR
+            JOURNALS + RIGHT SIDEBAR
         ========================================================== */}
         <section className="bg-white py-[24px] sm:py-[30px]">
           <div
@@ -442,683 +837,194 @@ export default function Journals() {
               grid
               w-[min(1120px,calc(100%-32px))]
               grid-cols-1
-              gap-6
+              gap-[20px]
 
               sm:w-[min(1120px,calc(100%-48px))]
 
-              xl:grid-cols-[1fr_220px]
-              xl:gap-[20px]
+              xl:grid-cols-[minmax(0,1fr)_205px]
+              xl:items-start
+              xl:gap-[22px]
             "
           >
             {/* =====================================================
-                LEFT JOURNAL CONTENT
+                LEFT JOURNALS
             ====================================================== */}
             <div className="min-w-0">
-
-              <AnimatePresence mode="wait">
-
-                {/* =================================================
-                    ENGINEERING & TECHNOLOGY
-                ================================================== */}
-                {(activeTab === "all" ||
-                  activeTab === "engineering" ||
-                  activeTab === "interdisciplinary") && (
-                  <motion.section
-                    key="engineering"
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <div className="mb-[11px] flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="h-[2px] w-[18px] bg-[#f1ad22]" />
-
-                        <h2
-                          className="
-                            text-[12px]
-                            font-[800]
-                            text-[#163b6b]
-
-                            sm:text-[13px]
-                          "
-                        >
-                          Engineering & Technology
-                        </h2>
-                      </div>
-
-                      <button className="group flex items-center gap-1 text-[7.5px] font-[650] text-[#356ca4]">
-                        View all
-                        <ArrowRight
-                          size={9}
-                          className="transition-transform group-hover:translate-x-1"
-                        />
-                      </button>
-                    </div>
-
-                    <div
-                      className="
-                        grid
-                        grid-cols-2
-                        gap-[7px]
-
-                        sm:grid-cols-3
-
-                        md:grid-cols-4
-
-                        lg:grid-cols-6
-                      "
+              <AnimatePresence initial={false}>
+                {visibleCategories.map(
+                  (category, categoryIndex) => (
+                    <motion.section
+                      layout
+                      key={category.id}
+                      initial={{
+                        opacity: 0,
+                        y: 14,
+                      }}
+                      animate={{
+                        opacity: 1,
+                        y: 0,
+                      }}
+                      exit={{
+                        opacity: 0,
+                        y: -8,
+                      }}
+                      transition={{
+                        duration: 0.4,
+                      }}
+                      className={
+                        categoryIndex === 0
+                          ? ""
+                          : "mt-[28px]"
+                      }
                     >
-                      {/* CARD 1 */}
-                      <motion.article
-                        whileHover={{ y: -6 }}
+                      {/* CATEGORY HEADING */}
+                      <div
                         className="
-                          group
-                          relative
-                          min-h-[205px]
-                          overflow-hidden
-                          rounded-[5px]
-                          bg-[#062b55]
-                          shadow-[0_5px_14px_rgba(7,36,67,0.10)]
+                          mb-[8px]
+                          flex
+                          items-center
+                          justify-between
+                          gap-4
                         "
                       >
-                        {/* <img
-                          src={eng1}
-                          alt="Artificial Intelligence Reviews"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
+                        <div
+                          className="
+                            flex
+                            min-w-0
+                            items-center
+                            gap-[10px]
+                          "
+                        >
+                          <span
+                            className="
+                              h-[2px]
+                              w-[20px]
+                              shrink-0
+                              bg-[#F2AE20]
+                            "
+                          />
 
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#001a3c]/75 via-transparent to-[#00152e]/95" />
+                          <h2
+                            className="
+                              truncate
+                              font-['Inter',sans-serif]
+                              text-[15px]
+                              font-[600]
+                              text-[#153767]
 
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[10px] font-[800] leading-[1.12]">
-                              Artificial
-                              <br />
-                              Intelligence
-                            </h3>
-
-                            <p className="mt-1 text-[7px] font-[500] text-white/80">
-                              Reviews
-                            </p>
-                          </div>
-
-                          <p className="text-[5.5px] font-[500] text-white/80">
-                            Open Access • Peer Reviewed
-                          </p>
+                              sm:text-[15px]
+                              lg:text-[16px]
+                            "
+                          >
+                            {category.title}
+                          </h2>
                         </div>
-                      </motion.article>
 
-                      {/* CARD 2 */}
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px] bg-[#062b55] shadow-[0_5px_14px_rgba(7,36,67,0.10)]"
-                      >
-                        {/* <img
-                          src={eng2}
-                          alt="Robotics & Automation Reviews"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#001a3c]/65 via-transparent to-[#00152e]/95" />
-
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[10px] font-[800] leading-[1.12]">
-                              Robotics
-                              <br />
-                              & Automation
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/80">
-                              Reviews
-                            </p>
-                          </div>
-
-                          <p className="text-[5.5px] text-white/80">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
-
-                      {/* CARD 3 */}
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px] bg-[#062b55] shadow-[0_5px_14px_rgba(7,36,67,0.10)]"
-                      >
-                        {/* <img
-                          src={eng3}
-                          alt="Quantum Computing Reviews"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#001a3c]/65 via-transparent to-[#00152e]/95" />
-
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[10px] font-[800] leading-[1.12]">
-                              Quantum
-                              <br />
-                              Computing
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/80">
-                              Reviews
-                            </p>
-                          </div>
-
-                          <p className="text-[5.5px] text-white/80">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
-
-                      {/* CARD 4 */}
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px] bg-[#062b55] shadow-[0_5px_14px_rgba(7,36,67,0.10)]"
-                      >
-                        {/* <img
-                          src={eng4}
-                          alt="Edge Intelligence & Computing"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#001a3c]/65 via-transparent to-[#00152e]/95" />
-
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[9.5px] font-[800] leading-[1.12]">
-                              Edge Intelligence
-                              <br />
-                              & Computing
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/80">
-                              Reviews
-                            </p>
-                          </div>
-
-                          <p className="text-[5.5px] text-white/80">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
-
-                      {/* CARD 5 */}
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px] bg-[#062b55] shadow-[0_5px_14px_rgba(7,36,67,0.10)]"
-                      >
-                        {/* <img
-                          src={eng5}
-                          alt="Digital Twin Technologies"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#001a3c]/65 via-transparent to-[#00152e]/95" />
-
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[9.5px] font-[800] leading-[1.12]">
-                              Digital Twin
-                              <br />
-                              Technologies
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/80">
-                              Reviews
-                            </p>
-                          </div>
-
-                          <p className="text-[5.5px] text-white/80">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
-
-                      {/* CARD 6 */}
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px] bg-[#062b55] shadow-[0_5px_14px_rgba(7,36,67,0.10)]"
-                      >
-                        {/* <img
-                          src={eng6}
-                          alt="6G & Future Communication"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#001a3c]/65 via-transparent to-[#00152e]/95" />
-
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[9.5px] font-[800] leading-[1.12]">
-                              6G & Future
-                              <br />
-                              Communication
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/80">
-                              Reviews
-                            </p>
-                          </div>
-
-                          <p className="text-[5.5px] text-white/80">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
-                    </div>
-                  </motion.section>
-                )}
-
-                {/* =================================================
-                    MEDICINE
-                ================================================== */}
-                {(activeTab === "all" ||
-                  activeTab === "medicine" ||
-                  activeTab === "interdisciplinary") && (
-                  <motion.section
-                    key="medicine"
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="mt-[30px]"
-                  >
-                    <div className="mb-[11px] flex items-center justify-between">
-                      <div className="flex items-center gap-2">
-                        <span className="h-[2px] w-[18px] bg-[#f1ad22]" />
-
-                        <h2 className="text-[12px] font-[800] text-[#163b6b] sm:text-[13px]">
-                          Medicine & Health Sciences
-                        </h2>
+                    
                       </div>
 
-                      <button className="group flex items-center gap-1 text-[7.5px] font-[650] text-[#356ca4]">
-                        View all
-                        <ArrowRight
-                          size={9}
-                          className="transition-transform group-hover:translate-x-1"
-                        />
-                      </button>
-                    </div>
+                      {/* =============================================
+                          EXACTLY 5 JOURNAL CARDS
+                      ============================================= */}
+                      <div
+                        className="
+                          grid
+                          grid-cols-1
+                          gap-[10px]
 
-                    <div className="grid grid-cols-2 gap-[7px] sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+                          min-[360px]:grid-cols-2
 
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px]"
+                          sm:grid-cols-3
+
+                          md:grid-cols-4
+
+                          lg:grid-cols-5
+                        "
                       >
-                        {/* <img
-                          src={med1}
-                          alt="AI-Enabled Medical Imaging Reviews"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#061e42]/65 via-transparent to-[#031b38]/95" />
+                        {sortJournals(
+                          category.journals,
+                          sort
+                        ).map(
+                          (
+                            journal,
+                            index
+                          ) => (
+                            <motion.article
+                              key={
+                                journal.title
+                              }
+                              initial={{
+                                opacity: 0,
+                                y: 14,
+                              }}
+                              whileInView={{
+                                opacity: 1,
+                                y: 0,
+                              }}
+                              viewport={{
+                                once: true,
+                                amount: 0.15,
+                              }}
+                              transition={{
+                                duration: 0.4,
+                                delay:
+                                  index *
+                                  0.045,
+                              }}
+                              whileHover={{
+                                y: -6,
+                              }}
+                              className={`
+                                group
+                                relative
+                                isolate
+                                min-h-[175px]
+                                cursor-pointer
+                                overflow-hidden
+                                rounded-[5px]
 
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[9px] font-[800] leading-[1.12]">
-                              AI-Enabled
-                              <br />
-                              Medical Imaging
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/80">
-                              Reviews
-                            </p>
-                          </div>
+                                ${category.fallback}
 
-                          <p className="text-[5.5px] text-white/80">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
+                                shadow-[0_4px_12px_rgba(9,37,72,0.10)]
 
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px]"
-                      >
-                        {/* <img
-                          src={med2}
-                          alt="Digital Biomarkers & Wearables"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
+                                sm:min-h-[170px]
+                                lg:min-h-[185px]
+                              `}
+                            >
+                              {/* IMAGE */}
+                              <img
+                                src={
+                                  journal.image
+                                }
+                                alt={
+                                  journal.title
+                                }
+                                loading="lazy"
+                                className="
+                                  absolute
+                                  inset-0
+                                  -z-20
+                                  h-full
+                                  w-full
+                                  object-cover
 
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#061e42]/65 via-transparent to-[#031b38]/95" />
+                                  transition-transform
+                                  duration-700
+                                  ease-out
 
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[9px] font-[800] leading-[1.12]">
-                              Digital Biomarkers
-                              <br />
-                              & Wearables
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/80">
-                              Reviews
-                            </p>
-                          </div>
+                                  group-hover:scale-[1.07]
+                                "
+                              />
 
-                          <p className="text-[5.5px] text-white/80">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
+                            
 
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px]"
-                      >
-                        {/* <img
-                          src={med3}
-                          alt="Robotic Surgery Reviews"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#061e42]/65 via-transparent to-[#031b38]/95" />
-
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[9.5px] font-[800]">
-                              Robotic Surgery
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/80">
-                              Reviews
-                            </p>
-                          </div>
-
-                          <p className="text-[5.5px] text-white/80">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
-
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px]"
-                      >
-                        {/* <img
-                          src={med4}
-                          alt="Precision Diagnostics & Digital Pathology Reviews"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#061e42]/65 via-transparent to-[#031b38]/95" />
-
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[8.5px] font-[800] leading-[1.12]">
-                              Precision Diagnostics
-                              <br />
-                              & Digital Pathology
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/80">
-                              Reviews
-                            </p>
-                          </div>
-
-                          <p className="text-[5.5px] text-white/80">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
-
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px]"
-                      >
-                        {/* <img
-                          src={med5}
-                          alt="Neurotechnology Reviews"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#061e42]/65 via-transparent to-[#031b38]/95" />
-
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[9px] font-[800]">
-                              Neurotechnology
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/80">
-                              Reviews
-                            </p>
-                          </div>
-
-                          <p className="text-[5.5px] text-white/80">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
-
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px]"
-                      >
-                        {/* <img
-                          src={med6}
-                          alt="AI in Drug Discovery & Development Reviews"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#061e42]/65 via-transparent to-[#031b38]/95" />
-
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[8.5px] font-[800] leading-[1.12]">
-                              AI in Drug Discovery
-                              <br />
-                              & Development
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/80">
-                              Reviews
-                            </p>
-                          </div>
-
-                          <p className="text-[5.5px] text-white/80">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
-                    </div>
-                  </motion.section>
-                )}
-
-                {/* =================================================
-                    SUSTAINABILITY
-                ================================================== */}
-                {(activeTab === "all" ||
-                  activeTab === "sustainability" ||
-                  activeTab === "interdisciplinary") && (
-                  <motion.section
-                    key="sustainability"
-                    initial={{ opacity: 0, y: 14 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    transition={{ duration: 0.4 }}
-                    className="mt-[30px]"
-                  >
-                    <div className="mb-[11px] flex items-center gap-2">
-                      <span className="h-[2px] w-[18px] bg-[#f1ad22]" />
-
-                      <h2 className="text-[12px] font-[800] text-[#163b6b] sm:text-[13px]">
-                        Sustainability & Environment
-                      </h2>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-[7px] sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
-
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px]"
-                      >
-                        {/* <img
-                          src={sust1}
-                          alt="Sustainability Reviews"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#173d1a]/48 via-transparent to-[#082b16]/93" />
-
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[9.5px] font-[800]">
-                              Sustainability
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/85">
-                              Reviews
-                            </p>
-                          </div>
-
-                          <p className="text-[5.5px] text-white/85">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
-
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px]"
-                      >
-                        {/* <img
-                          src={sust2}
-                          alt="Renewable Energy and Systems Reviews"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#173d1a]/48 via-transparent to-[#082b16]/93" />
-
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[9px] font-[800] leading-[1.12]">
-                              Renewable Energy
-                              <br />
-                              and Systems
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/85">
-                              Reviews
-                            </p>
-                          </div>
-
-                          <p className="text-[5.5px] text-white/85">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
-
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px]"
-                      >
-                        {/* <img
-                          src={sust3}
-                          alt="Climate & Urban Resilience Reviews"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#173d1a]/48 via-transparent to-[#082b16]/93" />
-
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[9px] font-[800] leading-[1.12]">
-                              Climate & Urban
-                              <br />
-                              Resilience
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/85">
-                              Reviews
-                            </p>
-                          </div>
-
-                          <p className="text-[5.5px] text-white/85">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
-
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px]"
-                      >
-                        {/* <img
-                          src={sust4}
-                          alt="Biosensors & Environmental Tech Reviews"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#173d1a]/48 via-transparent to-[#082b16]/93" />
-
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[8.5px] font-[800] leading-[1.12]">
-                              Biosensors &
-                              <br />
-                              Environmental Tech
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/85">
-                              Reviews
-                            </p>
-                          </div>
-
-                          <p className="text-[5.5px] text-white/85">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
-
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px]"
-                      >
-                        {/* <img
-                          src={sust5}
-                          alt="Green Materials & Circular Economy Reviews"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#173d1a]/48 via-transparent to-[#082b16]/93" />
-
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[8.5px] font-[800] leading-[1.12]">
-                              Green Materials
-                              <br />
-                              & Circular Economy
-                            </h3>
-                            <p className="mt-1 text-[7px] text-white/85">
-                              Reviews
-                            </p>
-                          </div>
-
-                          <p className="text-[5.5px] text-white/85">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
-
-                      <motion.article
-                        whileHover={{ y: -6 }}
-                        className="group relative min-h-[205px] overflow-hidden rounded-[5px]"
-                      >
-                        {/* <img
-                          src={sust6}
-                          alt="Water, Air & Earth Sciences Reviews"
-                          className="absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        /> */}
-
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#173d1a]/48 via-transparent to-[#082b16]/93" />
-
-                        <div className="relative flex min-h-[205px] flex-col justify-between p-[11px] text-white">
-                          <div>
-                            <h3 className="text-[8.5px] font-[800] leading-[1.12]">
-                              Water, Air & Earth
-                              <br />
-                              Sciences Reviews
-                            </h3>
-                          </div>
-
-                          <p className="text-[5.5px] text-white/85">
-                            Open Access • Peer Reviewed
-                          </p>
-                        </div>
-                      </motion.article>
-                    </div>
-                  </motion.section>
+                            
+                            </motion.article>
+                          )
+                        )}
+                      </div>
+                    </motion.section>
+                  )
                 )}
               </AnimatePresence>
             </div>
@@ -1129,361 +1035,683 @@ export default function Journals() {
             <aside
               className="
                 grid
+                h-fit
                 grid-cols-1
-                gap-[15px]
+                gap-[12px]
 
-                sm:grid-cols-2
+                md:grid-cols-2
 
+                xl:sticky
+                xl:top-[125px]
                 xl:grid-cols-1
+                xl:self-start
               "
             >
-              {/* WHY PUBLISH */}
+              {/* =================================================
+                  WHY PUBLISH
+              ================================================== */}
               <motion.div
-                initial={{ opacity: 0, x: 18 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
+                initial={{
+                  opacity: 0,
+                  x: 18,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.5,
+                }}
+                whileHover={{
+                  y: -3,
+                }}
                 className="
-                  rounded-[7px]
+                  overflow-hidden
+                  rounded-[10px]
                   border
-                  border-[#e7edf2]
+                  border-[#e7edf3]
                   bg-white
-                  p-[15px]
-                  shadow-[0_5px_18px_rgba(15,45,78,0.05)]
+
+                  px-[16px]
+                  pb-[17px]
+                  pt-[17px]
+
+                  shadow-[0_7px_24px_rgba(23,58,96,0.055)]
+
+                  transition-all
+                  duration-300
+
+                  hover:border-[#dbe5ee]
+                  hover:shadow-[0_11px_28px_rgba(23,58,96,0.09)]
                 "
               >
-                <h3 className="text-[11px] font-[800] text-[#163d6c]">
+                <h3
+                  className="
+                    text-[16px]
+                    font-[600]
+                    leading-none
+                    text-[#163d70]
+                  "
+                >
                   Why Publish With Us?
                 </h3>
 
-                <div className="mt-[15px] space-y-[13px]">
+                <span
+                  className="
+                    mt-[8px]
+                    block
+                    h-[2px]
+                    w-[27px]
+                    rounded-full
+                    bg-[#efb32c]
+                  "
+                />
 
-                  <div className="group flex gap-[9px]">
-                    <div className="flex h-[27px] w-[27px] shrink-0 items-center justify-center rounded-full bg-[#e5f6fa] text-[#1b9dc4] transition-transform group-hover:scale-110">
-                      <Globe2 size={14} />
-                    </div>
+                <div className="mt-[18px] space-y-[14px]">
+                  {publishBenefits.map(
+                    (
+                      benefit,
+                      index
+                    ) => {
+                      const Icon =
+                        benefit.icon;
 
-                    <div>
-                      <p className="text-[8px] font-[750] text-[#253e5f]">
-                        International Visibility
-                      </p>
-                      <p className="mt-[2px] text-[6.5px] leading-[1.45] text-[#768398]">
-                        Wide global dissemination and indexing
-                      </p>
-                    </div>
-                  </div>
+                      return (
+                        <motion.div
+                          key={
+                            benefit.title
+                          }
+                          initial={{
+                            opacity: 0,
+                            x: 8,
+                          }}
+                          whileInView={{
+                            opacity: 1,
+                            x: 0,
+                          }}
+                          viewport={{
+                            once: true,
+                          }}
+                          transition={{
+                            delay:
+                              index *
+                              0.04,
+                          }}
+                          whileHover={{
+                            x: 3,
+                          }}
+                          className="
+                            group
+                            flex
+                            items-start
+                            gap-[9px]
+                          "
+                        >
+                          <motion.div
+                            whileHover={{
+                              scale: 1.1,
+                              rotate: 4,
+                            }}
+                            className={`
+                              flex
+                              h-[29px]
+                              w-[29px]
+                              shrink-0
+                              items-center
+                              justify-center
+                              rounded-full
 
-                  <div className="group flex gap-[9px]">
-                    <div className="flex h-[27px] w-[27px] shrink-0 items-center justify-center rounded-full bg-[#fff0e5] text-[#e08737] transition-transform group-hover:scale-110">
-                      <BadgeCheck size={14} />
-                    </div>
+                              ${benefit.background}
 
-                    <div>
-                      <p className="text-[8px] font-[750] text-[#253e5f]">
-                        Rigorous Peer Review
-                      </p>
-                      <p className="mt-[2px] text-[6.5px] leading-[1.45] text-[#768398]">
-                        Ensuring quality, credibility and integrity
-                      </p>
-                    </div>
-                  </div>
+                              text-white
+                            `}
+                          >
+                            <Icon
+                              size={18}
+                              strokeWidth={
+                                1.7
+                              }
+                            />
+                          </motion.div>
 
-                  <div className="group flex gap-[9px]">
-                    <div className="flex h-[27px] w-[27px] shrink-0 items-center justify-center rounded-full bg-[#edf7df] text-[#5f9c3a] transition-transform group-hover:scale-110">
-                      <LockKeyholeOpen size={14} />
-                    </div>
+                          <div className="min-w-0">
+                            <p
+                              className="
+                                text-[12.3px]
+                                font-[600]
+                                leading-[1.25]
+                                text-[#213d61]
+                              "
+                            >
+                              {
+                                benefit.title
+                              }
+                            </p>
 
-                    <div>
-                      <p className="text-[8px] font-[750] text-[#253e5f]">
-                        Open Access Options
-                      </p>
-                      <p className="mt-[2px] text-[6.5px] leading-[1.45] text-[#768398]">
-                        Maximize reach and impact of your research
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="group flex gap-[9px]">
-                    <div className="flex h-[27px] w-[27px] shrink-0 items-center justify-center rounded-full bg-[#e8f5ff] text-[#318dc4] transition-transform group-hover:scale-110">
-                      <UsersRound size={14} />
-                    </div>
-
-                    <div>
-                      <p className="text-[8px] font-[750] text-[#253e5f]">
-                        Author Friendly
-                      </p>
-                      <p className="mt-[2px] text-[6.5px] leading-[1.45] text-[#768398]">
-                        Transparent process and fast communication
-                      </p>
-                    </div>
-                  </div>
-
-                  <div className="group flex gap-[9px]">
-                    <div className="flex h-[27px] w-[27px] shrink-0 items-center justify-center rounded-full bg-[#ffe9e9] text-[#df4f4f] transition-transform group-hover:scale-110">
-                      <Scale size={14} />
-                    </div>
-
-                    <div>
-                      <p className="text-[8px] font-[750] text-[#253e5f]">
-                        Ethical Publishing
-                      </p>
-                      <p className="mt-[2px] text-[6.5px] leading-[1.45] text-[#768398]">
-                        Upholding the highest ethical standards
-                      </p>
-                    </div>
-                  </div>
+                            <p
+                              className="
+                                mt-[6px]
+                                text-[10.5px]
+                                font-[500]
+                                leading-[1.4]
+                                text-[#738095]
+                              "
+                            >
+                              {
+                                benefit.description
+                              }
+                            </p>
+                          </div>
+                        </motion.div>
+                      );
+                    }
+                  )}
                 </div>
 
-                <button className="group mt-[16px] flex items-center gap-2 text-[7px] font-[700] text-[#3473ad]">
-                  Learn More
-                  <ArrowRight
-                    size={9}
-                    className="transition-transform group-hover:translate-x-1"
-                  />
-                </button>
+             
               </motion.div>
 
-              {/* AT A GLANCE */}
+              {/* =================================================
+                  AT A GLANCE
+              ================================================== */}
               <motion.div
-                initial={{ opacity: 0, x: 18 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.08 }}
+                initial={{
+                  opacity: 0,
+                  x: 18,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.5,
+                  delay: 0.08,
+                }}
+                whileHover={{
+                  y: -3,
+                }}
                 className="
-                  rounded-[7px]
+                  overflow-hidden
+                  rounded-[10px]
                   border
-                  border-[#e7edf2]
-                  bg-[#fbfcfe]
-                  p-[15px]
-                  shadow-[0_5px_18px_rgba(15,45,78,0.04)]
+                  border-[#e7edf3]
+                  bg-[#fbfcff]
+
+                  px-[16px]
+                  pb-[16px]
+                  pt-[17px]
+
+                  shadow-[0_7px_24px_rgba(23,58,96,0.05)]
+
+                  transition-all
+                  duration-300
+
+                  hover:border-[#dbe5ee]
+                  hover:shadow-[0_11px_28px_rgba(23,58,96,0.085)]
                 "
               >
-                <h3 className="text-[11px] font-[800] text-[#163d6c]">
+                <h3
+                  className="
+                    text-[16px]
+                    font-[600]
+                    leading-none
+                    text-[#163d70]
+                  "
+                >
                   At a Glance
                 </h3>
 
-                <div className="mt-[15px] grid grid-cols-2 gap-x-3 gap-y-[17px]">
+                <span
+                  className="
+                    mt-[8px]
+                    block
+                    h-[2px]
+                    w-[27px]
+                    rounded-full
+                    bg-[#efb32c]
+                  "
+                />
 
-                  <div className="flex gap-[7px]">
-                    <LibraryBig
-                      size={17}
-                      className="shrink-0 text-[#547dd0]"
-                    />
-                    <div>
-                      <p className="text-[9px] font-[800] text-[#274c7b]">
-                        20+
-                      </p>
-                      <p className="text-[6px] text-[#7a8799]">
-                        Journals &
-                        <br />
-                        Magazines
-                      </p>
-                    </div>
-                  </div>
+                <div
+                  className="
+                    relative
+                    mt-[19px]
+                    grid
+                    grid-cols-2
+                    gap-x-0
+                    gap-y-[19px]
+                  "
+                >
+                  {/* CENTER VERTICAL LINE */}
+                  <div
+                    className="
+                      pointer-events-none
+                      absolute
+                      bottom-0
+                      left-1/2
+                      top-0
+                      w-px
+                      -translate-x-1/2
+                      bg-[#e6ebf1]
+                    "
+                  />
 
-                  <div className="flex gap-[7px]">
-                    <UsersRound
-                      size={17}
-                      className="shrink-0 text-[#6377c2]"
-                    />
-                    <div>
-                      <p className="text-[9px] font-[800] text-[#274c7b]">
-                        5000+
-                      </p>
-                      <p className="text-[6px] text-[#7a8799]">
-                        Global Authors
-                      </p>
-                    </div>
-                  </div>
+                  {glanceStats.map(
+                    (stat, index) => {
+                      const Icon =
+                        stat.icon;
 
-                  <div className="flex gap-[7px]">
-                    <Globe2
-                      size={17}
-                      className="shrink-0 text-[#685eb9]"
-                    />
-                    <div>
-                      <p className="text-[9px] font-[800] text-[#274c7b]">
-                        120+
-                      </p>
-                      <p className="text-[6px] text-[#7a8799]">
-                        Countries
-                      </p>
-                    </div>
-                  </div>
+                      return (
+                        <motion.div
+                          key={stat.label}
+                          whileHover={{
+                            y: -2,
+                          }}
+                          className={`
+                            group
+                            flex
+                            items-start
+                            gap-[7px]
 
-                  <div className="flex gap-[7px]">
-                    <FileText
-                      size={17}
-                      className="shrink-0 text-[#6372b6]"
-                    />
-                    <div>
-                      <p className="text-[9px] font-[800] text-[#274c7b]">
-                        15,000+
-                      </p>
-                      <p className="text-[6px] text-[#7a8799]">
-                        Articles
-                        <br />
-                        Published
-                      </p>
-                    </div>
-                  </div>
+                            ${
+                              index %
+                                2 ===
+                              0
+                                ? "pr-[8px]"
+                                : "pl-[9px]"
+                            }
+                          `}
+                        >
+                          <Icon
+                            size={22}
+                            strokeWidth={
+                              1.55
+                            }
+                            className={`
+                              mt-[4px]
+                              shrink-0
 
-                  <div className="flex gap-[7px]">
-                    <Database
-                      size={17}
-                      className="shrink-0 text-[#6479bd]"
-                    />
-                    <div>
-                      <p className="text-[9px] font-[800] text-[#274c7b]">
-                        50+
-                      </p>
-                      <p className="text-[6px] text-[#7a8799]">
-                        Indexing
-                        <br />
-                        Databases
-                      </p>
-                    </div>
-                  </div>
+                              ${stat.color}
 
-                  <div className="flex gap-[7px]">
-                    <Building2
-                      size={17}
-                      className="shrink-0 text-[#536da9]"
-                    />
-                    <div>
-                      <p className="text-[9px] font-[800] text-[#274c7b]">
-                        100+
-                      </p>
-                      <p className="text-[6px] text-[#7a8799]">
-                        Institutional
-                        <br />
-                        Collaborations
-                      </p>
-                    </div>
-                  </div>
+                              transition-transform
+                              duration-300
+
+                              group-hover:scale-110
+                            `}
+                          />
+
+                          <div>
+                            <p
+                              className="
+                                text-[12.8px]
+                                font-[600]
+                                leading-none
+                                text-[#38588b]
+                              "
+                            >
+                              {
+                                stat.value
+                              }
+                            </p>
+
+                            <p
+                              className="
+                                mt-[5px]
+                                text-[9.5px]
+                                leading-[1.35]
+                                text-[#798598]
+                              "
+                            >
+                              {
+                                stat.label
+                              }
+                            </p>
+                          </div>
+                        </motion.div>
+                      );
+                    }
+                  )}
                 </div>
 
-                <button className="group mt-[18px] flex items-center gap-2 text-[7px] font-[700] text-[#3473ad]">
-                  <LayoutDashboard size={10} />
-                  Publisher Dashboard
-                  <ArrowRight
-                    size={9}
-                    className="transition-transform group-hover:translate-x-1"
-                  />
-                </button>
+              
               </motion.div>
             </aside>
           </div>
         </section>
 
+     {/* =========================================================
+    PUBLISH CTA SECTION
+========================================================== */}
+<section
+  className="
+    relative
+    isolate
+    w-full
+    overflow-hidden
+    bg-[#06275a]
+    bg-cover
+    bg-no-repeat
+    text-white
+
+    bg-[position:72%_center]
+
+    min-[420px]:bg-[position:76%_center]
+
+    sm:bg-[position:80%_center]
+
+    md:bg-[position:84%_center]
+
+    lg:bg-right
+  "
+  style={{
+    backgroundImage: `url(${bgcta})`,
+  }}
+>
+ 
+
+  {/* =====================================================
+      MAIN CONTAINER
+  ====================================================== */}
+  <div
+    className="
+      mx-auto
+      flex
+      min-h-[155px]
+      w-[min(1120px,calc(100%-32px))]
+      flex-col
+      items-start
+      justify-center
+      gap-[20px]
+      py-[24px]
+
+      sm:w-[min(1120px,calc(100%-48px))]
+      sm:min-h-[145px]
+
+      md:min-h-[120px]
+      md:flex-row
+      md:items-center
+      md:justify-between
+      md:gap-[35px]
+      md:py-[18px]
+
+      lg:min-h-[122px]
+      lg:py-[14px]
+    "
+  >
+    {/* =====================================================
+        LEFT TEXT
+    ====================================================== */}
+    <motion.div
+      initial={{
+        opacity: 0,
+        x: -20,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.35,
+      }}
+      transition={{
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="
+        relative
+        z-10
+        w-full
+        max-w-[475px]
+      "
+    >
+      <motion.h2
+        initial={{
+          opacity: 0,
+          y: 10,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{ once: true }}
+        transition={{
+          duration: 0.5,
+          delay: 0.08,
+        }}
+        className="
+          font-['Inter',sans-serif]
+          text-[19px]
+          font-[600]
+          leading-[1.25]
+          tracking-[-0.012em]
+          text-white/90
+
+          min-[390px]:text-[17px]
+
+          sm:text-[20px]
+
+          lg:text-[22px]
+        "
+      >
+        Publish with Confidence. Reach the World.
+      </motion.h2>
+
+      <motion.p
+        initial={{
+          opacity: 0,
+          y: 8,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{ once: true }}
+        transition={{
+          duration: 0.5,
+          delay: 0.14,
+        }}
+        className="
+          mt-[7px]
+          max-w-[405px]
+          font-['Inter',sans-serif]
+          text-[12px]
+          font-[500]
+          leading-[1.55]
+          text-white/85
+
+          sm:text-[12px]
+
+          lg:text-[12.5px]
+        "
+      >
+        Partner with Global Reviews Press to amplify your research
+        <br className="hidden sm:block" />
+        through trusted peer-reviewed journals.
+      </motion.p>
+    </motion.div>
+
+    {/* =====================================================
+        BUTTONS
+    ====================================================== */}
+    <motion.div
+      initial={{
+        opacity: 0,
+        x: 20,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.35,
+      }}
+      transition={{
+        duration: 0.6,
+        delay: 0.12,
+        ease: [0.22, 1, 0.36, 1],
+      }}
+      className="
+        relative
+        z-10
+        flex
+        w-full
+        flex-wrap
+        items-center
+        gap-[11px]
+
+        min-[390px]:w-auto
+        min-[390px]:gap-[14px]
+
+        md:shrink-0
+
+        lg:mr-[160px]
+      "
+    >
+      {/* =================================================
+          SUBMIT MANUSCRIPT
+      ================================================== */}
+      <motion.div
+        whileHover={{
+          y: -3,
+        }}
+        whileTap={{
+          scale: 0.97,
+        }}
+        className="
+          max-[389px]:w-full
+        "
+      >
+        <Link
+          to="/authors"
+          className="
+            group
+            inline-flex
+            h-[39px]
+            min-w-[162px]
+            items-center
+            justify-center
+            rounded-[4px]
+            border
+            border-[#e9aa1f]
+            bg-[#062753]/55
+            px-[18px]
+
+            font-['Inter',sans-serif]
+            text-[12.5px]
+            font-[600]
+            text-[#ffc126]
+
+            shadow-[0_3px_10px_rgba(0,0,0,0.08)]
+
+            backdrop-blur-[1px]
+
+            transition-all
+            duration-300
+
+            hover:border-[#ffc126]
+            hover:bg-[#ffc126]
+            hover:text-[#08284f]
+            hover:shadow-[0_7px_18px_rgba(0,0,0,0.18)]
+
+            max-[389px]:w-full
+
+            sm:h-[40px]
+            sm:min-w-[173px]
+            sm:text-[13px]
+
+            lg:h-[41px]
+            lg:min-w-[180px]
+          "
+        >
+          Submit Your Manuscript
+        </Link>
+      </motion.div>
+
+      {/* =================================================
+          AUTHOR GUIDELINES
+      ================================================== */}
+      <motion.div
+        whileHover={{
+          y: -3,
+        }}
+        whileTap={{
+          scale: 0.97,
+        }}
+        className="
+          max-[389px]:w-full
+        "
+      >
+        <Link
+          to="/authors"
+          className="
+            group
+            inline-flex
+            h-[39px]
+            min-w-[126px]
+            items-center
+            justify-center
+            rounded-[4px]
+            border
+            border-white/65
+            bg-[#08295a]/25
+            px-[18px]
+
+            font-['Inter',sans-serif]
+            text-[12.5px]
+            font-[600]
+            text-white
+
+            shadow-[0_3px_10px_rgba(0,0,0,0.07)]
+
+            backdrop-blur-[1px]
+
+            transition-all
+            duration-300
+
+            hover:border-white
+            hover:bg-white
+            hover:text-[#08284f]
+            hover:shadow-[0_7px_18px_rgba(0,0,0,0.16)]
+
+            max-[389px]:w-full
+
+            sm:h-[40px]
+            sm:min-w-[136px]
+            sm:text-[13px]
+
+            lg:h-[41px]
+            lg:min-w-[143px]
+          "
+        >
+          Author Guidelines
+        </Link>
+      </motion.div>
+    </motion.div>
+  </div>
+</section>
+
         {/* =========================================================
-            CTA SECTION
+            INDEXED IN LEADING DATABASES
         ========================================================== */}
         <section
           className="
-            relative
-            isolate
-            overflow-hidden
-            bg-[#05254a]
-            bg-cover
-            bg-center
-            bg-no-repeat
-            text-white
+            border-y
+            border-[#eef2f5]
+            bg-white
+            py-[22px]
+
+            sm:py-[25px]
+            lg:py-[29px]
           "
-          style={{
-            backgroundImage: `url(${bgcta})`,
-          }}
         >
-          <div className="absolute inset-0 -z-10 bg-[#05234a]/25" />
-
-          <div
-            className="
-              mx-auto
-              flex
-              min-h-[120px]
-              w-[min(1120px,calc(100%-32px))]
-              flex-col
-              items-start
-              justify-center
-              gap-5
-              py-6
-
-              sm:w-[min(1120px,calc(100%-48px))]
-
-              md:flex-row
-              md:items-center
-              md:justify-between
-              md:gap-8
-            "
-          >
-            <motion.div
-              initial={{ opacity: 0, x: -18 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <h2 className="text-[17px] font-[800] sm:text-[19px]">
-                Publish with Confidence. Reach the World.
-              </h2>
-
-              <p className="mt-2 max-w-[500px] text-[8.5px] leading-[1.6] text-white/88">
-                Partner with Global Reviews Press to amplify your research
-                through trusted peer-reviewed journals.
-              </p>
-            </motion.div>
-
-            <div className="flex flex-wrap gap-[10px]">
-              <motion.button
-                whileHover={{ y: -3 }}
-                whileTap={{ scale: 0.97 }}
-                className="
-                  inline-flex
-                  h-[38px]
-                  items-center
-                  rounded-[4px]
-                  border
-                  border-[#e6a91f]
-                  bg-transparent
-                  px-[18px]
-                  text-[8px]
-                  font-[700]
-                  text-[#ffc133]
-                  transition-colors
-                  hover:bg-[#ffc133]
-                  hover:text-[#08264a]
-                "
-              >
-                Submit Your Manuscript
-              </motion.button>
-
-              <motion.button
-                whileHover={{ y: -3 }}
-                whileTap={{ scale: 0.97 }}
-                className="
-                  inline-flex
-                  h-[38px]
-                  items-center
-                  rounded-[4px]
-                  border
-                  border-white/60
-                  bg-white/[0.04]
-                  px-[18px]
-                  text-[8px]
-                  font-[650]
-                  text-white
-                  transition-colors
-                  hover:bg-white
-                  hover:text-[#08264a]
-                "
-              >
-                Author Guidelines
-              </motion.button>
-            </div>
-          </div>
-        </section>
-
-        {/* =========================================================
-            INDEXED & ABSTRACTED
-        ========================================================== */}
-        <section className="border-b border-[#edf1f4] bg-white py-[18px] sm:py-[22px]">
           <div
             className="
               mx-auto
@@ -1492,91 +1720,156 @@ export default function Journals() {
             "
           >
             <motion.h2
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
+              initial={{
+                opacity: 0,
+                y: 10,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
               className="
                 text-center
-                text-[8px]
-                font-[800]
-                tracking-[0.01em]
-                text-[#214575]
+                font-['Inter',sans-serif]
+                text-[10px]
+                font-[700]
+                leading-none
+                tracking-[0.025em]
+                text-[#173f78]
+
+                sm:text-[11px]
               "
             >
-              Indexed & Abstracted In
+              INDEXED IN LEADING DATABASES
             </motion.h2>
 
             <div
               className="
-                mt-[17px]
+                mt-[27px]
                 grid
                 grid-cols-2
                 items-center
                 justify-items-center
-                gap-x-5
-                gap-y-6
+                gap-x-[18px]
+                gap-y-[25px]
 
-                min-[500px]:grid-cols-3
+                min-[480px]:grid-cols-3
 
-                md:grid-cols-4
+                sm:grid-cols-4
 
                 lg:grid-cols-7
+                lg:gap-x-[24px]
                 lg:gap-y-0
               "
             >
+              {/* SCOPUS */}
               <motion.img
-                whileHover={{ y: -3, scale: 1.04 }}
                 src={scopusLogo}
                 alt="Scopus"
-                className="max-h-[30px] max-w-[90px] object-contain"
+                whileHover={{
+                  y: -4,
+                  scale: 1.045,
+                }}
+                className="
+                  max-h-[38px]
+                  max-w-[99px]
+                  object-contain
+                "
               />
 
+              {/* CLARIVATE */}
               <motion.img
-                whileHover={{ y: -3, scale: 1.04 }}
                 src={clarivateLogo}
                 alt="Clarivate Web of Science"
-                className="max-h-[34px] max-w-[105px] object-contain"
+                whileHover={{
+                  y: -4,
+                  scale: 1.045,
+                }}
+                className="
+                  max-h-[40px]
+                  max-w-[108px]
+                  object-contain
+                "
               />
 
+              {/* DOAJ */}
               <motion.img
-                whileHover={{ y: -3, scale: 1.04 }}
                 src={doajLogo}
                 alt="DOAJ"
-                className="max-h-[31px] max-w-[100px] object-contain"
+                whileHover={{
+                  y: -4,
+                  scale: 1.045,
+                }}
+                className="
+                  max-h-[40px]
+                  max-w-[108px]
+                  object-contain
+                "
               />
 
+              {/* CAS */}
               <motion.img
-                whileHover={{ y: -3, scale: 1.04 }}
                 src={casLogo}
                 alt="CAS"
-                className="max-h-[35px] max-w-[85px] object-contain"
+                whileHover={{
+                  y: -4,
+                  scale: 1.045,
+                }}
+                className="
+                  max-h-[40px]
+                  max-w-[87px]
+                  object-contain
+                "
               />
 
+              {/* DIMENSIONS */}
               <motion.img
-                whileHover={{ y: -3, scale: 1.04 }}
                 src={dimensionsLogo}
                 alt="Dimensions"
-                className="max-h-[30px] max-w-[100px] object-contain"
+                whileHover={{
+                  y: -4,
+                  scale: 1.045,
+                }}
+                className="
+                  max-h-[40px]
+                  max-w-[126px]
+                  object-contain
+                "
               />
 
+              {/* CROSSREF */}
               <motion.img
-                whileHover={{ y: -3, scale: 1.04 }}
                 src={crossrefLogo}
                 alt="Crossref"
-                className="max-h-[30px] max-w-[95px] object-contain"
+                whileHover={{
+                  y: -4,
+                  scale: 1.045,
+                }}
+                className="
+                  max-h-[40px]
+                  max-w-[101px]
+                  object-contain
+                "
               />
 
+              {/* GOOGLE SCHOLAR */}
               <motion.img
-                whileHover={{ y: -3, scale: 1.04 }}
                 src={googleScholarLogo}
                 alt="Google Scholar"
+                whileHover={{
+                  y: -4,
+                  scale: 1.045,
+                }}
                 className="
                   col-span-2
-                  max-h-[30px]
-                  max-w-[88px]
+                  max-h-[40px]
+                  max-w-[92px]
                   object-contain
 
-                  min-[500px]:col-span-1
+                  min-[480px]:col-span-1
                 "
               />
             </div>

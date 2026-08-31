@@ -562,7 +562,7 @@ export default function Home() {
             className="
               font-['Inter',sans-serif]
               text-[18px]
-              font-[800]
+              font-[700]
               leading-none
               tracking-[-0.02em]
               text-[#05899A]
@@ -652,7 +652,7 @@ export default function Home() {
             className="
               font-['Inter',sans-serif]
               text-[18px]
-              font-[800]
+              font-[700]
               leading-none
               tracking-[-0.02em]
               text-[#479638]
@@ -742,7 +742,7 @@ export default function Home() {
             className="
               font-['Inter',sans-serif]
               text-[18px]
-              font-[800]
+              font-[700]
               leading-none
               tracking-[-0.02em]
               text-[#7040A2]
@@ -832,7 +832,7 @@ export default function Home() {
             className="
               font-['Inter',sans-serif]
               text-[18px]
-              font-[800]
+              font-[700]
               leading-none
               tracking-[-0.02em]
               text-[#D6740B]
@@ -922,7 +922,7 @@ export default function Home() {
             className="
               font-['Inter',sans-serif]
               text-[18px]
-              font-[800]
+              font-[700]
               leading-none
               tracking-[-0.02em]
               text-[#092F5C]
@@ -1567,7 +1567,7 @@ export default function Home() {
 </section>
 
       
-  {/* ==================== OUR JOURNALS & MAGAZINES ==================== */}<section className="bg-white py-[28px] sm:py-[34px] lg:py-[38px]">
+  {/* ==================== OUR JOURNALS & MAGAZINES ==================== */}<section className="bg-white py-[28px] sm:py-[34px] lg:py-[20px]">
   <div
     className="
       mx-auto
@@ -1589,14 +1589,14 @@ export default function Home() {
       <h2
         className="
           font-['Inter',sans-serif]
-          text-[15px]
-          font-[800]
+          text-[20px]
+          font-[700]
           leading-none
           tracking-[0.01em]
           text-[#123F7C]
 
-          sm:text-[17px]
-          lg:text-[18px]
+          sm:text-[20px]
+          lg:text-[21px]
         "
       >
         OUR JOURNALS & MAGAZINES
@@ -1606,13 +1606,13 @@ export default function Home() {
         className="
           mt-[9px]
           font-['Inter',sans-serif]
-          text-[9.5px]
+          text-[12.5px]
           font-[500]
           leading-[1.5]
           text-[#405472]
 
-          sm:text-[10.5px]
-          lg:text-[11px]
+          sm:text-[12.5px]
+          lg:text-[13px]
         "
       >
         High-quality peer-reviewed journals and magazines across
@@ -1631,10 +1631,11 @@ export default function Home() {
         ease: [0.22, 1, 0.36, 1],
       }}
       className="
-        mt-[17px]
+        mt-[27px]
         overflow-hidden
         rounded-[6px]
         border
+        
         border-[#e5ebf0]
         bg-white
         shadow-[0_4px_18px_rgba(18,50,81,0.045)]
@@ -1649,7 +1650,7 @@ export default function Home() {
           grid-cols-1
           gap-px
           bg-[#e6edf2]
-
+    
           min-[380px]:grid-cols-2
           sm:grid-cols-3
           lg:grid-cols-5
@@ -1680,7 +1681,7 @@ export default function Home() {
           "
         >
           <BrainCircuit
-            size={34}
+            size={38}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -1695,12 +1696,12 @@ export default function Home() {
           <p
             className="
               font-['Inter',sans-serif]
-              text-[10px]
+              text-[12px]
               font-[600]
               leading-[1.55]
               text-[#17395F]
 
-              lg:text-[10.5px]
+              lg:text-[12.5px]
             "
           >
             Artificial
@@ -1734,7 +1735,7 @@ export default function Home() {
           "
         >
           <Cpu
-            size={34}
+            size={38}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -1748,13 +1749,13 @@ export default function Home() {
 
           <p
             className="
-              font-['Inter',sans-serif]
-              text-[10px]
+               font-['Inter',sans-serif]
+              text-[12px]
               font-[600]
               leading-[1.55]
               text-[#17395F]
 
-              lg:text-[10.5px]
+              lg:text-[12.5px]
             "
           >
             Edge Intelligence
@@ -1788,7 +1789,7 @@ export default function Home() {
           "
         >
           <Atom
-            size={35}
+            size={39}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -1803,12 +1804,12 @@ export default function Home() {
           <p
             className="
               font-['Inter',sans-serif]
-              text-[10px]
+              text-[12px]
               font-[600]
               leading-[1.55]
               text-[#17395F]
 
-              lg:text-[10.5px]
+              lg:text-[12.5px]
             "
           >
             Quantum
@@ -1842,7 +1843,7 @@ export default function Home() {
           "
         >
           <Bot
-            size={34}
+            size={38}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -1856,13 +1857,13 @@ export default function Home() {
 
           <p
             className="
-              font-['Inter',sans-serif]
-              text-[10px]
+             font-['Inter',sans-serif]
+              text-[12px]
               font-[600]
               leading-[1.55]
               text-[#17395F]
 
-              lg:text-[10.5px]
+              lg:text-[12.5px]
             "
           >
             Robotics &
@@ -1896,7 +1897,7 @@ export default function Home() {
           "
         >
           <Glasses
-            size={35}
+            size={39}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -1909,13 +1910,13 @@ export default function Home() {
 
           <p
             className="
-              font-['Inter',sans-serif]
-              text-[10px]
+               font-['Inter',sans-serif]
+              text-[12px]
               font-[600]
               leading-[1.55]
               text-[#17395F]
 
-              lg:text-[10.5px]
+              lg:text-[12.5px]
             "
           >
             Extended Reality &
@@ -1949,7 +1950,7 @@ export default function Home() {
           "
         >
           <Wifi
-            size={34}
+            size={38}
             strokeWidth={1.55}
             className="
               shrink-0
@@ -1963,12 +1964,12 @@ export default function Home() {
           <p
             className="
               font-['Inter',sans-serif]
-              text-[10px]
+              text-[12px]
               font-[600]
               leading-[1.55]
               text-[#17395F]
 
-              lg:text-[10.5px]
+              lg:text-[12.5px]
             "
           >
             Communication
@@ -2002,7 +2003,7 @@ export default function Home() {
           "
         >
           <Microchip
-            size={34}
+            size={38}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -2016,12 +2017,12 @@ export default function Home() {
           <p
             className="
               font-['Inter',sans-serif]
-              text-[10px]
+              text-[12px]
               font-[600]
               leading-[1.55]
               text-[#17395F]
 
-              lg:text-[10.5px]
+              lg:text-[12.5px]
             "
           >
             Semiconductor
@@ -2055,7 +2056,7 @@ export default function Home() {
           "
         >
           <ScanLine
-            size={34}
+            size={38}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -2068,13 +2069,13 @@ export default function Home() {
 
           <p
             className="
-              font-['Inter',sans-serif]
-              text-[10px]
+               font-['Inter',sans-serif]
+              text-[12px]
               font-[600]
               leading-[1.55]
               text-[#17395F]
 
-              lg:text-[10.5px]
+              lg:text-[12.5px]
             "
           >
             Medical
@@ -2108,7 +2109,7 @@ export default function Home() {
           "
         >
           <Watch
-            size={34}
+            size={38}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -2122,12 +2123,12 @@ export default function Home() {
           <p
             className="
               font-['Inter',sans-serif]
-              text-[10px]
+              text-[12px]
               font-[600]
               leading-[1.55]
               text-[#17395F]
 
-              lg:text-[10.5px]
+              lg:text-[12.5px]
             "
           >
             Digital Health &
@@ -2161,7 +2162,7 @@ export default function Home() {
           "
         >
           <Stethoscope
-            size={34}
+            size={38}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -2175,13 +2176,13 @@ export default function Home() {
 
           <p
             className="
-              font-['Inter',sans-serif]
-              text-[10px]
+               font-['Inter',sans-serif]
+              text-[12px]
               font-[600]
               leading-[1.55]
               text-[#17395F]
 
-              lg:text-[10.5px]
+              lg:text-[12.5px]
             "
           >
             Surgical Robotics &
@@ -2215,7 +2216,7 @@ export default function Home() {
           "
         >
           <Microscope
-            size={34}
+            size={38}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -2229,12 +2230,12 @@ export default function Home() {
           <p
             className="
               font-['Inter',sans-serif]
-              text-[10px]
+              text-[12px]
               font-[600]
               leading-[1.55]
               text-[#17395F]
 
-              lg:text-[10.5px]
+              lg:text-[12.5px]
             "
           >
             Diagnostics &
@@ -2268,7 +2269,7 @@ export default function Home() {
           "
         >
           <CircuitBoard
-            size={34}
+            size={38}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -2281,13 +2282,13 @@ export default function Home() {
 
           <p
             className="
-              font-['Inter',sans-serif]
-              text-[10px]
+           font-['Inter',sans-serif]
+              text-[12px]
               font-[600]
               leading-[1.55]
               text-[#17395F]
 
-              lg:text-[10.5px]
+              lg:text-[12.5px]
             "
           >
             Bioengineering &
@@ -2321,7 +2322,7 @@ export default function Home() {
           "
         >
           <Brain
-            size={34}
+            size={38}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -2334,13 +2335,13 @@ export default function Home() {
 
           <p
             className="
-              font-['Inter',sans-serif]
-              text-[10px]
+            font-['Inter',sans-serif]
+              text-[12px]
               font-[600]
               leading-[1.55]
               text-[#17395F]
 
-              lg:text-[10.5px]
+              lg:text-[12.5px]
             "
           >
             Neurotechnology &
@@ -2374,7 +2375,7 @@ export default function Home() {
           "
         >
           <Dna
-            size={34}
+            size={38}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -2387,13 +2388,13 @@ export default function Home() {
 
           <p
             className="
-              font-['Inter',sans-serif]
-              text-[10px]
+               font-['Inter',sans-serif]
+              text-[12px]
               font-[600]
               leading-[1.55]
               text-[#17395F]
 
-              lg:text-[10.5px]
+              lg:text-[12.5px]
             "
           >
             Genomics &
@@ -2440,13 +2441,13 @@ export default function Home() {
             "
           >
             <Pill
-              size={26}
+              size={29}
               strokeWidth={1.45}
               className="absolute left-0 top-[7px] rotate-[-35deg]"
             />
 
             <Pill
-              size={25}
+              size={26}
               strokeWidth={1.45}
               className="absolute right-0 top-0 rotate-[35deg]"
             />
@@ -2454,18 +2455,18 @@ export default function Home() {
 
           <p
             className="
-              font-['Inter',sans-serif]
-              text-[10px]
+               font-['Inter',sans-serif]
+              text-[12px]
               font-[600]
               leading-[1.55]
               text-[#17395F]
 
-              lg:text-[10.5px]
+              lg:text-[12.5px]
             "
           >
-            AI in Drug Discovery &
+            AI in Drug Discovery 
             <br />
-            Development
+            & Development
           </p>
         </motion.div>
       </div>
@@ -2476,7 +2477,7 @@ export default function Home() {
       <div
         className="
           flex
-          min-h-[47px]
+          min-h-[49px]
           items-center
           justify-center
           border-t
@@ -2509,11 +2510,11 @@ export default function Home() {
 
               hover:text-[#156799]
 
-              sm:text-[12.5px]
+              sm:text-[13.5px]
             "
           >
          <BookOpen
-  size={15}
+  size={19}
   strokeWidth={1.7}
 />
 
@@ -2592,16 +2593,16 @@ export default function Home() {
           pt-[15px]
           text-center
           font-['Inter',sans-serif]
-          text-[15px]
-          font-[800]
+          text-[20px]
+          font-[700]
           leading-[1.2]
           tracking-[0.01em]
           text-[#123f7c]
 
-          sm:text-[15px]
+          sm:text-[20px]
           lg:pb-[15px]
           lg:pt-[17px]
-          lg:text-[16px]
+          lg:text-[20px]
         "
       >
         WHY PUBLISH WITH GLOBAL REVIEWS PRESS?
@@ -2617,7 +2618,7 @@ export default function Home() {
 
           min-[380px]:grid-cols-2
           md:grid-cols-3
-
+mt-5
           lg:grid-cols-6
           lg:border-t-0
           lg:px-[18px]
@@ -2667,7 +2668,7 @@ export default function Home() {
           "
         >
           <Award
-            size={35}
+            size={39}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -2677,8 +2678,8 @@ export default function Home() {
               group-hover:scale-110
               group-hover:-rotate-[4deg]
 
-              lg:h-[34px]
-              lg:w-[34px]
+              lg:h-[39px]
+              lg:w-[39px]
             "
           />
 
@@ -2686,14 +2687,14 @@ export default function Home() {
             className="
               min-w-0
               font-['Inter',sans-serif]
-              text-[11px]
+              text-[12px]
               font-[650]
               leading-[1.55]
               text-[#18375f]
 
-              sm:text-[11.5px]
-              lg:text-[11.5px]
-              xl:text-[12px]
+              sm:text-[12.5px]
+              lg:text-[12.5px]
+              xl:text-[13px]
             "
           >
             Rigorous
@@ -2743,7 +2744,7 @@ export default function Home() {
           "
         >
           <Globe2
-            size={34}
+            size={38}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -2757,15 +2758,16 @@ export default function Home() {
 
           <p
             className="
+             min-w-0
               font-['Inter',sans-serif]
-               text-[11px]
+              text-[12px]
               font-[650]
               leading-[1.55]
               text-[#18375f]
 
-              sm:text-[11.5px]
-              lg:text-[11.5px]
-              xl:text-[12px]
+              sm:text-[12.5px]
+              lg:text-[12.5px]
+              xl:text-[13px]
             "
           >
             Global
@@ -2818,7 +2820,7 @@ export default function Home() {
           "
         >
           <LockKeyholeOpen
-            size={35}
+            size={39}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -2831,15 +2833,16 @@ export default function Home() {
 
           <p
             className="
+              min-w-0
               font-['Inter',sans-serif]
-              text-[11px]
+              text-[12px]
               font-[650]
               leading-[1.55]
               text-[#18375f]
 
-              sm:text-[11.5px]
-              lg:text-[11.5px]
-              xl:text-[12px]
+              sm:text-[12.5px]
+              lg:text-[12.5px]
+              xl:text-[13px]
             "
           >
             Open Access
@@ -2890,7 +2893,7 @@ export default function Home() {
           "
         >
           <Scale
-            size={34}
+            size={38}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -2904,15 +2907,16 @@ export default function Home() {
 
           <p
             className="
+             min-w-0
               font-['Inter',sans-serif]
-              text-[11px]
+              text-[12px]
               font-[650]
               leading-[1.55]
               text-[#18375f]
 
-              sm:text-[11.5px]
-              lg:text-[11.5px]
-              xl:text-[12px]
+              sm:text-[12.5px]
+              lg:text-[12.5px]
+              xl:text-[13px]
             "
           >
             Ethical
@@ -2964,7 +2968,7 @@ export default function Home() {
           "
         >
           <UsersRound
-            size={35}
+            size={39}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -2977,15 +2981,16 @@ export default function Home() {
 
           <p
             className="
+              min-w-0
               font-['Inter',sans-serif]
-              text-[11px]
+              text-[12px]
               font-[650]
               leading-[1.55]
               text-[#18375f]
 
-              sm:text-[11.5px]
-              lg:text-[11.5px]
-              xl:text-[12px]
+              sm:text-[12.5px]
+              lg:text-[12.5px]
+              xl:text-[13px]
             "
           >
             Author
@@ -3034,7 +3039,7 @@ export default function Home() {
           "
         >
           <Goal
-            size={34}
+            size={38}
             strokeWidth={1.45}
             className="
               shrink-0
@@ -3048,15 +3053,16 @@ export default function Home() {
 
           <p
             className="
+           min-w-0
               font-['Inter',sans-serif]
-              text-[11px]
+              text-[12px]
               font-[650]
               leading-[1.55]
               text-[#18375f]
 
-              sm:text-[11.5px]
-              lg:text-[11.5px]
-              xl:text-[12px]
+              sm:text-[12.5px]
+              lg:text-[12.5px]
+              xl:text-[13px]
             "
           >
             Impactful
@@ -3069,10 +3075,11 @@ export default function Home() {
   </div>
 </section>
 
-      {/* =========================================================
+ 
+{/* =========================================================
     NEWS / EDITORIAL / NEWSLETTER SECTION
 ========================================================== */}
-<section className="bg-white py-[16px] sm:py-[20px] lg:py-[24px]">
+<section className="bg-white py-[22px] sm:py-[28px] lg:py-[22px]">
   <div
     className="
       mx-auto
@@ -3082,10 +3089,11 @@ export default function Home() {
       gap-[14px]
 
       sm:w-[min(1120px,calc(100%-48px))]
+      sm:gap-[16px]
 
       md:grid-cols-2
 
-      lg:grid-cols-[1.06fr_0.95fr_0.98fr]
+      lg:grid-cols-[1.08fr_0.97fr_1fr]
       lg:gap-[16px]
     "
   >
@@ -3093,120 +3101,147 @@ export default function Home() {
         LATEST NEWS & EVENTS
     ====================================================== */}
     <motion.div
-      initial={{ opacity: 0, x: -24 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      initial={{
+        opacity: 0,
+        x: -25,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
       transition={{
-        duration: 0.55,
+        duration: 0.6,
         ease: [0.22, 1, 0.36, 1],
       }}
-      whileHover={{ y: -3 }}
+      whileHover={{
+        y: -4,
+      }}
       className="
         group
-        min-h-[285px]
-        rounded-[7px]
+        rounded-[8px]
         border
-        border-[#e4eaf0]
+        border-[#e2e8ef]
         bg-white
-        px-[17px]
-        py-[16px]
-        shadow-[0_4px_18px_rgba(20,48,78,0.035)]
+        px-[16px]
+        py-[17px]
+        shadow-[0_5px_20px_rgba(18,48,78,0.045)]
+        transition-shadow
+        duration-300
+
+        hover:shadow-[0_10px_30px_rgba(18,48,78,0.08)]
 
         sm:px-[18px]
+        sm:py-[19px]
 
-        lg:min-h-[268px]
+        lg:min-h-[292px]
       "
     >
-      {/* Header */}
-      <div className="flex items-center justify-between gap-3">
+      {/* ==================== HEADER ==================== */}
+      <div
+        className="
+          flex
+          items-center
+          justify-between
+          gap-4
+        "
+      >
         <h3
           className="
             font-['Inter',sans-serif]
-            text-[12.5px]
-            font-[800]
+            text-[14px]
+            font-[700]
+            uppercase
             tracking-[0.01em]
-            text-[#173E72]
+            text-[#123d72]
 
-            sm:text-[13px]
+            sm:text-[14.5px]
+            lg:text-[15px]
           "
         >
           LATEST NEWS & EVENTS
         </h3>
 
-        <button
-          type="button"
-          className="
-            group/view
-            inline-flex
-            shrink-0
-            items-center
-            gap-[3px]
-            border-b
-            border-[#8290a1]
-            pb-[1px]
-            font-['Inter',sans-serif]
-            text-[10px]
-            font-[600]
-            text-[#576a83]
-            transition-all
-            duration-300
-            hover:border-[#184e7d]
-            hover:text-[#184e7d]
-          "
-        >
-          View All
-
-          <ArrowRight
-            size={8}
-            strokeWidth={2}
-            className="transition-transform duration-300 group-hover/view:translate-x-[2px]"
-          />
-        </button>
+       
       </div>
 
-      {/* ==================== NEWS ITEM 1 ==================== */}
+      {/* =================================================
+          NEWS ITEM 1
+      ================================================== */}
       <motion.article
-        whileHover={{ x: 3 }}
-        transition={{ duration: 0.25 }}
-        className="group/news mt-[16px] flex items-start gap-[11px]"
+        whileHover={{
+          x: 4,
+        }}
+        transition={{
+          duration: 0.25,
+        }}
+        className="
+          group/news
+          mt-[16px]
+          flex
+          items-start
+          gap-[11px]
+        "
       >
+        {/* IMAGE */}
         <div
           className="
             relative
-            flex
-            h-[58px]
-            w-[67px]
+            h-[59px]
+            w-[69px]
             shrink-0
-            items-center
-            justify-center
             overflow-hidden
-            rounded-[4px]
-            bg-gradient-to-br
-            from-[#06224b]
-            via-[#07547d]
-            to-[#11a2b4]
-            shadow-[0_3px_8px_rgba(7,42,77,0.14)]
+            rounded-[5px]
+            bg-[#eef4f8]
+            shadow-[0_3px_9px_rgba(12,47,80,0.12)]
+
+            sm:h-[70px]
+            sm:w-[72px]
           "
         >
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_60%_35%,rgba(47,195,228,0.5),transparent_35%)]" />
+          <img
+            src={h1}
+            alt="Global Reviews Press emerging technology news"
+            loading="lazy"
+            className="
+              h-full
+              w-full
+              object-cover
+              object-center
+              transition-transform
+              duration-500
+              group-hover/news:scale-110
+            "
+          />
 
-          <Bot
-            size={30}
-            strokeWidth={1.2}
-            className="relative text-white/90"
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-[#062a52]/5
+              transition-colors
+              duration-300
+              group-hover/news:bg-transparent
+            "
           />
         </div>
 
+        {/* CONTENT */}
         <div className="min-w-0 flex-1">
           <span
             className="
               block
               font-['Inter',sans-serif]
-              text-[11px]
-              font-[800]
+              text-[10px]
+              font-[700]
               uppercase
               leading-none
-              text-[#24669f]
+              tracking-[0.02em]
+              text-[#246ca6]
             "
           >
             NEWS
@@ -3216,15 +3251,18 @@ export default function Home() {
             className="
               mt-[5px]
               font-['Inter',sans-serif]
-              text-[10.5px]
-              font-[650]
-              leading-[1.48]
-              text-[#203a59]
+              text-[11px]
+              font-[600]
+              leading-[1.5]
+              text-[#223b58]
               transition-colors
               duration-300
-              group-hover/news:text-[#0a6394]
 
-              sm:text-[11px]
+              group-hover/news:text-[#075d91]
+
+              sm:text-[11.5px]
+              lg:text-[12px]
+              xl:text-[12px]
             "
           >
             Global Reviews Press expands portfolio with new journals in
@@ -3235,9 +3273,11 @@ export default function Home() {
             className="
               mt-[4px]
               font-['Inter',sans-serif]
-              text-[11px]
+              text-[9.5px]
               font-[500]
-              text-[#8a97a7]
+              text-[#8b97a6]
+
+              sm:text-[10px]
             "
           >
             May 15, 2026
@@ -3245,49 +3285,80 @@ export default function Home() {
         </div>
       </motion.article>
 
-      {/* ==================== NEWS ITEM 2 ==================== */}
+      {/* =================================================
+          NEWS ITEM 2
+      ================================================== */}
       <motion.article
-        whileHover={{ x: 3 }}
-        transition={{ duration: 0.25 }}
-        className="group/news mt-[13px] flex items-start gap-[11px]"
+        whileHover={{
+          x: 4,
+        }}
+        transition={{
+          duration: 0.25,
+        }}
+        className="
+          group/news
+          mt-[13px]
+          flex
+          items-start
+          gap-[11px]
+        "
       >
+        {/* IMAGE */}
         <div
           className="
             relative
-            flex
-            h-[58px]
-            w-[67px]
+            h-[59px]
+            w-[69px]
             shrink-0
-            items-center
-            justify-center
             overflow-hidden
-            rounded-[4px]
-            bg-gradient-to-br
-            from-[#245b20]
-            via-[#5a982e]
-            to-[#89bd47]
-            shadow-[0_3px_8px_rgba(42,91,32,0.14)]
+            rounded-[5px]
+            bg-[#eef4f8]
+            shadow-[0_3px_9px_rgba(12,47,80,0.12)]
+
+            sm:h-[70px]
+            sm:w-[72px]
           "
         >
-          <div className="absolute inset-x-0 bottom-0 h-[50%] bg-black/8" />
+          <img
+            src={h3}
+            alt="Open access webinar event"
+            loading="lazy"
+            className="
+              h-full
+              w-full
+              object-cover
+              object-center
+              transition-transform
+              duration-500
+              group-hover/news:scale-110
+            "
+          />
 
-          <RadioTower
-            size={29}
-            strokeWidth={1.25}
-            className="relative text-white"
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-[#27590f]/5
+              transition-colors
+              duration-300
+              group-hover/news:bg-transparent
+            "
           />
         </div>
 
+        {/* CONTENT */}
         <div className="min-w-0 flex-1">
           <span
             className="
               block
               font-['Inter',sans-serif]
-              text-[10.5px]
-              font-[800]
+              text-[10px]
+              font-[700]
               uppercase
               leading-none
-              text-[#59a045]
+              tracking-[0.02em]
+              text-[#5a9d3c]
             "
           >
             EVENT
@@ -3295,17 +3366,20 @@ export default function Home() {
 
           <h4
             className="
-              mt-[5px]
+               mt-[5px]
               font-['Inter',sans-serif]
-              text-[10.5px]
-              font-[650]
-              leading-[1.48]
-              text-[#203a59]
+              text-[11px]
+              font-[600]
+              leading-[1.5]
+              text-[#223b58]
               transition-colors
               duration-300
-              group-hover/news:text-[#4a8e31]
 
-              sm:text-[11px]
+              group-hover/news:text-[#075d91]
+
+              sm:text-[11.5px]
+              lg:text-[12px]
+              xl:text-[12px]
             "
           >
             Webinar: Open Access and Research Impact in the Global South.
@@ -3315,9 +3389,11 @@ export default function Home() {
             className="
               mt-[4px]
               font-['Inter',sans-serif]
-              text-[11px]
+              text-[9.5px]
               font-[500]
-              text-[#8a97a7]
+              text-[#8b97a6]
+
+              sm:text-[10px]
             "
           >
             June 05, 2026
@@ -3325,47 +3401,80 @@ export default function Home() {
         </div>
       </motion.article>
 
-      {/* ==================== NEWS ITEM 3 ==================== */}
+      {/* =================================================
+          NEWS ITEM 3
+      ================================================== */}
       <motion.article
-        whileHover={{ x: 3 }}
-        transition={{ duration: 0.25 }}
-        className="group/news mt-[13px] flex items-start gap-[11px]"
+        whileHover={{
+          x: 4,
+        }}
+        transition={{
+          duration: 0.25,
+        }}
+        className="
+          group/news
+          mt-[13px]
+          flex
+          items-start
+          gap-[11px]
+        "
       >
+        {/* IMAGE */}
         <div
           className="
             relative
-            flex
-            h-[58px]
-            w-[67px]
+            h-[59px]
+            w-[69px]
             shrink-0
-            items-center
-            justify-center
             overflow-hidden
-            rounded-[4px]
-            bg-gradient-to-br
-            from-[#051f46]
-            via-[#064f7f]
-            to-[#0e8fb5]
-            shadow-[0_3px_8px_rgba(7,42,77,0.14)]
+            rounded-[5px]
+            bg-[#eef4f8]
+            shadow-[0_3px_9px_rgba(12,47,80,0.12)]
+
+            sm:h-[70px]
+            sm:w-[72px]
           "
         >
-          <Database
-            size={27}
-            strokeWidth={1.25}
-            className="relative text-white/95"
+          <img
+            src={h2}
+            alt="International indexing database news"
+            loading="lazy"
+            className="
+              h-full
+              w-full
+              object-cover
+              object-center
+              transition-transform
+              duration-500
+              group-hover/news:scale-110
+            "
+          />
+
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              bg-[#052d5b]/5
+              transition-colors
+              duration-300
+              group-hover/news:bg-transparent
+            "
           />
         </div>
 
+        {/* CONTENT */}
         <div className="min-w-0 flex-1">
           <span
             className="
               block
               font-['Inter',sans-serif]
-              text-[10.5px]
-              font-[800]
+              text-[10px]
+              font-[700]
               uppercase
               leading-none
-              text-[#24669f]
+              tracking-[0.02em]
+              text-[#246ca6]
             "
           >
             NEWS
@@ -3375,15 +3484,18 @@ export default function Home() {
             className="
               mt-[5px]
               font-['Inter',sans-serif]
-              text-[10.5px]
-              font-[650]
-              leading-[1.48]
-              text-[#203a59]
+              text-[11px]
+              font-[600]
+              leading-[1.5]
+              text-[#223b58]
               transition-colors
               duration-300
-              group-hover/news:text-[#0a6394]
 
-              sm:text-[11px]
+              group-hover/news:text-[#075d91]
+
+              sm:text-[11.5px]
+              lg:text-[12px]
+              xl:text-[12px]
             "
           >
             Our journals now indexed in additional international databases.
@@ -3393,9 +3505,11 @@ export default function Home() {
             className="
               mt-[4px]
               font-['Inter',sans-serif]
-              text-[11px]
+              text-[9.5px]
               font-[500]
-              text-[#8a97a7]
+              text-[#8b97a6]
+
+              sm:text-[10px]
             "
           >
             April 28, 2026
@@ -3408,63 +3522,92 @@ export default function Home() {
         EDITORIAL SPOTLIGHT
     ====================================================== */}
     <motion.div
-      initial={{ opacity: 0, y: 22 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      initial={{
+        opacity: 0,
+        y: 24,
+      }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
       transition={{
-        duration: 0.55,
+        duration: 0.6,
         delay: 0.08,
         ease: [0.22, 1, 0.36, 1],
       }}
-      whileHover={{ y: -3 }}
+      whileHover={{
+        y: -4,
+      }}
       className="
         relative
         flex
-        min-h-[285px]
+        min-h-[280px]
         flex-col
         overflow-hidden
-        rounded-[7px]
+        rounded-[8px]
         border
-        border-[#e4eaf0]
+        border-[#e2e8ef]
         bg-white
         px-[20px]
-        py-[16px]
-        shadow-[0_4px_18px_rgba(20,48,78,0.035)]
+        py-[17px]
+        shadow-[0_5px_20px_rgba(18,48,78,0.045)]
+        transition-shadow
+        duration-300
 
-        lg:min-h-[268px]
+        hover:shadow-[0_10px_30px_rgba(18,48,78,0.08)]
+
+        sm:px-[21px]
+        sm:py-[19px]
+
+        lg:min-h-[292px]
       "
     >
+      {/* LABEL */}
       <span
         className="
           font-['Inter',sans-serif]
-          text-[11px]
-          font-[800]
+          text-[14px]
+          font-[700]
           uppercase
-          tracking-[0.01em]
-          text-[#17869a]
+          tracking-[0.02em]
+          text-[#16889a]
         "
       >
         EDITORIAL SPOTLIGHT
       </span>
 
+      {/* HEADING */}
       <motion.h3
-        initial={{ opacity: 0, y: 8 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ delay: 0.15 }}
+        initial={{
+          opacity: 0,
+          y: 10,
+        }}
+        whileInView={{
+          opacity: 1,
+          y: 0,
+        }}
+        viewport={{
+          once: true,
+        }}
+        transition={{
+          duration: 0.45,
+          delay: 0.15,
+        }}
         className="
           mt-[14px]
-          max-w-[255px]
+          max-w-[280px]
           font-['Inter',sans-serif]
-          text-[19px]
-          font-[800]
-          leading-[1.18]
+          text-[18px]
+          font-[650]
+          leading-[1.22]
           tracking-[-0.025em]
-          text-[#122f5c]
+          text-[#102f5c]
 
-          sm:text-[20px]
-
-          lg:text-[19px]
+          sm:text-[19px]
 
           xl:text-[20px]
         "
@@ -3472,176 +3615,215 @@ export default function Home() {
         The Future of Intelligent Technologies for a Sustainable World
       </motion.h3>
 
+      {/* DESCRIPTION */}
       <p
         className="
           mt-[15px]
-          max-w-[280px]
+          max-w-[290px]
           font-['Inter',sans-serif]
           text-[12px]
           font-[500]
-          leading-[1.75]
-          text-[#455a73]
+          leading-[1.7]
+          text-[#496078]
 
           sm:text-[12.5px]
+
+          xl:text-[13px]
         "
       >
         Exploring how convergence of AI, robotics, biotechnology and green
         technologies drives a sustainable future.
       </p>
 
-      <motion.button
-        type="button"
-        whileHover={{ y: -2 }}
-        whileTap={{ scale: 0.97 }}
-        className="
-          group
-          mt-[17px]
-          inline-flex
-          h-[34px]
-          w-fit
-          items-center
-          justify-center
-          gap-[8px]
-          rounded-[4px]
-          bg-[#082d5c]
-          px-[15px]
-          font-['Inter',sans-serif]
-          text-[12.5px]
-          font-[650]
-          text-white
-          shadow-[0_4px_10px_rgba(8,45,92,0.14)]
-          transition-all
-          duration-300
-          hover:bg-[#154f7a]
-          hover:shadow-[0_7px_16px_rgba(8,45,92,0.2)]
-        "
+      {/* BUTTON */}
+      <motion.div
+        whileHover={{
+          y: -2,
+        }}
+        whileTap={{
+          scale: 0.97,
+        }}
+        className="mt-[17px] w-fit"
       >
-        Read Editorial
+        <Link
+          to="/editors-information"
+          className="
+            group
+            inline-flex
+            h-[34px]
+            items-center
+            justify-center
+            gap-[8px]
+            rounded-[4px]
+            bg-[#082d5b]
+            px-[16px]
+            font-['Inter',sans-serif]
+            text-[13px]
+            font-[600]
+            text-white
+            shadow-[0_4px_10px_rgba(8,45,91,0.14)]
+            transition-all
+            duration-300
 
-        <ArrowRight
-          size={13}
-          strokeWidth={1.8}
-          className="transition-transform duration-300 group-hover:translate-x-[4px]"
-        />
-      </motion.button>
+            hover:bg-[#14527d]
+            hover:shadow-[0_7px_17px_rgba(8,45,91,0.2)]
+          "
+        >
+          Read Editorial
 
-      {/* Slider dots */}
-      <div className="mt-auto flex items-center justify-center gap-[15px] pt-[17px]">
-        <motion.button
-          whileHover={{ scale: 1.3 }}
-          className="h-[6px] w-[6px] rounded-full bg-[#073c68]"
-        />
+          <ArrowRight
+            size={16}
+            strokeWidth={1.8}
+            className="
+              transition-transform
+              duration-300
+              group-hover:translate-x-[4px]
+            "
+          />
+        </Link>
+      </motion.div>
 
-        <motion.button
-          whileHover={{ scale: 1.3 }}
-          className="h-[6px] w-[6px] rounded-full bg-[#bdc7d2]"
-        />
-
-        <motion.button
-          whileHover={{ scale: 1.3 }}
-          className="h-[6px] w-[6px] rounded-full bg-[#bdc7d2]"
-        />
-
-        <motion.button
-          whileHover={{ scale: 1.3 }}
-          className="h-[6px] w-[6px] rounded-full bg-[#bdc7d2]"
-        />
-      </div>
+   
     </motion.div>
 
     {/* =====================================================
         STAY CONNECTED
     ====================================================== */}
     <motion.div
-      initial={{ opacity: 0, x: 24 }}
-      whileInView={{ opacity: 1, x: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      initial={{
+        opacity: 0,
+        x: 25,
+      }}
+      whileInView={{
+        opacity: 1,
+        x: 0,
+      }}
+      viewport={{
+        once: true,
+        amount: 0.2,
+      }}
       transition={{
-        duration: 0.55,
+        duration: 0.6,
         delay: 0.14,
         ease: [0.22, 1, 0.36, 1],
       }}
-      whileHover={{ y: -3 }}
+      whileHover={{
+        y: -4,
+      }}
       className="
         relative
-        min-h-[285px]
+        min-h-[280px]
         overflow-hidden
-        rounded-[7px]
+        rounded-[8px]
         border
-        border-[#e4eaf0]
+        border-[#e2e8ef]
         bg-white
         px-[20px]
-        py-[16px]
-        shadow-[0_4px_18px_rgba(20,48,78,0.035)]
+        py-[17px]
+        shadow-[0_5px_20px_rgba(18,48,78,0.045)]
+        transition-shadow
+        duration-300
+
+        hover:shadow-[0_10px_30px_rgba(18,48,78,0.08)]
+
+        sm:px-[21px]
+        sm:py-[19px]
 
         md:col-span-2
 
         lg:col-span-1
-        lg:min-h-[268px]
+        lg:min-h-[292px]
       "
     >
+      {/* TITLE */}
       <h3
         className="
           font-['Inter',sans-serif]
-          text-[12.5px]
-          font-[800]
+          text-[14px]
+          font-[700]
+          uppercase
           tracking-[0.01em]
-          text-[#173E72]
+          text-[#123d72]
 
-          sm:text-[13px]
+          sm:text-[14.5px]
         "
       >
         STAY CONNECTED
       </h3>
 
+      {/* DESCRIPTION */}
       <p
         className="
-          mt-[29px]
-          max-w-[255px]
+          mt-[27px]
+          max-w-[265px]
           font-['Inter',sans-serif]
           text-[12px]
           font-[500]
           leading-[1.75]
-          text-[#435770]
+          text-[#496078]
 
           sm:text-[12.5px]
+
+          xl:text-[13px]
         "
       >
         Subscribe to our newsletter for the latest updates, calls for papers
         and news.
       </p>
 
-      {/* Form */}
+      {/* ==================== SUBSCRIBE FORM ==================== */}
       <form
-        onSubmit={(e) => e.preventDefault()}
-        className="relative z-10 mt-[22px]"
+        className="
+          relative
+          z-10
+          mt-[21px]
+        "
+        onSubmit={(event) => {
+          event.preventDefault();
+
+          const form = event.currentTarget;
+          const email = new FormData(form).get("email");
+
+          if (!email) return;
+
+          alert(`Thank you for subscribing with ${email}`);
+
+          form.reset();
+        }}
       >
+        {/* EMAIL INPUT */}
         <input
+          name="email"
           type="email"
           required
+          autoComplete="email"
           placeholder="Enter your email address"
           className="
             h-[38px]
             w-full
             rounded-[4px]
             border
-            border-[#dce5eb]
+            border-[#dce4eb]
             bg-white
-            px-[14px]
+            px-[13px]
             font-['Inter',sans-serif]
-            text-[11px]
+            text-[9px]
             font-[500]
-            text-[#354a63]
+            text-[#354c63]
             outline-none
             transition-all
             duration-300
-            placeholder:text-[#8d99a8]
 
-            focus:border-[#2a7697]
-            focus:shadow-[0_0_0_3px_rgba(42,118,151,0.08)]
+            placeholder:text-[#929eab]
+
+            focus:border-[#287b9a]
+            focus:shadow-[0_0_0_3px_rgba(40,123,154,0.09)]
+
+            sm:text-[11.5px]
           "
         />
 
+        {/* SUBSCRIBE BUTTON */}
         <motion.button
           type="submit"
           whileHover={{
@@ -3652,51 +3834,67 @@ export default function Home() {
           }}
           className="
             group
-            mt-[12px]
+            mt-[19px]
             inline-flex
             h-[34px]
-            min-w-[90px]
+            min-w-[92px]
             items-center
             justify-center
             rounded-[4px]
-            bg-[#062d5c]
-            px-[16px]
+            bg-[#082d5b]
+            px-[17px]
             font-['Inter',sans-serif]
-            text-[10.5px]
-            font-[650]
+            text-[13px]
+            font-[600]
             text-white
-            shadow-[0_4px_10px_rgba(6,45,92,0.13)]
+            shadow-[0_4px_10px_rgba(8,45,91,0.14)]
             transition-all
             duration-300
-            hover:bg-[#145178]
+
+            hover:bg-[#14527d]
+            hover:shadow-[0_7px_17px_rgba(8,45,91,0.2)]
           "
         >
           Subscribe
         </motion.button>
       </form>
 
-      {/* ==================== PAPER PLANE DECORATION ==================== */}
+      {/* =================================================
+          PAPER PLANE DECORATION
+      ================================================== */}
       <div
         className="
           pointer-events-none
           absolute
           bottom-[8px]
-          right-[18px]
+          right-[14px]
           hidden
-          h-[94px]
+          h-[95px]
           w-[125px]
 
           min-[420px]:block
         "
       >
-        {/* curved dotted path */}
+        {/* DOTTED PATH */}
         <svg
           viewBox="0 0 130 100"
-          className="absolute inset-0 h-full w-full overflow-visible"
           fill="none"
+          className="
+            absolute
+            inset-0
+            h-full
+            w-full
+            overflow-visible
+          "
         >
           <path
-            d="M8 73C24 89 47 84 48 68C49 54 34 48 26 58C17 69 38 84 61 73C83 62 89 35 107 17"
+            d="
+              M8 73
+              C24 89 47 84 48 68
+              C49 54 34 48 26 58
+              C17 69 38 84 61 73
+              C83 62 89 35 107 17
+            "
             stroke="#72C9DC"
             strokeWidth="1.35"
             strokeLinecap="round"
@@ -3704,9 +3902,10 @@ export default function Home() {
           />
         </svg>
 
+        {/* PLANE */}
         <motion.div
           animate={{
-            y: [0, -3, 0],
+            y: [0, -4, 0],
             x: [0, 2, 0],
           }}
           transition={{
@@ -3716,8 +3915,8 @@ export default function Home() {
           }}
           className="
             absolute
-            right-[0px]
-            top-[0px]
+            right-0
+            top-0
             rotate-[-22deg]
             text-[#075076]
           "
@@ -3839,17 +4038,17 @@ export default function Home() {
         }}
         className="
           font-['Inter',sans-serif]
-          text-[17px]
-          font-[800]
+          text-[19px]
+          font-[650]
           leading-[1.25]
           tracking-[0.02em]
           text-white
 
           min-[390px]:text-[16px]
 
-          sm:text-[18px]
+          sm:text-[19px]
 
-          lg:text-[19px]
+          lg:text-[20px]
         "
       >
         BE PART OF A GLOBAL MOVEMENT
@@ -3945,11 +4144,11 @@ export default function Home() {
 
           bg-white/[0.02]
 
-          px-[22px]
+          px-[12px]
 
           font-['Inter',sans-serif]
-          text-[12px]
-          font-[600]
+          text-[13.5px]
+          font-[650]
           text-white
 
           shadow-[0_4px_14px_rgba(0,0,0,0.08)]
@@ -3966,12 +4165,12 @@ export default function Home() {
 
           max-[380px]:w-full
 
-          sm:min-w-[185px]
+          sm:min-w-[175px]
 
-          md:h-[46px]
-          md:min-w-[190px]
+          md:h-[42px]
+          md:min-w-[160px]
 
-          lg:min-w-[193px]
+          lg:min-w-[169px]
         "
       >
         <span className="whitespace-nowrap">
@@ -3997,7 +4196,7 @@ export default function Home() {
       {/* =========================================================
     INDEXED IN LEADING DATABASES
 ========================================================== */}
-<section className="border-y border-[#eef2f5] bg-white py-[22px] sm:py-[25px] lg:py-[27px]">
+<section className="border-y border-[#eef2f5] bg-white py-[22px] sm:py-[25px] lg:py-[29px]">
   <div
     className="
       mx-auto
@@ -4026,14 +4225,14 @@ export default function Home() {
       className="
         text-center
         font-['Inter',sans-serif]
-        text-[16px]
-        font-[800]
+        text-[20px]
+        font-[600]
         leading-none
         tracking-[0.025em]
         text-[#173f78]
-
-        sm:text-[15.5px]
-        lg:text-[16px]
+  
+        sm:text-[20px]
+        lg:text-[21px]
       "
     >
       INDEXED IN LEADING DATABASES
@@ -4044,7 +4243,7 @@ export default function Home() {
     ====================================================== */}
     <div
       className="
-        mt-[21px]
+        mt-[32px]
         grid
         grid-cols-2
         items-center
@@ -4088,6 +4287,7 @@ export default function Home() {
           w-full
           items-center
           justify-center
+        
         "
       >
         <img
@@ -4103,7 +4303,7 @@ export default function Home() {
 
             group-hover:drop-shadow-[0_5px_7px_rgba(15,45,75,0.12)]
 
-            lg:max-w-[92px]
+            lg:max-w-[99px]
           "
         />
       </motion.div>
@@ -4287,7 +4487,7 @@ export default function Home() {
 
             group-hover:drop-shadow-[0_5px_7px_rgba(15,45,75,0.12)]
 
-            lg:max-w-[106px]
+            lg:max-w-[126px]
           "
         />
       </motion.div>
