@@ -1,0 +1,219 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Lora:wght@400;500;600;700&display=swap");
+
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+/* =========================================================
+   DESIGN TOKENS
+========================================================= */
+:root {
+  --color-primary-dark: #0d47a1;
+  --color-primary-medium: #2563eb;
+  --color-primary-light: #4b9ef5;
+
+  --color-accent-green: #22a447;
+  --color-accent-orange: #ff8c42;
+  --color-accent-yellow: #ffc107;
+  --color-accent-red: #d32f2f;
+  --color-accent-purple: #7c3aed;
+  --color-accent-teal: #0891b2;
+
+  --color-text-dark: #1f2937;
+  --color-text-medium: #4b5563;
+  --color-text-light: #9ca3af;
+
+  --color-bg-light: #f9fafb;
+  --color-bg-white: #ffffff;
+  --color-border: #e5e7eb;
+}
+
+
+/* =========================================================
+   BASE STYLES
+========================================================= */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    overflow-x: hidden;
+
+    font-family: "Inter", Arial, sans-serif;
+    color: var(--color-text-dark);
+    background-color: #ffffff;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /*
+   IMPORTANT:
+   Do not put fixed font-size here.
+
+   Tailwind classes like:
+   text-4xl
+   md:text-5xl
+   lg:text-6xl
+
+   must control the actual heading size.
+  */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+    font-family: "Lora", Georgia, serif;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  img,
+  picture,
+  svg,
+  video {
+    display: block;
+    max-width: 100%;
+  }
+
+  input,
+  textarea,
+  select {
+    max-width: 100%;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 2px solid #2563eb;
+    outline-offset: 3px;
+  }
+}
+
+
+/* =========================================================
+   SHARED CONTAINER
+========================================================= */
+.container-xl {
+  width: min(1280px, calc(100% - 32px));
+  margin-inline: auto;
+}
+
+@media (min-width: 640px) {
+  .container-xl {
+    width: min(1280px, calc(100% - 48px));
+  }
+}
+
+@media (min-width: 1024px) {
+  .container-xl {
+    width: min(1280px, calc(100% - 64px));
+  }
+}
+
+
+/* =========================================================
+   SECTION SPACING
+========================================================= */
+.section-spacing {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .section-spacing {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .section-spacing {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+}
+
+
+/* =========================================================
+   SMOOTH TRANSITIONS
+========================================================= */
+.transition-smooth {
+  transition:
+    color 300ms ease,
+    background-color 300ms ease,
+    border-color 300ms ease,
+    box-shadow 300ms ease,
+    transform 300ms ease;
+}
+
+
+/* =========================================================
+   SCROLLBAR
+========================================================= */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #a1a1aa;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #71717a;
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+========================================================= */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
