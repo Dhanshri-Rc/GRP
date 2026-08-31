@@ -2509,7 +2509,7 @@ export default function Home() {
 
               hover:text-[#156799]
 
-              sm:text-[10.5px]
+              sm:text-[12.5px]
             "
           >
          <BookOpen
@@ -2552,7 +2552,7 @@ export default function Home() {
 </section>
 
      {/* ==================== WHY PUBLISH SECTION ==================== */}
-<section className="bg-white py-[22px] sm:py-[26px] lg:py-[30px]">
+<section className="bg-white py-[22px] sm:py-[26px] lg:py-[10px]">
   <div
     className="
       mx-auto
@@ -2592,16 +2592,16 @@ export default function Home() {
           pt-[15px]
           text-center
           font-['Inter',sans-serif]
-          text-[13px]
+          text-[15px]
           font-[800]
           leading-[1.2]
           tracking-[0.01em]
           text-[#123f7c]
 
-          sm:text-[14px]
+          sm:text-[15px]
           lg:pb-[15px]
           lg:pt-[17px]
-          lg:text-[15px]
+          lg:text-[16px]
         "
       >
         WHY PUBLISH WITH GLOBAL REVIEWS PRESS?
@@ -2686,14 +2686,14 @@ export default function Home() {
             className="
               min-w-0
               font-['Inter',sans-serif]
-              text-[10px]
+              text-[11px]
               font-[650]
               leading-[1.55]
               text-[#18375f]
 
-              sm:text-[10.5px]
-              lg:text-[9.5px]
-              xl:text-[10px]
+              sm:text-[11.5px]
+              lg:text-[11.5px]
+              xl:text-[12px]
             "
           >
             Rigorous
@@ -2758,14 +2758,14 @@ export default function Home() {
           <p
             className="
               font-['Inter',sans-serif]
-              text-[10px]
+               text-[11px]
               font-[650]
               leading-[1.55]
               text-[#18375f]
 
-              sm:text-[10.5px]
-              lg:text-[9.5px]
-              xl:text-[10px]
+              sm:text-[11.5px]
+              lg:text-[11.5px]
+              xl:text-[12px]
             "
           >
             Global
@@ -2832,14 +2832,14 @@ export default function Home() {
           <p
             className="
               font-['Inter',sans-serif]
-              text-[10px]
+              text-[11px]
               font-[650]
               leading-[1.55]
               text-[#18375f]
 
-              sm:text-[10.5px]
-              lg:text-[9.5px]
-              xl:text-[10px]
+              sm:text-[11.5px]
+              lg:text-[11.5px]
+              xl:text-[12px]
             "
           >
             Open Access
@@ -2905,14 +2905,14 @@ export default function Home() {
           <p
             className="
               font-['Inter',sans-serif]
-              text-[10px]
+              text-[11px]
               font-[650]
               leading-[1.55]
               text-[#18375f]
 
-              sm:text-[10.5px]
-              lg:text-[9.5px]
-              xl:text-[10px]
+              sm:text-[11.5px]
+              lg:text-[11.5px]
+              xl:text-[12px]
             "
           >
             Ethical
@@ -2978,14 +2978,14 @@ export default function Home() {
           <p
             className="
               font-['Inter',sans-serif]
-              text-[10px]
+              text-[11px]
               font-[650]
               leading-[1.55]
               text-[#18375f]
 
-              sm:text-[10.5px]
-              lg:text-[9.5px]
-              xl:text-[10px]
+              sm:text-[11.5px]
+              lg:text-[11.5px]
+              xl:text-[12px]
             "
           >
             Author
@@ -3049,14 +3049,14 @@ export default function Home() {
           <p
             className="
               font-['Inter',sans-serif]
-              text-[10px]
+              text-[11px]
               font-[650]
               leading-[1.55]
               text-[#18375f]
 
-              sm:text-[10.5px]
-              lg:text-[9.5px]
-              xl:text-[10px]
+              sm:text-[11.5px]
+              lg:text-[11.5px]
+              xl:text-[12px]
             "
           >
             Impactful
@@ -3122,12 +3122,12 @@ export default function Home() {
         <h3
           className="
             font-['Inter',sans-serif]
-            text-[10.5px]
+            text-[12.5px]
             font-[800]
             tracking-[0.01em]
             text-[#173E72]
 
-            sm:text-[11px]
+            sm:text-[13px]
           "
         >
           LATEST NEWS & EVENTS
@@ -3145,7 +3145,7 @@ export default function Home() {
             border-[#8290a1]
             pb-[1px]
             font-['Inter',sans-serif]
-            text-[7px]
+            text-[10px]
             font-[600]
             text-[#576a83]
             transition-all
@@ -3202,7 +3202,7 @@ export default function Home() {
             className="
               block
               font-['Inter',sans-serif]
-              text-[7.5px]
+              text-[11px]
               font-[800]
               uppercase
               leading-none
@@ -3216,7 +3216,7 @@ export default function Home() {
             className="
               mt-[5px]
               font-['Inter',sans-serif]
-              text-[8.5px]
+              text-[10.5px]
               font-[650]
               leading-[1.48]
               text-[#203a59]
@@ -3224,7 +3224,7 @@ export default function Home() {
               duration-300
               group-hover/news:text-[#0a6394]
 
-              sm:text-[9px]
+              sm:text-[11px]
             "
           >
             Global Reviews Press expands portfolio with new journals in
@@ -3235,7 +3235,7 @@ export default function Home() {
             className="
               mt-[4px]
               font-['Inter',sans-serif]
-              text-[7px]
+              text-[11px]
               font-[500]
               text-[#8a97a7]
             "
@@ -3283,7 +3283,7 @@ export default function Home() {
             className="
               block
               font-['Inter',sans-serif]
-              text-[7.5px]
+              text-[10.5px]
               font-[800]
               uppercase
               leading-none
@@ -3297,7 +3297,7 @@ export default function Home() {
             className="
               mt-[5px]
               font-['Inter',sans-serif]
-              text-[8.5px]
+              text-[10.5px]
               font-[650]
               leading-[1.48]
               text-[#203a59]
@@ -3305,7 +3305,7 @@ export default function Home() {
               duration-300
               group-hover/news:text-[#4a8e31]
 
-              sm:text-[9px]
+              sm:text-[11px]
             "
           >
             Webinar: Open Access and Research Impact in the Global South.
@@ -3315,7 +3315,7 @@ export default function Home() {
             className="
               mt-[4px]
               font-['Inter',sans-serif]
-              text-[7px]
+              text-[11px]
               font-[500]
               text-[#8a97a7]
             "
@@ -3361,7 +3361,7 @@ export default function Home() {
             className="
               block
               font-['Inter',sans-serif]
-              text-[7.5px]
+              text-[10.5px]
               font-[800]
               uppercase
               leading-none
@@ -3375,7 +3375,7 @@ export default function Home() {
             className="
               mt-[5px]
               font-['Inter',sans-serif]
-              text-[8.5px]
+              text-[10.5px]
               font-[650]
               leading-[1.48]
               text-[#203a59]
@@ -3383,7 +3383,7 @@ export default function Home() {
               duration-300
               group-hover/news:text-[#0a6394]
 
-              sm:text-[9px]
+              sm:text-[11px]
             "
           >
             Our journals now indexed in additional international databases.
@@ -3393,7 +3393,7 @@ export default function Home() {
             className="
               mt-[4px]
               font-['Inter',sans-serif]
-              text-[7px]
+              text-[11px]
               font-[500]
               text-[#8a97a7]
             "
@@ -3437,7 +3437,7 @@ export default function Home() {
       <span
         className="
           font-['Inter',sans-serif]
-          text-[9px]
+          text-[11px]
           font-[800]
           uppercase
           tracking-[0.01em]
@@ -3477,12 +3477,12 @@ export default function Home() {
           mt-[15px]
           max-w-[280px]
           font-['Inter',sans-serif]
-          text-[9px]
+          text-[12px]
           font-[500]
           leading-[1.75]
           text-[#455a73]
 
-          sm:text-[9.5px]
+          sm:text-[12.5px]
         "
       >
         Exploring how convergence of AI, robotics, biotechnology and green
@@ -3506,7 +3506,7 @@ export default function Home() {
           bg-[#082d5c]
           px-[15px]
           font-['Inter',sans-serif]
-          text-[8.5px]
+          text-[12.5px]
           font-[650]
           text-white
           shadow-[0_4px_10px_rgba(8,45,92,0.14)]
@@ -3583,12 +3583,12 @@ export default function Home() {
       <h3
         className="
           font-['Inter',sans-serif]
-          text-[10.5px]
+          text-[12.5px]
           font-[800]
           tracking-[0.01em]
           text-[#173E72]
 
-          sm:text-[11px]
+          sm:text-[13px]
         "
       >
         STAY CONNECTED
@@ -3599,12 +3599,12 @@ export default function Home() {
           mt-[29px]
           max-w-[255px]
           font-['Inter',sans-serif]
-          text-[9px]
+          text-[12px]
           font-[500]
           leading-[1.75]
           text-[#435770]
 
-          sm:text-[9.5px]
+          sm:text-[12.5px]
         "
       >
         Subscribe to our newsletter for the latest updates, calls for papers
@@ -3629,7 +3629,7 @@ export default function Home() {
             bg-white
             px-[14px]
             font-['Inter',sans-serif]
-            text-[8px]
+            text-[11px]
             font-[500]
             text-[#354a63]
             outline-none
@@ -3662,7 +3662,7 @@ export default function Home() {
             bg-[#062d5c]
             px-[16px]
             font-['Inter',sans-serif]
-            text-[8.5px]
+            text-[10.5px]
             font-[650]
             text-white
             shadow-[0_4px_10px_rgba(6,45,92,0.13)]
@@ -3839,7 +3839,7 @@ export default function Home() {
         }}
         className="
           font-['Inter',sans-serif]
-          text-[15px]
+          text-[17px]
           font-[800]
           leading-[1.25]
           tracking-[0.02em]
@@ -3847,9 +3847,9 @@ export default function Home() {
 
           min-[390px]:text-[16px]
 
-          sm:text-[17px]
+          sm:text-[18px]
 
-          lg:text-[17px]
+          lg:text-[19px]
         "
       >
         BE PART OF A GLOBAL MOVEMENT
@@ -3874,16 +3874,16 @@ export default function Home() {
           mt-[9px]
           max-w-[500px]
           font-['Inter',sans-serif]
-          text-[9px]
+          text-[12px]
           font-[500]
           leading-[1.75]
           text-white/90
 
-          min-[390px]:text-[9.5px]
+          min-[390px]:text-[12.5px]
 
-          sm:text-[10px]
+          sm:text-[13px]
 
-          lg:text-[10px]
+          lg:text-[13px]
         "
       >
         Join researchers, experts and institutions worldwide
@@ -3948,7 +3948,7 @@ export default function Home() {
           px-[22px]
 
           font-['Inter',sans-serif]
-          text-[10px]
+          text-[12px]
           font-[600]
           text-white
 
@@ -4026,14 +4026,14 @@ export default function Home() {
       className="
         text-center
         font-['Inter',sans-serif]
-        text-[9px]
+        text-[16px]
         font-[800]
         leading-none
         tracking-[0.025em]
         text-[#173f78]
 
-        sm:text-[9.5px]
-        lg:text-[10px]
+        sm:text-[15.5px]
+        lg:text-[16px]
       "
     >
       INDEXED IN LEADING DATABASES
