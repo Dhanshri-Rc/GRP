@@ -1,113 +1,807 @@
-import { Link } from 'react-router-dom';
-import { Share2, Mail, Share, Play } from 'lucide-react';
+import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+
+import {
+  MapPin,
+  Mail,
+  Phone,
+  Share2,
+  MessageCircle,
+  Globe2,
+  Rss,
+} from "lucide-react";
+
+import logo from "../assets/img/flogo.png";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
+  const linkClass = `
+    block
+    w-fit
+    font-['Inter',sans-serif]
+    text-[9px]
+    font-[400]
+    leading-[1.75]
+    text-white/70
+    transition-all
+    duration-300
+    hover:translate-x-[3px]
+    hover:text-white
+
+    sm:text-[9.5px]
+
+    lg:text-[8.5px]
+
+    xl:text-[9px]
+  `;
+
+  const headingClass = `
+    font-['Inter',sans-serif]
+    text-[9px]
+    font-[700]
+    uppercase
+    tracking-[0.02em]
+    text-white
+
+    sm:text-[9.5px]
+
+    lg:text-[9px]
+
+    xl:text-[9.5px]
+  `;
+
+  const socialClass = `
+    group
+    flex
+    h-[27px]
+    w-[27px]
+    items-center
+    justify-center
+    rounded-full
+    border
+    border-white/35
+    text-white/85
+    transition-all
+    duration-300
+
+    hover:border-white
+    hover:bg-white
+    hover:text-[#05264a]
+    hover:shadow-[0_5px_15px_rgba(255,255,255,0.12)]
+  `;
+
   return (
-    <footer className="bg-[#051830] text-white">
-      <div className="container-xl py-12">
-        {/* Main footer content */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-8">
-          {/* Logo section */}
-          <div className="col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-white rounded-full flex items-center justify-center">
-                <span className="text-[#0d47a1] font-bold text-xs">GRP</span>
-              </div>
-              <div>
-                <div className="text-xs font-bold">GLOBAL REVIEWS</div>
-                <div className="text-xs font-bold">PRESS</div>
-              </div>
-            </div>
-            <p className="text-xs text-gray-400">Research. Reviews. Real Impact.</p>
-          </div>
+    <footer
+      className="
+        relative
+        overflow-hidden
+        bg-[#05264a]
+        text-white
+      "
+    >
+      {/* ==================== TOP BORDER ==================== */}
+      <div
+        className="
+          absolute
+          left-0
+          top-0
+          h-px
+          w-full
+          bg-white/15
+        "
+      />
 
-          {/* Publisher */}
-          <div>
-            <h4 className="font-semibold text-sm mb-4 border-b border-gray-700 pb-2">PUBLISHER</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li><Link to="/about" className="hover:text-white transition">About Us</Link></li>
-              <li><a href="#" className="hover:text-white transition">Our Mission</a></li>
-              <li><a href="#" className="hover:text-white transition">Editorial Board</a></li>
-              <li><a href="#" className="hover:text-white transition">Policies</a></li>
-              <li><Link to="/contact" className="hover:text-white transition">Contact Us</Link></li>
-            </ul>
-          </div>
+      {/* ==================== MAIN CONTAINER ==================== */}
+      <div
+        className="
+          mx-auto
+          w-[min(1120px,calc(100%-32px))]
+          py-[34px]
 
-          {/* Journals */}
-          <div>
-            <h4 className="font-semibold text-sm mb-4 border-b border-gray-700 pb-2">JOURNALS</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li><Link to="/journals" className="hover:text-white transition">All Journals</Link></li>
-              <li><a href="#" className="hover:text-white transition">New Journals</a></li>
-              <li><a href="#" className="hover:text-white transition">Journal Guidelines</a></li>
-              <li><a href="#" className="hover:text-white transition">Publication Ethics</a></li>
-              <li><a href="#" className="hover:text-white transition">Open Access Policy</a></li>
-            </ul>
-          </div>
+          sm:w-[min(1120px,calc(100%-48px))]
+          sm:py-[38px]
 
-          {/* For Authors */}
-          <div>
-            <h4 className="font-semibold text-sm mb-4 border-b border-gray-700 pb-2">FOR AUTHORS</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-white transition">Author Guidelines</a></li>
-              <li><a href="#" className="hover:text-white transition">Submit Manuscript</a></li>
-              <li><a href="#" className="hover:text-white transition">Track Submission</a></li>
-              <li><a href="#" className="hover:text-white transition">APC & Waivers</a></li>
-              <li><a href="#" className="hover:text-white transition">FAQs</a></li>
-            </ul>
-          </div>
+          lg:py-[32px]
 
-          {/* For Reviewers / Contact */}
-          <div>
-            <h4 className="font-semibold text-sm mb-4 border-b border-gray-700 pb-2">CONTACT US</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li className="flex items-start space-x-2">
-                <span>📍</span>
-                <span>202, Planet Apt., Onkarnagar, Besa Road, Near Sahayd Lawn, Nagpur - 440037, Maharashtra, India.</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span>✉️</span>
-                <span>info@globalreviewspress.com</span>
-              </li>
-              <li className="flex items-center space-x-2">
-                <span>📞</span>
-                <span>+91 9970294396</span>
-              </li>
-            </ul>
-          </div>
-        </div>
+          xl:py-[36px]
+        "
+      >
+        {/* =====================================================
+            MAIN FOOTER GRID
+        ====================================================== */}
+        <div
+          className="
+            grid
+            grid-cols-1
+            gap-x-[28px]
+            gap-y-[34px]
 
-        {/* Bottom footer */}
-        <div className="border-t border-gray-700 pt-8">
-          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-xs text-gray-400">
-              © {currentYear} Global Reviews Press. All Rights Reserved.
+            sm:grid-cols-2
+
+            md:grid-cols-3
+
+            lg:grid-cols-[1.25fr_0.8fr_0.9fr_0.95fr_1fr_1.55fr]
+            lg:gap-x-[19px]
+            lg:gap-y-0
+
+            xl:grid-cols-[1.3fr_0.85fr_0.9fr_0.95fr_1fr_1.65fr]
+            xl:gap-x-[26px]
+          "
+        >
+          {/* =====================================================
+              LOGO SECTION
+          ====================================================== */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 18,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+              amount: 0.2,
+            }}
+            transition={{
+              duration: 0.5,
+              ease: [0.22, 1, 0.36, 1],
+            }}
+            className="
+              lg:pr-[5px]
+            "
+          >
+            {/* LOGO */}
+            <Link
+              to="/"
+              className="
+                group
+                inline-block
+              "
+            >
+              <motion.img
+                src={logo}
+                alt="Global Reviews Press"
+                whileHover={{
+                  scale: 1.04,
+                }}
+                transition={{
+                  duration: 0.25,
+                }}
+                className="
+                  h-auto
+                  w-[142px]
+                  object-contain
+                  object-left
+
+                  sm:w-[150px]
+
+                  lg:w-[135px]
+
+                  xl:w-[148px]
+                "
+              />
+            </Link>
+
+            {/* TAGLINE */}
+            <p
+              className="
+                mt-[8px]
+                max-w-[155px]
+                font-['Inter',sans-serif]
+                text-[7px]
+                font-[500]
+                uppercase
+                leading-[1.5]
+                tracking-[0.055em]
+                text-white/50
+
+                sm:text-[7.5px]
+              "
+            >
+              Research. Reviews. Real Impact.
             </p>
-            <div className="flex items-center space-x-4">
-              <a href="#" className="text-gray-400 hover:text-white transition">
-                <Share2 size={18} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
-                <Share size={18} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
-                <Mail size={18} />
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
-                <Play size={18} />
-              </a>
+
+            {/* ==================== SOCIAL ICONS ==================== */}
+            <div
+              className="
+                mt-[15px]
+                flex
+                items-center
+                gap-[7px]
+              "
+            >
+              {/* SHARE */}
+              <motion.a
+                href="#"
+                aria-label="Share"
+                whileHover={{
+                  y: -3,
+                  scale: 1.08,
+                  rotate: -4,
+                }}
+                whileTap={{
+                  scale: 0.94,
+                }}
+                className={socialClass}
+              >
+                <Share2
+                  size={12}
+                  strokeWidth={1.8}
+                  className="
+                    transition-transform
+                    duration-300
+                    group-hover:scale-110
+                  "
+                />
+              </motion.a>
+
+              {/* MESSAGE */}
+              <motion.a
+                href="#"
+                aria-label="Community"
+                whileHover={{
+                  y: -3,
+                  scale: 1.08,
+                  rotate: 4,
+                }}
+                whileTap={{
+                  scale: 0.94,
+                }}
+                className={socialClass}
+              >
+                <MessageCircle
+                  size={12}
+                  strokeWidth={1.8}
+                  className="
+                    transition-transform
+                    duration-300
+                    group-hover:scale-110
+                  "
+                />
+              </motion.a>
+
+              {/* WEBSITE */}
+              <motion.a
+                href="#"
+                aria-label="Website"
+                whileHover={{
+                  y: -3,
+                  scale: 1.08,
+                  rotate: -4,
+                }}
+                whileTap={{
+                  scale: 0.94,
+                }}
+                className={socialClass}
+              >
+                <Globe2
+                  size={12}
+                  strokeWidth={1.8}
+                  className="
+                    transition-transform
+                    duration-300
+                    group-hover:rotate-[10deg]
+                    group-hover:scale-110
+                  "
+                />
+              </motion.a>
+
+              {/* RSS */}
+              <motion.a
+                href="#"
+                aria-label="Updates"
+                whileHover={{
+                  y: -3,
+                  scale: 1.08,
+                  rotate: 4,
+                }}
+                whileTap={{
+                  scale: 0.94,
+                }}
+                className={socialClass}
+              >
+                <Rss
+                  size={12}
+                  strokeWidth={1.8}
+                  className="
+                    transition-transform
+                    duration-300
+                    group-hover:scale-110
+                  "
+                />
+              </motion.a>
             </div>
-            <div className="flex items-center space-x-4 text-xs text-gray-400">
-              <a href="#" className="hover:text-white transition">Privacy Policy</a>
-              <span>|</span>
-              <a href="#" className="hover:text-white transition">Terms of Use</a>
-              <span>|</span>
-              <a href="#" className="hover:text-white transition">Sitemap</a>
+          </motion.div>
+
+          {/* =====================================================
+              PUBLISHER
+          ====================================================== */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 18,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.5,
+              delay: 0.05,
+            }}
+          >
+            <h4 className={headingClass}>
+              PUBLISHER
+            </h4>
+
+            <ul
+              className="
+                mt-[11px]
+                space-y-[1px]
+              "
+            >
+              <li>
+                <Link
+                  to="/about"
+                  className={linkClass}
+                >
+                  About Us
+                </Link>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  Our Mission
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  Editorial Board
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  Policies
+                </a>
+              </li>
+
+              <li>
+                <Link
+                  to="/contact"
+                  className={linkClass}
+                >
+                  Contact Us
+                </Link>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* =====================================================
+              JOURNALS
+          ====================================================== */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 18,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.5,
+              delay: 0.1,
+            }}
+          >
+            <h4 className={headingClass}>
+              JOURNALS
+            </h4>
+
+            <ul
+              className="
+                mt-[11px]
+                space-y-[1px]
+              "
+            >
+              <li>
+                <Link
+                  to="/journals"
+                  className={linkClass}
+                >
+                  All Journals
+                </Link>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  New Journals
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  Journal Guidelines
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  Publication Ethics
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  Open Access Policy
+                </a>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* =====================================================
+              AUTHORS
+          ====================================================== */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 18,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.5,
+              delay: 0.15,
+            }}
+          >
+            <h4 className={headingClass}>
+              AUTHORS
+            </h4>
+
+            <ul
+              className="
+                mt-[11px]
+                space-y-[1px]
+              "
+            >
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  Author Guidelines
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  Submit Manuscript
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  Track Submission
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  APC &amp; Waivers
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  FAQs
+                </a>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* =====================================================
+              REVIEWERS
+          ====================================================== */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 18,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.5,
+              delay: 0.2,
+            }}
+          >
+            <h4 className={headingClass}>
+              REVIEWERS
+            </h4>
+
+            <ul
+              className="
+                mt-[11px]
+                space-y-[1px]
+              "
+            >
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  Reviewer Guidelines
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  Review Process
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  Benefits
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  Register as Reviewer
+                </a>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className={linkClass}
+                >
+                  FAQs
+                </a>
+              </li>
+            </ul>
+          </motion.div>
+
+          {/* =====================================================
+              CONTACT US
+          ====================================================== */}
+          <motion.div
+            initial={{
+              opacity: 0,
+              y: 18,
+            }}
+            whileInView={{
+              opacity: 1,
+              y: 0,
+            }}
+            viewport={{
+              once: true,
+            }}
+            transition={{
+              duration: 0.5,
+              delay: 0.25,
+            }}
+          >
+            <h4 className={headingClass}>
+              CONTACT US
+            </h4>
+
+            <div
+              className="
+                mt-[11px]
+                space-y-[10px]
+              "
+            >
+              {/* ADDRESS */}
+              <motion.a
+                href="https://www.google.com/maps/search/?api=1&query=Nagpur+Maharashtra+India"
+                target="_blank"
+                rel="noreferrer"
+                whileHover={{
+                  x: 3,
+                }}
+                className="
+                  group
+                  flex
+                  items-start
+                  gap-[7px]
+                  text-white/70
+                  transition-colors
+                  duration-300
+                  hover:text-white
+                "
+              >
+                <MapPin
+                  size={12}
+                  strokeWidth={1.8}
+                  className="
+                    mt-[2px]
+                    shrink-0
+                    text-white
+                  "
+                />
+
+                <span
+                  className="
+                    font-['Inter',sans-serif]
+                    text-[8.5px]
+                    font-[400]
+                    leading-[1.55]
+
+                    sm:text-[9px]
+
+                    lg:text-[8px]
+
+                    xl:text-[8.5px]
+                  "
+                >
+                  202, Planet Apt.,
+                  <br />
+                  Onkarnagar, Besa Road,
+                  <br />
+                  Near Sahayd Lawn,
+                  <br />
+                  Nagpur - 440037,
+                  <br />
+                  Maharashtra, India.
+                </span>
+              </motion.a>
+
+              {/* EMAIL */}
+              <motion.a
+                href="mailto:info@globalreviewspress.com"
+                whileHover={{
+                  x: 3,
+                }}
+                className="
+                  group
+                  flex
+                  items-start
+                  gap-[7px]
+                  text-white/70
+                  transition-colors
+                  duration-300
+                  hover:text-white
+                "
+              >
+                <Mail
+                  size={12}
+                  strokeWidth={1.8}
+                  className="
+                    mt-[1px]
+                    shrink-0
+                    text-white
+                  "
+                />
+
+                <span
+                  className="
+                    break-all
+                    font-['Inter',sans-serif]
+                    text-[8.5px]
+                    font-[400]
+                    leading-[1.5]
+
+                    sm:text-[9px]
+
+                    lg:text-[8px]
+
+                    xl:text-[8.5px]
+                  "
+                >
+                  info@globalreviewspress.com
+                </span>
+              </motion.a>
+
+              {/* PHONE */}
+              <motion.a
+                href="tel:+919970294396"
+                whileHover={{
+                  x: 3,
+                }}
+                className="
+                  group
+                  flex
+                  items-center
+                  gap-[7px]
+                  text-white/70
+                  transition-colors
+                  duration-300
+                  hover:text-white
+                "
+              >
+                <Phone
+                  size={12}
+                  strokeWidth={1.8}
+                  className="
+                    shrink-0
+                    text-white
+                  "
+                />
+
+                <span
+                  className="
+                    font-['Inter',sans-serif]
+                    text-[8.5px]
+                    font-[400]
+
+                    sm:text-[9px]
+
+                    lg:text-[8px]
+
+                    xl:text-[8.5px]
+                  "
+                >
+                  +91 9970294396
+                </span>
+              </motion.a>
             </div>
-          </div>
+          </motion.div>
         </div>
+
+      
       </div>
     </footer>
   );
