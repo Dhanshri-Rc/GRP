@@ -25,7 +25,7 @@ export default function App() {
         <Route path="/reviewer" element={<Reviewer />} />
         <Route path="/editors-information" element={<EditorsInformation />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/authors" element={<Authors />} />
+       
         <Route path="/indexing" element={<Indexing />} />
         <Route path="/news" element={<News />} />
         <Route path="*" element={<NotFound />} />
