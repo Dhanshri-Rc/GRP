@@ -28,7 +28,7 @@ export default function About() {
     <>
       <Header />
 
-      <main className="overflow-x-hidden bg-white font-sans text-[#071b3d]">
+      <main className="overflow-x-hidden bg-white font-sans text-[#071b3d] pt-[75px]">
         {/* ==================== HERO SECTION ==================== */}
         <section
           className="relative isolate min-h-[360px] overflow-hidden bg-[#031a3e] bg-cover bg-[68%_center] bg-no-repeat sm:min-h-[380px] lg:min-h-[410px] lg:bg-center"
@@ -341,7 +341,7 @@ export default function About() {
         </section>
 
         {/* ==================== OUR FOCUS ==================== */}
-        <section className="py-5 sm:py-7 lg:py-8">
+        <section className="py-5 sm:py-5 lg:py-5">
           <div className="mx-auto grid w-[min(1120px,calc(100%-32px))] overflow-hidden rounded-[7px] bg-[#f7f8fa] shadow-[0_5px_18px_rgba(4,25,56,0.07)] sm:w-[min(1120px,calc(100%-48px))] lg:grid-cols-[0.82fr_1.18fr]">
             <motion.div
               initial={{ opacity: 0, x: -25 }}
@@ -350,39 +350,39 @@ export default function About() {
               transition={{ duration: 0.6 }}
               className="p-7 sm:p-9 lg:p-8"
             >
-              <p className="text-[12px] font-extrabold uppercase tracking-[0.04em] text-[#278642]">
+              <p className="text-[12px] font-[550] uppercase tracking-[0.04em] text-[#278642]">
                 Our Focus
               </p>
-              <div className="mt-2 h-[2px] w-9 bg-[#52ac59]" />
-              <h2 className="mt-4 text-[27px] font-extrabold leading-tight text-[#09235a] sm:text-[30px]">
+              <div className="mt-1 h-[2px] w-9 bg-[#52ac59]" />
+              <h2 className="mt-4 text-[24px] font-[600] leading-tight text-[#09235a] sm:text-[26px]">
                 Research. Reviews. Real Impact.
               </h2>
               <p className="mt-4 text-[13px] leading-6 text-[#3f4b5c]">
                 We publish authoritative reviews and original research that
                 accelerate innovation and address real-world challenges.
               </p>
-              <div className="mt-5 space-y-3 text-[12px] font-medium text-[#28384d]">
+              <div className="mt-4 space-y-2 text-[12px] font-medium text-[#28384d]">
                 <p className="flex items-center gap-3">
-                  <span className="grid size-[18px] place-items-center rounded-full border border-[#38a453] text-[#278642]">
-                    <Check size={12} strokeWidth={3} />
+                  <span className="grid size-[19px] place-items-center rounded-full border border-[#38a453] text-[#278642]">
+                    <Check size={13} strokeWidth={3} />
                   </span>
                   High-quality, peer-reviewed publications
                 </p>
                 <p className="flex items-center gap-3">
-                  <span className="grid size-[18px] place-items-center rounded-full border border-[#38a453] text-[#278642]">
-                    <Check size={12} strokeWidth={3} />
+                  <span className="grid size-[19px] place-items-center rounded-full border border-[#38a453] text-[#278642]">
+                    <Check size={13} strokeWidth={3} />
                   </span>
                   Rapid and transparent editorial processes
                 </p>
                 <p className="flex items-center gap-3">
-                  <span className="grid size-[18px] place-items-center rounded-full border border-[#38a453] text-[#278642]">
-                    <Check size={12} strokeWidth={3} />
+                  <span className="grid size-[19px] place-items-center rounded-full border border-[#38a453] text-[#278642]">
+                    <Check size={13} strokeWidth={3} />
                   </span>
                   Global reach and visibility
                 </p>
                 <p className="flex items-center gap-3">
-                  <span className="grid size-[18px] place-items-center rounded-full border border-[#38a453] text-[#278642]">
-                    <Check size={12} strokeWidth={3} />
+                  <span className="grid size-[19px] place-items-center rounded-full border border-[#38a453] text-[#278642]">
+                    <Check size={13} strokeWidth={3} />
                   </span>
                   Commitment to sustainability and ethical research
                 </p>
@@ -391,7 +391,7 @@ export default function About() {
                 whileHover={{ x: 3 }}
                 whileTap={{ scale: 0.97 }}
                 href="/journals"
-                className="mt-7 inline-flex items-center gap-4 rounded-[4px] bg-[#062553] px-5 py-3 text-[12px] font-bold text-white shadow-md transition-colors hover:bg-[#0b3b7a]"
+                className="mt-5 inline-flex items-center gap-4 rounded-[4px] bg-[#062553] px-4 py-3 text-[12px] font-[550] text-white shadow-md transition-colors hover:bg-[#0b3b7a]"
               >
                 Explore Our Journals <ArrowRight size={17} />
               </motion.a>
@@ -402,7 +402,7 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6 }}
-              className="group min-h-[300px] overflow-hidden lg:min-h-[390px]"
+              className="group min-h-[300px] overflow-hidden lg:min-h-[340px] rounded-[7px]"
             >
               <img
                 src={focus}
@@ -421,7 +421,7 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6 }}
-              className="group min-h-[290px] overflow-hidden lg:min-h-[330px]"
+              className="group min-h-[290px] overflow-hidden rounded-[7px] lg:min-h-[330px]"
             >
               <img
                 src={commitment}
@@ -435,16 +435,16 @@ export default function About() {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6 }}
-              className="p-7 sm:p-9 lg:p-8"
+              className="p-5 sm:p-5 lg:p-6"
             >
-              <p className="text-[12px] font-extrabold uppercase tracking-[0.04em] text-[#278642]">
+              <p className="text-[12px] font-[550] uppercase tracking-[0.04em] text-[#278642]">
                 Our Commitment
               </p>
-              <div className="mt-2 h-[2px] w-9 bg-[#52ac59]" />
-              <h2 className="mt-4 text-[27px] font-extrabold leading-tight text-[#09235a] sm:text-[30px]">
+              <div className="mt-1 h-[2px] w-9 bg-[#52ac59]" />
+              <h2 className="mt-3 text-[24px] font-[600] leading-tight text-[#09235a] sm:text-[26px]">
                 Sustainable Publishing for a Better World
               </h2>
-              <p className="mt-4 text-[13px] leading-6 text-[#3f4b5c]">
+              <p className="mt-3 text-[13px] leading-6 text-[#3f4b5c]">
                 We are committed to responsible publishing practices that
                 minimize our environmental footprint and support the UN
                 Sustainable Development Goals.
