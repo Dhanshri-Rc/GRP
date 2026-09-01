@@ -24,14 +24,14 @@ import {
 } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import editorBg from "../assets/img/editorBg.png";
-import editorCta from "../assets/img/editorCta.png";
-import e1 from "../assets/img/e1.png";
-import e2 from "../assets/img/e2.png";
-import e3 from "../assets/img/e3.png";
-import e4 from "../assets/img/e4.png";
-import e5 from "../assets/img/e5.png";
-import e6 from "../assets/img/e6.png";
+import editorBg from "../assets/img/global-reviews-press-editor-information-hero.webp";
+import editorCta from "../assets/img/join-global-reviews-press-editorial-board-cta.webp";
+import e1 from "../assets/img/editor-manuscript-management-responsibility.webp";
+import e2 from "../assets/img/editorial-quality-assurance-responsibility.webp";
+import e3 from "../assets/img/academic-journal-promotion-responsibility.webp";
+import e4 from "../assets/img/editor-publication-ethics-responsibility.webp";
+import e5 from "../assets/img/editor-reviewer-publisher-collaboration.webp";
+import e6 from "../assets/img/editor-strategic-journal-development.webp";
 
 const roles = [
   {

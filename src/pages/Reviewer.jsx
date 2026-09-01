@@ -28,27 +28,27 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import bgReviewer from "../assets/img/bgreveiwer.png";
-import bgcta from "../assets/img/rcta.png";
+import bgReviewer from "../assets/img/global-reviews-press-peer-reviewer-hero.webp";
+import bgcta from "../assets/img/join-global-reviews-press-reviewer-network-cta.webp";
 
 /* Benefit Card Images */
-import r1 from "../assets/img/eng1.png";
-import r2 from "../assets/img/eng2.png";
-import r3 from "../assets/img/eng3.png";
-import r4 from "../assets/img/eng4.png";
-import r5 from "../assets/img/eng5.png";
-import r6 from "../assets/img/eng6.png";
-import r7 from "../assets/img/eng7.png";
-import r8 from "../assets/img/eng8.png";
+import r1 from "../assets/img/academic-reviewer-profile-development.webp";
+import r2 from "../assets/img/outstanding-peer-reviewer-recognition.webp";
+import r3 from "../assets/img/reviewer-access-to-latest-research.webp";
+import r4 from "../assets/img/reviewer-publication-discounts-and-waivers.webp";
+import r5 from "../assets/img/academic-reviewer-networking-opportunities.webp";
+import r6 from "../assets/img/peer-review-intellectual-contribution.webp";
+import r7 from "../assets/img/academic-reviewer-activity-dashboard.webp";
+import r8 from "../assets/img/peer-review-supporting-global-research.webp";
 
 /* Indexing Logos */
-import scopusLogo from "../assets/img/scopus.png";
-import clarivateLogo from "../assets/img/clarivate.png";
-import doajLogo from "../assets/img/doaj.png";
-import casLogo from "../assets/img/cas.png";
-import dimensionsLogo from "../assets/img/dimensions.png";
-import crossrefLogo from "../assets/img/crossref.png";
-import googleScholarLogo from "../assets/img/google-scholar.png";
+import scopusLogo from "../assets/img/scopus-indexing-database-logo.webp";
+import clarivateLogo from "../assets/img/clarivate-web-of-science-logo.webp";
+import doajLogo from "../assets/img/directory-of-open-access-journals-doaj-logo.webp";
+import casLogo from "../assets/img/chemical-abstracts-service-cas-logo.webp";
+import dimensionsLogo from "../assets/img/dimensions-research-indexing-logo.webp";
+import crossrefLogo from "../assets/img/crossref-doi-registration-agency-logo.webp";
+import googleScholarLogo from "../assets/img/google-scholar-academic-indexing-logo.webp";
 
 
 const reviewBenefits = [

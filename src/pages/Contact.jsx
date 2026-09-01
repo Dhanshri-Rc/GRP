@@ -17,14 +17,14 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import contactBg from "../assets/img/contactBg.png";
-import contactCta from "../assets/img/contactCta.png";
-import faqImage from "../assets/img/faq.png";
-import indiaImage from "../assets/img/india.png";
-import malaysiaImage from "../assets/img/malasiya.png";
-import philippinesImage from "../assets/img/phillippines.png";
-import singaporeImage from "../assets/img/singapure.png";
-import unitedKingdomImage from "../assets/img/unitedKingdom.png";
+import contactBg from "../assets/img/global-reviews-press-contact-us-hero.webp";
+import contactCta from "../assets/img/contact-global-reviews-press-cta-background.webp";
+import faqImage from "../assets/img/global-reviews-press-contact-faq-support.webp";
+import indiaImage from "../assets/img/global-reviews-press-india-nagpur-office.webp";
+import malaysiaImage from "../assets/img/global-reviews-press-malaysia-kuala-lumpur.webp";
+import philippinesImage from "../assets/img/global-reviews-press-philippines-manila.webp";
+import singaporeImage from "../assets/img/global-reviews-press-singapore-office.webp";
+import unitedKingdomImage from "../assets/img/global-reviews-press-united-kingdom-london.webp";
 
 const container =
   "mx-auto w-[min(1120px,calc(100%-32px))] sm:w-[min(1120px,calc(100%-48px))]";
