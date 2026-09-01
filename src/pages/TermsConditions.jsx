@@ -9,7 +9,6 @@ import {
   Copyright,
   UploadCloud,
   Scale,
-  CreditCard,
   ShieldCheck,
   Ban,
   Globe2,
@@ -27,12 +26,20 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
+import bgReviewer from "../assets/img/global-reviews-press-terms-hero.webp";
+import bgcta from "../assets/img/join-global-reviews-press-privacy-policy-cta.webp";
+
 export default function TermsConditions() {
   return (
     <>
       <Header />
 
-      <main className="overflow-hidden bg-white pt-[75px]">
+      {/* =========================================================
+          IMPORTANT:
+          overflow-x-clip keeps sticky sidebar working
+      ========================================================== */}
+      <main className="overflow-x-clip bg-white pt-[45px]">
+
         {/* =========================================================
             HERO SECTION
         ========================================================== */}
@@ -40,85 +47,87 @@ export default function TermsConditions() {
           className="
             relative
             isolate
+            w-full
             overflow-hidden
-            bg-[#061f43]
+            bg-[#04152c]
+            bg-cover
+            bg-no-repeat
             text-white
+
+            min-h-[500px]
+            bg-[position:68%_center]
+
+            min-[390px]:min-h-[480px]
+            min-[390px]:bg-[position:70%_center]
+
+            sm:min-h-[455px]
+            sm:bg-[position:68%_center]
+
+            md:min-h-[385px]
+            md:bg-[position:64%_center]
+
+            lg:min-h-[335px]
+            lg:bg-center
+
+            xl:min-h-[365px]
           "
+          style={{
+            backgroundImage: `url(${bgReviewer})`,
+          }}
         >
-          {/* BACKGROUND */}
+          {/* =====================================================
+              RESPONSIVE OVERLAY
+          ====================================================== */}
           <div
             className="
               pointer-events-none
               absolute
               inset-0
-              -z-20
+              -z-10
+
               bg-gradient-to-r
-              from-[#061c3d]
-              via-[#07325e]
-              to-[#086b68]
+              from-[#03183c]/98
+              via-[#03183c]/92
+              via-[58%]
+              to-[#03183c]/15
+
+              sm:via-[54%]
+              sm:to-[#03183c]/10
+
+              md:from-[#03183c]/96
+              md:via-[#03183c]/72
+              md:via-[47%]
+              md:to-transparent
+
+              lg:from-transparent
+              lg:via-transparent
+              lg:to-transparent
             "
           />
 
-          {/* DECORATIVE CIRCLES */}
-          <div
-            className="
-              pointer-events-none
-              absolute
-              -right-[100px]
-              -top-[150px]
-              -z-10
-              h-[440px]
-              w-[440px]
-              rounded-full
-              border
-              border-white/10
-            "
-          />
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              right-[60px]
-              top-[28px]
-              -z-10
-              h-[195px]
-              w-[195px]
-              rounded-full
-              border
-              border-[#69b77a]/20
-            "
-          />
-
-          <div
-            className="
-              pointer-events-none
-              absolute
-              bottom-[-90px]
-              left-[38%]
-              -z-10
-              h-[250px]
-              w-[250px]
-              rounded-full
-              bg-[#13a27b]/10
-              blur-3xl
-            "
-          />
-
-          {/* HERO CONTENT */}
+          {/* =====================================================
+              HERO CONTAINER
+          ====================================================== */}
           <div
             className="
               mx-auto
               flex
-              min-h-[310px]
+              min-h-[500px]
               w-[min(1120px,calc(100%-32px))]
               items-center
-              py-[48px]
+              py-[32px]
 
-              sm:min-h-[330px]
+              min-[390px]:min-h-[480px]
+
+              sm:min-h-[455px]
               sm:w-[min(1120px,calc(100%-48px))]
+              sm:py-[38px]
 
-              lg:min-h-[345px]
+              md:min-h-[385px]
+              md:py-[30px]
+
+              lg:min-h-[440px]
+              lg:py-[14px]
             "
           >
             <motion.div
@@ -131,16 +140,21 @@ export default function TermsConditions() {
                 x: 0,
               }}
               transition={{
-                duration: 0.7,
+                duration: 0.72,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="
                 relative
                 z-10
-                max-w-[720px]
+                w-full
+                max-w-[455px]
+
+                sm:max-w-[470px]
+                md:max-w-[430px]
+                lg:max-w-[445px]
               "
             >
-              {/* BADGE */}
+              {/* ==================== BADGE ==================== */}
               <motion.div
                 initial={{
                   opacity: 0,
@@ -170,7 +184,7 @@ export default function TermsConditions() {
                 <Gavel
                   size={14}
                   strokeWidth={1.7}
-                  className="text-[#8bd28c]"
+                  className="text-[#CDD82D]"
                 />
 
                 <span
@@ -187,7 +201,7 @@ export default function TermsConditions() {
                 </span>
               </motion.div>
 
-              {/* TITLE */}
+              {/* ==================== HEADING ==================== */}
               <motion.h1
                 initial={{
                   opacity: 0,
@@ -198,60 +212,30 @@ export default function TermsConditions() {
                   y: 0,
                 }}
                 transition={{
-                  delay: 0.14,
-                  duration: 0.55,
+                  duration: 0.6,
+                  delay: 0.08,
                 }}
                 className="
-                  mt-[17px]
+                  mt-[16px]
                   font-['Inter',sans-serif]
-                  text-[34px]
-                  font-[700]
-                  leading-[1.06]
-                  tracking-[-0.035em]
+                  text-[28px]
+                  font-[600]
+                  leading-[1.12]
+                  tracking-[-0.025em]
                   text-white
 
-                  sm:text-[42px]
-
-                  lg:text-[46px]
+                  min-[390px]:text-[30px]
+                  sm:text-[32px]
+                  md:text-[33px]
+                  lg:text-[33px]
+                  xl:text-[34px]
                 "
               >
                 Terms & Conditions
               </motion.h1>
 
-              {/* DESCRIPTION */}
+              {/* ==================== DESCRIPTION ==================== */}
               <motion.p
-                initial={{
-                  opacity: 0,
-                  y: 12,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  delay: 0.21,
-                  duration: 0.55,
-                }}
-                className="
-                  mt-[17px]
-                  max-w-[620px]
-                  font-['Inter',sans-serif]
-                  text-[11px]
-                  font-[450]
-                  leading-[1.75]
-                  text-white/85
-
-                  sm:text-[12px]
-                "
-              >
-                These Terms and Conditions govern your access to and use of
-                the Global Reviews Press website, publishing services,
-                manuscript submission systems and related academic resources.
-                Please read them carefully before using our services.
-              </motion.p>
-
-              {/* META */}
-              <motion.div
                 initial={{
                   opacity: 0,
                   y: 10,
@@ -261,141 +245,317 @@ export default function TermsConditions() {
                   y: 0,
                 }}
                 transition={{
-                  delay: 0.28,
-                  duration: 0.5,
+                  duration: 0.55,
+                  delay: 0.22,
                 }}
                 className="
                   mt-[18px]
-                  flex
-                  flex-wrap
-                  items-center
-                  gap-[14px]
+                  max-w-[420px]
                   font-['Inter',sans-serif]
-                  text-[8px]
-                  font-[500]
-                  text-white/70
+                  text-[10px]
+                  font-[450]
+                  leading-[1.8]
+                  text-white/90
+
+                  sm:text-[10.5px]
+
+                  lg:mt-[16px]
+                  lg:text-[12px]
                 "
               >
-                <span className="inline-flex items-center gap-[5px]">
-                  <FileText size={12} />
-                  Terms of Use & Publishing Services
-                </span>
+                These Terms and Conditions govern your access to and use of
+                the Global Reviews Press website, publishing services,
+                manuscript submission systems and related academic resources.
+                Please read them carefully before using our services.
+              </motion.p>
 
-                <span
+              {/* ==================== TERMS INFO ==================== */}
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  y: 14,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.6,
+                  delay: 0.3,
+                }}
+                className="
+                  mt-[26px]
+                  flex
+                  w-full
+                  items-center
+
+                  sm:mt-[28px]
+                  lg:mt-[30px]
+                "
+              >
+                <motion.div
+                  whileHover={{
+                    y: -3,
+                  }}
                   className="
-                    hidden
-                    h-[3px]
-                    w-[3px]
-                    rounded-full
-                    bg-white/40
+                    group
+                    inline-flex
+                    max-w-full
+                    items-center
+                    gap-[9px]
 
-                    sm:block
+                    rounded-[5px]
+                    border
+                    border-white/20
+                    bg-white/[0.07]
+
+                    px-[11px]
+                    py-[4px]
+
+                    backdrop-blur-[2px]
+
+                    min-[390px]:gap-[10px]
+                    min-[390px]:px-[12px]
+
+                    sm:gap-[11px]
+                    sm:px-[13px]
+
+                    lg:gap-[12px]
+                    lg:px-[10px]
+                    lg:py-[2px]
                   "
-                />
+                >
+                  <motion.div
+                    whileHover={{
+                      scale: 1.08,
+                      rotate: -3,
+                    }}
+                    className="
+                      flex
+                      h-[31px]
+                      w-[31px]
+                      shrink-0
+                      items-center
+                      justify-center
+                      rounded-full
+                      bg-[#CDD82D]/10
+                      text-[#CDD82D]
 
-                <span>
-                  Last Updated: September 2026
-                </span>
+                      min-[390px]:h-[33px]
+                      min-[390px]:w-[33px]
+
+                      sm:h-[34px]
+                      sm:w-[34px]
+
+                      lg:h-[36px]
+                      lg:w-[36px]
+                    "
+                  >
+                    <FileText
+                      size={19}
+                      strokeWidth={1.6}
+                    />
+                  </motion.div>
+
+                  <p
+                    className="
+                      font-['Inter',sans-serif]
+                      text-[9px]
+                      font-[600]
+                      leading-[1.35]
+                      text-white/95
+
+                      min-[390px]:whitespace-nowrap
+                      min-[390px]:text-[9.5px]
+
+                      sm:text-[10px]
+                      lg:text-[11.5px]
+                    "
+                  >
+                    Terms of Use & Publishing Services
+                  </p>
+                </motion.div>
               </motion.div>
             </motion.div>
           </div>
         </section>
 
         {/* =========================================================
-            ACCEPTANCE STRIP
+            COMMITMENT SECTION
+            SAME STRUCTURE AS PRIVACY POLICY
         ========================================================== */}
         <section
           className="
-            border-b
-            border-[#e8edf2]
-            bg-[#f8fafc]
-            py-[17px]
+            bg-white
+            py-[24px]
+
+            sm:py-[30px]
+            lg:py-[34px]
           "
         >
           <div
             className="
               mx-auto
-              flex
               w-[min(1120px,calc(100%-32px))]
-              flex-col
-              gap-[10px]
-
               sm:w-[min(1120px,calc(100%-48px))]
-
-              md:flex-row
-              md:items-center
-              md:justify-between
             "
           >
-            <div className="flex items-start gap-[9px]">
-              <CheckCircle2
-                size={17}
-                strokeWidth={1.6}
-                className="
-                  mt-[1px]
-                  shrink-0
-                  text-[#4d9448]
-                "
-              />
-
-              <p
-                className="
-                  max-w-[710px]
-                  font-['Inter',sans-serif]
-                  text-[8.5px]
-                  font-[500]
-                  leading-[1.65]
-                  text-[#465970]
-
-                  sm:text-[9px]
-                "
-              >
-                By accessing or using Global Reviews Press, you agree to be
-                bound by these Terms and Conditions and all applicable laws
-                and regulations.
-              </p>
-            </div>
-
-            <a
-              href="#contact"
+            <motion.div
+              initial={{
+                opacity: 0,
+                y: 18,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{
+                once: true,
+                amount: 0.25,
+              }}
+              transition={{
+                duration: 0.55,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              whileHover={{
+                y: -3,
+              }}
               className="
                 group
-                inline-flex
-                w-fit
-                items-center
-                gap-[6px]
-                text-[8px]
-                font-[700]
-                text-[#24689d]
-                transition-colors
-                hover:text-[#174d79]
+                flex
+                flex-col
+                items-start
+                gap-[16px]
+
+                rounded-[10px]
+                border
+                border-[#d8e4f0]
+                bg-[#f4f8fc]
+
+                px-[18px]
+                py-[20px]
+
+                shadow-[0_7px_22px_rgba(12,49,88,0.045)]
+
+                transition-all
+                duration-300
+
+                hover:border-[#bfd2e3]
+                hover:shadow-[0_10px_28px_rgba(12,49,88,0.09)]
+
+                min-[480px]:flex-row
+                min-[480px]:items-start
+                min-[480px]:gap-[20px]
+
+                sm:px-[24px]
+                sm:py-[24px]
+
+                lg:gap-[22px]
+                lg:px-[28px]
+                lg:py-[27px]
               "
             >
-              Terms Enquiries
-
-              <ArrowRight
-                size={11}
+              {/* ICON */}
+              <motion.div
+                whileHover={{
+                  scale: 1.08,
+                  rotate: -3,
+                }}
+                transition={{
+                  duration: 0.25,
+                }}
                 className="
-                  transition-transform
+                  flex
+                  h-[54px]
+                  w-[54px]
+                  shrink-0
+                  items-center
+                  justify-center
+                  rounded-full
+
+                  bg-[#dce9f5]
+                  text-[#174f82]
+
+                  transition-all
                   duration-300
-                  group-hover:translate-x-[3px]
+
+                  group-hover:bg-[#c9dff1]
+                  group-hover:text-[#0d3b68]
+
+                  sm:h-[58px]
+                  sm:w-[58px]
+
+                  lg:h-[62px]
+                  lg:w-[62px]
                 "
-              />
-            </a>
+              >
+                <Scale
+                  size={28}
+                  strokeWidth={1.55}
+                />
+              </motion.div>
+
+              {/* CONTENT */}
+              <div
+                className="
+                  min-w-0
+                  flex-1
+
+                  min-[480px]:pt-[2px]
+                "
+              >
+                <h2
+                  className="
+                    font-['Inter',sans-serif]
+                    text-[18px]
+                    font-[700]
+                    leading-[1.25]
+                    text-[#082d5b]
+
+                    sm:text-[20px]
+                    lg:text-[22px]
+                  "
+                >
+                  Our Commitment to Fair & Transparent Terms
+                </h2>
+
+                <p
+                  className="
+                    mt-[9px]
+                    max-w-[900px]
+
+                    font-['Inter',sans-serif]
+                    text-[11px]
+                    font-[500]
+                    leading-[1.75]
+                    text-[#40566e]
+
+                    sm:text-[12px]
+                    lg:text-[13px]
+                  "
+                >
+                  Global Reviews Press is committed to providing clear,
+                  transparent and responsible terms for authors, reviewers,
+                  editors, researchers and visitors. These conditions help
+                  ensure that our publishing services are used fairly,
+                  ethically and consistently.
+                </p>
+              </div>
+            </motion.div>
           </div>
         </section>
 
         {/* =========================================================
-            MAIN TERMS CONTENT
+            TERMS & CONDITIONS CONTENT
         ========================================================== */}
         <section
           className="
             bg-white
-            py-[30px]
+            pb-[40px]
+            pt-[12px]
 
-            sm:py-[38px]
-
-            lg:py-[44px]
+            sm:pb-[46px]
+            lg:pb-[50px]
           "
         >
           <div
@@ -408,168 +568,160 @@ export default function TermsConditions() {
 
               sm:w-[min(1120px,calc(100%-48px))]
 
-              lg:grid-cols-[225px_minmax(0,1fr)]
+              lg:grid-cols-[245px_minmax(0,1fr)]
+              lg:items-start
               lg:gap-[34px]
             "
           >
             {/* =====================================================
                 LEFT STICKY NAVIGATION
+
+                IMPORTANT:
+                normal aside = sticky
+                motion.div inside = animation
             ====================================================== */}
-            <motion.aside
-              initial={{
-                opacity: 0,
-                x: -18,
-              }}
-              whileInView={{
-                opacity: 1,
-                x: 0,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.5,
-              }}
+            <aside
               className="
                 h-fit
-                rounded-[8px]
-                border
-                border-[#e5ebf0]
-                bg-[#fbfcfd]
-                p-[15px]
-
-                shadow-[0_4px_16px_rgba(16,44,74,0.035)]
+                self-start
 
                 lg:sticky
-                lg:top-[105px]
+                lg:top-[90px]
+                lg:z-[30]
               "
             >
-              <h2
+              <motion.div
+                initial={{
+                  opacity: 0,
+                  x: -18,
+                }}
+                whileInView={{
+                  opacity: 1,
+                  x: 0,
+                }}
+                viewport={{
+                  once: true,
+                }}
+                transition={{
+                  duration: 0.5,
+                }}
                 className="
-                  font-['Inter',sans-serif]
-                  text-[10px]
-                  font-[800]
-                  text-[#173d70]
+                  rounded-[8px]
+                  border
+                  border-[#e5ebf0]
+                  bg-[#fbfcfd]
+                  p-[15px]
+
+                  shadow-[0_4px_16px_rgba(16,44,74,0.035)]
                 "
               >
-                TERMS & CONDITIONS
-              </h2>
+                <h2
+                  className="
+                    font-['Inter',sans-serif]
+                    text-[17px]
+                    font-[650]
+                    leading-[1.25]
+                    text-[#173d70]
+                  "
+                >
+                  TERMS & CONDITIONS
+                </h2>
 
-              <span
-                className="
-                  mt-[7px]
-                  block
-                  h-[2px]
-                  w-[30px]
-                  rounded-full
-                  bg-[#56a04a]
-                "
-              />
+                <span
+                  className="
+                    mt-[6px]
+                    block
+                    h-[2px]
+                    w-[30px]
+                    rounded-full
+                    bg-[#56a04a]
+                  "
+                />
 
-              <nav
-                className="
-                  mt-[14px]
-                  grid
-                  grid-cols-2
-                  gap-[5px]
+                <nav
+                  className="
+                    mt-[12px]
+                    grid
+                    grid-cols-2
+                    gap-[4px]
 
-                  min-[500px]:grid-cols-3
+                    min-[500px]:grid-cols-3
 
-                  lg:grid-cols-1
-                "
-              >
-                {[
-                  ["acceptance", "1. Acceptance"],
-                  ["services", "2. Our Services"],
-                  ["eligibility", "3. User Responsibilities"],
-                  ["submissions", "4. Manuscript Submissions"],
-                  ["peer-review", "5. Peer Review"],
-                  ["copyright", "6. Intellectual Property"],
-                  ["fees", "7. Fees & Payments"],
-                  ["ethics", "8. Publishing Ethics"],
-                  ["prohibited", "9. Prohibited Use"],
-                  ["third-party", "10. Third-Party Services"],
-                  ["disclaimer", "11. Disclaimer"],
-                  ["liability", "12. Limitation of Liability"],
-                  ["termination", "13. Termination"],
-                  ["law", "14. Governing Terms"],
-                  ["changes", "15. Changes"],
-                  ["contact", "16. Contact Us"],
-                ].map(([id, label]) => (
-                  <a
-                    key={id}
-                    href={`#${id}`}
-                    className="
-                      group
-                      flex
-                      items-center
-                      justify-between
-                      rounded-[4px]
-                      px-[8px]
-                      py-[7px]
-
-                      font-['Inter',sans-serif]
-                      text-[7px]
-                      font-[600]
-                      text-[#5c6c80]
-
-                      transition-all
-                      duration-300
-
-                      hover:bg-[#edf5fb]
-                      hover:text-[#195d91]
-                    "
-                  >
-                    <span>
-                      {label}
-                    </span>
-
-                    <ArrowRight
-                      size={8}
+                    lg:grid-cols-1
+                    lg:gap-[1px]
+                  "
+                >
+                  {[
+                    ["acceptance", "1. Acceptance"],
+                    ["services", "2. Our Services"],
+                    ["eligibility", "3. User Responsibilities"],
+                    ["submissions", "4. Manuscript Submissions"],
+                    ["peer-review", "5. Peer Review"],
+                    ["copyright", "6. Intellectual Property"],
+                    ["fees", "7. Fees & Payments"],
+                    ["ethics", "8. Publishing Ethics"],
+                    ["prohibited", "9. Prohibited Use"],
+                    ["third-party", "10. Third-Party Services"],
+                    ["disclaimer", "11. Disclaimer"],
+                    ["liability", "12. Limitation of Liability"],
+                    ["termination", "13. Termination"],
+                    ["law", "14. Governing Terms"],
+                    ["changes", "15. Changes"],
+                    ["contact", "16. Contact Us"],
+                  ].map(([id, label]) => (
+                    <a
+                      key={id}
+                      href={`#${id}`}
                       className="
-                        hidden
-                        opacity-0
+                        flex
+                        min-h-[28px]
+                        items-center
+
+                        rounded-[4px]
+
+                        px-[8px]
+                        py-[4px]
+
+                        font-['Inter',sans-serif]
+                        text-[11px]
+                        font-[600]
+                        leading-[1.25]
+                        text-[#5c6c80]
 
                         transition-all
                         duration-300
 
-                        group-hover:translate-x-[2px]
-                        group-hover:opacity-100
+                        hover:bg-[#edf5fb]
+                        hover:pl-[11px]
+                        hover:text-[#195d91]
 
-                        lg:block
+                        sm:text-[11.5px]
                       "
-                    />
-                  </a>
-                ))}
-              </nav>
-            </motion.aside>
+                    >
+                      {label}
+                    </a>
+                  ))}
+                </nav>
+              </motion.div>
+            </aside>
 
             {/* =====================================================
                 RIGHT CONTENT
             ====================================================== */}
-            <div className="min-w-0 space-y-[14px]">
+            <div className="min-w-0 space-y-[10px]">
+
               {/* =================================================
                   1. ACCEPTANCE
               ================================================== */}
               <motion.article
                 id="acceptance"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.15,
-                }}
-                transition={{
-                  duration: 0.45,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#e5ebf0]
@@ -577,6 +729,12 @@ export default function TermsConditions() {
                   p-[18px]
 
                   shadow-[0_3px_14px_rgba(16,44,74,0.03)]
+
+                  transition-all
+                  duration-300
+
+                  hover:border-[#dce5ec]
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
 
                   sm:p-[21px]
                 "
@@ -596,20 +754,21 @@ export default function TermsConditions() {
                     "
                   >
                     <FileCheck2
-                      size={18}
+                      size={20}
                       strokeWidth={1.6}
                     />
                   </div>
 
-                  <div>
+                  <div className="min-w-0">
                     <h2
                       className="
                         font-['Inter',sans-serif]
-                        text-[12px]
-                        font-[800]
+                        text-[15px]
+                        font-[650]
+                        leading-[1.35]
                         text-[#173866]
 
-                        sm:text-[13px]
+                        sm:text-[16px]
                       "
                     >
                       1. Acceptance of Terms
@@ -619,12 +778,12 @@ export default function TermsConditions() {
                       className="
                         mt-[7px]
                         font-['Inter',sans-serif]
-                        text-[8px]
+                        text-[10px]
                         font-[450]
                         leading-[1.75]
                         text-[#526277]
 
-                        sm:text-[8.5px]
+                        sm:text-[11.5px]
                       "
                     >
                       By accessing, browsing, registering with or using the
@@ -636,11 +795,13 @@ export default function TermsConditions() {
                     <p
                       className="
                         mt-[7px]
-                        text-[8px]
+                        font-['Inter',sans-serif]
+                        text-[10px]
+                        font-[450]
                         leading-[1.75]
                         text-[#526277]
 
-                        sm:text-[8.5px]
+                        sm:text-[11.5px]
                       "
                     >
                       If you do not agree with these terms, you should not use
@@ -655,91 +816,45 @@ export default function TermsConditions() {
               ================================================== */}
               <motion.article
                 id="services"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                viewport={{
-                  once: true,
-                  amount: 0.15,
-                }}
-                transition={{
-                  duration: 0.45,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.15 }}
+                transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#e5ebf0]
                   bg-white
                   p-[18px]
-
                   shadow-[0_3px_14px_rgba(16,44,74,0.03)]
-
+                  transition-all
+                  duration-300
+                  hover:border-[#dce5ec]
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
                   sm:p-[21px]
                 "
               >
                 <div className="flex items-start gap-[12px]">
-                  <div
-                    className="
-                      flex
-                      h-[36px]
-                      w-[36px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#edf8ef]
-                      text-[#4e9850]
-                    "
-                  >
+                  <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#edf8ef] text-[#4e9850]">
                     <BookOpenCheck
-                      size={18}
+                      size={20}
                       strokeWidth={1.6}
                     />
                   </div>
 
                   <div className="min-w-0">
-                    <h2
-                      className="
-                        text-[12px]
-                        font-[800]
-                        text-[#173866]
-
-                        sm:text-[13px]
-                      "
-                    >
+                    <h2 className="font-['Inter',sans-serif] text-[15px] font-[650] leading-[1.35] text-[#173866] sm:text-[16px]">
                       2. Our Services
                     </h2>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       Global Reviews Press provides scholarly publishing and
                       related academic services that may include:
                     </p>
 
-                    <ul
-                      className="
-                        mt-[10px]
-                        grid
-                        grid-cols-1
-                        gap-[7px]
-
-                        md:grid-cols-2
-                      "
-                    >
+                    <ul className="mt-[10px] grid grid-cols-1 gap-[7px] md:grid-cols-2">
                       {[
                         "Peer-reviewed journals and magazines",
                         "Online manuscript submission services",
@@ -754,19 +869,20 @@ export default function TermsConditions() {
                             flex
                             items-start
                             gap-[7px]
-                            text-[7.5px]
-                            leading-[1.55]
-                            text-[#596a7d]
+
+                            font-['Inter',sans-serif]
+                            text-[10px]
+                            font-[450]
+                            leading-[1.65]
+                            text-[#526277]
+
+                            sm:text-[11.5px]
                           "
                         >
                           <CheckCircle2
-                            size={11}
+                            size={12}
                             strokeWidth={1.7}
-                            className="
-                              mt-[1px]
-                              shrink-0
-                              text-[#57a14d]
-                            "
+                            className="mt-[2px] shrink-0 text-[#57a14d]"
                           />
 
                           {item}
@@ -782,88 +898,47 @@ export default function TermsConditions() {
               ================================================== */}
               <motion.article
                 id="eligibility"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#e5ebf0]
                   bg-white
                   p-[18px]
-
                   shadow-[0_3px_14px_rgba(16,44,74,0.03)]
-
+                  transition-all
+                  duration-300
+                  hover:border-[#dce5ec]
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
                   sm:p-[21px]
                 "
               >
                 <div className="flex items-start gap-[12px]">
-                  <div
-                    className="
-                      flex
-                      h-[36px]
-                      w-[36px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#f0edfa]
-                      text-[#7353a5]
-                    "
-                  >
+                  <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#f0edfa] text-[#7353a5]">
                     <UserRoundCheck
-                      size={18}
+                      size={20}
                       strokeWidth={1.6}
                     />
                   </div>
 
-                  <div>
-                    <h2
-                      className="
-                        text-[12px]
-                        font-[800]
-                        text-[#173866]
-
-                        sm:text-[13px]
-                      "
-                    >
+                  <div className="min-w-0">
+                    <h2 className="font-['Inter',sans-serif] text-[15px] font-[650] leading-[1.35] text-[#173866] sm:text-[16px]">
                       3. User Responsibilities
                     </h2>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       Users are responsible for providing accurate and current
                       information when submitting manuscripts, registering as
                       reviewers or editors, contacting Global Reviews Press or
                       otherwise using our services.
                     </p>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       Users must not impersonate another individual, provide
                       misleading affiliations, misuse another person's account,
                       interfere with website functionality or attempt
@@ -878,87 +953,46 @@ export default function TermsConditions() {
               ================================================== */}
               <motion.article
                 id="submissions"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#e5ebf0]
                   bg-white
                   p-[18px]
-
                   shadow-[0_3px_14px_rgba(16,44,74,0.03)]
-
+                  transition-all
+                  duration-300
+                  hover:border-[#dce5ec]
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
                   sm:p-[21px]
                 "
               >
                 <div className="flex items-start gap-[12px]">
-                  <div
-                    className="
-                      flex
-                      h-[36px]
-                      w-[36px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#ecf8f8]
-                      text-[#269895]
-                    "
-                  >
+                  <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#ecf8f8] text-[#269895]">
                     <UploadCloud
-                      size={18}
+                      size={20}
                       strokeWidth={1.6}
                     />
                   </div>
 
                   <div className="min-w-0">
-                    <h2
-                      className="
-                        text-[12px]
-                        font-[800]
-                        text-[#173866]
-
-                        sm:text-[13px]
-                      "
-                    >
+                    <h2 className="font-['Inter',sans-serif] text-[15px] font-[650] leading-[1.35] text-[#173866] sm:text-[16px]">
                       4. Manuscript Submissions
                     </h2>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       Authors submitting manuscripts to Global Reviews Press
                       confirm that the submitted work complies with applicable
                       journal policies and publishing standards.
                     </p>
 
-                    <div
-                      className="
-                        mt-[10px]
-                        grid
-                        grid-cols-1
-                        gap-[6px]
-
-                        sm:grid-cols-2
-                      "
-                    >
+                    <div className="mt-[10px] grid grid-cols-1 gap-[6px] sm:grid-cols-2">
                       {[
                         "The manuscript represents original scholarly work",
                         "All authors have approved the submission",
@@ -973,18 +1007,17 @@ export default function TermsConditions() {
                             flex
                             items-start
                             gap-[6px]
-                            text-[7.3px]
-                            leading-[1.5]
+                            font-['Inter',sans-serif]
+                            text-[10px]
+                            font-[450]
+                            leading-[1.6]
                             text-[#526277]
+                            sm:text-[11.5px]
                           "
                         >
                           <CheckCircle2
-                            size={10}
-                            className="
-                              mt-[1px]
-                              shrink-0
-                              text-[#57a14d]
-                            "
+                            size={12}
+                            className="mt-[2px] shrink-0 text-[#57a14d]"
                           />
 
                           {item}
@@ -1000,72 +1033,40 @@ export default function TermsConditions() {
               ================================================== */}
               <motion.article
                 id="peer-review"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#e5ebf0]
                   bg-white
                   p-[18px]
-
                   shadow-[0_3px_14px_rgba(16,44,74,0.03)]
-
+                  transition-all
+                  duration-300
+                  hover:border-[#dce5ec]
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
                   sm:p-[21px]
                 "
               >
                 <div className="flex items-start gap-[12px]">
-                  <div
-                    className="
-                      flex
-                      h-[36px]
-                      w-[36px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#eaf4ff]
-                      text-[#3278ae]
-                    "
-                  >
+                  <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#eaf4ff] text-[#3278ae]">
                     <BadgeCheck
-                      size={18}
+                      size={20}
                       strokeWidth={1.6}
                     />
                   </div>
 
-                  <div>
-                    <h2
-                      className="
-                        text-[12px]
-                        font-[800]
-                        text-[#173866]
-
-                        sm:text-[13px]
-                      "
-                    >
+                  <div className="min-w-0">
+                    <h2 className="font-['Inter',sans-serif] text-[15px] font-[650] leading-[1.35] text-[#173866] sm:text-[16px]">
                       5. Peer Review and Editorial Decisions
                     </h2>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       Manuscript submission does not guarantee acceptance or
                       publication. Editorial and peer-review decisions are made
                       according to journal scope, scholarly quality, ethical
@@ -1073,16 +1074,7 @@ export default function TermsConditions() {
                       judgment.
                     </p>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       Global Reviews Press reserves the right to reject,
                       request revision, withdraw or discontinue consideration
                       of manuscripts where appropriate.
@@ -1092,92 +1084,51 @@ export default function TermsConditions() {
               </motion.article>
 
               {/* =================================================
-                  6. COPYRIGHT
+                  6. INTELLECTUAL PROPERTY
               ================================================== */}
               <motion.article
                 id="copyright"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#e5ebf0]
                   bg-white
                   p-[18px]
-
                   shadow-[0_3px_14px_rgba(16,44,74,0.03)]
-
+                  transition-all
+                  duration-300
+                  hover:border-[#dce5ec]
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
                   sm:p-[21px]
                 "
               >
                 <div className="flex items-start gap-[12px]">
-                  <div
-                    className="
-                      flex
-                      h-[36px]
-                      w-[36px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#fff6e9]
-                      text-[#d99138]
-                    "
-                  >
+                  <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#fff6e9] text-[#d99138]">
                     <Copyright
-                      size={18}
+                      size={20}
                       strokeWidth={1.6}
                     />
                   </div>
 
-                  <div>
-                    <h2
-                      className="
-                        text-[12px]
-                        font-[800]
-                        text-[#173866]
-
-                        sm:text-[13px]
-                      "
-                    >
+                  <div className="min-w-0">
+                    <h2 className="font-['Inter',sans-serif] text-[15px] font-[650] leading-[1.35] text-[#173866] sm:text-[16px]">
                       6. Intellectual Property Rights
                     </h2>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       The Global Reviews Press name, website design, graphics,
                       logos, original website content, publication interfaces
                       and related materials are protected by applicable
                       intellectual property laws.
                     </p>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       Published academic content remains subject to the
                       copyright, licensing and open-access terms applicable to
                       the relevant journal and article.
@@ -1191,87 +1142,46 @@ export default function TermsConditions() {
               ================================================== */}
               <motion.article
                 id="fees"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#e5ebf0]
                   bg-white
                   p-[18px]
-
                   shadow-[0_3px_14px_rgba(16,44,74,0.03)]
-
+                  transition-all
+                  duration-300
+                  hover:border-[#dce5ec]
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
                   sm:p-[21px]
                 "
               >
                 <div className="flex items-start gap-[12px]">
-                  <div
-                    className="
-                      flex
-                      h-[36px]
-                      w-[36px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#edf7f2]
-                      text-[#42926b]
-                    "
-                  >
+                  <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#edf7f2] text-[#42926b]">
                     <CircleDollarSign
-                      size={18}
+                      size={20}
                       strokeWidth={1.6}
                     />
                   </div>
 
-                  <div>
-                    <h2
-                      className="
-                        text-[12px]
-                        font-[800]
-                        text-[#173866]
-
-                        sm:text-[13px]
-                      "
-                    >
+                  <div className="min-w-0">
+                    <h2 className="font-['Inter',sans-serif] text-[15px] font-[650] leading-[1.35] text-[#173866] sm:text-[16px]">
                       7. Publication Fees and Payments
                     </h2>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       Where publication charges, article processing charges or
                       other service fees apply, authors will be informed
                       through the relevant journal or submission process.
                     </p>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       Payment of applicable charges does not guarantee
                       manuscript acceptance and does not influence independent
                       editorial or peer-review decisions.
@@ -1281,91 +1191,49 @@ export default function TermsConditions() {
               </motion.article>
 
               {/* =================================================
-                  8. ETHICS
+                  8. PUBLISHING ETHICS
               ================================================== */}
               <motion.article
                 id="ethics"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#dbe9da]
                   bg-[#f9fcf8]
                   p-[18px]
-
                   shadow-[0_3px_14px_rgba(16,44,74,0.03)]
-
+                  transition-all
+                  duration-300
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
                   sm:p-[21px]
                 "
               >
                 <div className="flex items-start gap-[12px]">
-                  <div
-                    className="
-                      flex
-                      h-[36px]
-                      w-[36px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#e9f5e6]
-                      text-[#4d9144]
-                    "
-                  >
+                  <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#e9f5e6] text-[#4d9144]">
                     <Scale
-                      size={18}
+                      size={20}
                       strokeWidth={1.6}
                     />
                   </div>
 
                   <div className="min-w-0">
-                    <h2
-                      className="
-                        text-[12px]
-                        font-[800]
-                        text-[#173866]
-
-                        sm:text-[13px]
-                      "
-                    >
+                    <h2 className="font-['Inter',sans-serif] text-[15px] font-[650] leading-[1.35] text-[#173866] sm:text-[16px]">
                       8. Publishing Ethics
                     </h2>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       Authors, reviewers and editors are expected to maintain
                       high standards of research and publication ethics.
                       Prohibited conduct includes:
                     </p>
 
-                    <div
-                      className="
-                        mt-[10px]
-                        grid
-                        grid-cols-1
-                        gap-[6px]
-
-                        sm:grid-cols-2
-                      "
-                    >
+                    <div className="mt-[10px] grid grid-cols-1 gap-[6px] sm:grid-cols-2">
                       {[
                         "Plagiarism or unauthorized copying",
                         "Fabrication or falsification of research",
@@ -1380,18 +1248,19 @@ export default function TermsConditions() {
                             flex
                             items-start
                             gap-[6px]
-                            text-[7.3px]
-                            leading-[1.5]
+
+                            font-['Inter',sans-serif]
+                            text-[10px]
+                            font-[450]
+                            leading-[1.6]
                             text-[#526277]
+
+                            sm:text-[11.5px]
                           "
                         >
                           <CheckCircle2
-                            size={10}
-                            className="
-                              mt-[1px]
-                              shrink-0
-                              text-[#57a14d]
-                            "
+                            size={12}
+                            className="mt-[2px] shrink-0 text-[#57a14d]"
                           />
 
                           {item}
@@ -1407,72 +1276,40 @@ export default function TermsConditions() {
               ================================================== */}
               <motion.article
                 id="prohibited"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#e5ebf0]
                   bg-white
                   p-[18px]
-
                   shadow-[0_3px_14px_rgba(16,44,74,0.03)]
-
+                  transition-all
+                  duration-300
+                  hover:border-[#dce5ec]
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
                   sm:p-[21px]
                 "
               >
                 <div className="flex items-start gap-[12px]">
-                  <div
-                    className="
-                      flex
-                      h-[36px]
-                      w-[36px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#fff0ee]
-                      text-[#dc6659]
-                    "
-                  >
+                  <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#fff0ee] text-[#dc6659]">
                     <Ban
-                      size={18}
+                      size={20}
                       strokeWidth={1.6}
                     />
                   </div>
 
-                  <div>
-                    <h2
-                      className="
-                        text-[12px]
-                        font-[800]
-                        text-[#173866]
-
-                        sm:text-[13px]
-                      "
-                    >
+                  <div className="min-w-0">
+                    <h2 className="font-['Inter',sans-serif] text-[15px] font-[650] leading-[1.35] text-[#173866] sm:text-[16px]">
                       9. Prohibited Use
                     </h2>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       You may not use the website or publishing systems for
                       unlawful, fraudulent, abusive, misleading or malicious
                       purposes. Automated extraction, unauthorized system
@@ -1484,76 +1321,44 @@ export default function TermsConditions() {
               </motion.article>
 
               {/* =================================================
-                  10. THIRD PARTY
+                  10. THIRD-PARTY SERVICES
               ================================================== */}
               <motion.article
                 id="third-party"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#e5ebf0]
                   bg-white
                   p-[18px]
-
                   shadow-[0_3px_14px_rgba(16,44,74,0.03)]
-
+                  transition-all
+                  duration-300
+                  hover:border-[#dce5ec]
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
                   sm:p-[21px]
                 "
               >
                 <div className="flex items-start gap-[12px]">
-                  <div
-                    className="
-                      flex
-                      h-[36px]
-                      w-[36px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#ecf5fb]
-                      text-[#367da9]
-                    "
-                  >
+                  <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#ecf5fb] text-[#367da9]">
                     <ExternalLink
-                      size={18}
+                      size={20}
                       strokeWidth={1.6}
                     />
                   </div>
 
-                  <div>
-                    <h2
-                      className="
-                        text-[12px]
-                        font-[800]
-                        text-[#173866]
-
-                        sm:text-[13px]
-                      "
-                    >
+                  <div className="min-w-0">
+                    <h2 className="font-['Inter',sans-serif] text-[15px] font-[650] leading-[1.35] text-[#173866] sm:text-[16px]">
                       10. Third-Party Websites and Services
                     </h2>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       Our website may contain links to indexing databases,
                       external journals, research resources and other
                       third-party websites. These services operate
@@ -1569,70 +1374,38 @@ export default function TermsConditions() {
               ================================================== */}
               <motion.article
                 id="disclaimer"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#eadfc9]
                   bg-[#fffdf8]
                   p-[18px]
-
+                  transition-all
+                  duration-300
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
                   sm:p-[21px]
                 "
               >
                 <div className="flex items-start gap-[12px]">
-                  <div
-                    className="
-                      flex
-                      h-[36px]
-                      w-[36px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#fff3da]
-                      text-[#d48b27]
-                    "
-                  >
+                  <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#fff3da] text-[#d48b27]">
                     <AlertTriangle
-                      size={18}
+                      size={20}
                       strokeWidth={1.6}
                     />
                   </div>
 
-                  <div>
-                    <h2
-                      className="
-                        text-[12px]
-                        font-[800]
-                        text-[#173866]
-
-                        sm:text-[13px]
-                      "
-                    >
+                  <div className="min-w-0">
+                    <h2 className="font-['Inter',sans-serif] text-[15px] font-[650] leading-[1.35] text-[#173866] sm:text-[16px]">
                       11. Disclaimer
                     </h2>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       While we aim to provide reliable and accurate
                       information, website content is provided for general
                       informational and publishing purposes. Availability,
@@ -1648,77 +1421,45 @@ export default function TermsConditions() {
               ================================================== */}
               <motion.article
                 id="liability"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#e5ebf0]
                   bg-white
                   p-[18px]
-
                   shadow-[0_3px_14px_rgba(16,44,74,0.03)]
-
+                  transition-all
+                  duration-300
+                  hover:border-[#dce5ec]
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
                   sm:p-[21px]
                 "
               >
                 <div className="flex items-start gap-[12px]">
-                  <div
-                    className="
-                      flex
-                      h-[36px]
-                      w-[36px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#f2eff9]
-                      text-[#7353a5]
-                    "
-                  >
+                  <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#f2eff9] text-[#7353a5]">
                     <ShieldCheck
-                      size={18}
+                      size={20}
                       strokeWidth={1.6}
                     />
                   </div>
 
-                  <div>
-                    <h2
-                      className="
-                        text-[12px]
-                        font-[800]
-                        text-[#173866]
-
-                        sm:text-[13px]
-                      "
-                    >
+                  <div className="min-w-0">
+                    <h2 className="font-['Inter',sans-serif] text-[15px] font-[650] leading-[1.35] text-[#173866] sm:text-[16px]">
                       12. Limitation of Liability
                     </h2>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
-                      To the extent permitted by applicable law, Global
-                      Reviews Press will not be responsible for indirect,
-                      incidental, consequential or similar losses arising from
-                      use of the website, interruptions in service,
-                      third-party resources or reliance on website content.
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
+                      To the extent permitted by applicable law, Global Reviews
+                      Press will not be responsible for indirect, incidental,
+                      consequential or similar losses arising from use of the
+                      website, interruptions in service, third-party resources
+                      or reliance on website content.
                     </p>
                   </div>
                 </div>
@@ -1729,76 +1470,44 @@ export default function TermsConditions() {
               ================================================== */}
               <motion.article
                 id="termination"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#e5ebf0]
                   bg-white
                   p-[18px]
-
                   shadow-[0_3px_14px_rgba(16,44,74,0.03)]
-
+                  transition-all
+                  duration-300
+                  hover:border-[#dce5ec]
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
                   sm:p-[21px]
                 "
               >
                 <div className="flex items-start gap-[12px]">
-                  <div
-                    className="
-                      flex
-                      h-[36px]
-                      w-[36px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#fff0ef]
-                      text-[#d66059]
-                    "
-                  >
+                  <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#fff0ef] text-[#d66059]">
                     <Ban
-                      size={18}
+                      size={20}
                       strokeWidth={1.6}
                     />
                   </div>
 
-                  <div>
-                    <h2
-                      className="
-                        text-[12px]
-                        font-[800]
-                        text-[#173866]
-
-                        sm:text-[13px]
-                      "
-                    >
+                  <div className="min-w-0">
+                    <h2 className="font-['Inter',sans-serif] text-[15px] font-[650] leading-[1.35] text-[#173866] sm:text-[16px]">
                       13. Suspension or Termination
                     </h2>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       We may suspend, restrict or terminate access to website
-                      features or publishing services where users violate
-                      these terms, misuse our systems, compromise security or
-                      engage in conduct inconsistent with publication ethics.
+                      features or publishing services where users violate these
+                      terms, misuse our systems, compromise security or engage
+                      in conduct inconsistent with publication ethics.
                     </p>
                   </div>
                 </div>
@@ -1809,72 +1518,40 @@ export default function TermsConditions() {
               ================================================== */}
               <motion.article
                 id="law"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#e5ebf0]
                   bg-white
                   p-[18px]
-
                   shadow-[0_3px_14px_rgba(16,44,74,0.03)]
-
+                  transition-all
+                  duration-300
+                  hover:border-[#dce5ec]
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
                   sm:p-[21px]
                 "
               >
                 <div className="flex items-start gap-[12px]">
-                  <div
-                    className="
-                      flex
-                      h-[36px]
-                      w-[36px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#edf6f0]
-                      text-[#4a9261]
-                    "
-                  >
+                  <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#edf6f0] text-[#4a9261]">
                     <Globe2
-                      size={18}
+                      size={20}
                       strokeWidth={1.6}
                     />
                   </div>
 
-                  <div>
-                    <h2
-                      className="
-                        text-[12px]
-                        font-[800]
-                        text-[#173866]
-
-                        sm:text-[13px]
-                      "
-                    >
+                  <div className="min-w-0">
+                    <h2 className="font-['Inter',sans-serif] text-[15px] font-[650] leading-[1.35] text-[#173866] sm:text-[16px]">
                       14. Governing Terms and Applicable Law
                     </h2>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       These Terms and Conditions are interpreted together with
                       applicable publishing policies, journal-specific
                       guidelines and relevant laws. Where a journal policy
@@ -1890,88 +1567,47 @@ export default function TermsConditions() {
               ================================================== */}
               <motion.article
                 id="changes"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#e5ebf0]
                   bg-white
                   p-[18px]
-
                   shadow-[0_3px_14px_rgba(16,44,74,0.03)]
-
+                  transition-all
+                  duration-300
+                  hover:border-[#dce5ec]
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
                   sm:p-[21px]
                 "
               >
                 <div className="flex items-start gap-[12px]">
-                  <div
-                    className="
-                      flex
-                      h-[36px]
-                      w-[36px]
-                      shrink-0
-                      items-center
-                      justify-center
-                      rounded-full
-                      bg-[#edf7f2]
-                      text-[#42926b]
-                    "
-                  >
+                  <div className="flex h-[36px] w-[36px] shrink-0 items-center justify-center rounded-full bg-[#edf7f2] text-[#42926b]">
                     <RefreshCw
-                      size={18}
+                      size={20}
                       strokeWidth={1.6}
                     />
                   </div>
 
-                  <div>
-                    <h2
-                      className="
-                        text-[12px]
-                        font-[800]
-                        text-[#173866]
-
-                        sm:text-[13px]
-                      "
-                    >
+                  <div className="min-w-0">
+                    <h2 className="font-['Inter',sans-serif] text-[15px] font-[650] leading-[1.35] text-[#173866] sm:text-[16px]">
                       15. Changes to These Terms
                     </h2>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       Global Reviews Press may update these Terms and
                       Conditions from time to time to reflect changes in
                       services, publishing policies, technologies or legal
                       requirements.
                     </p>
 
-                    <p
-                      className="
-                        mt-[7px]
-                        text-[8px]
-                        leading-[1.75]
-                        text-[#526277]
-
-                        sm:text-[8.5px]
-                      "
-                    >
+                    <p className="mt-[7px] font-['Inter',sans-serif] text-[10px] font-[450] leading-[1.75] text-[#526277] sm:text-[11.5px]">
                       Updated terms will be published on this page with the
                       corresponding revision date.
                     </p>
@@ -1980,30 +1616,31 @@ export default function TermsConditions() {
               </motion.article>
 
               {/* =================================================
-                  16. CONTACT
+                  16. CONTACT US
               ================================================== */}
               <motion.article
                 id="contact"
-                initial={{
-                  opacity: 0,
-                  y: 18,
-                }}
-                whileInView={{
-                  opacity: 1,
-                  y: 0,
-                }}
+                initial={{ opacity: 0, y: 18 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45 }}
+                whileHover={{ y: -2 }}
                 className="
-                  scroll-mt-[120px]
-                  overflow-hidden
+                  scroll-mt-[110px]
                   rounded-[8px]
                   border
                   border-[#dbe6ee]
+
                   bg-gradient-to-r
                   from-[#f6fafd]
-                  to-[#f5faf6]
+                  to-[#f4f8fc]
+
                   p-[18px]
+
+                  transition-all
+                  duration-300
+
+                  hover:shadow-[0_7px_20px_rgba(16,44,74,0.055)]
 
                   sm:p-[21px]
                 "
@@ -2034,33 +1671,28 @@ export default function TermsConditions() {
                       "
                     >
                       <Mail
-                        size={18}
+                        size={20}
                         strokeWidth={1.6}
                       />
                     </div>
 
-                    <div>
-                      <h2
-                        className="
-                          text-[12px]
-                          font-[800]
-                          text-[#173866]
-
-                          sm:text-[13px]
-                        "
-                      >
+                    <div className="min-w-0">
+                      <h2 className="font-['Inter',sans-serif] text-[15px] font-[650] leading-[1.35] text-[#173866] sm:text-[16px]">
                         16. Contact Us
                       </h2>
 
                       <p
                         className="
-                          mt-[6px]
-                          max-w-[480px]
-                          text-[8px]
-                          leading-[1.7]
+                          mt-[7px]
+                          max-w-[520px]
+
+                          font-['Inter',sans-serif]
+                          text-[10px]
+                          font-[450]
+                          leading-[1.75]
                           text-[#526277]
 
-                          sm:text-[8.5px]
+                          sm:text-[11.5px]
                         "
                       >
                         If you have questions about these Terms and Conditions,
@@ -2068,16 +1700,27 @@ export default function TermsConditions() {
                         services, please contact our team.
                       </p>
 
-                      <p
+                      <a
+                        href="mailto:info@globalreviewspress.com"
                         className="
-                          mt-[6px]
-                          text-[8px]
+                          mt-[7px]
+                          inline-block
+
+                          font-['Inter',sans-serif]
+                          text-[10px]
                           font-[700]
                           text-[#3372a0]
+
+                          transition-colors
+                          duration-300
+
+                          hover:text-[#175781]
+
+                          sm:text-[11.5px]
                         "
                       >
                         info@globalreviewspress.com
-                      </p>
+                      </a>
                     </div>
                   </div>
 
@@ -2088,39 +1731,44 @@ export default function TermsConditions() {
                     whileTap={{
                       scale: 0.97,
                     }}
-                    className="shrink-0"
+                    className="
+                      shrink-0
+                      max-sm:pl-[50px]
+                    "
                   >
                     <Link
                       to="/contact"
                       className="
                         group
                         inline-flex
-                        h-[36px]
+                        h-[38px]
                         items-center
                         justify-center
                         gap-[8px]
                         rounded-[4px]
-                        bg-[#173f70]
-                        px-[15px]
 
-                        text-[8px]
-                        font-[700]
+                        bg-[#173f70]
+                        px-[16px]
+
+                        font-['Inter',sans-serif]
+                        text-[11px]
+                        font-[650]
                         text-white
 
                         transition-all
                         duration-300
 
                         hover:bg-[#25618e]
+                        hover:shadow-[0_5px_14px_rgba(23,63,112,0.18)]
                       "
                     >
                       Contact Us
 
                       <ArrowRight
-                        size={11}
+                        size={13}
                         className="
                           transition-transform
                           duration-300
-
                           group-hover:translate-x-[3px]
                         "
                       />
@@ -2133,69 +1781,130 @@ export default function TermsConditions() {
         </section>
 
         {/* =========================================================
-            BOTTOM CTA
+            CTA SECTION WITH BACKGROUND IMAGE
         ========================================================== */}
         <section
           className="
             relative
             isolate
+            w-full
             overflow-hidden
-            bg-[#06264a]
+
+            my-[24px]
+            sm:my-[30px]
+            lg:my-[36px]
+
+            bg-[#05274f]
+            bg-cover
+            bg-no-repeat
             text-white
+
+            bg-[position:22%_center]
+
+            sm:bg-[position:18%_center]
+            md:bg-center
+            lg:bg-center
           "
+          style={{
+            backgroundImage: `url(${bgcta})`,
+          }}
         >
+          {/* OVERLAY */}
           <div
             className="
               pointer-events-none
               absolute
               inset-0
               -z-10
-              bg-gradient-to-r
-              from-[#06264a]
-              via-[#063c62]
-              to-[#18774f]
+
+              bg-[#062650]/15
+
+              max-md:bg-gradient-to-r
+              max-md:from-[#05254d]/45
+              max-md:via-[#05254d]/20
+              max-md:to-[#05254d]/20
             "
           />
 
+          {/* CONTENT */}
           <div
             className="
               mx-auto
               flex
-              min-h-[110px]
+              min-h-[150px]
               w-[min(1120px,calc(100%-32px))]
               flex-col
               items-start
               justify-center
-              gap-[15px]
-              py-[20px]
+              gap-[20px]
+              py-[22px]
 
+              sm:min-h-[135px]
               sm:w-[min(1120px,calc(100%-48px))]
 
+              md:min-h-[90px]
               md:flex-row
               md:items-center
               md:justify-between
+              md:gap-[30px]
+              md:py-[12px]
+
+              lg:min-h-[129px]
+              lg:py-[14px]
             "
           >
+            {/* EMPTY ARTWORK AREA */}
+            <div
+              className="
+                hidden
+                shrink-0
+
+                md:block
+                md:w-[225px]
+
+                lg:w-[250px]
+              "
+            />
+
+            {/* TEXT */}
             <motion.div
               initial={{
                 opacity: 0,
-                x: -18,
+                y: 12,
               }}
               whileInView={{
                 opacity: 1,
-                x: 0,
+                y: 0,
               }}
               viewport={{
                 once: true,
+                amount: 0.4,
               }}
+              transition={{
+                duration: 0.55,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+              className="
+                relative
+                z-10
+                flex-1
+
+                md:max-w-[440px]
+              "
             >
               <h2
                 className="
-                  text-[14px]
-                  font-[700]
+                  font-['Inter',sans-serif]
+                  text-[15px]
+                  font-[600]
+                  leading-[1.45]
+                  tracking-[-0.01em]
                   text-white
 
-                  sm:text-[16px]
+                  min-[390px]:text-[16px]
+                  sm:text-[17px]
+                  md:text-[16px]
+                  lg:text-[18px]
                 "
               >
                 Publishing with Integrity and Transparency.
@@ -2204,11 +1913,13 @@ export default function TermsConditions() {
               <p
                 className="
                   mt-[5px]
-                  text-[8px]
+                  font-['Inter',sans-serif]
+                  text-[11px]
+                  font-[500]
                   leading-[1.6]
-                  text-white/80
+                  text-white/85
 
-                  sm:text-[8.5px]
+                  sm:text-[11.5px]
                 "
               >
                 Our terms help maintain a fair, ethical and trusted publishing
@@ -2216,13 +1927,36 @@ export default function TermsConditions() {
               </p>
             </motion.div>
 
+            {/* BUTTON */}
             <motion.div
+              initial={{
+                opacity: 0,
+                x: 20,
+              }}
+              whileInView={{
+                opacity: 1,
+                x: 0,
+              }}
+              viewport={{
+                once: true,
+              }}
+              transition={{
+                duration: 0.55,
+                delay: 0.1,
+              }}
               whileHover={{
                 y: -3,
               }}
               whileTap={{
                 scale: 0.97,
               }}
+              className="
+                relative
+                z-10
+                shrink-0
+
+                max-[380px]:w-full
+              "
             >
               <Link
                 to="/contact"
@@ -2231,14 +1965,20 @@ export default function TermsConditions() {
                   inline-flex
                   h-[37px]
                   items-center
+                  justify-center
                   gap-[9px]
+
                   rounded-[4px]
+
                   border
                   border-white/70
+
                   bg-white/[0.04]
+
                   px-[15px]
 
-                  text-[8px]
+                  font-['Inter',sans-serif]
+                  text-[12px]
                   font-[700]
                   text-white
 
@@ -2247,16 +1987,19 @@ export default function TermsConditions() {
 
                   hover:bg-white
                   hover:text-[#173f70]
+
+                  max-[380px]:w-full
+
+                  sm:text-[12.5px]
                 "
               >
                 Contact Our Team
 
                 <ArrowRight
-                  size={11}
+                  size={16}
                   className="
                     transition-transform
                     duration-300
-
                     group-hover:translate-x-[3px]
                   "
                 />
