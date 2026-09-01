@@ -233,7 +233,7 @@ export default function Reviewer() {
     <>
       <Header />
 
-      <main className="overflow-hidden bg-white pt-[75px]">
+      <main className="overflow-hidden bg-white pt-[45px]">
 
       {/* =========================================================
     REVIEWER HERO SECTION
@@ -264,7 +264,7 @@ export default function Reviewer() {
     lg:min-h-[335px]
     lg:bg-center
 
-    xl:min-h-[335px]
+    xl:min-h-[365px]
   "
   style={{
     backgroundImage: `url(${bgReviewer})`,
@@ -319,7 +319,7 @@ export default function Reviewer() {
       md:min-h-[385px]
       md:py-[30px]
 
-      lg:min-h-[410px]
+      lg:min-h-[440px]
       lg:py-[14px]
     "
   >
