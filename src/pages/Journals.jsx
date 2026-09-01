@@ -1873,13 +1873,13 @@ export default function Journals() {
               className="
                 text-center
                 font-['Inter',sans-serif]
-                text-[10px]
-                font-[700]
+                text-[19px]
+                font-[600]
                 leading-none
                 tracking-[0.025em]
                 text-[#173f78]
 
-                sm:text-[11px]
+                sm:text-[20px]
               "
             >
               INDEXED IN LEADING DATABASES
@@ -1887,7 +1887,7 @@ export default function Journals() {
 
             <div
               className="
-                mt-[27px]
+                mt-[34px]
                 grid
                 grid-cols-2
                 items-center
