@@ -173,7 +173,7 @@ export default function Header() {
                         isHome
                           ? active
                             ? "text-white"
-                            : "text-white/80 hover:text-white"
+                            : "text-white/95 hover:text-white"
                           : active
                             ? "text-[#0c3158]"
                             : "text-[#1f324b] hover:text-[#176797]"
@@ -476,7 +476,7 @@ export default function Header() {
                                 `
                                 : `
                                   border-white/10
-                                  text-white/75
+                                  text-white/95
 
                                   hover:bg-white/7
                                   hover:pl-[17px]
