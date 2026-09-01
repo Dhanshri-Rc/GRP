@@ -475,7 +475,7 @@ export default function EditorsInformation() {
 
         {/* ==================== CTA SECTION ==================== */}
         <section
-          className="relative isolate overflow-hidden bg-[#052656] bg-cover bg-center bg-no-repeat py-7 text-white sm:py-8"
+          className="relative isolate overflow-hidden bg-[#052656] bg-cover bg-center bg-no-repeat py-7 text-white sm:py-8 mb-10"
           style={{ backgroundImage: `url(${editorCta})` }}
         >
           <div className="absolute inset-0 -z-10 bg-[#03275a]/22" />

@@ -416,6 +416,7 @@ export default function Contact() {
     bg-[position:18%_center]
     bg-no-repeat
     text-white
+    mb-10
   "
           style={{
             backgroundImage: `url(${contactCta})`,
@@ -599,9 +600,7 @@ function useContactPageSeo() {
     const managedElements = [];
 
     const setMeta = (attribute, key, content) => {
-      let element = document.head.querySelector(
-        `meta[${attribute}="${key}"]`,
-      );
+      let element = document.head.querySelector(`meta[${attribute}="${key}"]`);
       const wasCreated = !element;
 
       if (!element) {
@@ -687,8 +686,7 @@ function useContactPageSeo() {
           name: "Global Reviews Press",
           alternateName: "GRP",
           url: "https://www.globalreviewspress.com/",
-          logo:
-            "https://www.globalreviewspress.com/global-reviews-press-logo.webp",
+          logo: "https://www.globalreviewspress.com/global-reviews-press-logo.webp",
           email: "info@globalreviewspress.com",
           telephone: "+91-99702-94396",
           address: {
@@ -742,17 +740,15 @@ function useContactPageSeo() {
     return () => {
       document.title = previousTitle;
 
-      managedElements.forEach(
-        ({ element, wasCreated, previousContent }) => {
-          if (wasCreated) {
-            element.remove();
-          } else if (previousContent === null) {
-            element.removeAttribute("content");
-          } else {
-            element.setAttribute("content", previousContent);
-          }
-        },
-      );
+      managedElements.forEach(({ element, wasCreated, previousContent }) => {
+        if (wasCreated) {
+          element.remove();
+        } else if (previousContent === null) {
+          element.removeAttribute("content");
+        } else {
+          element.setAttribute("content", previousContent);
+        }
+      });
 
       if (canonicalWasCreated) {
         canonical.remove();
