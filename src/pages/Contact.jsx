@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -75,6 +75,8 @@ const faqs = [
 ];
 
 export default function Contact() {
+  useContactPageSeo();
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -577,4 +579,188 @@ function ContactItem({ icon: Icon, title, children }) {
       </div>
     </div>
   );
+}
+
+/* =========================================================
+   CONTACT US PAGE SEO
+========================================================= */
+function useContactPageSeo() {
+  useEffect(() => {
+    const previousTitle = document.title;
+    const pageUrl = "https://www.globalreviewspress.com/contact";
+    const title = "Contact Global Reviews Press | Editorial Support";
+    const description =
+      "Contact Global Reviews Press for manuscript submissions, editorial assistance, journal enquiries, reviewer support and academic publishing partnerships worldwide.";
+    const imageUrl =
+      "https://www.globalreviewspress.com/global-reviews-press-contact-us-social-preview.webp";
+
+    document.title = title;
+
+    const managedElements = [];
+
+    const setMeta = (attribute, key, content) => {
+      let element = document.head.querySelector(
+        `meta[${attribute}="${key}"]`,
+      );
+      const wasCreated = !element;
+
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(attribute, key);
+        document.head.appendChild(element);
+      }
+
+      const previousContent = element.getAttribute("content");
+      element.setAttribute("content", content);
+      managedElements.push({ element, wasCreated, previousContent });
+    };
+
+    setMeta("name", "description", description);
+    setMeta(
+      "name",
+      "keywords",
+      "contact Global Reviews Press, academic publishing support, manuscript submission assistance, journal enquiry, editorial support, reviewer support, publishing partnership, research publication contact",
+    );
+    setMeta("name", "robots", "index, follow, max-image-preview:large");
+    setMeta("name", "googlebot", "index, follow, max-image-preview:large");
+
+    setMeta("property", "og:title", title);
+    setMeta("property", "og:description", description);
+    setMeta("property", "og:type", "website");
+    setMeta("property", "og:site_name", "Global Reviews Press");
+    setMeta("property", "og:url", pageUrl);
+    setMeta("property", "og:image", imageUrl);
+    setMeta(
+      "property",
+      "og:image:alt",
+      "Contact Global Reviews Press for academic publishing support",
+    );
+
+    setMeta("name", "twitter:card", "summary_large_image");
+    setMeta("name", "twitter:title", title);
+    setMeta("name", "twitter:description", description);
+    setMeta("name", "twitter:image", imageUrl);
+    setMeta(
+      "name",
+      "twitter:image:alt",
+      "Global Reviews Press contact and editorial assistance",
+    );
+
+    let canonical = document.head.querySelector('link[rel="canonical"]');
+    const canonicalWasCreated = !canonical;
+    const previousCanonical = canonical?.getAttribute("href");
+
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+
+    canonical.setAttribute("href", pageUrl);
+
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.dataset.pageSchema = "grp-contact-us";
+    schema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "ContactPage",
+          "@id": `${pageUrl}#contactpage`,
+          name: "Contact Global Reviews Press",
+          url: pageUrl,
+          description,
+          inLanguage: "en",
+          isPartOf: {
+            "@type": "WebSite",
+            "@id": "https://www.globalreviewspress.com/#website",
+            name: "Global Reviews Press",
+            url: "https://www.globalreviewspress.com/",
+          },
+          about: {
+            "@id": "https://www.globalreviewspress.com/#organization",
+          },
+        },
+        {
+          "@type": "Organization",
+          "@id": "https://www.globalreviewspress.com/#organization",
+          name: "Global Reviews Press",
+          alternateName: "GRP",
+          url: "https://www.globalreviewspress.com/",
+          logo:
+            "https://www.globalreviewspress.com/global-reviews-press-logo.webp",
+          email: "info@globalreviewspress.com",
+          telephone: "+91-99702-94396",
+          address: {
+            "@type": "PostalAddress",
+            streetAddress:
+              "202, Planet Apt., Omkarnagar, Besa Road, Near Sahyadri Lawn",
+            addressLocality: "Nagpur",
+            addressRegion: "Maharashtra",
+            postalCode: "440037",
+            addressCountry: "IN",
+          },
+          contactPoint: [
+            {
+              "@type": "ContactPoint",
+              contactType: "editorial support",
+              email: "editorial@globalreviewspress.com",
+              telephone: "+91-99702-94396",
+              areaServed: "Worldwide",
+              availableLanguage: "English",
+            },
+            {
+              "@type": "ContactPoint",
+              contactType: "customer support",
+              email: "support@globalreviewspress.com",
+              areaServed: "Worldwide",
+              availableLanguage: "English",
+            },
+          ],
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.globalreviewspress.com/",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Contact Us",
+              item: pageUrl,
+            },
+          ],
+        },
+      ],
+    });
+    document.head.appendChild(schema);
+
+    return () => {
+      document.title = previousTitle;
+
+      managedElements.forEach(
+        ({ element, wasCreated, previousContent }) => {
+          if (wasCreated) {
+            element.remove();
+          } else if (previousContent === null) {
+            element.removeAttribute("content");
+          } else {
+            element.setAttribute("content", previousContent);
+          }
+        },
+      );
+
+      if (canonicalWasCreated) {
+        canonical.remove();
+      } else if (previousCanonical) {
+        canonical.setAttribute("href", previousCanonical);
+      }
+
+      schema.remove();
+    };
+  }, []);
 }
