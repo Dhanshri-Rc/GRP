@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -229,6 +229,18 @@ const testimonials = [
 
 export default function WhyPublishUs() {
   useWhyPublishUsSeo();
+
+  const testimonialsPerPage = 3;
+  const [testimonialPage, setTestimonialPage] = useState(0);
+
+  const totalTestimonialPages = Math.ceil(
+    testimonials.length / testimonialsPerPage,
+  );
+
+  const visibleTestimonials = testimonials.slice(
+    testimonialPage * testimonialsPerPage,
+    testimonialPage * testimonialsPerPage + testimonialsPerPage,
+  );
 
   return (
     <>
@@ -494,8 +506,9 @@ export default function WhyPublishUs() {
         </section>
 
         {/* ==================== TESTIMONIALS ==================== */}
-        <section className="bg-[#f8f9fb] py-4 sm:py-4">
+        <section className="bg-[#f8f9fb] py-7 sm:py-8">
           <div className="mx-auto w-[min(1120px,calc(100%-32px))] sm:w-[min(1120px,calc(100%-48px))]">
+            {/* Section Heading */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -505,32 +518,56 @@ export default function WhyPublishUs() {
               <h2 className="text-[18px] font-[550] text-[#09235a] sm:text-[21px]">
                 WHAT AUTHORS SAY
               </h2>
+
               <div className="mx-auto mt-2 h-[2px] w-10 bg-[#52ac59]" />
             </motion.div>
 
-            <div className="mt-6 grid gap-5 md:grid-cols-3">
-              {testimonials.map((item, index) => (
+            {/* Testimonial Cards */}
+            <motion.div
+              key={testimonialPage}
+              initial={{ opacity: 0, x: 25 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="mt-6 grid gap-5 md:grid-cols-3"
+            >
+              {visibleTestimonials.map((item, index) => (
                 <motion.article
-                  key={item.author}
+                  key={`${testimonialPage}-${item.author}`}
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.44, delay: index * 0.08 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.44,
+                    delay: index * 0.08,
+                  }}
                   whileHover={{ y: -6 }}
-                  className="rounded-[7px] border border-[#dce3ea] bg-white p-5 shadow-[0_4px_14px_rgba(4,28,61,0.04)]"
+                  className="
+            rounded-[7px]
+            border
+            border-[#dce3ea]
+            bg-white
+            p-5
+            shadow-[0_4px_14px_rgba(4,28,61,0.04)]
+            transition-shadow
+            duration-300
+            hover:shadow-[0_10px_25px_rgba(4,28,61,0.1)]
+          "
                 >
                   <Quote size={26} fill="#63a735" className="text-[#63a735]" />
+
                   <p className="mt-3 min-h-[76px] text-[12.5px] leading-[1.65] text-[#334258]">
                     {item.quote}
                   </p>
+
                   <div className="mt-4 flex items-center gap-3">
                     <div className="grid size-10 shrink-0 place-items-center rounded-full bg-[#173f78] text-[12px] font-[550] text-white">
                       {item.initials}
                     </div>
-                    <div>
+
+                    <div className="min-w-0">
                       <h3 className="text-[12.5px] font-[550] text-[#09235a]">
                         {item.author}
                       </h3>
+
                       <p className="mt-1 text-[11.5px] text-[#536176]">
                         {item.title}
                       </p>
@@ -538,14 +575,45 @@ export default function WhyPublishUs() {
                   </div>
                 </motion.article>
               ))}
-            </div>
+            </motion.div>
 
-            <div className="mt-5 flex justify-center gap-2">
-              <span className="size-2 rounded-full bg-[#278642]" />
-              <span className="size-2 rounded-full bg-[#c4cbd3]" />
-              <span className="size-2 rounded-full bg-[#c4cbd3]" />
-              <span className="size-2 rounded-full bg-[#c4cbd3]" />
-            </div>
+            {/* Working Pagination Dots */}
+            {totalTestimonialPages > 1 && (
+              <div
+                className="mt-5 flex items-center justify-center gap-2"
+                role="navigation"
+                aria-label="Testimonials pagination"
+              >
+                {Array.from({ length: totalTestimonialPages }).map(
+                  (_, pageIndex) => (
+                    <button
+                      key={pageIndex}
+                      type="button"
+                      onClick={() => setTestimonialPage(pageIndex)}
+                      aria-label={`Show testimonials page ${pageIndex + 1}`}
+                      aria-current={
+                        testimonialPage === pageIndex ? "page" : undefined
+                      }
+                      className={`
+                h-2
+                rounded-full
+                transition-all
+                duration-300
+                focus:outline-none
+                focus-visible:ring-2
+                focus-visible:ring-[#278642]
+                focus-visible:ring-offset-2
+                ${
+                  testimonialPage === pageIndex
+                    ? "w-6 bg-[#278642]"
+                    : "w-2 bg-[#c4cbd3] hover:bg-[#76aa81]"
+                }
+              `}
+                    />
+                  ),
+                )}
+              </div>
+            )}
           </div>
         </section>
         {/* ==================== CTA SECTION ==================== */}
@@ -743,8 +811,7 @@ function useWhyPublishUsSeo() {
   useEffect(() => {
     const previousTitle = document.title;
     const pageUrl = "https://www.globalreviewspress.com/why-publish-us";
-    const title =
-      "Why Publish With Global Reviews Press | Author Benefits";
+    const title = "Why Publish With Global Reviews Press | Author Benefits";
     const description =
       "Discover why researchers publish with Global Reviews Press, including rigorous peer review, global visibility, open access options, ethical publishing, author support and efficient publication.";
     const imageUrl =
@@ -755,9 +822,7 @@ function useWhyPublishUsSeo() {
     const managedElements = [];
 
     const setMeta = (attribute, key, content) => {
-      let element = document.head.querySelector(
-        `meta[${attribute}="${key}"]`,
-      );
+      let element = document.head.querySelector(`meta[${attribute}="${key}"]`);
       const wasCreated = !element;
 
       if (!element) {
@@ -839,8 +904,7 @@ function useWhyPublishUsSeo() {
             name: "Global Reviews Press",
             alternateName: "GRP",
             url: "https://www.globalreviewspress.com/",
-            logo:
-              "https://www.globalreviewspress.com/global-reviews-press-logo.webp",
+            logo: "https://www.globalreviewspress.com/global-reviews-press-logo.webp",
           },
           primaryImageOfPage: {
             "@type": "ImageObject",
@@ -873,17 +937,15 @@ function useWhyPublishUsSeo() {
     return () => {
       document.title = previousTitle;
 
-      managedElements.forEach(
-        ({ element, wasCreated, previousContent }) => {
-          if (wasCreated) {
-            element.remove();
-          } else if (previousContent === null) {
-            element.removeAttribute("content");
-          } else {
-            element.setAttribute("content", previousContent);
-          }
-        },
-      );
+      managedElements.forEach(({ element, wasCreated, previousContent }) => {
+        if (wasCreated) {
+          element.remove();
+        } else if (previousContent === null) {
+          element.removeAttribute("content");
+        } else {
+          element.setAttribute("content", previousContent);
+        }
+      });
 
       if (canonicalWasCreated) {
         canonical.remove();
