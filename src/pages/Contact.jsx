@@ -358,13 +358,13 @@ export default function Contact() {
               <p className="mt-2 text-[12px] text-[#4f5867]">
                 Find quick answers to common queries.
               </p>
-              <a
+              {/* <a
                 href="/faq"
                 className="group mt-5 inline-flex h-9 items-center gap-2 rounded-[4px] border border-[#4e8b48] px-4 text-[11px] font-semibold text-[#2d6f2c] transition hover:bg-[#347529] hover:text-white"
               >
                 View All FAQs{" "}
                 <ArrowRight className="h-4 w-4 transition group-hover:translate-x-1" />
-              </a>
+              </a> */}
             </div>
             <div className="space-y-2 py-5 md:px-5 md:py-0">
               {faqs.map((faq, index) => {
