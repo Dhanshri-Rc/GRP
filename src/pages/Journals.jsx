@@ -28,26 +28,26 @@ import Footer from "../components/Footer";
 /* =========================================================
    HERO / CTA IMAGES
 ========================================================= */
-import bgjournal from "../assets/img/bgjournal.png";
-import bgcta from "../assets/img/jcta.png";
+import bgjournal from "../assets/img/global-reviews-press-academic-journals-hero.webp";
+import bgcta from "../assets/img/explore-global-reviews-press-journals-cta.webp";
 
 /* =========================================================
    JOURNAL IMAGES
 ========================================================= */
-import j1 from "../assets/img/j1.png";
-import j2 from "../assets/img/j2.png";
-import j3 from "../assets/img/j3.png";
+import j1 from "../assets/img/artificial-intelligence-engineering-journal.webp";
+import j2 from "../assets/img/robotics-automation-technology-journal.webp";
+import j3 from "../assets/img/quantum-computing-research-journal.webp";
 
 /* =========================================================
    INDEXING LOGOS
 ========================================================= */
-import scopusLogo from "../assets/img/scopus.png";
-import clarivateLogo from "../assets/img/clarivate.png";
-import doajLogo from "../assets/img/doaj.png";
-import casLogo from "../assets/img/cas.png";
-import dimensionsLogo from "../assets/img/dimensions.png";
-import crossrefLogo from "../assets/img/crossref.png";
-import googleScholarLogo from "../assets/img/google-scholar.png";
+import scopusLogo from "../assets/img/scopus-indexing-database-logo.webp";
+import clarivateLogo from "../assets/img/clarivate-web-of-science-logo.webp";
+import doajLogo from "../assets/img/directory-of-open-access-journals-doaj-logo.webp";
+import casLogo from "../assets/img/chemical-abstracts-service-cas-logo.webp";
+import dimensionsLogo from "../assets/img/dimensions-research-indexing-logo.webp";
+import crossrefLogo from "../assets/img/crossref-doi-registration-agency-logo.webp";
+import googleScholarLogo from "../assets/img/google-scholar-academic-indexing-logo.webp";
 
 /* =========================================================
    FILTERS

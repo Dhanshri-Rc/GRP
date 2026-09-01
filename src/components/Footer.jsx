@@ -11,7 +11,7 @@ import {
   Rss,
 } from "lucide-react";
 
-import logo from "../assets/img/flogo.png";
+import logo from "../assets/img/global-reviews-press-footer-logo.webp";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();

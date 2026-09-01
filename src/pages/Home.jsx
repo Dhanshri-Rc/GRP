@@ -41,18 +41,18 @@ import {
 } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import bghome from "../assets/img/bghome.png";
-import h1 from "../assets/img/Home1.png";
-import h2 from "../assets/img/Home2.png";
-import h3 from "../assets/img/Home3.png";
-import bgcta from "../assets/img/cta.png";
-import scopusLogo from "../assets/img/scopus.png";
-import clarivateLogo from "../assets/img/clarivate.png";
-import doajLogo from "../assets/img/doaj.png";
-import casLogo from "../assets/img/cas.png";
-import dimensionsLogo from "../assets/img/dimensions.png";
-import crossrefLogo from "../assets/img/crossref.png";
-import googleScholarLogo from "../assets/img/google-scholar.png";
+import bghome from "../assets/img/global-reviews-press-academic-publishing-home-hero.webp";
+import h1 from "../assets/img/engineering-technology-research-journals.webp";
+import h2 from "../assets/img/medicine-health-sciences-research-journals.webp";
+import h3 from "../assets/img/sustainability-environment-research-journals.webp";
+import bgcta from "../assets/img/global-reviews-press-submit-research-cta-background.webp";
+import scopusLogo from "../assets/img/scopus-indexing-database-logo.webp";
+import clarivateLogo from "../assets/img/clarivate-web-of-science-logo.webp";
+import doajLogo from "../assets/img/directory-of-open-access-journals-doaj-logo.webp";
+import casLogo from "../assets/img/chemical-abstracts-service-cas-logo.webp";
+import dimensionsLogo from "../assets/img/dimensions-research-indexing-logo.webp";
+import crossrefLogo from "../assets/img/crossref-doi-registration-agency-logo.webp";
+import googleScholarLogo from "../assets/img/google-scholar-academic-indexing-logo.webp";
 
 export default function Home() {
   return (

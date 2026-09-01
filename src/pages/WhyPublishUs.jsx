@@ -22,25 +22,25 @@ import {
 } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import pubBg from "../assets/img/publicatibBg.png";
-import pubCta from "../assets/img/pubCta2.png";
-import c1 from "../assets/img/c1.png";
-import c2 from "../assets/img/c2.png";
-import c3 from "../assets/img/c3.png";
-import c4 from "../assets/img/c4.png";
-import c5 from "../assets/img/c5.png";
-import c6 from "../assets/img/c6.png";
-import c7 from "../assets/img/c7.png";
-import c8 from "../assets/img/c8.png";
-import c9 from "../assets/img/c9.png";
-import c10 from "../assets/img/c10.png";
-import scopusLogo from "../assets/img/scopus.png";
-import clarivateLogo from "../assets/img/clarivate.png";
-import doajLogo from "../assets/img/doaj.png";
-import casLogo from "../assets/img/cas.png";
-import dimensionsLogo from "../assets/img/dimensions.png";
-import crossrefLogo from "../assets/img/crossref.png";
-import googleScholarLogo from "../assets/img/google-scholar.png";
+import pubBg from "../assets/img/why-publish-with-global-reviews-press-hero.webp";
+import pubCta from "../assets/img/submit-manuscript-global-reviews-press-cta.webp";
+import c1 from "../assets/img/rigorous-double-blind-peer-review.webp";
+import c2 from "../assets/img/global-research-publication-reach.webp";
+import c3 from "../assets/img/open-access-publishing-options.webp";
+import c4 from "../assets/img/research-visibility-and-citation-impact.webp";
+import c5 from "../assets/img/multidisciplinary-research-publishing-platform.webp";
+import c6 from "../assets/img/efficient-academic-publication-process.webp";
+import c7 from "../assets/img/dedicated-research-author-support.webp";
+import c8 from "../assets/img/ethical-scholarly-publishing-standards.webp";
+import c9 from "../assets/img/sustainable-development-research-publishing.webp";
+import c10 from "../assets/img/trusted-global-academic-publishing-partner.webp";
+import scopusLogo from "../assets/img/scopus-indexing-database-logo.webp";
+import clarivateLogo from "../assets/img/clarivate-web-of-science-logo.webp";
+import doajLogo from "../assets/img/directory-of-open-access-journals-doaj-logo.webp";
+import casLogo from "../assets/img/chemical-abstracts-service-cas-logo.webp";
+import dimensionsLogo from "../assets/img/dimensions-research-indexing-logo.webp";
+import crossrefLogo from "../assets/img/crossref-doi-registration-agency-logo.webp";
+import googleScholarLogo from "../assets/img/google-scholar-academic-indexing-logo.webp";
 
 const benefits = [
   {
