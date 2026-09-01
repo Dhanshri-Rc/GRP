@@ -244,13 +244,13 @@ export default function Footer() {
                 }}
                 className="
                   h-auto
-                  w-[145px]
+                  w-[140px]
                   object-contain
                   object-left
 
-                  sm:w-[150px]
+                  sm:w-[140px]
 
-                  lg:w-[160px]
+                  lg:w-[140px]
                 "
               />
             </Link>

@@ -59,7 +59,7 @@ export default function Home() {
     <>
       <Header />
 
-      <main className="overflow-hidden bg-white pt-[75px]">
+      <main className="overflow-hidden bg-white sm:pt-[75px] pt-[45px]">
 
  {/* ==================== HERO SECTION ==================== */}
 <section
@@ -95,6 +95,40 @@ export default function Home() {
     backgroundImage: `url(${bghome})`,
   }}
 >
+
+ 
+{/* =====================================================
+    MOBILE / TABLET READABILITY OVERLAY
+====================================================== */}
+<div
+  className="
+    pointer-events-none
+    absolute
+    inset-0
+    -z-10
+
+    bg-gradient-to-r
+    from-[#f8fbfd]/98
+    via-[#f8fbfd]/92
+    via-[58%]
+    to-[#f8fbfd]/20
+
+    min-[390px]:via-[56%]
+    min-[390px]:to-[#f8fbfd]/15
+
+    sm:from-[#f8fbfd]/98
+    sm:via-[#f8fbfd]/90
+    sm:via-[54%]
+    sm:to-[#f8fbfd]/10
+
+    md:from-[#f8fbfd]/96
+    md:via-[#f8fbfd]/82
+    md:via-[50%]
+    md:to-transparent
+
+    lg:hidden
+  "
+/>
 
 
   {/* =====================================================
@@ -165,7 +199,7 @@ export default function Home() {
         }}
         className="
           font-['Inter',sans-serif]
-          text-[30px]
+          text-[27px]
           font-[700]
           leading-[1.13]
           tracking-[-0.035em]
@@ -4131,7 +4165,7 @@ mt-5
         className="
           group
           inline-flex
-          h-[47px]
+          h-[43px]
           min-w-[182px]
           items-center
           justify-center
@@ -4147,7 +4181,7 @@ mt-5
           px-[12px]
 
           font-['Inter',sans-serif]
-          text-[13.5px]
+          text-[12.5px]
           font-[650]
           text-white
 
