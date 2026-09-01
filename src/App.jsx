@@ -12,6 +12,9 @@ import Authors from './pages/Authors';
 import Indexing from './pages/Indexing';
 import News from './pages/News';
 import NotFound from './pages/NotFound';
+import SubmitManuscript from "./pages/SubmitManuscript";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermsConditions from "./pages/TermsConditions";
 
 export default function App() {
   return (
@@ -25,9 +28,17 @@ export default function App() {
         <Route path="/reviewer" element={<Reviewer />} />
         <Route path="/editors-information" element={<EditorsInformation />} />
         <Route path="/contact" element={<Contact />} />
-       
+       <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+       <Route
+  path="/terms-and-conditions"
+  element={<TermsConditions />}
+/>
         <Route path="/indexing" element={<Indexing />} />
         <Route path="/news" element={<News />} />
+        <Route
+  path="/submit-manuscript"
+  element={<SubmitManuscript />}
+/>
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>

@@ -210,6 +210,65 @@ export default function Header() {
                   </Link>
                 );
               })}
+              {/* =================================================
+    SUBMIT PAPER BUTTON
+================================================== */}
+<motion.div
+  whileHover={{
+    y: -2,
+  }}
+  whileTap={{
+    scale: 0.97,
+  }}
+  transition={{
+    duration: 0.2,
+  }}
+  className="shrink-0"
+>
+  <Link
+    to="/submit-manuscript"
+    className={`
+      group
+      inline-flex
+      h-[38px]
+      items-center
+      justify-center
+      whitespace-nowrap
+      rounded-[5px]
+      border
+      px-[17px]
+      text-[12.5px]
+      font-[600]
+      transition-all
+      duration-300
+
+      ${
+        isHome
+          ? `
+            border-white/80
+            bg-white
+            text-[#05264a]
+
+            hover:border-[#0e87b0]
+            hover:bg-[#087ba1]
+            hover:text-white
+            hover:shadow-[0_7px_18px_rgba(0,0,0,0.15)]
+          `
+          : `
+            border-[#000001]
+            bg-[#05264A]
+            text-white
+
+            hover:border-[#176797]
+            hover:bg-[#176797]
+            hover:shadow-[0_7px_18px_rgba(5,38,74,0.18)]
+          `
+      }
+    `}
+  >
+    Submit Paper
+  </Link>
+</motion.div>
             </div>
 
           
@@ -527,7 +586,67 @@ export default function Header() {
                 })}
               </div>
 
-             
+             {/* =================================================
+    MOBILE SUBMIT PAPER BUTTON
+================================================== */}
+<motion.div
+  initial={{
+    opacity: 0,
+    y: 12,
+  }}
+  animate={{
+    opacity: 1,
+    y: 0,
+  }}
+  transition={{
+    duration: 0.3,
+    delay: 0.3,
+  }}
+  className="mt-[18px]"
+>
+  <Link
+    to="/submit-manuscript"
+    onClick={() => {
+      setIsOpen(false);
+    }}
+    className={`
+      flex
+      h-[43px]
+      w-full
+      items-center
+      justify-center
+      rounded-[5px]
+      border
+      text-[12px]
+      font-[700]
+      transition-all
+      duration-300
+
+      ${
+        isHome
+          ? `
+            border-white
+            bg-white
+            text-[#011035]
+
+            hover:border-[#35b9dc]
+            hover:bg-[#35b9dc]
+            hover:text-white
+          `
+          : `
+            border-[#05264a]
+            bg-[#05264a]
+            text-white
+
+            hover:border-[#176797]
+            hover:bg-[#176797]
+          `
+      }
+    `}
+  >
+    Submit Paper
+  </Link>
+</motion.div>
 
               {/* =============================================
                   SMALL BOTTOM TEXT

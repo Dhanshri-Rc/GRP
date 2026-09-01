@@ -340,7 +340,7 @@ export default function Journals() {
         {/* =========================================================
             HERO SECTION
         ========================================================== */}
-        <section
+       <section section
           className="
             relative
             isolate

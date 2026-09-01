@@ -237,16 +237,16 @@ export default function Contact() {
                       I agree to the{" "}
                       <a
                         href="/privacy-policy"
-                        className="font-medium text-[#0c5591] hover:underline"
+                        className="font-semibold text-[#0c5591] underline"
                       >
                         Privacy Policy
                       </a>{" "}
                       and{" "}
                       <a
-                        href="/terms"
-                        className="font-medium text-[#0c5591] hover:underline"
+                        href="/terms-and-conditions"
+                        className="font-semibold text-[#0c5591] underline"
                       >
-                        Terms of Use
+                        Terms and Conditions
                       </a>
                       .
                     </span>
