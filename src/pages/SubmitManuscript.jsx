@@ -26,8 +26,8 @@ import {
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import submitHero from "../assets/img/bgsubmit.png";
-import submitCta from "../assets/img/jcta.png";
+import submitHero from "../assets/img/global-reviews-press-academic-submit-manuscript-hero.webp";
+import submitCta from "../assets/img/explore-global-reviews-press-journals-cta.webp";
 
 /* =========================================================
    JOURNALS

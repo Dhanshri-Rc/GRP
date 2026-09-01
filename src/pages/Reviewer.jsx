@@ -271,7 +271,32 @@ export default function Reviewer() {
   }}
 >
 
- 
+     {/* Mobile / Tablet Readability Overlay */}
+          <div
+            className="
+              pointer-events-none
+              absolute
+              inset-0
+              -z-10
+
+              bg-gradient-to-r
+              from-[#03183c]/98
+              via-[#03183c]/92
+              via-[58%]
+              to-[#03183c]/15
+
+              sm:via-[54%]
+              sm:to-[#03183c]/10
+
+              md:from-[#03183c]/96
+              md:via-[#03183c]/72
+              md:via-[47%]
+              md:to-transparent
+
+              lg:from-transparent
+              lg:via-transparent
+              lg:to-transparent
+            " />
 
   {/* =====================================================
       MAIN CONTAINER
