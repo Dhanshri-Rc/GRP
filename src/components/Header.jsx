@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 
-import Logo from "../assets/img/logo.png";
+import Logo from "../assets/img/global-reviews-press-logo.webp";
 
 const navigation = [
   { name: "About Us", href: "/about" },
