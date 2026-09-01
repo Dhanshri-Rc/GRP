@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -37,6 +38,8 @@ import crossrefLogo from "../assets/img/crossref-doi-registration-agency-logo.we
 import googleScholarLogo from "../assets/img/google-scholar-academic-indexing-logo.webp";
 
 export default function About() {
+  useAboutPageSeo();
+
   return (
     <>
       <Header />
@@ -1050,4 +1053,145 @@ export default function About() {
       <Footer />
     </>
   );
+}
+
+/* =========================================================
+   ABOUT PAGE SEO
+========================================================= */
+function useAboutPageSeo() {
+  useEffect(() => {
+    const previousTitle = document.title;
+    const pageUrl = "https://www.globalreviewspress.com/about";
+    const title =
+      "About Global Reviews Press | Academic Publishing Company";
+    const description =
+      "Learn about Global Reviews Press, an international academic publishing company committed to peer-reviewed journals, publication ethics, research quality and global scholarly impact.";
+    const imageUrl =
+      "https://www.globalreviewspress.com/global-reviews-press-about-us-social-preview.webp";
+
+    document.title = title;
+
+    const managedElements = [];
+
+    const setMeta = (attribute, key, content) => {
+      let element = document.head.querySelector(
+        `meta[${attribute}="${key}"]`,
+      );
+
+      const wasCreated = !element;
+
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(attribute, key);
+        document.head.appendChild(element);
+      }
+
+      const previousContent = element.getAttribute("content");
+      element.setAttribute("content", content);
+
+      managedElements.push({ element, wasCreated, previousContent });
+    };
+
+    setMeta("name", "description", description);
+    setMeta(
+      "name",
+      "keywords",
+      "about Global Reviews Press, academic publishing company, peer-reviewed journals, scholarly publishing, research publication, publication ethics, open access journals, international academic publisher",
+    );
+    setMeta("name", "robots", "index, follow, max-image-preview:large");
+    setMeta("name", "googlebot", "index, follow, max-image-preview:large");
+
+    setMeta("property", "og:title", title);
+    setMeta("property", "og:description", description);
+    setMeta("property", "og:type", "website");
+    setMeta("property", "og:site_name", "Global Reviews Press");
+    setMeta("property", "og:url", pageUrl);
+    setMeta("property", "og:image", imageUrl);
+    setMeta(
+      "property",
+      "og:image:alt",
+      "About Global Reviews Press academic publishing company",
+    );
+
+    setMeta("name", "twitter:card", "summary_large_image");
+    setMeta("name", "twitter:title", title);
+    setMeta("name", "twitter:description", description);
+    setMeta("name", "twitter:image", imageUrl);
+    setMeta(
+      "name",
+      "twitter:image:alt",
+      "Global Reviews Press international academic publisher",
+    );
+
+    let canonical = document.head.querySelector('link[rel="canonical"]');
+    const canonicalWasCreated = !canonical;
+    const previousCanonical = canonical?.getAttribute("href");
+
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+
+    canonical.setAttribute("href", pageUrl);
+
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.dataset.pageSchema = "about-global-reviews-press";
+    schema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "AboutPage",
+      name: "About Global Reviews Press",
+      url: pageUrl,
+      description,
+      inLanguage: "en",
+      isPartOf: {
+        "@type": "WebSite",
+        name: "Global Reviews Press",
+        url: "https://www.globalreviewspress.com/",
+      },
+      about: {
+        "@type": "Organization",
+        name: "Global Reviews Press",
+        alternateName: "GRP",
+        url: "https://www.globalreviewspress.com/",
+        logo: "https://www.globalreviewspress.com/global-reviews-press-logo.webp",
+        email: "info@globalreviewspress.com",
+        description,
+        areaServed: "Worldwide",
+        knowsAbout: [
+          "Academic publishing",
+          "Peer-reviewed journals",
+          "Engineering research",
+          "Medical research",
+          "Sustainability research",
+        ],
+      },
+    });
+    document.head.appendChild(schema);
+
+    return () => {
+      document.title = previousTitle;
+
+      managedElements.forEach(
+        ({ element, wasCreated, previousContent }) => {
+          if (wasCreated) {
+            element.remove();
+          } else if (previousContent === null) {
+            element.removeAttribute("content");
+          } else {
+            element.setAttribute("content", previousContent);
+          }
+        },
+      );
+
+      if (canonicalWasCreated) {
+        canonical.remove();
+      } else if (previousCanonical) {
+        canonical.setAttribute("href", previousCanonical);
+      }
+
+      schema.remove();
+    };
+  }, []);
 }

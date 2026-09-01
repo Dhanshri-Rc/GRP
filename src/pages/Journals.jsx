@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "react-router-dom";
 
@@ -315,9 +315,162 @@ const sortJournals = (items, sortOrder) => {
 };
 
 /* =========================================================
+   JOURNALS PAGE SEO
+========================================================= */
+function useJournalsPageSeo() {
+  useEffect(() => {
+    const previousTitle = document.title;
+    const pageUrl = "https://www.globalreviewspress.com/journals";
+    const title = "Academic Journals & Magazines | Global Reviews Press";
+    const description =
+      "Explore peer-reviewed journals and magazines from Global Reviews Press covering engineering, technology, medicine, health sciences, sustainability and interdisciplinary research.";
+    const imageUrl =
+      "https://www.globalreviewspress.com/global-reviews-press-journals-social-preview.webp";
+
+    document.title = title;
+
+    const managedElements = [];
+
+    const setMeta = (attribute, key, content) => {
+      let element = document.head.querySelector(
+        `meta[${attribute}="${key}"]`,
+      );
+      const wasCreated = !element;
+
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(attribute, key);
+        document.head.appendChild(element);
+      }
+
+      const previousContent = element.getAttribute("content");
+      element.setAttribute("content", content);
+      managedElements.push({ element, wasCreated, previousContent });
+    };
+
+    setMeta("name", "description", description);
+    setMeta(
+      "name",
+      "keywords",
+      "Global Reviews Press journals, peer-reviewed journals, academic journals, engineering journals, technology journals, medical journals, health sciences journals, sustainability journals, interdisciplinary research, open access journals",
+    );
+    setMeta("name", "robots", "index, follow, max-image-preview:large");
+    setMeta("name", "googlebot", "index, follow, max-image-preview:large");
+
+    setMeta("property", "og:title", title);
+    setMeta("property", "og:description", description);
+    setMeta("property", "og:type", "website");
+    setMeta("property", "og:site_name", "Global Reviews Press");
+    setMeta("property", "og:locale", "en_US");
+    setMeta("property", "og:url", pageUrl);
+    setMeta("property", "og:image", imageUrl);
+    setMeta(
+      "property",
+      "og:image:alt",
+      "Peer-reviewed academic journals and magazines from Global Reviews Press",
+    );
+
+    setMeta("name", "twitter:card", "summary_large_image");
+    setMeta("name", "twitter:title", title);
+    setMeta("name", "twitter:description", description);
+    setMeta("name", "twitter:image", imageUrl);
+    setMeta(
+      "name",
+      "twitter:image:alt",
+      "Global Reviews Press academic journals and magazines",
+    );
+
+    let canonical = document.head.querySelector('link[rel="canonical"]');
+    const canonicalWasCreated = !canonical;
+    const previousCanonical = canonical?.getAttribute("href");
+
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+
+    canonical.setAttribute("href", pageUrl);
+
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.dataset.pageSchema = "grp-journals";
+    schema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "CollectionPage",
+          "@id": `${pageUrl}#webpage`,
+          name: "Academic Journals & Magazines",
+          url: pageUrl,
+          description,
+          inLanguage: "en",
+          isPartOf: {
+            "@type": "WebSite",
+            "@id": "https://www.globalreviewspress.com/#website",
+            name: "Global Reviews Press",
+            url: "https://www.globalreviewspress.com/",
+          },
+          about: [
+            "Engineering and Technology",
+            "Medicine and Health Sciences",
+            "Sustainability and Environment",
+            "Interdisciplinary Research",
+          ],
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.globalreviewspress.com/",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Journals & Magazines",
+              item: pageUrl,
+            },
+          ],
+        },
+      ],
+    });
+    document.head.appendChild(schema);
+
+    return () => {
+      document.title = previousTitle;
+
+      managedElements.forEach(
+        ({ element, wasCreated, previousContent }) => {
+          if (wasCreated) {
+            element.remove();
+          } else if (previousContent === null) {
+            element.removeAttribute("content");
+          } else {
+            element.setAttribute("content", previousContent);
+          }
+        },
+      );
+
+      if (canonicalWasCreated) {
+        canonical.remove();
+      } else if (previousCanonical) {
+        canonical.setAttribute("href", previousCanonical);
+      }
+
+      schema.remove();
+    };
+  }, []);
+}
+
+/* =========================================================
    PAGE
 ========================================================= */
 export default function Journals() {
+  useJournalsPageSeo();
+
   const [activeTab, setActiveTab] = useState("all");
   const [sort, setSort] = useState("default");
 

@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -200,6 +201,8 @@ const resources = [
 ];
 
 export default function EditorsInformation() {
+  useEditorInformationSeo();
+
   return (
     <>
       <Header />
@@ -512,4 +515,136 @@ export default function EditorsInformation() {
       <Footer />
     </>
   );
+}
+
+/* =========================================================
+   EDITOR INFORMATION PAGE SEO
+========================================================= */
+function useEditorInformationSeo() {
+  useEffect(() => {
+    const previousTitle = document.title;
+    const pageUrl =
+      "https://www.globalreviewspress.com/editors-information";
+    const title =
+      "Editor Information | Join Global Reviews Press Editorial Board";
+    const description =
+      "Explore editor roles, responsibilities, benefits and eligibility at Global Reviews Press. Join our international editorial board and support ethical, high-quality peer-reviewed research.";
+    const imageUrl =
+      "https://www.globalreviewspress.com/global-reviews-press-editor-information-social-preview.webp";
+
+    document.title = title;
+
+    const managedElements = [];
+
+    const setMeta = (attribute, key, content) => {
+      let element = document.head.querySelector(
+        `meta[${attribute}="${key}"]`,
+      );
+      const wasCreated = !element;
+
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(attribute, key);
+        document.head.appendChild(element);
+      }
+
+      const previousContent = element.getAttribute("content");
+      element.setAttribute("content", content);
+      managedElements.push({ element, wasCreated, previousContent });
+    };
+
+    setMeta("name", "description", description);
+    setMeta(
+      "name",
+      "keywords",
+      "Global Reviews Press editor information, join editorial board, academic journal editor, editor roles and responsibilities, scholarly publishing editor, peer review editor, journal editorial board",
+    );
+    setMeta("name", "robots", "index, follow, max-image-preview:large");
+    setMeta("name", "googlebot", "index, follow, max-image-preview:large");
+
+    setMeta("property", "og:title", title);
+    setMeta("property", "og:description", description);
+    setMeta("property", "og:type", "website");
+    setMeta("property", "og:site_name", "Global Reviews Press");
+    setMeta("property", "og:url", pageUrl);
+    setMeta("property", "og:image", imageUrl);
+    setMeta(
+      "property",
+      "og:image:alt",
+      "Global Reviews Press editor information and editorial board",
+    );
+
+    setMeta("name", "twitter:card", "summary_large_image");
+    setMeta("name", "twitter:title", title);
+    setMeta("name", "twitter:description", description);
+    setMeta("name", "twitter:image", imageUrl);
+    setMeta(
+      "name",
+      "twitter:image:alt",
+      "Join the Global Reviews Press editorial board",
+    );
+
+    let canonical = document.head.querySelector('link[rel="canonical"]');
+    const canonicalWasCreated = !canonical;
+    const previousCanonical = canonical?.getAttribute("href");
+
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+
+    canonical.setAttribute("href", pageUrl);
+
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.dataset.pageSchema = "grp-editor-information";
+    schema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      name: "Editor Information",
+      headline: "Join the Global Reviews Press Editorial Board",
+      url: pageUrl,
+      description,
+      inLanguage: "en",
+      isPartOf: {
+        "@type": "WebSite",
+        name: "Global Reviews Press",
+        url: "https://www.globalreviewspress.com/",
+      },
+      about: {
+        "@type": "Organization",
+        name: "Global Reviews Press",
+        alternateName: "GRP",
+        url: "https://www.globalreviewspress.com/",
+        logo: "https://www.globalreviewspress.com/global-reviews-press-logo.webp",
+        email: "editorial@globalreviewspress.com",
+      },
+    });
+    document.head.appendChild(schema);
+
+    return () => {
+      document.title = previousTitle;
+
+      managedElements.forEach(
+        ({ element, wasCreated, previousContent }) => {
+          if (wasCreated) {
+            element.remove();
+          } else if (previousContent === null) {
+            element.removeAttribute("content");
+          } else {
+            element.setAttribute("content", previousContent);
+          }
+        },
+      );
+
+      if (canonicalWasCreated) {
+        canonical.remove();
+      } else if (previousCanonical) {
+        canonical.setAttribute("href", previousCanonical);
+      }
+
+      schema.remove();
+    };
+  }, []);
 }

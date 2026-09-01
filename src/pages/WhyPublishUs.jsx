@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -227,6 +228,8 @@ const testimonials = [
 ];
 
 export default function WhyPublishUs() {
+  useWhyPublishUsSeo();
+
   return (
     <>
       <Header />
@@ -731,4 +734,164 @@ export default function WhyPublishUs() {
       <Footer />
     </>
   );
+}
+
+/* =========================================================
+   WHY PUBLISH WITH US PAGE SEO
+========================================================= */
+function useWhyPublishUsSeo() {
+  useEffect(() => {
+    const previousTitle = document.title;
+    const pageUrl = "https://www.globalreviewspress.com/why-publish-us";
+    const title =
+      "Why Publish With Global Reviews Press | Author Benefits";
+    const description =
+      "Discover why researchers publish with Global Reviews Press, including rigorous peer review, global visibility, open access options, ethical publishing, author support and efficient publication.";
+    const imageUrl =
+      "https://www.globalreviewspress.com/why-publish-with-global-reviews-press-social-preview.webp";
+
+    document.title = title;
+
+    const managedElements = [];
+
+    const setMeta = (attribute, key, content) => {
+      let element = document.head.querySelector(
+        `meta[${attribute}="${key}"]`,
+      );
+      const wasCreated = !element;
+
+      if (!element) {
+        element = document.createElement("meta");
+        element.setAttribute(attribute, key);
+        document.head.appendChild(element);
+      }
+
+      const previousContent = element.getAttribute("content");
+      element.setAttribute("content", content);
+      managedElements.push({ element, wasCreated, previousContent });
+    };
+
+    setMeta("name", "description", description);
+    setMeta(
+      "name",
+      "keywords",
+      "why publish with Global Reviews Press, peer-reviewed journals, research publication benefits, open access publishing, global research visibility, ethical academic publishing, author support, submit research manuscript",
+    );
+    setMeta("name", "robots", "index, follow, max-image-preview:large");
+    setMeta("name", "googlebot", "index, follow, max-image-preview:large");
+
+    setMeta("property", "og:title", title);
+    setMeta("property", "og:description", description);
+    setMeta("property", "og:type", "website");
+    setMeta("property", "og:site_name", "Global Reviews Press");
+    setMeta("property", "og:url", pageUrl);
+    setMeta("property", "og:image", imageUrl);
+    setMeta(
+      "property",
+      "og:image:alt",
+      "Reasons to publish research with Global Reviews Press",
+    );
+
+    setMeta("name", "twitter:card", "summary_large_image");
+    setMeta("name", "twitter:title", title);
+    setMeta("name", "twitter:description", description);
+    setMeta("name", "twitter:image", imageUrl);
+    setMeta(
+      "name",
+      "twitter:image:alt",
+      "Global Reviews Press research publication benefits",
+    );
+
+    let canonical = document.head.querySelector('link[rel="canonical"]');
+    const canonicalWasCreated = !canonical;
+    const previousCanonical = canonical?.getAttribute("href");
+
+    if (!canonical) {
+      canonical = document.createElement("link");
+      canonical.setAttribute("rel", "canonical");
+      document.head.appendChild(canonical);
+    }
+
+    canonical.setAttribute("href", pageUrl);
+
+    const schema = document.createElement("script");
+    schema.type = "application/ld+json";
+    schema.dataset.pageSchema = "grp-why-publish-us";
+    schema.textContent = JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "WebPage",
+          "@id": `${pageUrl}#webpage`,
+          name: "Why Publish With Global Reviews Press",
+          headline: "Why Publish With Global Reviews Press",
+          url: pageUrl,
+          description,
+          inLanguage: "en",
+          isPartOf: {
+            "@type": "WebSite",
+            "@id": "https://www.globalreviewspress.com/#website",
+            name: "Global Reviews Press",
+            url: "https://www.globalreviewspress.com/",
+          },
+          about: {
+            "@type": "Organization",
+            name: "Global Reviews Press",
+            alternateName: "GRP",
+            url: "https://www.globalreviewspress.com/",
+            logo:
+              "https://www.globalreviewspress.com/global-reviews-press-logo.webp",
+          },
+          primaryImageOfPage: {
+            "@type": "ImageObject",
+            url: imageUrl,
+            width: 1200,
+            height: 630,
+          },
+        },
+        {
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://www.globalreviewspress.com/",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Why Publish With Us",
+              item: pageUrl,
+            },
+          ],
+        },
+      ],
+    });
+    document.head.appendChild(schema);
+
+    return () => {
+      document.title = previousTitle;
+
+      managedElements.forEach(
+        ({ element, wasCreated, previousContent }) => {
+          if (wasCreated) {
+            element.remove();
+          } else if (previousContent === null) {
+            element.removeAttribute("content");
+          } else {
+            element.setAttribute("content", previousContent);
+          }
+        },
+      );
+
+      if (canonicalWasCreated) {
+        canonical.remove();
+      } else if (previousCanonical) {
+        canonical.setAttribute("href", previousCanonical);
+      }
+
+      schema.remove();
+    };
+  }, []);
 }
