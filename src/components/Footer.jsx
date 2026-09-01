@@ -121,12 +121,12 @@ export default function Footer() {
 
             md:grid-cols-3
 
-            lg:grid-cols-[1.25fr_0.8fr_0.9fr_0.95fr_1fr_1.55fr]
+            lg:grid-cols-[1.25fr_0.8fr_0.9fr_0.95fr_1.55fr]
             lg:gap-x-[19px]
             lg:gap-y-0
 
-            xl:grid-cols-[1.3fr_0.85fr_0.9fr_0.95fr_1fr_1.65fr]
-            xl:gap-x-[26px]
+            xl:grid-cols-[1.3fr_0.85fr_0.9fr_0.95fr_1.65fr]
+            xl:gap-x-[36px]
           "
         >
           {/* =====================================================
@@ -320,7 +320,7 @@ export default function Footer() {
             }}
           >
             <h4 className={headingClass}>
-              PUBLISHER
+              QUICK LINKS
             </h4>
 
             <ul
@@ -339,30 +339,30 @@ export default function Footer() {
               </li>
 
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/reviewer"
                   className={linkClass}
                 >
-                  Our Mission
-                </a>
+                  Reviewers
+                </Link>
               </li>
 
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/editors-information"
                   className={linkClass}
                 >
-                  Editorial Board
-                </a>
+                  Editor Information
+                </Link>
               </li>
 
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/why-publish-us"
                   className={linkClass}
                 >
-                  Policies
-                </a>
+                  Why Publish With Us
+                </Link>
               </li>
 
               <li>
@@ -416,12 +416,12 @@ export default function Footer() {
               </li>
 
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/journals"
                   className={linkClass}
                 >
                   New Journals
-                </a>
+                </Link>
               </li>
 
               <li>
@@ -530,82 +530,7 @@ export default function Footer() {
             </ul>
           </motion.div>
 
-          {/* =====================================================
-              REVIEWERS
-          ====================================================== */}
-          <motion.div
-            initial={{
-              opacity: 0,
-              y: 18,
-            }}
-            whileInView={{
-              opacity: 1,
-              y: 0,
-            }}
-            viewport={{
-              once: true,
-            }}
-            transition={{
-              duration: 0.5,
-              delay: 0.2,
-            }}
-          >
-            <h4 className={headingClass}>
-              REVIEWERS
-            </h4>
-
-            <ul
-              className="
-                mt-[11px]
-                space-y-[1px]
-              "
-            >
-              <li>
-                <a
-                  href="#"
-                  className={linkClass}
-                >
-                  Reviewer Guidelines
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  className={linkClass}
-                >
-                  Review Process
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  className={linkClass}
-                >
-                  Benefits
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  className={linkClass}
-                >
-                  Register as Reviewer
-                </a>
-              </li>
-
-              <li>
-                <a
-                  href="#"
-                  className={linkClass}
-                >
-                  FAQs
-                </a>
-              </li>
-            </ul>
-          </motion.div>
+       
 
           {/* =====================================================
               CONTACT US

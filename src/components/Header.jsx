@@ -10,7 +10,7 @@ const navigation = [
   { name: "Journals", href: "/journals" },
   { name: "Reviewers", href: "/reviewer" },
   { name: "Editor Information", href: "/editors-information" },
-  { name: "Why Publish Us", href: "/why-publish-us" },
+  { name: "Why Publish", href: "/why-publish-us" },
   { name: "Contact Us", href: "/contact" },
 ];
 
