@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { fetchPublicJournals } from "../services/journalService.js";
+import { submitManuscript as submitManuscriptApi } from "../services/manuscriptService.js";
+import { extractErrorMessage } from "../services/apiClient.js";
 
 import {
   ArrowRight,
@@ -28,30 +31,6 @@ import Footer from "../components/Footer";
 
 import submitHero from "../assets/img/global-reviews-press-academic-submit-manuscript-hero.webp";
 import submitCta from "../assets/img/explore-global-reviews-press-journals-cta.webp";
-
-/* =========================================================
-   JOURNALS
-========================================================= */
-const journals = [
-  "Artificial Intelligence Reviews",
-  "Robotics & Automation Reviews",
-  "Quantum Computing Reviews",
-  "Edge Intelligence & Computing Reviews",
-  "Digital Twin Technologies Reviews",
-  "6G & Future Communication Reviews",
-  "AI-Enabled Medical Imaging Reviews",
-  "Digital Biomarkers & Wearables Reviews",
-  "Robotic Surgery Reviews",
-  "Precision Diagnostics & Digital Pathology Reviews",
-  "Neurotechnology Reviews",
-  "AI in Drug Discovery & Development Reviews",
-  "Sustainability Reviews",
-  "Renewable Energy & Systems Reviews",
-  "Climate & Urban Resilience Reviews",
-  "Biosensors & Environmental Tech Reviews",
-  "Green Materials & Circular Economy Reviews",
-  "Water, Air & Earth Sciences Reviews",
-];
 
 const articleTypes = [
   "Review Article",
@@ -88,6 +67,36 @@ export default function SubmitManuscript() {
 
   const [submitting, setSubmitting] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+
+  /* =======================================================
+     JOURNALS (loaded from the backend so the dropdown always
+     reflects the current, active journal list)
+  ======================================================= */
+  const [journals, setJournals] = useState([]);
+  const [journalsLoading, setJournalsLoading] = useState(true);
+  const [journalsError, setJournalsError] = useState("");
+
+  useEffect(() => {
+    let active = true;
+
+    fetchPublicJournals("all")
+      .then((data) => {
+        if (active) setJournals(data);
+      })
+      .catch(() => {
+        if (active) {
+          setJournalsError("Could not load the journal list. Please refresh the page.");
+        }
+      })
+      .finally(() => {
+        if (active) setJournalsLoading(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
 
   const container =
     "mx-auto w-[min(1120px,calc(100%-32px))] sm:w-[min(1120px,calc(100%-48px))]";
@@ -274,6 +283,9 @@ export default function SubmitManuscript() {
   async function handleSubmit(event) {
     event.preventDefault();
 
+    // Prevent duplicate submissions while a request is already in flight.
+    if (submitting) return;
+
     const nextErrors = validateForm();
 
     if (Object.keys(nextErrors).length > 0) {
@@ -289,49 +301,31 @@ export default function SubmitManuscript() {
       return;
     }
 
+    setSubmitError("");
     setSubmitting(true);
 
     try {
-      /*
-      ==========================================================
-      CONNECT YOUR API HERE
-
-      const formData = new FormData();
-
-      Object.entries(values).forEach(([key, value]) => {
-        formData.append(key, value);
-      });
-
-      formData.append("manuscript", manuscriptFile);
-
-      if (coverLetter) {
-        formData.append("coverLetter", coverLetter);
-      }
-
-      const response = await fetch(
-        "YOUR_API_URL/api/manuscripts",
-        {
-          method: "POST",
-          body: formData,
-        }
-      );
-
-      if (!response.ok) {
-        throw new Error("Submission failed");
-      }
-      ==========================================================
-      */
-
-      await new Promise((resolve) =>
-        setTimeout(resolve, 1200)
-      );
+      await submitManuscriptApi(values, manuscriptFile, coverLetter);
 
       setSuccess(true);
 
+      // Only reset the form after the API confirms success.
       setValues(initialValues);
       setManuscriptFile(null);
       setCoverLetter(null);
       setErrors({});
+    } catch (error) {
+      // Keep the entered form data so the author doesn't have to retype it.
+      setSubmitError(
+        extractErrorMessage(
+          error,
+          "We couldn't submit your manuscript. Please check your details and try again."
+        )
+      );
+
+      document
+        .getElementById("submission-form")
+        ?.scrollIntoView({ behavior: "smooth", block: "start" });
     } finally {
       setSubmitting(false);
     }
@@ -1150,6 +1144,25 @@ export default function SubmitManuscript() {
               
               </div>
 
+              {submitError && (
+                <div
+                  className="
+                    mb-[17px]
+                    rounded-[6px]
+                    border
+                    border-[#f3c6c6]
+                    bg-[#fdecec]
+                    px-[14px]
+                    py-[10px]
+                    text-[12.5px]
+                    font-[600]
+                    text-[#c23a3a]
+                  "
+                >
+                  {submitError}
+                </div>
+              )}
+
               {/* =================================================
                   SECTION 01
               ================================================== */}
@@ -1222,21 +1235,23 @@ export default function SubmitManuscript() {
                     `}
                   >
                     <option value="">
-                      Choose a journal
+                      {journalsLoading
+                        ? "Loading journals…"
+                        : "Choose a journal"}
                     </option>
 
                     {journals.map((journal) => (
                       <option
-                        key={journal}
-                        value={journal}
+                        key={journal.id}
+                        value={journal.id}
                       >
-                        {journal}
+                        {journal.name}
                       </option>
                     ))}
                   </select>
 
                   <ErrorText>
-                    {errors.journal}
+                    {errors.journal || journalsError}
                   </ErrorText>
                 </div>
 

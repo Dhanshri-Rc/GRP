@@ -1,0 +1,10 @@
+node_modules/
+.env
+uploads/journals/*
+!uploads/journals/.gitkeep
+uploads/manuscripts/*
+!uploads/manuscripts/.gitkeep
+uploads/cover-letters/*
+!uploads/cover-letters/.gitkeep
+*.log
+.DS_Store

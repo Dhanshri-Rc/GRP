@@ -16,6 +16,8 @@ import {
 } from "lucide-react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { submitEnquiry } from "../services/enquiryService.js";
+import { extractErrorMessage } from "../services/apiClient.js";
 
 import contactBg from "../assets/img/global-reviews-press-contact-us-hero.webp";
 import contactCta from "../assets/img/contact-global-reviews-press-cta-background.webp";
@@ -87,6 +89,8 @@ export default function Contact() {
   });
   const [submitted, setSubmitted] = useState(false);
   const [openFaq, setOpenFaq] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
 
   const handleChange = (event) => {
     const { name, value, type, checked } = event.target;
@@ -96,17 +100,39 @@ export default function Contact() {
     }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    setSubmitted(true);
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      type: "",
-      message: "",
-      privacy: false,
-    });
+
+    // Prevent duplicate submissions while the request is in progress.
+    if (submitting) return;
+
+    setSubmitError("");
+    setSubmitting(true);
+
+    try {
+      await submitEnquiry(formData);
+
+      setSubmitted(true);
+      // Reset the form only after the API confirms success.
+      setFormData({
+        name: "",
+        email: "",
+        subject: "",
+        type: "",
+        message: "",
+        privacy: false,
+      });
+    } catch (error) {
+      // Keep the entered form data so the person doesn't have to retype it.
+      setSubmitError(
+        extractErrorMessage(
+          error,
+          "We couldn't send your message. Please try again."
+        )
+      );
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -176,6 +202,14 @@ export default function Contact() {
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="mt-5 space-y-4">
+                  {submitError && (
+                    <div
+                      role="alert"
+                      className="rounded-md border border-[#e6b0b0] bg-[#fdecec] p-4 text-[12px] font-medium text-[#c23a3a]"
+                    >
+                      {submitError}
+                    </div>
+                  )}
                   <div className="grid gap-4 sm:grid-cols-2">
                     <FormInput
                       name="name"
@@ -255,10 +289,20 @@ export default function Contact() {
                   </label>
                   <button
                     type="submit"
-                    className="group flex h-[44px] w-full items-center justify-center gap-2 rounded-[5px] bg-gradient-to-r from-[#176422] to-[#69a82a] text-[13px] font-semibold text-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_18px_rgba(51,124,37,0.25)]"
+                    disabled={submitting}
+                    className="group flex h-[44px] w-full items-center justify-center gap-2 rounded-[5px] bg-gradient-to-r from-[#176422] to-[#69a82a] text-[13px] font-semibold text-white shadow-sm transition duration-300 hover:-translate-y-0.5 hover:shadow-[0_8px_18px_rgba(51,124,37,0.25)] disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:shadow-sm"
                   >
-                    <Send className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />{" "}
-                    Send Message
+                    {submitting ? (
+                      <>
+                        <span className="h-4 w-4 animate-spin rounded-full border-2 border-white/40 border-t-white" />
+                        Sending…
+                      </>
+                    ) : (
+                      <>
+                        <Send className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />{" "}
+                        Send Message
+                      </>
+                    )}
                   </button>
                 </form>
               )}
