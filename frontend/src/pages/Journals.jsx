@@ -20,23 +20,20 @@ import {
   Building2,
   LayoutDashboard,
   ChevronDown,
+  Loader2,
+  AlertCircle,
+  Inbox,
 } from "lucide-react";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { fetchPublicJournals } from "../services/journalService.js";
 
 /* =========================================================
    HERO / CTA IMAGES
 ========================================================= */
 import bgjournal from "../assets/img/global-reviews-press-academic-journals-hero.webp";
 import bgcta from "../assets/img/explore-global-reviews-press-journals-cta.webp";
-
-/* =========================================================
-   JOURNAL IMAGES
-========================================================= */
-import j1 from "../assets/img/artificial-intelligence-engineering-journal.webp";
-import j2 from "../assets/img/robotics-automation-technology-journal.webp";
-import j3 from "../assets/img/quantum-computing-research-journal.webp";
 
 /* =========================================================
    INDEXING LOGOS
@@ -92,126 +89,40 @@ const filters = [
 ];
 
 /* =========================================================
-   ENGINEERING JOURNALS — ONLY 5
+   JOURNAL CATEGORY METADATA
+   Journals themselves now come from the backend (MongoDB) via
+   the API — see fetchPublicJournals(). This metadata only
+   controls presentation (heading, overlay gradient, fallback
+   background) for each stable category key.
 ========================================================= */
-const engineeringJournals = [
-  {
-    title: "Artificial Intelligence",
-    reviews: "Reviews",
-    image: j1,
-  },
-  {
-    title: "Robotics & Automation",
-    reviews: "Reviews",
-    image: j2,
-  },
-  {
-    title: "Quantum Computing",
-    reviews: "Reviews",
-    image: j3,
-  },
-  {
-    title: "Edge Intelligence & Computing",
-    reviews: "Reviews",
-    image: j2,
-  },
-  {
-    title: "Digital Twin Technologies",
-    reviews: "Reviews",
-    image: j1,
-  },
-];
-
-/* =========================================================
-   MEDICINE JOURNALS — ONLY 5
-========================================================= */
-const medicineJournals = [
-  {
-    title: "AI-Enabled Medical Imaging",
-    reviews: "Reviews",
-    image: j3,
-  },
-  {
-    title: "Digital Biomarkers & Wearables",
-    reviews: "Reviews",
-    image: j2,
-  },
-  {
-    title: "Robotic Surgery",
-    reviews: "Reviews",
-    image: j1,
-  },
-  {
-    title: "Precision Diagnostics & Digital Pathology",
-    reviews: "Reviews",
-    image: j2,
-  },
-  {
-    title: "Neurotechnology",
-    reviews: "Reviews",
-    image: j3,
-  },
-];
-
-/* =========================================================
-   SUSTAINABILITY JOURNALS — ONLY 5
-========================================================= */
-const sustainabilityJournals = [
-  {
-    title: "Sustainability",
-    reviews: "Reviews",
-    image: j2,
-  },
-  {
-    title: "Renewable Energy and Systems",
-    reviews: "Reviews",
-    image: j1,
-  },
-  {
-    title: "Climate & Urban Resilience",
-    reviews: "Reviews",
-    image: j3,
-  },
-  {
-    title: "Biosensors & Environmental Tech",
-    reviews: "Reviews",
-    image: j1,
-  },
-  {
-    title: "Green Materials & Circular Economy",
-    reviews: "Reviews",
-    image: j2,
-  },
-];
-
-/* =========================================================
-   JOURNAL CATEGORIES
-========================================================= */
-const journalCategories = [
-  {
-    id: "engineering",
+const CATEGORY_META = {
+  engineering: {
     title: "Engineering & Technology",
-    journals: engineeringJournals,
-    overlay:
-      "from-[#001833]/70 via-transparent via-[55%] to-[#00162F]/95",
+    overlay: "from-[#001833]/70 via-transparent via-[55%] to-[#00162F]/95",
     fallback: "bg-[#062651]",
   },
-  {
-    id: "medicine",
+  medicine: {
     title: "Medicine & Health Sciences",
-    journals: medicineJournals,
-    overlay:
-      "from-[#001833]/65 via-transparent via-[55%] to-[#00162F]/95",
+    overlay: "from-[#001833]/65 via-transparent via-[55%] to-[#00162F]/95",
     fallback: "bg-[#062651]",
   },
-  {
-    id: "sustainability",
+  sustainability: {
     title: "Sustainability & Environment",
-    journals: sustainabilityJournals,
-    overlay:
-      "from-[#123E29]/56 via-transparent via-[55%] to-[#092C1A]/92",
+    overlay: "from-[#123E29]/56 via-transparent via-[55%] to-[#092C1A]/92",
     fallback: "bg-[#174A2A]",
   },
+  interdisciplinary: {
+    title: "Interdisciplinary",
+    overlay: "from-[#001833]/70 via-transparent via-[55%] to-[#00162F]/95",
+    fallback: "bg-[#062651]",
+  },
+};
+
+const CATEGORY_ORDER = [
+  "engineering",
+  "medicine",
+  "sustainability",
+  "interdisciplinary",
 ];
 
 /* =========================================================
@@ -475,14 +386,64 @@ export default function Journals() {
   const [sort, setSort] = useState("default");
 
   /* =======================================================
+     JOURNALS FROM THE BACKEND
+  ======================================================= */
+  const [journals, setJournals] = useState([]);
+  const [journalsLoading, setJournalsLoading] = useState(true);
+  const [journalsError, setJournalsError] = useState("");
+
+  useEffect(() => {
+    let active = true;
+
+    setJournalsLoading(true);
+    setJournalsError("");
+
+    fetchPublicJournals("all")
+      .then((data) => {
+        if (!active) return;
+        setJournals(
+          data.map((j) => ({
+            title: j.name,
+            image: j.coverImage,
+            category: j.category,
+            id: j.id,
+          }))
+        );
+      })
+      .catch(() => {
+        if (active) {
+          setJournalsError(
+            "We couldn't load journals right now. Please try again shortly."
+          );
+        }
+      })
+      .finally(() => {
+        if (active) setJournalsLoading(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, []);
+
+  /* =======================================================
+     JOURNAL CATEGORIES (built from live API data)
+  ======================================================= */
+  const journalCategories = CATEGORY_ORDER.map((id) => ({
+    id,
+    title: CATEGORY_META[id].title,
+    overlay: CATEGORY_META[id].overlay,
+    fallback: CATEGORY_META[id].fallback,
+    journals: journals.filter((journal) => journal.category === id),
+  }));
+
+  /* =======================================================
      VISIBLE CATEGORIES
   ======================================================= */
   const visibleCategories =
-    activeTab === "all" || activeTab === "interdisciplinary"
-      ? journalCategories
-      : journalCategories.filter(
-          (category) => category.id === activeTab
-        );
+    activeTab === "all"
+      ? journalCategories.filter((category) => category.journals.length > 0)
+      : journalCategories.filter((category) => category.id === activeTab);
 
   return (
     <>
@@ -493,7 +454,7 @@ export default function Journals() {
         {/* =========================================================
             HERO SECTION
         ========================================================== */}
-       <section section
+       <section
           className="
             relative
             isolate
@@ -989,6 +950,37 @@ export default function Journals() {
                 LEFT JOURNALS
             ====================================================== */}
             <div className="min-w-0">
+              {journalsError ? (
+                <div className="flex flex-col items-center justify-center gap-2 rounded-[8px] border border-[#F3C6C6] bg-[#FDECEC] px-6 py-10 text-center">
+                  <AlertCircle size={22} className="text-[#D64545]" />
+                  <p className="text-[13px] font-[600] text-[#C23A3A]">
+                    {journalsError}
+                  </p>
+                </div>
+              ) : journalsLoading ? (
+                <div className="space-y-[28px]">
+                  {[0, 1].map((groupIndex) => (
+                    <div key={groupIndex}>
+                      <div className="mb-[8px] h-[18px] w-[220px] animate-pulse rounded bg-[#E7EDF3]" />
+                      <div className="grid grid-cols-1 gap-[10px] min-[360px]:grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
+                        {Array.from({ length: 5 }).map((_, cardIndex) => (
+                          <div
+                            key={cardIndex}
+                            className="min-h-[175px] animate-pulse rounded-[5px] bg-[#E7EDF3] sm:min-h-[170px] lg:min-h-[185px]"
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              ) : visibleCategories.length === 0 ? (
+                <div className="flex flex-col items-center justify-center gap-2 rounded-[8px] border border-[#E5EBF0] bg-[#FAFBFC] px-6 py-14 text-center">
+                  <Inbox size={22} className="text-[#96A6BA]" />
+                  <p className="text-[13px] font-[600] text-[#52637A]">
+                    No journals found in this category yet.
+                  </p>
+                </div>
+              ) : (
               <AnimatePresence initial={false}>
                 {visibleCategories.map(
                   (category, categoryIndex) => (
@@ -1063,8 +1055,15 @@ export default function Journals() {
                       </div>
 
                       {/* =============================================
-                          EXACTLY 5 JOURNAL CARDS
+                          JOURNAL CARDS
                       ============================================= */}
+                      {category.journals.length === 0 ? (
+                        <div className="flex items-center justify-center rounded-[6px] border border-dashed border-[#DEE5EB] bg-[#FAFBFC] px-6 py-8 text-center">
+                          <p className="text-[12.5px] font-[600] text-[#7C8CA0]">
+                            No journals published in this category yet — check back soon.
+                          </p>
+                        </div>
+                      ) : (
                       <div
                         className="
                           grid
@@ -1090,6 +1089,7 @@ export default function Journals() {
                           ) => (
                             <motion.article
                               key={
+                                journal.id ||
                                 journal.title
                               }
                               initial={{
@@ -1155,17 +1155,33 @@ export default function Journals() {
                                 "
                               />
 
-                            
+                              {/* GRADIENT OVERLAY */}
+                              <div
+                                className={`
+                                  absolute
+                                  inset-0
+                                  -z-10
+                                  bg-gradient-to-t
+                                  ${category.overlay}
+                                `}
+                              />
 
-                            
+                              {/* JOURNAL NAME */}
+                              <div className="absolute inset-x-0 bottom-0 p-[12px]">
+                                <h3 className="font-['Inter',sans-serif] text-[13.5px] font-[700] leading-[1.3] text-white drop-shadow-[0_1px_3px_rgba(0,0,0,0.5)]">
+                                  {journal.title}
+                                </h3>
+                              </div>
                             </motion.article>
                           )
                         )}
                       </div>
+                      )}
                     </motion.section>
                   )
                 )}
               </AnimatePresence>
+              )}
             </div>
 
             {/* =====================================================
